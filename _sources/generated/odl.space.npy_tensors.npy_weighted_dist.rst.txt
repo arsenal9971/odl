@@ -1,0 +1,6 @@
+npy_weighted_dist
+=======================================
+
+.. currentmodule:: odl.space.npy_tensors
+
+.. autofunction:: npy_weighted_dist

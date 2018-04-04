@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DiscreteLpElement &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="lp_discr" href="../odl.discr.lp_discr.html"/>
+        <link rel="next" title="DiscreteLpElement.asarray" href="odl.discr.lp_discr.DiscreteLpElement.asarray.html"/>
+        <link rel="prev" title="DiscreteLp.zero" href="odl.discr.lp_discr.DiscreteLp.zero.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.discr.html">discr</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.diff_ops.html">diff_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.discr_mappings.html">discr_mappings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.discr_ops.html">discr_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.discretization.html">discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.grid.html">grid</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.discr.lp_discr.html">lp_discr</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html">DiscreteLp</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">DiscreteLpElement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.discr_sequence_space.html">discr_sequence_space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr.html">uniform_discr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_fromdiscr.html">uniform_discr_fromdiscr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_fromintv.html">uniform_discr_fromintv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_frompartition.html">uniform_discr_frompartition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_fromspace.html">uniform_discr_fromspace</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.partition.html">partition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.discr.html">discr</a> &raquo;</li>
+        
+          <li><a href="../odl.discr.lp_discr.html">lp_discr</a> &raquo;</li>
+        
+      <li>DiscreteLpElement</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.discr.lp_discr.DiscreteLpElement.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="discretelpelement">
+<h1>DiscreteLpElement<a class="headerlink" href="#discretelpelement" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.discr.lp_discr.DiscreteLpElement">
+<em class="property">class </em><code class="descclassname">odl.discr.lp_discr.</code><code class="descname">DiscreteLpElement</code><span class="sig-paren">(</span><em>space</em>, <em>tensor</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/discr/lp_discr.html#DiscreteLpElement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.discr.lp_discr.DiscreteLpElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.discr.discretization.DiscretizedSpaceElement.html#odl.discr.discretization.DiscretizedSpaceElement" title="odl.discr.discretization.DiscretizedSpaceElement"><code class="xref py py-class docutils literal"><span class="pre">odl.discr.discretization.DiscretizedSpaceElement</span></code></a></p>
+<p>Representation of a <a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html#odl.discr.lp_discr.DiscreteLp" title="odl.discr.lp_discr.DiscreteLp"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLp</span></code></a> element.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">T</span></code></dt>
+<dd><p class="first last">This element’s transpose, i.e.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">cell_sides</span></code></dt>
+<dd><p class="first last">Side lengths of a cell in an underlying <em>uniform</em> partition.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">cell_volume</span></code></dt>
+<dd><p class="first last">Cell volume of an underlying regular grid.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">data</span></code></dt>
+<dd><p class="first last">Data container of <code class="docutils literal"><span class="pre">self</span></code>, depends on <code class="docutils literal"><span class="pre">space.impl</span></code>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code></dt>
+<dd><p class="first last">Type of data storage.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">imag</span></code></dt>
+<dd><p class="first last">Imaginary part of this element.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">impl</span></code></dt>
+<dd><p class="first last">Name of the implementation back-end of this tensor.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">interpolation</span></code></dt>
+<dd><p class="first last">Interpolation operator associated with this element.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">itemsize</span></code></dt>
+<dd><p class="first last">Size in bytes of one tensor entry.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">nbytes</span></code></dt>
+<dd><p class="first last">Total number of bytes in memory occupied by this tensor.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">ndim</span></code></dt>
+<dd><p class="first last">Number of axes (=dimensions) of this tensor.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">real</span></code></dt>
+<dd><p class="first last">Real part of this element.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></dt>
+<dd><p class="first last">Number of elements per axis.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></dt>
+<dd><p class="first last">Size of data storage.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">space</span></code></dt>
+<dd><p class="first last">Space to which this element belongs.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">tensor</span></code></dt>
+<dd><p class="first last">Structure for data storage.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">ufuncs</span></code></dt>
+<dd><p class="first last">Access to Numpy style universal functions.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.asarray.html#odl.discr.lp_discr.DiscreteLpElement.asarray" title="odl.discr.lp_discr.DiscreteLpElement.asarray"><code class="xref py py-obj docutils literal"><span class="pre">asarray</span></code></a>([out])</td>
+<td>Extract the data of this array as a numpy array.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.assign.html#odl.discr.lp_discr.DiscreteLpElement.assign" title="odl.discr.lp_discr.DiscreteLpElement.assign"><code class="xref py py-obj docutils literal"><span class="pre">assign</span></code></a>(other)</td>
+<td>Assign the values of <code class="docutils literal"><span class="pre">other</span></code> to <code class="docutils literal"><span class="pre">self</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.astype.html#odl.discr.lp_discr.DiscreteLpElement.astype" title="odl.discr.lp_discr.DiscreteLpElement.astype"><code class="xref py py-obj docutils literal"><span class="pre">astype</span></code></a>(dtype)</td>
+<td>Return a copy of this element with new <code class="docutils literal"><span class="pre">dtype</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.conj.html#odl.discr.lp_discr.DiscreteLpElement.conj" title="odl.discr.lp_discr.DiscreteLpElement.conj"><code class="xref py py-obj docutils literal"><span class="pre">conj</span></code></a>([out])</td>
+<td>Complex conjugate of this element.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.copy.html#odl.discr.lp_discr.DiscreteLpElement.copy" title="odl.discr.lp_discr.DiscreteLpElement.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>()</td>
+<td>Create an identical (deep) copy of this element.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.dist.html#odl.discr.lp_discr.DiscreteLpElement.dist" title="odl.discr.lp_discr.DiscreteLpElement.dist"><code class="xref py py-obj docutils literal"><span class="pre">dist</span></code></a>(other)</td>
+<td>Return the distance of <code class="docutils literal"><span class="pre">self</span></code> to <code class="docutils literal"><span class="pre">other</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.divide.html#odl.discr.lp_discr.DiscreteLpElement.divide" title="odl.discr.lp_discr.DiscreteLpElement.divide"><code class="xref py py-obj docutils literal"><span class="pre">divide</span></code></a>(other[,&nbsp;out])</td>
+<td>Return <code class="docutils literal"><span class="pre">out</span> <span class="pre">=</span> <span class="pre">self</span> <span class="pre">/</span> <span class="pre">other</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.inner.html#odl.discr.lp_discr.DiscreteLpElement.inner" title="odl.discr.lp_discr.DiscreteLpElement.inner"><code class="xref py py-obj docutils literal"><span class="pre">inner</span></code></a>(other)</td>
+<td>Return the inner product of <code class="docutils literal"><span class="pre">self</span></code> and <code class="docutils literal"><span class="pre">other</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.lincomb.html#odl.discr.lp_discr.DiscreteLpElement.lincomb" title="odl.discr.lp_discr.DiscreteLpElement.lincomb"><code class="xref py py-obj docutils literal"><span class="pre">lincomb</span></code></a>(a,&nbsp;x1[,&nbsp;b,&nbsp;x2])</td>
+<td>Implement <code class="docutils literal"><span class="pre">self[:]</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">x1</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">*</span> <span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.multiply.html#odl.discr.lp_discr.DiscreteLpElement.multiply" title="odl.discr.lp_discr.DiscreteLpElement.multiply"><code class="xref py py-obj docutils literal"><span class="pre">multiply</span></code></a>(other[,&nbsp;out])</td>
+<td>Return <code class="docutils literal"><span class="pre">out</span> <span class="pre">=</span> <span class="pre">self</span> <span class="pre">*</span> <span class="pre">other</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.norm.html#odl.discr.lp_discr.DiscreteLpElement.norm" title="odl.discr.lp_discr.DiscreteLpElement.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>()</td>
+<td>Return the norm of this element.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.sampling.html#odl.discr.lp_discr.DiscreteLpElement.sampling" title="odl.discr.lp_discr.DiscreteLpElement.sampling"><code class="xref py py-obj docutils literal"><span class="pre">sampling</span></code></a>(ufunc,&nbsp;**kwargs)</td>
+<td>Sample a continuous function and assign to this element.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.set_zero.html#odl.discr.lp_discr.DiscreteLpElement.set_zero" title="odl.discr.lp_discr.DiscreteLpElement.set_zero"><code class="xref py py-obj docutils literal"><span class="pre">set_zero</span></code></a>()</td>
+<td>Set this element to zero.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.show.html#odl.discr.lp_discr.DiscreteLpElement.show" title="odl.discr.lp_discr.DiscreteLpElement.show"><code class="xref py py-obj docutils literal"><span class="pre">show</span></code></a>([title,&nbsp;method,&nbsp;coords,&nbsp;indices,&nbsp;…])</td>
+<td>Display the function graphically.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.discr.lp_discr.DiscreteLpElement.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>space</em>, <em>tensor</em><span class="sig-paren">)</span><a class="headerlink" href="#odl.discr.lp_discr.DiscreteLpElement.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.discr.lp_discr.DiscreteLpElement.asarray.html" class="btn btn-neutral float-right" title="DiscreteLpElement.asarray" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.discr.lp_discr.DiscreteLp.zero.html" class="btn btn-neutral" title="DiscreteLp.zero" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

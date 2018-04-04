@@ -1,0 +1,32 @@
+KullbackLeiblerConvexConj
+====================================================================
+
+.. currentmodule:: odl.solvers.functional.default_functionals
+
+.. autoclass:: KullbackLeiblerConvexConj
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         KullbackLeiblerConvexConj.__call__
+         KullbackLeiblerConvexConj._call
+         KullbackLeiblerConvexConj.bregman
+         KullbackLeiblerConvexConj.derivative
+         KullbackLeiblerConvexConj.norm
+         KullbackLeiblerConvexConj.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

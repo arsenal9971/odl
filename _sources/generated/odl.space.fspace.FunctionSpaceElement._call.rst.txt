@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpaceElement._call
+===========================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpaceElement._call

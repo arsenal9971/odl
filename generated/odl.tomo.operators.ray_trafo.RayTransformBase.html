@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RayTransformBase &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="ray_trafo" href="../odl.tomo.operators.ray_trafo.html"/>
+        <link rel="next" title="RayTransformBase._call" href="odl.tomo.operators.ray_trafo.RayTransformBase._call.html"/>
+        <link rel="prev" title="RayTransform.norm" href="odl.tomo.operators.ray_trafo.RayTransform.norm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.tomo.html">tomo</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.analytic.html">analytic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.backends.html">backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.geometry.html">geometry</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.tomo.operators.html">operators</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.tomo.operators.ray_trafo.html">ray_trafo</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.tomo.html">tomo</a> &raquo;</li>
+        
+          <li><a href="../odl.tomo.operators.html">operators</a> &raquo;</li>
+        
+          <li><a href="../odl.tomo.operators.ray_trafo.html">ray_trafo</a> &raquo;</li>
+        
+      <li>RayTransformBase</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.tomo.operators.ray_trafo.RayTransformBase.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="raytransformbase">
+<h1>RayTransformBase<a class="headerlink" href="#raytransformbase" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.tomo.operators.ray_trafo.RayTransformBase">
+<em class="property">class </em><code class="descclassname">odl.tomo.operators.ray_trafo.</code><code class="descname">RayTransformBase</code><span class="sig-paren">(</span><em>reco_space</em>, <em>geometry</em>, <em>variant</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/tomo/operators/ray_trafo.html#RayTransformBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.tomo.operators.ray_trafo.RayTransformBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.operator.operator.Operator.html#odl.operator.operator.Operator" title="odl.operator.operator.Operator"><code class="xref py py-class docutils literal"><span class="pre">odl.operator.operator.Operator</span></code></a></p>
+<p>Base class for ray transforms containing common attributes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">adjoint</span></code></dt>
+<dd><p class="first last">Adjoint of this operator (abstract).</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">domain</span></code></dt>
+<dd><p class="first last">Set of objects on which this operator can be evaluated.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">geometry</span></code></dt>
+<dd><p class="first last">Geometry of this operator.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">impl</span></code></dt>
+<dd><p class="first last">Implementation back-end for the evaluation of this operator.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">inverse</span></code></dt>
+<dd><p class="first last">Return the operator inverse.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_functional</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator’s range is a <a class="reference internal" href="odl.set.sets.Field.html#odl.set.sets.Field" title="odl.set.sets.Field"><code class="xref any py py-class docutils literal"><span class="pre">Field</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_linear</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator is linear.</p>
+</dd>
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">range</span></code></a></dt>
+<dd><p class="first last">Set in which the result of an evaluation of this operator lies.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.tomo.operators.ray_trafo.RayTransformBase._call.html#odl.tomo.operators.ray_trafo.RayTransformBase._call" title="odl.tomo.operators.ray_trafo.RayTransformBase._call"><code class="xref py py-obj docutils literal"><span class="pre">_call</span></code></a>(x[,&nbsp;out])</td>
+<td>Return <code class="docutils literal"><span class="pre">self(x[,</span> <span class="pre">out])</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.tomo.operators.ray_trafo.RayTransformBase.derivative.html#odl.tomo.operators.ray_trafo.RayTransformBase.derivative" title="odl.tomo.operators.ray_trafo.RayTransformBase.derivative"><code class="xref py py-obj docutils literal"><span class="pre">derivative</span></code></a>(point)</td>
+<td>Return the operator derivative at <code class="docutils literal"><span class="pre">point</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.tomo.operators.ray_trafo.RayTransformBase.norm.html#odl.tomo.operators.ray_trafo.RayTransformBase.norm" title="odl.tomo.operators.ray_trafo.RayTransformBase.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>([estimate])</td>
+<td>Return the operator norm of this operator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.tomo.operators.ray_trafo.RayTransformBase.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>reco_space</em>, <em>geometry</em>, <em>variant</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/tomo/operators/ray_trafo.html#RayTransformBase.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.tomo.operators.ray_trafo.RayTransformBase.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>reco_space <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html#odl.discr.lp_discr.DiscreteLp" title="odl.discr.lp_discr.DiscreteLp"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLp</span></code></a></span></dt>
+<dd><p class="first last">Discretized reconstruction space, the domain of the forward
+operator or the range of the adjoint (back-projection).</p>
+</dd>
+<dt>geometry <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.tomo.geometry.geometry.Geometry.html#odl.tomo.geometry.geometry.Geometry" title="odl.tomo.geometry.geometry.Geometry"><code class="xref any py py-class docutils literal"><span class="pre">Geometry</span></code></a></span></dt>
+<dd><p class="first last">Geometry of the transform that contains information about
+the data structure.</p>
+</dd>
+<dt>variant <span class="classifier-delimiter">:</span> <span class="classifier">{‘forward’, ‘backward’}</span></dt>
+<dd><p class="first last">Variant of the transform, i.e., whether the ray transform
+or its back-projection should be created.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt>impl <span class="classifier-delimiter">:</span> <span class="classifier">{<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><code class="xref any docutils literal"><span class="pre">None</span></code></a>, ‘astra_cuda’, ‘astra_cpu’, ‘skimage’}, optional</span></dt>
+<dd><p class="first">Implementation back-end for the transform. Supported back-ends:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">'astra_cuda'</span></code>: ASTRA toolbox, using CUDA, 2D or 3D</li>
+<li><code class="docutils literal"><span class="pre">'astra_cpu'</span></code>: ASTRA toolbox using CPU, only 2D</li>
+<li><code class="docutils literal"><span class="pre">'skimage'</span></code>: scikit-image, only 2D parallel with square
+reconstruction space.</li>
+</ul>
+<p class="last">For the default <code class="docutils literal"><span class="pre">None</span></code>, the fastest available back-end is
+used.</p>
+</dd>
+<dt>interp <span class="classifier-delimiter">:</span> <span class="classifier">{‘nearest’, ‘linear’}, optional</span></dt>
+<dd><p class="first last">Interpolation type for the discretization of the projection
+space. This has no effect if <code class="docutils literal"><span class="pre">proj_space</span></code> is given explicitly.
+Default: <code class="docutils literal"><span class="pre">'nearest'</span></code></p>
+</dd>
+<dt>proj_space <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html#odl.discr.lp_discr.DiscreteLp" title="odl.discr.lp_discr.DiscreteLp"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLp</span></code></a>, optional</span></dt>
+<dd><p class="first last">Discretized projection (sinogram) space, the range of the forward
+operator or the domain of the adjoint (back-projection).
+Default: Inferred from parameters.</p>
+</dd>
+<dt>use_cache <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If <code class="docutils literal"><span class="pre">True</span></code>, data is cached. This gives a significant speed-up
+at the expense of a notable memory overhead, both on the GPU
+and on the CPU, since a full volume and a projection dataset
+are stored. That may be prohibitive in 3D.
+Default: True</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The ASTRA backend is faster if data are given with
+<code class="docutils literal"><span class="pre">dtype='float32'</span></code> and storage order ‘C’. Otherwise copies will be
+needed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.tomo.operators.ray_trafo.RayTransformBase._call.html" class="btn btn-neutral float-right" title="RayTransformBase._call" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.tomo.operators.ray_trafo.RayTransform.norm.html" class="btn btn-neutral" title="RayTransform.norm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

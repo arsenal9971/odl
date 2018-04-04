@@ -1,0 +1,8 @@
+:orphan:
+
+FanFlatGeometry.__getitem__
+======================================================
+
+.. currentmodule:: odl.tomo.geometry.conebeam
+
+.. automethod:: FanFlatGeometry.__getitem__

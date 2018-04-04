@@ -1,0 +1,830 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Release Notes &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="index.html"/>
+        <link rel="next" title="References" href="refs.html"/>
+        <link rel="prev" title="Glossary" href="guide/glossary.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#upcoming-release">Upcoming release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-6-0-release-notes-2017-04-20">ODL 0.6.0 Release Notes (2017-04-20)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#new-features">New features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#improvements">Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changes">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-5-3-release-notes-2017-01-17">ODL 0.5.3 Release Notes (2017-01-17)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">New features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Bugfixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-5-2-release-notes-2016-11-02">ODL 0.5.2 Release Notes (2016-11-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-5-1-release-notes-2016-10-24">ODL 0.5.1 Release Notes (2016-10-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-5-0-release-notes-2016-10-21">ODL 0.5.0 Release Notes (2016-10-21)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">New features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Bugfixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-4-0-release-notes-2016-08-17">ODL 0.4.0 Release Notes (2016-08-17)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">New features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-3-1-release-notes-2016-08-15">ODL 0.3.1 Release Notes (2016-08-15)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">New features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Bugfixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-3-0-release-notes-2016-06-29">ODL 0.3.0 Release Notes (2016-06-29)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">New features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-2-4-release-notes-2016-06-28">ODL 0.2.4 Release Notes (2016-06-28)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">New features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Bugfixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-2-3-release-notes-2016-06-12">ODL 0.2.3 Release Notes (2016-06-12)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id19">New features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Bugfixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-2-2-release-notes-2016-03-11">ODL 0.2.2 Release Notes (2016-03-11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-2-1-release-notes-2016-03-11">ODL 0.2.1 Release Notes (2016-03-11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-2-release-notes-2016-03-11">ODL 0.2 Release Notes (2016-03-11)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id23">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#odl-0-1-release-notes-2016-03-08">ODL 0.1 Release Notes (2016-03-08)</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Release Notes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/release_notes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="release-notes"></span><div class="section" id="id1">
+<h1>Release Notes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="upcoming-release">
+<h2>Upcoming release<a class="headerlink" href="#upcoming-release" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="odl-0-6-0-release-notes-2017-04-20">
+<h2>ODL 0.6.0 Release Notes (2017-04-20)<a class="headerlink" href="#odl-0-6-0-release-notes-2017-04-20" title="Permalink to this headline">¶</a></h2>
+<p>Besides many small improvements and additions, this release is the first one under the new Mozilla Public License 2.0 (MPL-2.0).</p>
+<div class="section" id="new-features">
+<h3>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The Kaczmarz method has been added to the <code class="docutils literal"><span class="pre">solvers</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/840">PR 840</a>).</li>
+<li>Most immutable types now have a <code class="docutils literal"><span class="pre">__hash__</span></code> method (<a class="reference external" href="https://github.com/odlgroup/odl/pull/840">PR 840</a>).</li>
+<li>A variant of the Conjugate Gradient solver for non-linear problems has been added (<a class="reference external" href="https://github.com/odlgroup/odl/pull/554">PR 554</a>).</li>
+<li>There is now an example for tomographic reconstruction using Total Generalized Variation (TGV). (<a class="reference external" href="https://github.com/odlgroup/odl/pull/883">PR 883</a>).</li>
+<li>Power spaces can now be created using the <code class="docutils literal"><span class="pre">**</span></code> operator, e.g., <code class="docutils literal"><span class="pre">odl.rn(3)</span> <span class="pre">**</span> <span class="pre">4</span></code>.
+Likewise, product spaces can be created using multiplication <code class="docutils literal"><span class="pre">*</span></code>, i.e., <code class="docutils literal"><span class="pre">odl.rn(3)</span> <span class="pre">*</span> <span class="pre">odl.rn(4)</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/882">PR 882</a>).</li>
+<li>A <code class="docutils literal"><span class="pre">SamplingOperator</span></code> for the extraction of values at given indices from arrays has been added, along with its adjoint <code class="docutils literal"><span class="pre">WeightedSumSamplingOperator</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/940">PR 940</a>).</li>
+<li>Callbacks can now be composed with operators, which can be useful, e.g., for transforming the current iterate before displaying it (<a class="reference external" href="https://github.com/odlgroup/odl/pull/954">PR 954</a>).</li>
+<li><code class="docutils literal"><span class="pre">RayTransform</span></code> (and thus also <code class="docutils literal"><span class="pre">fbp_op</span></code>) can now be directly used on spaces of complex functions (<a class="reference external" href="https://github.com/odlgroup/odl/pull/970">PR 970</a>).</li>
+</ul>
+</div>
+<div class="section" id="improvements">
+<h3>Improvements<a class="headerlink" href="#improvements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>In <code class="docutils literal"><span class="pre">CallbackPrintIteration</span></code>, a step number between displays can now be specified (<a class="reference external" href="https://github.com/odlgroup/odl/pull/871">PR 871</a>).</li>
+<li><code class="docutils literal"><span class="pre">OperatorPointwiseProduct</span></code> got its missing <code class="docutils literal"><span class="pre">derivative</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/877">PR 877</a>).</li>
+<li><code class="docutils literal"><span class="pre">SeparableSum</span></code> functionals can now be indexed to retrieve the constituents (<a class="reference external" href="https://github.com/odlgroup/odl/pull/898">PR 898</a>).</li>
+<li>Better self-printing of callbacks (<a class="reference external" href="https://github.com/odlgroup/odl/pull/881">PR 881</a>).</li>
+<li><code class="docutils literal"><span class="pre">ProductSpaceOperator</span></code> and subclasses now have <code class="docutils literal"><span class="pre">size</span></code> and <code class="docutils literal"><span class="pre">__len__</span></code>, and the parent also has <code class="docutils literal"><span class="pre">shape</span></code>.
+Also self-printing of these operators is now better (<a class="reference external" href="https://github.com/odlgroup/odl/pull/901">PR 901</a>).</li>
+<li>Arithmetic methods of <code class="docutils literal"><span class="pre">LinearSpace</span></code> have become more permissive in the sense that operations like <code class="docutils literal"><span class="pre">space_element</span> <span class="pre">+</span> <span class="pre">raw_array</span></code> now works if the array can be cast to an element of the same space (<a class="reference external" href="https://github.com/odlgroup/odl/pull/902">PR 902</a>).</li>
+<li>There is now a (work-in-progress) document on the release process with the aim to avoid errors (<a class="reference external" href="https://github.com/odlgroup/odl/pull/872">PR 872</a>).</li>
+<li>The MRC extended header implementation is now much simpler (<a class="reference external" href="https://github.com/odlgroup/odl/pull/917">PR 917</a>).</li>
+<li>The <code class="docutils literal"><span class="pre">show_discrete_data</span></code> workhorse is now more robust towards arrays with <code class="docutils literal"><span class="pre">inf</span></code> and <code class="docutils literal"><span class="pre">nan</span></code> entries regarding colorbar settings (<a class="reference external" href="https://github.com/odlgroup/odl/pull/921">PR 921</a>).</li>
+<li>The <code class="docutils literal"><span class="pre">title</span></code> in <code class="docutils literal"><span class="pre">CallbackShow</span></code> are now interpreted as format string with iteration number inserted, which enables updating the figure title in real time (<a class="reference external" href="https://github.com/odlgroup/odl/pull/923">PR 923</a>).</li>
+<li>Installation instructions have been arranged in a better way, grouped after different ways of installing (<a class="reference external" href="https://github.com/odlgroup/odl/pull/884">PR 884</a>).</li>
+<li>A performance comparison example pure ASTRA vs. ODL with ASTRA for 3d cone beam has been added (<a class="reference external" href="https://github.com/odlgroup/odl/pull/912">PR 912</a>).</li>
+<li><code class="docutils literal"><span class="pre">OperatorComp</span></code> avoids an operator evaluation in <code class="docutils literal"><span class="pre">derivative</span></code> in the case when the left operator is linear (<a class="reference external" href="https://github.com/odlgroup/odl/pull/957">PR 957</a>).</li>
+<li><code class="docutils literal"><span class="pre">FunctionalComp</span></code> now has a default implementation of <code class="docutils literal"><span class="pre">gradient.derivative</span></code> if the operator in the composition is linear (<a class="reference external" href="https://github.com/odlgroup/odl/pull/956">PR 956</a>).</li>
+<li>The <code class="docutils literal"><span class="pre">saveto</span></code> parameter of <code class="docutils literal"><span class="pre">CallbackShow</span></code> can now be a callable that returns the file name to save to when called on the current iteration number (<a class="reference external" href="https://github.com/odlgroup/odl/pull/955">PR 955</a>).</li>
+</ul>
+</div>
+<div class="section" id="changes">
+<h3>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">sphinxext</span></code> submodule has been from upstream (<a class="reference external" href="https://github.com/odlgroup/odl/pull/846">PR 846</a>).</li>
+<li>The renames <code class="docutils literal"><span class="pre">TensorGrid</span></code> -&gt; <code class="docutils literal"><span class="pre">RectGrid</span></code> and <code class="docutils literal"><span class="pre">uniform_sampling</span></code> -&gt; <code class="docutils literal"><span class="pre">uniform_grid</span></code> have been made, and separate class <code class="docutils literal"><span class="pre">RegularGrid</span></code> has been removed in favor of treating regular grids as a special case of <code class="docutils literal"><span class="pre">RectGrid</span></code>.
+Instances of <code class="docutils literal"><span class="pre">RectGrid</span></code> have a new property <code class="docutils literal"><span class="pre">is_uniform</span></code> for this purpose.
+Furthermore, uniformity of <code class="docutils literal"><span class="pre">RectPartition</span></code> and <code class="docutils literal"><span class="pre">RectGrid</span></code> is exposed as property per axis using <code class="docutils literal"><span class="pre">is_uniform_byaxis</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/841">PR 841</a>).</li>
+<li><code class="docutils literal"><span class="pre">extent</span></code> of grids and partitions is now a property instead of a method (<a class="reference external" href="https://github.com/odlgroup/odl/pull/889">PR 889</a>).</li>
+<li>The number of iterations in solvers is no longer optional since the old default 1 didn’t make much sense (<a class="reference external" href="https://github.com/odlgroup/odl/pull/888">PR 888</a>).</li>
+<li>The <code class="docutils literal"><span class="pre">nlevels</span></code> argument of <code class="docutils literal"><span class="pre">WaveletTransform</span></code> is now optional, and the default is the maximum number of levels as determined by the new function <code class="docutils literal"><span class="pre">pywt_max_nlevels</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/880">PR 880</a>).</li>
+<li><code class="docutils literal"><span class="pre">MatVecOperator</span></code> is now called <code class="docutils literal"><span class="pre">MatrixOperator</span></code> and has been moved to the <code class="docutils literal"><span class="pre">tensor_ops</span></code> module.
+This solves a circular dependency issue with ODL subpackages (<a class="reference external" href="https://github.com/odlgroup/odl/pull/911">PR 911</a>).</li>
+<li>All step parameters of callbacks are now called just <code class="docutils literal"><span class="pre">step</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/929">PR 929</a>).</li>
+<li>The <code class="docutils literal"><span class="pre">impl</span></code> name for the scikit-image back-end in <code class="docutils literal"><span class="pre">RayTransform</span></code> has been changed from <code class="docutils literal"><span class="pre">scikit</span></code> to <code class="docutils literal"><span class="pre">skimage</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/970">PR 970</a>).</li>
+<li>ODL is now licensed under the Mozilla Public License 2.0 (<a class="reference external" href="https://github.com/odlgroup/odl/pull/977">PR 977</a>).</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h3>Bugfixes<a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fix an argument order error in the gradient of <code class="docutils literal"><span class="pre">QuadraticForm</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/868">PR 868</a>).</li>
+<li>Lots of small documentation fixes where “, optional” was forgotten in the Parameters section (<a class="reference external" href="https://github.com/odlgroup/odl/pull/554">PR 554</a>).</li>
+<li>Fix an indexing bug in the <code class="docutils literal"><span class="pre">indicate_proj_axis</span></code> phantom (<a class="reference external" href="https://github.com/odlgroup/odl/pull/878">PR 878</a>).</li>
+<li>Fix wrong inheritance order in <code class="docutils literal"><span class="pre">FileReaderRawBinaryWithHeader</span></code> that lead to wrong <code class="docutils literal"><span class="pre">header_size</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/893">PR 893</a>).</li>
+<li>Comparison of arbitrary objects in Python 2 is now disabled for a some ODL classes where it doesn’t make sense (<a class="reference external" href="https://github.com/odlgroup/odl/pull/933">PR 933</a>).</li>
+<li>Fix a bug in the angle calculation of the scikit-image back-end for Ray transforms (<a class="reference external" href="https://github.com/odlgroup/odl/pull/947">PR 947</a>).</li>
+<li>Fix issue with wrong integer type in <code class="docutils literal"><span class="pre">as_scipy_operator</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/960">PR 960</a>).</li>
+<li>Fix wrong scaling in <code class="docutils literal"><span class="pre">RayTransform</span></code> and adjoint with unweighted spaces (<a class="reference external" href="https://github.com/odlgroup/odl/pull/958">PR 958</a>).</li>
+<li>Fix normalization bug of <code class="docutils literal"><span class="pre">min_pt</span></code> and <code class="docutils literal"><span class="pre">max_pt</span></code> parameters in <code class="docutils literal"><span class="pre">RectPartition</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/971">PR 971</a>).</li>
+<li>Fix an issue with <code class="docutils literal"><span class="pre">*args</span></code> in <code class="docutils literal"><span class="pre">CallbackShow</span></code> that lead to the <code class="docutils literal"><span class="pre">title</span></code> argument provided twice (<a class="reference external" href="https://github.com/odlgroup/odl/pull/981">PR 981</a>).</li>
+<li>Fix an unconditional <code class="docutils literal"><span class="pre">pytest</span></code> import that lead to an <code class="docutils literal"><span class="pre">ImportError</span></code> if pytest was not installed (<a class="reference external" href="https://github.com/odlgroup/odl/pull/982">PR 982</a>).</li>
+</ul>
+</div>
+</div>
+<div class="section" id="odl-0-5-3-release-notes-2017-01-17">
+<h2>ODL 0.5.3 Release Notes (2017-01-17)<a class="headerlink" href="#odl-0-5-3-release-notes-2017-01-17" title="Permalink to this headline">¶</a></h2>
+<p>Lots of small improvements and feature additions in this release.
+Most notable are the remarkable performance improvements to the ASTRA bindings (up to 10x), the addition of <code class="docutils literal"><span class="pre">fbp_op</span></code> to create filtered back-projection operators with several filter and windowing options, as well as further performance improvements to operator compositions and the <code class="docutils literal"><span class="pre">show</span></code> methods.</p>
+<div class="section" id="id2">
+<h3>New features<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add the <code class="docutils literal"><span class="pre">SeparableSum(func,</span> <span class="pre">n)</span></code> syntax for n-times repetition of the same summand (<a class="reference external" href="https://github.com/odlgroup/odl/pull/685">PR 685</a>).</li>
+<li>Add the Ordered Subsets MLEM solver <code class="docutils literal"><span class="pre">odl.solvers.osmlem</span></code> for faster EM reconstruction (<a class="reference external" href="https://github.com/odlgroup/odl/pull/647">PR 647</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">GroupL1Norm</span></code> and <code class="docutils literal"><span class="pre">IndicatorGroupL1UnitBall</span></code> for mixed L1-Lp norm regularization (<a class="reference external" href="https://github.com/odlgroup/odl/pull/620">PR 620</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">fbp_op</span></code> helper to create filtered back-projection operators for a range of geometries (<a class="reference external" href="https://github.com/odlgroup/odl/pull/703">PR 703</a>).</li>
+<li>Add 2-dimensional FORBILD phantom (<a class="reference external" href="https://github.com/odlgroup/odl/pull/694">PR 694</a>, <a class="reference external" href="https://github.com/odlgroup/odl/pull/804">PR 804</a>, <a class="reference external" href="https://github.com/odlgroup/odl/pull/820">PR 820</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">IndicatorZero</span></code> functional in favor of of <code class="docutils literal"><span class="pre">ConstantFunctionalConvexConj</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/707">PR 707</a>).</li>
+<li>Add reader for MRC data files and for custom binary formats with fixed header (<a class="reference external" href="https://github.com/odlgroup/odl/pull/716">PR 716</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">NuclearNorm</span></code> functional for multi-channel regularization (<a class="reference external" href="https://github.com/odlgroup/odl/pull/691">PR 691</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">CallbackPrint</span></code> for printing of intermediate results in iterative solvers (<a class="reference external" href="https://github.com/odlgroup/odl/pull/691">PR 691</a>).</li>
+<li>Expose Numpy ufuncs as operators in the new <code class="docutils literal"><span class="pre">ufunc_ops</span></code> subpackage (<a class="reference external" href="https://github.com/odlgroup/odl/pull/576">PR 576</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">ScalingFunctional</span></code> and <code class="docutils literal"><span class="pre">IdentityFunctional</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/576">PR 576</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">RealPart</span></code>, <code class="docutils literal"><span class="pre">ImagPart</span></code> and <code class="docutils literal"><span class="pre">ComplexEmbedding</span></code> operators (<a class="reference external" href="https://github.com/odlgroup/odl/pull/706">PR 706</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">PointwiseSum</span></code> operator for vector fields (<a class="reference external" href="https://github.com/odlgroup/odl/pull/754">PR 754</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">LineSearchFromIterNum</span></code> for using a pre-defined mapping from iteration number to step size (<a class="reference external" href="https://github.com/odlgroup/odl/pull/752">PR 752</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">axis_labels</span></code> option to <code class="docutils literal"><span class="pre">DiscreteLp</span></code> for custom labels in plots (<a class="reference external" href="https://github.com/odlgroup/odl/pull/770">PR 770</a>).</li>
+<li>Add Defrise phantom for cone beam geometry testing (<a class="reference external" href="https://github.com/odlgroup/odl/pull/756">PR 756</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">filter</span></code> option to <code class="docutils literal"><span class="pre">fbp_op</span></code> and <code class="docutils literal"><span class="pre">tam_danielson_window</span></code> and <code class="docutils literal"><span class="pre">parker_weighting</span></code> helpers for helical/cone geometries (<a class="reference external" href="https://github.com/odlgroup/odl/pull/756">PR 756</a>, <a class="reference external" href="https://github.com/odlgroup/odl/pull/806">PR 806</a>, <a class="reference external" href="https://github.com/odlgroup/odl/pull/825">PR 825</a>).</li>
+<li>Add ISTA (<code class="docutils literal"><span class="pre">proximal_gradient</span></code>) and FISTA (<code class="docutils literal"><span class="pre">accelerated_proximal_gradient</span></code>) algorithms, among others useful for L1 regularization (<a class="reference external" href="https://github.com/odlgroup/odl/pull/758">PR 758</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">salt_pepper_noise</span></code> helper function (<a class="reference external" href="https://github.com/odlgroup/odl/pull/758">PR 758</a>).</li>
+<li>Expose FBP filtering as operator <code class="docutils literal"><span class="pre">fbp_filter_op</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/780">PR 780</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">parallel_beam_geometry</span></code> helper for creation of simple test geometries (<a class="reference external" href="https://github.com/odlgroup/odl/pull/775">PR 775</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">MoreauEnvelope</span></code> functional for smoothed regularization (<a class="reference external" href="https://github.com/odlgroup/odl/pull/763">PR 763</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">saveto</span></code> option to <code class="docutils literal"><span class="pre">CallbackShow</span></code> to store plots of iterates (<a class="reference external" href="https://github.com/odlgroup/odl/pull/708">PR 708</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">CallbackSaveToDisk</span></code> and <code class="docutils literal"><span class="pre">CallbackSleep</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/798">PR 798</a>).</li>
+<li>Add a utility <code class="docutils literal"><span class="pre">signature_string</span></code> for robust generation of strings for <code class="docutils literal"><span class="pre">repr</span></code> or <code class="docutils literal"><span class="pre">str</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/808">PR 808</a>).</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>Improvements<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>New documentation on the operator derivative notion in ODL (<a class="reference external" href="https://github.com/odlgroup/odl/pull/668">PR 668</a>).</li>
+<li>Add largescale tests for the convex conjugates of functionals (<a class="reference external" href="https://github.com/odlgroup/odl/pull/744">PR 744</a>).</li>
+<li>Add <code class="docutils literal"><span class="pre">domain</span></code> parameter to <code class="docutils literal"><span class="pre">LinDeformFixedTempl</span></code> for better extensibility (<a class="reference external" href="https://github.com/odlgroup/odl/pull/748">PR 748</a>).</li>
+<li>Add example for sparse tomography with TV regularization using the Douglas-Rachford solver (<a class="reference external" href="https://github.com/odlgroup/odl/pull/746">PR 746</a>).</li>
+<li>Add support for 1/r^2 scaling in cone beam backprojection with ASTRA 1.8 using a helper function for rescaling (<a class="reference external" href="https://github.com/odlgroup/odl/pull/749">PR 749</a>).</li>
+<li>Improve performance of operator scaling in certain cases (<a class="reference external" href="https://github.com/odlgroup/odl/pull/576">PR 576</a>).</li>
+<li>Add documentation on testing in ODL (<a class="reference external" href="https://github.com/odlgroup/odl/pull/704">PR 704</a>).</li>
+<li>Replace occurrences of <code class="docutils literal"><span class="pre">numpy.matrix</span></code> objects (<a class="reference external" href="https://github.com/odlgroup/odl/pull/778">PR 778</a>).</li>
+<li>Implement Numpy-style indexing for <code class="docutils literal"><span class="pre">ProductSpaceElement</span></code> objects (<a class="reference external" href="https://github.com/odlgroup/odl/pull/774">PR 774</a>).</li>
+<li>Greatly improve efficiency of <code class="docutils literal"><span class="pre">show</span></code> by updating the figure in place instead of re-creating (<a class="reference external" href="https://github.com/odlgroup/odl/pull/789">PR 789</a>).</li>
+<li>Improve efficiency of operator derivatives by short-circuiting in case of a linear operator (<a class="reference external" href="https://github.com/odlgroup/odl/pull/796">PR 796</a>).</li>
+<li>Implement simple indexing for <code class="docutils literal"><span class="pre">ProducSpaceOperator</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/815">PR 815</a>).</li>
+<li>Add caching to ASTRA projectors, thus making algorithms run much faster (<a class="reference external" href="https://github.com/odlgroup/odl/pull/802">PR 802</a>).</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>Changes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Rename <code class="docutils literal"><span class="pre">vector_field_space</span></code> to <code class="docutils literal"><span class="pre">tangent_bundle</span></code> in vector spaces (more adequate for complex spaces) (<a class="reference external" href="https://github.com/odlgroup/odl/pull/702">PR 702</a>).</li>
+<li>Rename <code class="docutils literal"><span class="pre">show</span></code> parameter of <code class="docutils literal"><span class="pre">show</span></code> methods to <code class="docutils literal"><span class="pre">force_show</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/771">PR 771</a>).</li>
+<li>Rename <code class="docutils literal"><span class="pre">elem.ufunc</span></code> to <code class="docutils literal"><span class="pre">elem.ufuncs</span></code> where implemented (<a class="reference external" href="https://github.com/odlgroup/odl/pull/809">PR 809</a>).</li>
+<li>Remove “Base” from weighting base classes and rename <code class="docutils literal"><span class="pre">weight</span></code> parameter to <code class="docutils literal"><span class="pre">weighting</span></code> for consistency (<a class="reference external" href="https://github.com/odlgroup/odl/pull/810">PR 810</a>).</li>
+<li>Move <code class="docutils literal"><span class="pre">tensor_ops</span></code> module from <code class="docutils literal"><span class="pre">odl.discr</span></code> to <code class="docutils literal"><span class="pre">odl.operator</span></code> for more general application (<a class="reference external" href="https://github.com/odlgroup/odl/pull/813">PR 813</a>).</li>
+<li>Rename <code class="docutils literal"><span class="pre">ellipse</span></code> to <code class="docutils literal"><span class="pre">ellipsoid</span></code> in names intended for 3D cases (<a class="reference external" href="https://github.com/odlgroup/odl/pull/816">PR 816</a>).</li>
+<li>Pick the fastest available implementation in <code class="docutils literal"><span class="pre">RayTransform</span></code> by default instead of <code class="docutils literal"><span class="pre">astra_cpu</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/826">PR 826</a>).</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>Bugfixes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Prevent ASTRA cubic voxel check from failing due to numerical rounding errors (<a class="reference external" href="https://github.com/odlgroup/odl/pull/721">PR 721</a>).</li>
+<li>Implement the missing <code class="docutils literal"><span class="pre">__ne__</span></code> in <code class="docutils literal"><span class="pre">RectPartition</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/748">PR 748</a>).</li>
+<li>Correct adjoint of <code class="docutils literal"><span class="pre">WaveletTransform</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/758">PR 758</a>).</li>
+<li>Fix issue with creation of phantoms in a space with degenerate shape (<a class="reference external" href="https://github.com/odlgroup/odl/pull/777">PR 777</a>).</li>
+<li>Fix issue with Windows paths in <code class="docutils literal"><span class="pre">collect_ignore</span></code>.</li>
+<li>Fix bad dict lookup with <code class="docutils literal"><span class="pre">RayTransform.adjoint.adjoint</span></code>.</li>
+<li>Fix rounding issue in a couple of indicator functionals.</li>
+<li>Several bugfixes in <code class="docutils literal"><span class="pre">show</span></code> methods.</li>
+<li>Fixes to outdated example code.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="odl-0-5-2-release-notes-2016-11-02">
+<h2>ODL 0.5.2 Release Notes (2016-11-02)<a class="headerlink" href="#odl-0-5-2-release-notes-2016-11-02" title="Permalink to this headline">¶</a></h2>
+<p>Another maintenance release that fixes a number of issues with installation and testing, see <a class="reference external" href="https://github.com/odlgroup/odl/issues/674">issue 674</a>, <a class="reference external" href="https://github.com/odlgroup/odl/issues/679">issue 679</a>, and <a class="reference external" href="https://github.com/odlgroup/odl/pull/692">PR 692</a> and <a class="reference external" href="https://github.com/odlgroup/odl/pull/696">PR 696</a>.</p>
+</div>
+<div class="section" id="odl-0-5-1-release-notes-2016-10-24">
+<h2>ODL 0.5.1 Release Notes (2016-10-24)<a class="headerlink" href="#odl-0-5-1-release-notes-2016-10-24" title="Permalink to this headline">¶</a></h2>
+<p>This is a maintenance release since the test suite was not bundled with PyPI and Conda packages as intended already in 0.5.0.
+From this version on, users can run <code class="docutils literal"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">&quot;import</span> <span class="pre">odl;</span> <span class="pre">odl.test()&quot;</span></code> with all types of installations (from PyPI, Conda or from source).</p>
+</div>
+<div class="section" id="odl-0-5-0-release-notes-2016-10-21">
+<h2>ODL 0.5.0 Release Notes (2016-10-21)<a class="headerlink" href="#odl-0-5-0-release-notes-2016-10-21" title="Permalink to this headline">¶</a></h2>
+<p>This release features a new important top level class <code class="docutils literal"><span class="pre">Functional</span></code> that is intended to be used in optimization methods.
+Beyond its parent <code class="docutils literal"><span class="pre">Operator</span></code>, it provides special methods and properties like <code class="docutils literal"><span class="pre">gradient</span></code> or <code class="docutils literal"><span class="pre">proximal</span></code> which are useful in advanced smooth or non-smooth optimization schemes.
+The interfaces of all solvers in <code class="docutils literal"><span class="pre">odl.solvers</span></code> have been updated to make use of functionals instead of their proximals, gradients etc. directly.</p>
+<p>Further notable changes are the implementation of an <code class="docutils literal"><span class="pre">as_writable_array</span></code> context manager that exposes arbitrary array storage as writable Numpy arrays, and the generalization of the wavelet transform to arbitrary dimensions.</p>
+<p>See below for a complete list of changes.</p>
+<div class="section" id="id6">
+<h3>New features<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add <code class="docutils literal"><span class="pre">Functional</span></code> class to the solvers package. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/498">PR 498</a>)
+<code class="docutils literal"><span class="pre">Functional</span></code> is a subclass of odl <code class="docutils literal"><span class="pre">Operator</span></code> and intended to help in formulating and solving optimization problems.
+It contains optimization specific features like <code class="docutils literal"><span class="pre">proximal</span></code> and <code class="docutils literal"><span class="pre">convex_conj</span></code>, and built-in intelligence for handling things like translation, scaling of argument or scaling of functional.
+* Migrate all solvers to work with <code class="docutils literal"><span class="pre">Functional</span></code>’s instead of raw proximals etc. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/587">PR 587</a>)
+* <code class="docutils literal"><span class="pre">FunctionalProduct</span></code> and <code class="docutils literal"><span class="pre">FunctionalQuotient</span></code> which allow evaluation of the product/quotient of functions and also provides a gradient through the Leibniz/quotient rules. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/586">PR 586</a>)
+* <code class="docutils literal"><span class="pre">FunctionalDefaultConvexConjugate</span></code> which acts as a default for <code class="docutils literal"><span class="pre">Functional.convex_conj</span></code>, providing it with a proximal property. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/588">PR 588</a>)
+* <code class="docutils literal"><span class="pre">IndicatorBox</span></code> and <code class="docutils literal"><span class="pre">IndicatorNonnegativity</span></code> which are indicator functions on a box shaped set and the set of nonnegative numbers, respectively. They return 0 if all points in a vector are inside the box, and infinity otherwise. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/589">PR 589</a>)
+* Add <code class="docutils literal"><span class="pre">Functional``s</span> <span class="pre">for</span> <span class="pre">``KullbackLeibler</span></code> and <code class="docutils literal"><span class="pre">KullbackLeiblerCrossEntropy</span></code>, together with corresponding convex conjugates (<a class="reference external" href="https://github.com/odlgroup/odl/pull/627">PR 627</a>).
+Also add proximal operator for the convex conjugate of cross entropy Kullback-Leibler divergence, called <code class="docutils literal"><span class="pre">proximal_cconj_kl_cross_entropy</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/561">PR 561</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">ResizingOperator</span></code> for shrinking and extending (padding) of discretized functions, including a variety of padding methods. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/499">PR 499</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">as_writable_array</span></code> that allows casting arbitrary array-likes to a numpy array and then storing the results later on. This is
+intended to be used with odl vectors that may not be stored in numpy format (like cuda vectors), but can be used with other types like lists.
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/524">PR 524</a>)</li>
+<li>Allow ASTRA backend to be used with arbitrary dtypes. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/524">PR 524</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">reset</span></code> to <code class="docutils literal"><span class="pre">SolverCallback</span></code> that resets the callback to its initial state. (<a class="reference external" href="https://github.com/odlgroup/odl/issues/552">issue 552</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">nonuniform_partition</span></code> utility that creates a partition with non-uniformly spaced points.
+This is useful e.g. when the angles of a tomography problem are not exactly uniform. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/558">PR 558</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">Functional</span></code> class to the solvers package.
+<code class="docutils literal"><span class="pre">Functional</span></code> is a subclass of odl <code class="docutils literal"><span class="pre">Operator</span></code> and intended to help in formulating and solving optimization problems.
+It contains optimization specific features like <code class="docutils literal"><span class="pre">proximal</span></code> and <code class="docutils literal"><span class="pre">convex_conj</span></code>, and built-in intelligence for handling things like translation, scaling of argument or scaling of functional. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/498">PR 498</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">FunctionalProduct</span></code> and <code class="docutils literal"><span class="pre">FunctionalQuotient</span></code> which allow evaluation of the product/quotient of functions and also provides a gradient through the Leibniz/quotient rules. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/586">PR 586</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">FunctionalDefaultConvexConjugate</span></code> which acts as a default for <code class="docutils literal"><span class="pre">Functional.convex_conj</span></code>, providing it with a proximal property. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/588">PR 588</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">IndicatorBox</span></code> and <code class="docutils literal"><span class="pre">IndicatorNonnegativity</span></code> which are indicator functions on a box shaped set and the set of nonnegative numbers, respectively. They return 0 if all points in a vector are inside the box, and infinity otherwise. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/589">PR 589</a>)</li>
+<li>Add proximal operator for the convex conjugate of cross entropy Kullback-Leibler divergence, called <code class="docutils literal"><span class="pre">proximal_cconj_kl_cross_entropy</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/561">PR 561</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">Functional</span></code>’s for <code class="docutils literal"><span class="pre">KullbackLeibler</span></code> and <code class="docutils literal"><span class="pre">KullbackLeiblerCrossEntropy</span></code>, together with corresponding convex conjugates (<a class="reference external" href="https://github.com/odlgroup/odl/pull/627">PR 627</a>)</li>
+<li>Add tutorial style example. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/521">PR 521</a>)</li>
+<li>Add MLEM solver. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/497">PR 497</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">MatVecOperator.inverse</span></code>. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/608">PR 608</a>)</li>
+<li>Add the <code class="docutils literal"><span class="pre">Rosenbrock</span></code> standard test functional. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/602">PR 602</a>)</li>
+<li>Add broadcasting of vector arithmetic involving <code class="docutils literal"><span class="pre">ProductSpace</span></code> vectors. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/555">PR 555</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">phantoms.poisson_noise</span></code>. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/630">PR 630</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">NumericalGradient</span></code> and <code class="docutils literal"><span class="pre">NumericalDerivative</span></code> that numerically compute gradient and derivative of <code class="docutils literal"><span class="pre">Operator</span></code>’s and <code class="docutils literal"><span class="pre">Functional</span></code>’s. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/624">PR 624</a>)</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>Improvements<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add intelligence to <code class="docutils literal"><span class="pre">power_method_opnorm</span></code> so it can terminate early by checking if consecutive iterates are close. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/527">PR 527</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">BroadcastOperator(op,</span> <span class="pre">n)</span></code>, <code class="docutils literal"><span class="pre">ReductionOperator(op,</span> <span class="pre">n)</span></code> and <code class="docutils literal"><span class="pre">DiagonalOperator(op,</span> <span class="pre">n)</span></code> syntax.
+This is equivalent to <code class="docutils literal"><span class="pre">BroadcastOperator(*([op]</span> <span class="pre">*</span> <span class="pre">n))</span></code> etc, i.e. create <code class="docutils literal"><span class="pre">n</span></code> copies of the operator. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/532">PR 532</a>)</li>
+<li>Allow showing subsets of the whole volume in <code class="docutils literal"><span class="pre">DiscreteLpElement.show</span></code>. Previously this allowed slices to be shown, but the new version allows subsets such as <code class="docutils literal"><span class="pre">0</span> <span class="pre">&lt;</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3</span></code> to be shown as well. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/574">PR 574</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">Solvercallback.reset()</span></code> which allows users to reset a callback to its initial state. Applicable if users want to reuse a callback in another solver. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/553">PR 553</a>)</li>
+<li><code class="docutils literal"><span class="pre">WaveletTransform</span></code> and related operators now work in arbitrary dimensions. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/547">PR 547</a>)</li>
+<li>Several documentation improvements. Including:<ul>
+<li>Move documentation from <code class="docutils literal"><span class="pre">_call</span></code> to <code class="docutils literal"><span class="pre">__init__</span></code>. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/549">PR 549</a>)</li>
+<li>Major review of minor style issues. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/534">PR 534</a>)</li>
+<li>Typeset math in proximals. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/580">PR 580</a>)</li>
+</ul>
+</li>
+<li>Improved installation docs and update of Chambolle-Pock documentation. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/121">PR 121</a>)</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Changes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Change definition of <code class="docutils literal"><span class="pre">LinearSpaceVector.multiply</span></code> to match the definition used by Numpy. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/509">PR 509</a>)</li>
+<li>Rename the parameters <code class="docutils literal"><span class="pre">padding_method</span></code> in <code class="docutils literal"><span class="pre">diff_ops.py</span></code> and <code class="docutils literal"><span class="pre">mode</span></code> in <code class="docutils literal"><span class="pre">wavelet.py</span></code> to <code class="docutils literal"><span class="pre">pad_mode</span></code>.
+The parameter <code class="docutils literal"><span class="pre">padding_value</span></code> is now called <code class="docutils literal"><span class="pre">pad_const</span></code>. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/511">PR 511</a>)</li>
+<li>Expose <code class="docutils literal"><span class="pre">ellipse_phantom</span></code> and <code class="docutils literal"><span class="pre">shepp_logan_ellipses</span></code> to <code class="docutils literal"><span class="pre">odl.phantom</span></code>. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/529">PR 529</a>)</li>
+<li>Unify the names of minimum (<code class="docutils literal"><span class="pre">min_pt</span></code>), maximum (<code class="docutils literal"><span class="pre">max_pt</span></code>) and middle (<code class="docutils literal"><span class="pre">mid_pt</span></code>) points as well as number of points (<code class="docutils literal"><span class="pre">shape</span></code>) in grids, interval products and factory functions for discretized spaces. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/541">PR 541</a>)</li>
+<li>Remove <code class="docutils literal"><span class="pre">simple_operator</span></code> since it was never used and did not follow the ODL style. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/543">PR 543</a>)
+The parameter <code class="docutils literal"><span class="pre">padding_value</span></code> is now called <code class="docutils literal"><span class="pre">pad_const</span></code>.</li>
+<li>Remove <code class="docutils literal"><span class="pre">Interval</span></code>, <code class="docutils literal"><span class="pre">Rectangle</span></code> and <code class="docutils literal"><span class="pre">Cuboid</span></code> since they were confusing (Capitalized name but not a class) and barely ever used.
+Users should instead use <code class="docutils literal"><span class="pre">IntervalProd</span></code> in all cases. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/537">PR 537</a>)</li>
+<li>The following classes have been renamed (<a class="reference external" href="https://github.com/odlgroup/odl/pull/560">PR 560</a>):<ul>
+<li><code class="docutils literal"><span class="pre">LinearSpaceVector</span></code> -&gt; <code class="docutils literal"><span class="pre">LinearSpaceElement</span></code></li>
+<li><code class="docutils literal"><span class="pre">DiscreteLpVector</span></code> -&gt; <code class="docutils literal"><span class="pre">DiscreteLpElement</span></code></li>
+<li><code class="docutils literal"><span class="pre">ProductSpaceVector</span></code> -&gt; <code class="docutils literal"><span class="pre">ProductSpaceElement</span></code></li>
+<li><code class="docutils literal"><span class="pre">DiscretizedSetVector</span></code> -&gt; <code class="docutils literal"><span class="pre">DiscretizedSetElement</span></code></li>
+<li><code class="docutils literal"><span class="pre">DiscretizedSpaceVector</span></code> -&gt; <code class="docutils literal"><span class="pre">DiscretizedSpaceElement</span></code></li>
+<li><code class="docutils literal"><span class="pre">FunctionSetVector</span></code> -&gt; <code class="docutils literal"><span class="pre">FunctionSetElement</span></code></li>
+<li><code class="docutils literal"><span class="pre">FunctionSpaceVector</span></code> -&gt; <code class="docutils literal"><span class="pre">FunctionSpaceElement</span></code></li>
+</ul>
+</li>
+<li>Change parameter style of differential operators from having a <code class="docutils literal"><span class="pre">pad_mode</span></code> and a separate <code class="docutils literal"><span class="pre">edge_order</span></code> argument that were mutually exclusive to a single <code class="docutils literal"><span class="pre">pad_mode</span></code> that covers all cases.
+Also added several new pad modes to the differential operators. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/548">PR 548</a>)</li>
+<li>Switch from RTD documentation hosting to gh-pages and let Travis CI build and deploy the documentation. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/536">PR 536</a>)</li>
+<li>Update name of <code class="docutils literal"><span class="pre">proximal_zero</span></code> to <code class="docutils literal"><span class="pre">proximal_const_func</span></code>. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/582">PR 582</a>)</li>
+<li>Move unit tests from top level <code class="docutils literal"><span class="pre">test/</span></code> to <code class="docutils literal"><span class="pre">odl/test/</span></code> folder and distribute them with the source. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/638">PR 638</a>)</li>
+<li>Update pytest dependency to [&gt;3.0] and use new featuers. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/653">PR 653</a>)</li>
+<li>Add pytest option <code class="docutils literal"><span class="pre">--documentation</span></code> to test all doctest examples in the online documentation.</li>
+<li>Remove the <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">odl[all]</span></code> option since it fails by default.</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>Bugfixes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fix <code class="docutils literal"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">&quot;import</span> <span class="pre">odl;</span> <span class="pre">odl.test()&quot;</span></code> not working on Windows. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/508">PR 508</a>)</li>
+<li>Fix a <code class="docutils literal"><span class="pre">TypeError</span></code> being raised in <code class="docutils literal"><span class="pre">OperatorTest</span></code> when running <code class="docutils literal"><span class="pre">optest.ajoint()</span></code> without specifying an operator norm. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/525">PR 525</a>)</li>
+<li>Fix scaling of scikit ray transform for non full scan. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/523">PR 523</a>)</li>
+<li>Fix bug causing classes to not be vectorizable. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/604">PR 604</a>)</li>
+<li>Fix rounding problem in some proximals (<a class="reference external" href="https://github.com/odlgroup/odl/pull/661">PR 661</a>)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="odl-0-4-0-release-notes-2016-08-17">
+<h2>ODL 0.4.0 Release Notes (2016-08-17)<a class="headerlink" href="#odl-0-4-0-release-notes-2016-08-17" title="Permalink to this headline">¶</a></h2>
+<p>This release marks the addition of the <code class="docutils literal"><span class="pre">deform</span></code> package to ODL, adding functionality for the deformation
+of <code class="docutils literal"><span class="pre">DiscreteLp</span></code> elements.</p>
+<div class="section" id="id10">
+<h3>New features<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add <code class="docutils literal"><span class="pre">deform</span></code> package with linearized deformations (<a class="reference external" href="https://github.com/odlgroup/odl/pull/488">PR 488</a>)</li>
+<li>Add option to interface with ProxImaL solvers using ODL operators. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/494">PR 494</a>)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="odl-0-3-1-release-notes-2016-08-15">
+<h2>ODL 0.3.1 Release Notes (2016-08-15)<a class="headerlink" href="#odl-0-3-1-release-notes-2016-08-15" title="Permalink to this headline">¶</a></h2>
+<p>This release mainly fixes an issue that made it impossible to <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">odl</span></code> with version 0.3.0.
+It also adds the first really advanced solvers based on forward-backward and Douglas-Rachford
+splitting.</p>
+<div class="section" id="id11">
+<h3>New features<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>New solvers based on the Douglas-Rachford and forward-backward splitting schemes. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/478">PR 478</a>,
+<a class="reference external" href="https://github.com/odlgroup/odl/pull/480">PR 480</a>)</li>
+<li><code class="docutils literal"><span class="pre">NormOperator</span></code> and <code class="docutils literal"><span class="pre">DistOperator</span></code> added. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/487">PR 487</a>)</li>
+<li>Single-element <code class="docutils literal"><span class="pre">NtuplesBase</span></code> vectors can now be converted to <code class="docutils literal"><span class="pre">float</span></code>, <code class="docutils literal"><span class="pre">complex</span></code> etc.
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/493">PR 493</a>)</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>Improvements<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">DiscreteLp.element()</span></code> now allows non-vectorized and 1D scalar functions as input. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/476">PR 476</a>)</li>
+<li>Speed improvements in the unit tests. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/479">PR 479</a>)</li>
+<li>Uniformization of <code class="docutils literal"><span class="pre">__init__()</span></code> docstrings and many further documentation and naming improvements.
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/489">PR 489</a>, <a class="reference external" href="https://github.com/odlgroup/odl/pull/482">PR 482</a>, <a class="reference external" href="https://github.com/odlgroup/odl/pull/491">PR 491</a>)</li>
+<li>Clearer separation between attributes that are intended as part of the subclassing API and those
+that are not. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/471">PR 471</a>)</li>
+<li>Chambolle-Pock solver accepts also non-linear operators and has better documentation now.
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/490">PR 490</a>)</li>
+<li>Clean-up of imports. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/492">PR 492</a>)</li>
+<li>All solvers now check that the given start value <code class="docutils literal"><span class="pre">x</span></code> is in <code class="docutils literal"><span class="pre">op.domain</span></code>. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/502">PR 502</a>)</li>
+<li>Added test for in-place evaluation of the ray transform. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/500">PR 500</a>)</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>Bugfixes<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Axes in <code class="docutils literal"><span class="pre">show()</span></code> methods of several classes now use the correct corner coordinates, the old ones
+were off by half a grid cell in some situations. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/477">PR 477</a>).</li>
+<li>Catch case in <code class="docutils literal"><span class="pre">power_method_opnorm()</span></code> when iteration goes to zero. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/495">PR 495</a>)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="odl-0-3-0-release-notes-2016-06-29">
+<h2>ODL 0.3.0 Release Notes (2016-06-29)<a class="headerlink" href="#odl-0-3-0-release-notes-2016-06-29" title="Permalink to this headline">¶</a></h2>
+<p>This release marks the removal of <code class="docutils literal"><span class="pre">odlpp</span></code> from the core library. It has instead been moved to a separate library, <code class="docutils literal"><span class="pre">odlcuda</span></code>.</p>
+<div class="section" id="id14">
+<h3>New features<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>To enable cuda backends for the odl spaces, an entry point <code class="docutils literal"><span class="pre">'odl.space'</span></code> has been added where external libraries can hook in to add <code class="docutils literal"><span class="pre">FnBase</span></code> and <code class="docutils literal"><span class="pre">NtuplesBase</span></code> type spaces.</li>
+<li>Add pytest fixtures <code class="docutils literal"><span class="pre">'fn_impl'</span></code> and <code class="docutils literal"><span class="pre">'ntuple_impl'</span></code> to the test config <code class="docutils literal"><span class="pre">conf.py</span></code>. These can now be accessed from any test.</li>
+<li>Allow creation of general spaces using the <code class="docutils literal"><span class="pre">fn</span></code>, <code class="docutils literal"><span class="pre">cn</span></code> and <code class="docutils literal"><span class="pre">rn</span></code> factories. These functions now take an <code class="docutils literal"><span class="pre">impl</span></code> parameter which defaults to <code class="docutils literal"><span class="pre">'numpy'</span></code> but with odlcuda installed it may also be set to <code class="docutils literal"><span class="pre">'cuda'</span></code>. The old numpy specific <code class="docutils literal"><span class="pre">Fn</span></code>, <code class="docutils literal"><span class="pre">Cn</span></code> and <code class="docutils literal"><span class="pre">Rn</span></code> functions have been removed.</li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h3>Changes<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Moved all CUDA specfic code out of the library into odlcuda. This means that <code class="docutils literal"><span class="pre">cu_ntuples.py</span></code> and related files have been removed.</li>
+<li>Rename <code class="docutils literal"><span class="pre">ntuples.py</span></code> to <code class="docutils literal"><span class="pre">npy_ntuples.py</span></code>.</li>
+<li>Added <code class="docutils literal"><span class="pre">Numpy</span></code> to the numy based spaces. They are now named <code class="docutils literal"><span class="pre">NumpyFn</span></code> and <code class="docutils literal"><span class="pre">NumpyNtuples</span></code>.</li>
+<li>Prepended <code class="docutils literal"><span class="pre">npy_</span></code> to all methods specific to <code class="docutils literal"><span class="pre">ntuples</span></code> such as weightings.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="odl-0-2-4-release-notes-2016-06-28">
+<h2>ODL 0.2.4 Release Notes (2016-06-28)<a class="headerlink" href="#odl-0-2-4-release-notes-2016-06-28" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h3>New features<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add <code class="docutils literal"><span class="pre">uniform_discr_fromdiscr</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/467">PR 467</a>).</li>
+<li>Add conda build files (<a class="reference external" href="https://github.com/odlgroup/odl/commit/86ff166">commit 86ff166</a>).</li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h3>Bugfixes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fix bug in submarine phantom with non-centered space (<a class="reference external" href="https://github.com/odlgroup/odl/pull/469">PR 469</a>).</li>
+<li>Fix crash when plotting in 1d (<a class="reference external" href="https://github.com/odlgroup/odl/commit/3255fa3">commit 3255fa3</a>).</li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h3>Changes<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Move phantoms to new module odl.phantom (<a class="reference external" href="https://github.com/odlgroup/odl/pull/469">PR 469</a>).</li>
+<li>Rename <code class="docutils literal"><span class="pre">RectPartition.is_uniform</span></code> to <code class="docutils literal"><span class="pre">RectPartition.is_uniform</span></code>
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/468">PR 468</a>).</li>
+</ul>
+</div>
+</div>
+<div class="section" id="odl-0-2-3-release-notes-2016-06-12">
+<h2>ODL 0.2.3 Release Notes (2016-06-12)<a class="headerlink" href="#odl-0-2-3-release-notes-2016-06-12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id19">
+<h3>New features<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">uniform_sampling</span></code> now supports the <code class="docutils literal"><span class="pre">nodes_on_bdry</span></code> option introduced in <code class="docutils literal"><span class="pre">RectPartition</span></code>
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/308">PR 308</a>).</li>
+<li><code class="docutils literal"><span class="pre">DiscreteLpVector.show</span></code> has a new <code class="docutils literal"><span class="pre">coords</span></code> option that allows to slice by coordinate instead
+of by index (<a class="reference external" href="https://github.com/odlgroup/odl/pull/309">PR 309</a>).</li>
+<li>New <code class="docutils literal"><span class="pre">uniform_discr_fromintv</span></code> to discretize an existing <code class="docutils literal"><span class="pre">IntervalProd</span></code> instance
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/318">PR 318</a>).</li>
+<li>The <code class="docutils literal"><span class="pre">operator.oputils</span></code> module has a new function <code class="docutils literal"><span class="pre">as_scipy_operator</span></code> which exposes a linear
+ODL operator as a <code class="docutils literal"><span class="pre">scipy.sparse.linalg.LinearOperator</span></code>. This way, an ODL operator can be used
+seamlessly in SciPy’s sparse solvers (<a class="reference external" href="https://github.com/odlgroup/odl/pull/324">PR 324</a>).</li>
+<li>New <code class="docutils literal"><span class="pre">Resampling</span></code> operator to resample data between different discretizations (<a class="reference external" href="https://github.com/odlgroup/odl/pull/328">PR 328</a>).</li>
+<li>New <code class="docutils literal"><span class="pre">PowerOperator</span></code> taking the power of an input function (<a class="reference external" href="https://github.com/odlgroup/odl/pull/338">PR 338</a>).</li>
+<li>First pointwise operators acting on vector fields: <code class="docutils literal"><span class="pre">PointwiseInner</span></code> and <code class="docutils literal"><span class="pre">PointwiseNorm</span></code>
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/346">PR 346</a>).</li>
+<li>Examples for FBP reconstruction (<a class="reference external" href="https://github.com/odlgroup/odl/pull/364">PR 364</a>) and TV regularization using the Chambolle-Pock
+method (<a class="reference external" href="https://github.com/odlgroup/odl/pull/352">PR 352</a>).</li>
+<li>New <code class="docutils literal"><span class="pre">scikit-image</span></code> based implementation of <code class="docutils literal"><span class="pre">RayTransform</span></code> for 2D parallel beam tomography
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/352">PR 352</a>).</li>
+<li><code class="docutils literal"><span class="pre">RectPartition</span></code> has a new method <code class="docutils literal"><span class="pre">append</span></code> for simple extension (<a class="reference external" href="https://github.com/odlgroup/odl/pull/370">PR 370</a>).</li>
+<li>The ODL unit tests can now be run with <code class="docutils literal"><span class="pre">odl.test()</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/373">PR 373</a>).</li>
+<li>Proximal of the Kullback-Leibler data discrepancy functional (<a class="reference external" href="https://github.com/odlgroup/odl/pull/289">PR 289</a>).</li>
+<li>Support for SPECT using <code class="docutils literal"><span class="pre">ParallelHoleCollimatorGeometry</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/304">PR 304</a>).</li>
+<li>A range of new proximal operators (<a class="reference external" href="https://github.com/odlgroup/odl/pull/401">PR 401</a>) and some calculus rules (<a class="reference external" href="https://github.com/odlgroup/odl/pull/422">PR 422</a>) have been added,
+e.g. the proximal of the convex conjugate or of a translated functional.</li>
+<li>Functions with parameters can now be sampled by passing the parameter values to the sampling
+operator. The same is true for the <code class="docutils literal"><span class="pre">element</span></code> method of a discrete function space (<a class="reference external" href="https://github.com/odlgroup/odl/pull/406">PR 406</a>).</li>
+<li><code class="docutils literal"><span class="pre">ProducSpaceOperator</span></code> can now be indexed directly, returning the operator component(s)
+corresponding to the index (<a class="reference external" href="https://github.com/odlgroup/odl/pull/407">PR 407</a>).</li>
+<li><code class="docutils literal"><span class="pre">RectPartition</span></code> now supports “almost-fancy” indexing, i.e. indexing via integer, slice, tuple
+or list in the style of NumPy (<a class="reference external" href="https://github.com/odlgroup/odl/pull/386">PR 386</a>).</li>
+<li>When evaluating a <code class="docutils literal"><span class="pre">FunctionSetVector</span></code>, the result is tried to be broadcast if necessary
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/438">PR 438</a>).</li>
+<li><code class="docutils literal"><span class="pre">uniform_partition</span></code> now has a more flexible way of initialization using <code class="docutils literal"><span class="pre">begin</span></code>, <code class="docutils literal"><span class="pre">end</span></code>,
+<code class="docutils literal"><span class="pre">num_nodes</span></code> and <code class="docutils literal"><span class="pre">cell_sides</span></code> (3 of 4 required) (<a class="reference external" href="https://github.com/odlgroup/odl/pull/444">PR 444</a>).</li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h3>Improvements<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Product spaces now utilize the same weighting class hierarchy as <code class="docutils literal"><span class="pre">Rn</span></code> type spaces, which makes
+the weight handling much more transparent and robust (<a class="reference external" href="https://github.com/odlgroup/odl/pull/320">PR 320</a>).</li>
+<li>Major refactor of the <code class="docutils literal"><span class="pre">diagnostics</span></code> module, with better output, improved derivative test and
+a simpler and more extensible way to generate example vectors in spaces (<a class="reference external" href="https://github.com/odlgroup/odl/pull/338">PR 338</a>).</li>
+<li>3D Shepp-Logan phantom sliced in the middle is now exactly the same as the 2D Shepp-Logan phantom
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/368">PR 368</a>).</li>
+<li>Improved usage of test parametrization, making decoration of each test function obsolete. Also
+the printed messages are better (<a class="reference external" href="https://github.com/odlgroup/odl/pull/371">PR 371</a>).</li>
+<li><code class="docutils literal"><span class="pre">OperatorLeftScalarMult</span></code> and <code class="docutils literal"><span class="pre">OperatorRightScalarMult</span></code> now have proper inverses (<a class="reference external" href="https://github.com/odlgroup/odl/pull/388">PR 388</a>).</li>
+<li>Better behavior of display methods if arrays contain <code class="docutils literal"><span class="pre">inf</span></code> or <code class="docutils literal"><span class="pre">NaN</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/376">PR 376</a>).</li>
+<li>Adjoints of Fourier transform operators are now correctly handled (<a class="reference external" href="https://github.com/odlgroup/odl/pull/396">PR 396</a>).</li>
+<li>Differential operators now have consistent boundary behavior (<a class="reference external" href="https://github.com/odlgroup/odl/pull/405">PR 405</a>).</li>
+<li>Repeated scalar multiplication with an operator accumulates the scalars instead of creating a new
+operator each time (<a class="reference external" href="https://github.com/odlgroup/odl/pull/429">PR 429</a>).</li>
+<li>Examples have undergone a major cleanup (<a class="reference external" href="https://github.com/odlgroup/odl/pull/431">PR 431</a>).</li>
+<li>Addition of <code class="docutils literal"><span class="pre">__len__</span></code> at several places where it was missing (<a class="reference external" href="https://github.com/odlgroup/odl/pull/425">PR 425</a>).</li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h3>Bugfixes<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The result of the evaluation of a <code class="docutils literal"><span class="pre">FunctionSpaceVector</span></code> is now automatically cast to the correct
+output data type (<a class="reference external" href="https://github.com/odlgroup/odl/pull/331">PR 331</a>).</li>
+<li><code class="docutils literal"><span class="pre">inf</span></code> values are now properly treated in <code class="docutils literal"><span class="pre">BacktrackingLineSearch</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/348">PR 348</a>).</li>
+<li>Fix for result not being written to a CUDA array in interpolation (<a class="reference external" href="https://github.com/odlgroup/odl/pull/361">PR 361</a>).</li>
+<li>Evaluation of <code class="docutils literal"><span class="pre">FunctionSpaceVector</span></code> now works properly in the one-dimensional case
+(<a class="reference external" href="https://github.com/odlgroup/odl/pull/362">PR 362</a>).</li>
+<li>Rotation by 90 degrees / wrong orientation of 2D parallel and fan beam projectors
+and back-projectors fixed (<a class="reference external" href="https://github.com/odlgroup/odl/pull/436">PR 436</a>).</li>
+</ul>
+</div>
+<div class="section" id="id22">
+<h3>Changes<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">odl.set.pspace</span></code> was moved to <code class="docutils literal"><span class="pre">odl.space.pspace</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/320">PR 320</a>)</li>
+<li>Parameter <code class="docutils literal"><span class="pre">ord</span></code> in norms etc. has been renamed to <code class="docutils literal"><span class="pre">exponent</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/320">PR 320</a>)</li>
+<li><code class="docutils literal"><span class="pre">restriction</span></code> and <code class="docutils literal"><span class="pre">extension</span></code> operators and parameters have been renamed to <code class="docutils literal"><span class="pre">sampling</span></code>
+and <code class="docutils literal"><span class="pre">interpolation</span></code>, respectively (<a class="reference external" href="https://github.com/odlgroup/odl/pull/337">PR 337</a>).</li>
+<li>Differential operators like <code class="docutils literal"><span class="pre">Gradient</span></code> and <code class="docutils literal"><span class="pre">Laplacian</span></code> have been moved from
+<code class="docutils literal"><span class="pre">odl.discr.discr_ops</span></code> to <code class="docutils literal"><span class="pre">odl.discr.diff_ops</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/377">PR 377</a>)</li>
+<li>The initialization patterns of <code class="docutils literal"><span class="pre">Gradient</span></code> and <code class="docutils literal"><span class="pre">Divergence</span></code> were unified to allow specification
+of domain or range or both (<a class="reference external" href="https://github.com/odlgroup/odl/pull/377">PR 377</a>).</li>
+<li><code class="docutils literal"><span class="pre">RawDiscretization</span></code> and <code class="docutils literal"><span class="pre">Discretization</span></code> were renamed to <code class="docutils literal"><span class="pre">DiscretizedSet</span></code> and
+<code class="docutils literal"><span class="pre">DiscretizedSpace</span></code>, resp. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/406">PR 406</a>).</li>
+<li>Diagonal “operator matrices” are now implemented with a class <code class="docutils literal"><span class="pre">DiagonalOperator</span></code> instead of
+the factory function <code class="docutils literal"><span class="pre">diagonal_operator</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/407">PR 407</a>).</li>
+<li>The <code class="docutils literal"><span class="pre">...Partial</span></code> classes have been renamed to <code class="docutils literal"><span class="pre">Callback...</span></code>. Parameters of solvers are now
+<code class="docutils literal"><span class="pre">callback</span></code> instead of <code class="docutils literal"><span class="pre">partial</span></code> (<a class="reference external" href="https://github.com/odlgroup/odl/pull/430">PR 430</a>).</li>
+<li>Occurrences of <code class="docutils literal"><span class="pre">dom</span></code> and <code class="docutils literal"><span class="pre">ran</span></code> as initialization parameters of operators have been changed
+to <code class="docutils literal"><span class="pre">domain</span></code> and <code class="docutils literal"><span class="pre">range</span></code> throughout (<a class="reference external" href="https://github.com/odlgroup/odl/pull/433">PR 433</a>).</li>
+<li>Assignments <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x.space.element(x)</span></code> are now required to be no-ops (<a class="reference external" href="https://github.com/odlgroup/odl/pull/439">PR 439</a>)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="odl-0-2-2-release-notes-2016-03-11">
+<h2>ODL 0.2.2 Release Notes (2016-03-11)<a class="headerlink" href="#odl-0-2-2-release-notes-2016-03-11" title="Permalink to this headline">¶</a></h2>
+<p>From this release on, ODL can be installed through <code class="docutils literal"><span class="pre">pip</span></code> directly from the Python package index.</p>
+</div>
+<div class="section" id="odl-0-2-1-release-notes-2016-03-11">
+<h2>ODL 0.2.1 Release Notes (2016-03-11)<a class="headerlink" href="#odl-0-2-1-release-notes-2016-03-11" title="Permalink to this headline">¶</a></h2>
+<p>Fix for the version number in setup.py.</p>
+</div>
+<div class="section" id="odl-0-2-release-notes-2016-03-11">
+<h2>ODL 0.2 Release Notes (2016-03-11)<a class="headerlink" href="#odl-0-2-release-notes-2016-03-11" title="Permalink to this headline">¶</a></h2>
+<p>This release features the Fourier transform as major addition, along with some minor improvements and fixes.</p>
+<div class="section" id="id23">
+<h3>New Features<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add <code class="docutils literal"><span class="pre">FourierTransform</span></code> and <code class="docutils literal"><span class="pre">DiscreteFourierTransform</span></code>, where the latter is the fully discrete version not accounting for shift and scaling, and the former approximates the integral transform by taking shifted and scaled grids into account. (<a class="reference external" href="https://github.com/odlgroup/odl/pull/120">PR 120</a>)</li>
+<li>The <code class="docutils literal"><span class="pre">weighting</span></code> attribute in <code class="docutils literal"><span class="pre">FnBase</span></code> is now public and can be used to initialize a new space.</li>
+<li>The <code class="docutils literal"><span class="pre">FnBase</span></code> classes now have a <code class="docutils literal"><span class="pre">default_dtype</span></code> static method.</li>
+<li>A <code class="docutils literal"><span class="pre">discr_sequence_space</span></code> has been added as a simple implementation of finite sequences with
+multi-indexing.</li>
+<li><code class="docutils literal"><span class="pre">DiscreteLp</span></code> and <code class="docutils literal"><span class="pre">FunctionSpace</span></code> elements now have <code class="docutils literal"><span class="pre">real</span></code> and <code class="docutils literal"><span class="pre">imag</span></code> with setters as well as a
+<code class="docutils literal"><span class="pre">conj()</span></code> method.</li>
+<li><code class="docutils literal"><span class="pre">FunctionSpace</span></code> explicitly handles output data type and allows this attribute to be chosen during
+initialization.</li>
+<li><code class="docutils literal"><span class="pre">FunctionSpace</span></code>, <code class="docutils literal"><span class="pre">FnBase</span></code> and <code class="docutils literal"><span class="pre">DiscreteLp</span></code> spaces support creation of a copy with different data type
+via the <code class="docutils literal"><span class="pre">astype()</span></code> method.</li>
+<li>New <code class="docutils literal"><span class="pre">conj_exponent()</span></code> utility to get the conjugate of a given exponent.</li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h3>Improvements<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Handle some not-so-unlikely corner cases where vectorized functions don’t behave as they should.
+In particular, make 1D functions work when expressions like <code class="docutils literal"><span class="pre">t[t</span> <span class="pre">&gt;</span> <span class="pre">0]</span></code> are used.</li>
+<li><code class="docutils literal"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">0</span></code> evaluates to the <code class="docutils literal"><span class="pre">one()</span></code> space element if implemented.</li>
+</ul>
+</div>
+<div class="section" id="id25">
+<h3>Changes<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Move <a class="reference internal" href="generated/odl.util.numerics.fast_1d_tensor_mult.html#odl.util.numerics.fast_1d_tensor_mult" title="odl.util.numerics.fast_1d_tensor_mult"><code class="xref any py py-func docutils literal"><span class="pre">fast_1d_tensor_mult</span></code></a> to the <code class="docutils literal"><span class="pre">numerics.py</span></code> module.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="odl-0-1-release-notes-2016-03-08">
+<h2>ODL 0.1 Release Notes (2016-03-08)<a class="headerlink" href="#odl-0-1-release-notes-2016-03-08" title="Permalink to this headline">¶</a></h2>
+<p>First official release.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="refs.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="guide/glossary.html" class="btn btn-neutral" title="Glossary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpace.contains_set
+===========================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpace.contains_set

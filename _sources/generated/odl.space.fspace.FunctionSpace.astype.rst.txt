@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpace.astype
+=====================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpace.astype

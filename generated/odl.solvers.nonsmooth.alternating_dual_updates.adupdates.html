@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>adupdates &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="alternating_dual_updates" href="../odl.solvers.nonsmooth.alternating_dual_updates.html"/>
+        <link rel="next" title="adupdates_simple" href="odl.solvers.nonsmooth.alternating_dual_updates.adupdates_simple.html"/>
+        <link rel="prev" title="alternating_dual_updates" href="../odl.solvers.nonsmooth.alternating_dual_updates.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.solvers.html">solvers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.functional.html">functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.iterative.html">iterative</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.solvers.nonsmooth.html">nonsmooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.admm.html">admm</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.solvers.nonsmooth.alternating_dual_updates.html">alternating_dual_updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.douglas_rachford.html">douglas_rachford</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.forward_backward.html">forward_backward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html">primal_dual_hybrid_gradient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_gradient_solvers.html">proximal_gradient_solvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_operators.html">proximal_operators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.smooth.html">smooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.html">solvers</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.html">nonsmooth</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.alternating_dual_updates.html">alternating_dual_updates</a> &raquo;</li>
+        
+      <li>adupdates</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.solvers.nonsmooth.alternating_dual_updates.adupdates.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adupdates">
+<h1>adupdates<a class="headerlink" href="#adupdates" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.solvers.nonsmooth.alternating_dual_updates.adupdates">
+<code class="descclassname">odl.solvers.nonsmooth.alternating_dual_updates.</code><code class="descname">adupdates</code><span class="sig-paren">(</span><em>x</em>, <em>g</em>, <em>L</em>, <em>stepsize</em>, <em>inner_stepsizes</em>, <em>niter</em>, <em>random=False</em>, <em>callback=None</em>, <em>callback_loop='outer'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/nonsmooth/alternating_dual_updates.html#adupdates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.nonsmooth.alternating_dual_updates.adupdates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alternating Dual updates method.</p>
+<p>The Alternating Dual (AD) updates method of McGaffin and Fessler <a class="reference external" href="http://ieeexplore.ieee.org/document/7271047/">[MF2015]</a> is designed to solve an
+optimization problem of the form</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">min_x</span> <span class="p">[</span> <span class="n">sum_i</span> <span class="n">g_i</span><span class="p">(</span><span class="n">L_i</span> <span class="n">x</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">g_i</span></code> are proper, convex and lower semicontinuous functions and
+<code class="docutils literal"><span class="pre">L_i</span></code> are linear <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a> s.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>g <span class="classifier-delimiter">:</span> <span class="classifier">sequence of <a class="reference internal" href="odl.solvers.functional.functional.Functional.html#odl.solvers.functional.functional.Functional" title="odl.solvers.functional.functional.Functional"><code class="xref any py py-class docutils literal"><span class="pre">Functional</span></code></a> s</span></dt>
+<dd><p class="first last">All functions need to provide a <code class="xref any docutils literal"><span class="pre">Functional.convex_conj</span></code> with a
+<code class="xref any docutils literal"><span class="pre">Functional.proximal</span></code> factory.</p>
+</dd>
+<dt>L <span class="classifier-delimiter">:</span> <span class="classifier">sequence of <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a> s</span></dt>
+<dd><p class="first last">Length of <code class="docutils literal"><span class="pre">L</span></code> must equal the length of <code class="docutils literal"><span class="pre">g</span></code>.</p>
+</dd>
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.set.space.LinearSpaceElement.html#odl.set.space.LinearSpaceElement" title="odl.set.space.LinearSpaceElement"><code class="xref any py py-class docutils literal"><span class="pre">LinearSpaceElement</span></code></a></span></dt>
+<dd><p class="first last">Initial point, updated in-place.</p>
+</dd>
+<dt>stepsize <span class="classifier-delimiter">:</span> <span class="classifier">positive float</span></dt>
+<dd><p class="first last">The stepsize for the outer (proximal point) iteration. The theory
+guarantees convergence for any positive real number, but the
+performance might depend on the choice of a good stepsize.</p>
+</dd>
+<dt>inner_stepsizes <span class="classifier-delimiter">:</span> <span class="classifier">sequence of stepsizes</span></dt>
+<dd><p class="first last">Parameters determining the stepsizes for the inner iterations. Must be
+matched with the norms of <code class="docutils literal"><span class="pre">L</span></code>, and convergence is guaranteed if the
+<code class="docutils literal"><span class="pre">inner_stepsizes</span></code> are small enough. See the Notes section for
+details.</p>
+</dd>
+<dt>niter <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of (outer) iterations.</p>
+</dd>
+<dt>random <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.6)"><code class="xref any docutils literal"><span class="pre">True</span></code></a>, the order of the dual upgdates is chosen randomly,
+otherwise the order provided by the lists <code class="docutils literal"><span class="pre">g</span></code>, <code class="docutils literal"><span class="pre">L</span></code> and
+<code class="docutils literal"><span class="pre">inner_stepsizes</span></code> is used.</p>
+</dd>
+<dt>callback <span class="classifier-delimiter">:</span> <span class="classifier">callable, optional</span></dt>
+<dd><p class="first last">Function called with the current iterate after each iteration.</p>
+</dd>
+<dt>callback_loop <span class="classifier-delimiter">:</span> <span class="classifier">{‘inner’, ‘outer’}, optional</span></dt>
+<dd><p class="first last">If ‘inner’, the <code class="docutils literal"><span class="pre">callback</span></code> function is called after each inner
+iteration, i.e., after each dual update. If ‘outer’, the <code class="docutils literal"><span class="pre">callback</span></code>
+function is called after each outer iteration, i.e., after each primal
+update.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The algorithm as implemented here is described in the article [MF2015],
+where it is applied to a tomography problem. It solves the problem</p>
+<div class="math">
+<p><img src="../_images/math/78ad6d212a87701b51276b54e53590e6c45445a7.png" alt="\min_x \sum_{i=1}^m g_i(L_i x),"/></p>
+</div><p>where <img class="math" src="../_images/math/79b19012e472bb27f43701fee56fde3495013f17.png" alt="g_i"/> are proper, convex and lower semicontinuous functions
+and <img class="math" src="../_images/math/a3af17b7dbd4e75d965f8393b7e812a0f1435418.png" alt="L_i"/> are linear, continuous operators for
+<img class="math" src="../_images/math/aea8e6c5f5f964fd7ad9cbbb568599a30684cfad.png" alt="i = 1, \ldots, m"/>. In an outer iteration, the solution is found
+iteratively by an iteration</p>
+<div class="math">
+<p><img src="../_images/math/7a7fc2cb35c7937c446f7ec3ead187f10081acc6.png" alt="x_{n+1} = \mathrm{arg\,min}_x \sum_{i=1}^m g_i(L_i x)
+    + \frac{\mu}{2} \|x - x_n\|^2"/></p>
+</div><p>with some <code class="docutils literal"><span class="pre">stepsize</span></code> parameter <img class="math" src="../_images/math/3baa98178a166493f3fe51e5d87c4da9c103f990.png" alt="\mu &gt; 0"/> according to the proximal
+point algorithm. In the inner iteration, dual variables are introduced for
+each of the components of the sum. The Lagrangian of the problem is given
+by</p>
+<div class="math">
+<p><img src="../_images/math/30d91d50d0aea715b0edaaf530f8030f04724a78.png" alt="S_n(x; v_1, \ldots, v_m) = \sum_{i=1}^m (\langle v_i, L_i x \rangle
+    - g_i^*(v_i)) + \frac{\mu}{2} \|x - x_n\|^2."/></p>
+</div><p>Given the dual variables, the new primal variable <img class="math" src="../_images/math/3a1a3ef9ebc130fd753237540740a3d7c725f399.png" alt="x_{n+1}"/>
+can be calculated by directly minimizing <img class="math" src="../_images/math/24a5f08f05f27f8f57c57ac39781ab1c5721eb61.png" alt="S_n"/> with respect to
+<img class="math" src="../_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>. This corresponds to the formula</p>
+<div class="math">
+<p><img src="../_images/math/f9cd40fa3178d6393bcfb677606f26e7f8b77dc4.png" alt="x_{n+1} = x_n - \frac{1}{\mu} \sum_{i=1}^m L_i^* v_i."/></p>
+</div><p>The dual updates are executed according to the following rule:</p>
+<div class="math">
+<p><img src="../_images/math/50ae452f31961f54d5afca176e8d980c9b187409.png" alt="v_i^+ = \mathrm{Prox}^{\mu M_i^{-1}}_{g_i^*}
+    (v_i + \mu M_i^{-1} L_i x_{n+1}),"/></p>
+</div><p>where <img class="math" src="../_images/math/3a1a3ef9ebc130fd753237540740a3d7c725f399.png" alt="x_{n+1}"/> is given by the formula above and  <img class="math" src="../_images/math/5f551a2b0b8493e07209d890bd660b0e1f7bbbd6.png" alt="M_i"/> is a
+diagonal matrix with positive diagonal entries such that
+<img class="math" src="../_images/math/c00dad63d473847ab6d5219536a97d6f04d82e09.png" alt="M_i - L_i L_i^*"/> is positive semidefinite. The variable
+<code class="docutils literal"><span class="pre">inner_stepsizes</span></code> is chosen as a stepsize to the <code class="xref any docutils literal"><span class="pre">Functional.proximal</span></code> to
+the <code class="xref any docutils literal"><span class="pre">Functional.convex_conj</span></code> of each of the <code class="docutils literal"><span class="pre">g</span></code> s after multiplying with
+<code class="docutils literal"><span class="pre">stepsize</span></code>. The <code class="docutils literal"><span class="pre">inner_stepsizes</span></code> contain the elements of
+<img class="math" src="../_images/math/3a4bb6d8231e820c2b43b23b2027fb7f8b73b98e.png" alt="M_i^{-1}"/> in one of the following ways:</p>
+<ul class="simple">
+<li>Setting <code class="docutils literal"><span class="pre">inner_stepsizes[i]</span></code> a positive float <img class="math" src="../_images/math/3666981dc77862de77b6ecfcb64aad59b425cbaf.png" alt="\gamma"/>
+corresponds to the choice <img class="math" src="../_images/math/d1f4b70805d64c08a9c9cdbf7643549f88e404e5.png" alt="M_i^{-1} = \gamma \mathrm{Id}"/>.</li>
+<li>Assume that <code class="docutils literal"><span class="pre">g_i</span></code> is a <a class="reference internal" href="odl.solvers.functional.default_functionals.SeparableSum.html#odl.solvers.functional.default_functionals.SeparableSum" title="odl.solvers.functional.default_functionals.SeparableSum"><code class="xref any py py-class docutils literal"><span class="pre">SeparableSum</span></code></a>, then setting
+<code class="docutils literal"><span class="pre">inner_stepsizes[i]</span></code> a list <img class="math" src="../_images/math/76a5d0a4863aa00f3bafda9f50086a98b741167c.png" alt="(\gamma_1, \ldots, \gamma_k)"/> of
+positive floats corresponds to the choice of a block-diagonal matrix
+<img class="math" src="../_images/math/3a4bb6d8231e820c2b43b23b2027fb7f8b73b98e.png" alt="M_i^{-1}"/>, where each block corresponds to one of the space
+components and equals <img class="math" src="../_images/math/257d2a030d41be933e4ae8909b3d901a6a81b929.png" alt="\gamma_i \mathrm{Id}"/>.</li>
+<li>Assume that <code class="docutils literal"><span class="pre">g_i</span></code> is an <a class="reference internal" href="odl.solvers.functional.default_functionals.L1Norm.html#odl.solvers.functional.default_functionals.L1Norm" title="odl.solvers.functional.default_functionals.L1Norm"><code class="xref any py py-class docutils literal"><span class="pre">L1Norm</span></code></a> or an <a class="reference internal" href="odl.solvers.functional.default_functionals.L2NormSquared.html#odl.solvers.functional.default_functionals.L2NormSquared" title="odl.solvers.functional.default_functionals.L2NormSquared"><code class="xref any py py-class docutils literal"><span class="pre">L2NormSquared</span></code></a>, then setting
+<code class="docutils literal"><span class="pre">inner_stepsizes[i]</span></code> a <code class="docutils literal"><span class="pre">g_i.domain.element</span></code> <img class="math" src="../_images/math/683f2dd9129a91d21aaf1c04afa6f78b39d4cb0a.png" alt="z"/> corresponds to
+the choice <img class="math" src="../_images/math/d77db6ba00489783a284be499faeb5bfbaef10ba.png" alt="M_i^{-1} = \mathrm{diag}(z)"/>.</li>
+</ul>
+<p class="rubric">References</p>
+<p>[MF2015] McGaffin, M G, and Fessler, J A. <em>Alternating dual updates
+algorithm for X-ray CT reconstruction on the GPU</em>. IEEE Transactions
+on Computational Imaging, 1.3 (2015), pp 186–199.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.solvers.nonsmooth.alternating_dual_updates.adupdates_simple.html" class="btn btn-neutral float-right" title="adupdates_simple" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../odl.solvers.nonsmooth.alternating_dual_updates.html" class="btn btn-neutral" title="alternating_dual_updates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

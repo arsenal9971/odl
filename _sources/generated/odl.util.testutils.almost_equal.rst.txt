@@ -1,0 +1,6 @@
+almost_equal
+===============================
+
+.. currentmodule:: odl.util.testutils
+
+.. autofunction:: almost_equal

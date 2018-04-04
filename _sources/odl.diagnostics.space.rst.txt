@@ -1,0 +1,17 @@
+space
+=====
+
+Standardized tests for `LinearSpace`'s.
+
+.. currentmodule:: odl.diagnostics.space
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.diagnostics.space.SpaceTest
+
+

@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSpaceElement.sampling
+=========================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSpaceElement.sampling

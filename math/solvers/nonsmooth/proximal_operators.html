@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Proximal Operators &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Solvers" href="../solvers.html"/>
+        <link rel="next" title="Contributing to ODL" href="../../../dev/dev.html"/>
+        <link rel="prev" title="Primal-Dual Hybrid Gradient Algorithm (PDHG)" href="pdhg.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../math.html">Mathematical Background</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../linear_spaces.html">Linear Spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../discretization.html">Discretizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resizing_ops.html">Resizing Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../derivatives_guide.html">On the different notions of derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../trafos/index.html">Transformations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../solvers.html">Solvers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="pdhg.html">Primal-Dual Hybrid Gradient Algorithm (PDHG)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Proximal Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indicator-function">Indicator function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../math.html">Mathematical Background</a> &raquo;</li>
+        
+          <li><a href="../solvers.html">Solvers</a> &raquo;</li>
+        
+      <li>Proximal Operators</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/math/solvers/nonsmooth/proximal_operators.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="proximal-operators">
+<span id="id1"></span><h1>Proximal Operators<a class="headerlink" href="#proximal-operators" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<p>Let <img class="math" src="../../../_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> be a proper convex function mapping the normed space <img class="math" src="../../../_images/math/7a7bb470119808e2db2879fc2b2526f467b7a40b.png" alt="X"/>
+to the extended real number line <img class="math" src="../../../_images/math/5c255d9fe49273dfdb0b19df80e4103310bfd1cf.png" alt="(-\infty, +\infty]"/>. The proximal
+operators of the functional <img class="math" src="../../../_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> is mapping from <img class="math" src="../../../_images/math/2d69a7fac8eaffbac3cb24d041a7a3ca55fd959e.png" alt="X\mapsto X"/>. It
+is denoted as <img class="math" src="../../../_images/math/72600e599429961f882bb1b2c46bd61e1b0a1069.png" alt="\mathrm{prox}_\tau[f](x)"/> with <img class="math" src="../../../_images/math/0e5c2d773106da7f08469ad512b1e0d0cf0e3114.png" alt="x\in X"/>  and defined by</p>
+<div class="math">
+<p><img src="../../../_images/math/db6f4dff5d42d985a5de5eab0fcdbc350133f5b8.png" alt="\mathrm{prox}_\tau[f](x) = \arg\;\min_{y\in Y}\;f(y)+\frac{1}{2\tau} \|x-y\|_2^2"/></p>
+</div><p>The shorter notation <img class="math" src="../../../_images/math/20236f67062f19b03b0601975488ad2895afe8cd.png" alt="\mathrm{prox}_{\tau\,f}(x)"/>) is also common.</p>
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<p>Some properties which are useful to create or compose proximal operators:</p>
+<p><strong>Separable sum</strong></p>
+<p>If <img class="math" src="../../../_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> is separable across variables, i.e. <img class="math" src="../../../_images/math/212a1fcfd066cdaeb297a1b556911e7b86a40fb6.png" alt="f(x,y)=g(x)+h(y)"/>,
+then</p>
+<div class="math">
+<p><img src="../../../_images/math/0e8a3a5279a1bdc7a6f0a2ff458fa332a3af6c94.png" alt="\mathrm{prox}_\tau[f](x, y) = (\mathrm{prox}_\tau[g](x), \mathrm{prox}_\tau[h](y))"/></p>
+</div><p><strong>Post-composition</strong></p>
+<p>If <img class="math" src="../../../_images/math/521d555f9d5df6486dc7215e0d2c656115b820d2.png" alt="g(x)=\alpha f(x)+a"/> with <img class="math" src="../../../_images/math/969cb5f6781dc1ccd2500d69e55fdb01ae91b31a.png" alt="\alpha &gt; 0"/>, then</p>
+<div class="math">
+<p><img src="../../../_images/math/80ba2baf50568b119d55dd98b055b711f4fb92ce.png" alt="\mathrm{prox}_\tau[g](x) = \mathrm{prox}_{\alpha\tau}[f](x)"/></p>
+</div><p><strong>Pre-composition</strong></p>
+<p>If <img class="math" src="../../../_images/math/8f6b60e8dbe3c57d40ce81654329884c2e18d6d8.png" alt="g(x)=f(\beta x+b)"/> with <img class="math" src="../../../_images/math/a76a03d69db1c206bf340abab36533b3e126b449.png" alt="\beta\ne 0"/>, then</p>
+<div class="math">
+<p><img src="../../../_images/math/e9ef01685f9bcc28e52dab363617f7ec16a4eea5.png" alt="\mathrm{prox}_\tau[g](x) = \frac{1}{\beta} (\mathrm{prox}_{\beta^2\tau}[f](\beta x+b)-b)"/></p>
+</div><p><strong>Moreau decomposition</strong></p>
+<p>This is also know as the Moreau identity</p>
+<div class="math">
+<p><img src="../../../_images/math/ee44ea605c0b0842646aea7da79d0828b9ddc25b.png" alt="x = \mathrm{prox}_\tau[f](x) + \frac{1}{\tau}\,\mathrm{prox}_{1/\tau}[f^*] (\frac{x}{\tau})"/></p>
+</div><p>where <img class="math" src="../../../_images/math/320932cd4c48e21d49c798bda20cb6eca2cbc5bd.png" alt="f^*"/> is the convex conjugate of <img class="math" src="../../../_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/>.</p>
+<p><strong>Convec conjugate</strong></p>
+<p>The convex conjugate of <img class="math" src="../../../_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> is defined as</p>
+<div class="math">
+<p><img src="../../../_images/math/d5b850b81e960022394e86583a2d71e4f8e2c846.png" alt="f^*(y) = \sup_{x\in X} \langle y,x\rangle - f(x)"/></p>
+</div><p>where <img class="math" src="../../../_images/math/409bb8e9a11d5ea468b2e757f075c73b450a4f27.png" alt="\langle\cdot,\cdot\rangle"/> denotes inner product. For more
+on convex conjugate and convex analysis see <a class="reference internal" href="../../../refs.html#roc1970" id="id2">[Roc1970]</a>
+or <a class="reference external" href="https://en.wikipedia.org/wiki/Convex_conjugate">Wikipedia</a>.</p>
+<p>For more details on proximal operators including how to evaluate the
+proximal operator of a variety of functions see <a class="reference internal" href="../../../refs.html#pb2014" id="id3">[PB2014]</a>.</p>
+</div>
+<div class="section" id="indicator-function">
+<h2>Indicator function<a class="headerlink" href="#indicator-function" title="Permalink to this headline">¶</a></h2>
+<p>Indicator functions are typically used to incorporate constraints. The
+indicator function for a given set <img class="math" src="../../../_images/math/1dbc400fcc213305415872f9f625cd2828f97a00.png" alt="S"/> is defined as</p>
+<div class="math">
+<p><img src="../../../_images/math/0c345637e49497045143ac37d2da2cb3238673c7.png" alt="\mathrm{ind}_{S}(x) =\begin{cases}
+0 &amp; x \in S  \\ \infty &amp;
+x\ \notin S
+\end{cases}"/></p>
+</div><p><strong>Special indicator functions</strong></p>
+<p>Indicator for a box centered at origin and with width <img class="math" src="../../../_images/math/31cc3aaae83334b0617f947685e5e8b6a111b4c0.png" alt="2 a"/>:</p>
+<div class="math">
+<p><img src="../../../_images/math/ac8ab8abb4fdfcbe726de4d2da2f841176616563.png" alt="\mathrm{ind}_{\mathrm{box}(a)}(x) = \begin{cases}
+0 &amp; \|x\|_\infty \le a\\
+\infty &amp; \|x\|_\infty &gt; a
+\end{cases}"/></p>
+</div><p>where <img class="math" src="../../../_images/math/6e20b306df54e3f29ee8035dcc419109bad644f4.png" alt="\|\cdot\|_\infty"/> denotes the maximum-norm.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../dev/dev.html" class="btn btn-neutral float-right" title="Contributing to ODL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pdhg.html" class="btn btn-neutral" title="Primal-Dual Hybrid Gradient Algorithm (PDHG)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

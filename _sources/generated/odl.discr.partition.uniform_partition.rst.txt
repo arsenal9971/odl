@@ -1,0 +1,6 @@
+uniform_partition
+=====================================
+
+.. currentmodule:: odl.discr.partition
+
+.. autofunction:: uniform_partition

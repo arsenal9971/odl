@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpace._inner
+=====================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpace._inner

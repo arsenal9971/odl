@@ -1,0 +1,18 @@
+fspace
+======
+
+Spaces of scalar-, vector- and tensor-valued functions on a given domain.
+
+.. currentmodule:: odl.space.fspace
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.space.fspace.FunctionSpace
+   ~odl.space.fspace.FunctionSpaceElement
+
+

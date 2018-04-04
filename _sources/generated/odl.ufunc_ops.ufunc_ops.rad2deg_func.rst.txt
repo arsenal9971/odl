@@ -1,0 +1,32 @@
+rad2deg_func
+====================================
+
+.. currentmodule:: odl.ufunc_ops.ufunc_ops
+
+.. autoclass:: rad2deg_func
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         rad2deg_func.__call__
+         rad2deg_func._call
+         rad2deg_func.bregman
+         rad2deg_func.derivative
+         rad2deg_func.norm
+         rad2deg_func.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

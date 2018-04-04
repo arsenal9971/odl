@@ -1,0 +1,6 @@
+angles_from_matrix
+========================================
+
+.. currentmodule:: odl.tomo.util.utility
+
+.. autofunction:: angles_from_matrix

@@ -1,0 +1,46 @@
+FunctionSpace
+==============================
+
+.. currentmodule:: odl.space.fspace
+
+.. autoclass:: FunctionSpace
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         FunctionSpace.__contains__
+         FunctionSpace.__eq__
+         FunctionSpace._dist
+         FunctionSpace._divide
+         FunctionSpace._inner
+         FunctionSpace._lincomb
+         FunctionSpace._multiply
+         FunctionSpace._norm
+         FunctionSpace.astype
+         FunctionSpace.contains_all
+         FunctionSpace.contains_set
+         FunctionSpace.dist
+         FunctionSpace.divide
+         FunctionSpace.element
+         FunctionSpace.inner
+         FunctionSpace.lincomb
+         FunctionSpace.multiply
+         FunctionSpace.norm
+         FunctionSpace.one
+         FunctionSpace.zero
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

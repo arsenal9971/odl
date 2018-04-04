@@ -1,0 +1,6 @@
+LinearSpaceTypeError
+==================================
+
+.. currentmodule:: odl.set.space
+
+.. autoexception:: LinearSpaceTypeError

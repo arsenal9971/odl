@@ -1,0 +1,32 @@
+L2NormSquared
+========================================================
+
+.. currentmodule:: odl.solvers.functional.default_functionals
+
+.. autoclass:: L2NormSquared
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         L2NormSquared.__call__
+         L2NormSquared._call
+         L2NormSquared.bregman
+         L2NormSquared.derivative
+         L2NormSquared.norm
+         L2NormSquared.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

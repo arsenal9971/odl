@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ProductSpaceUfuncs &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="ufuncs" href="../odl.util.ufuncs.html"/>
+        <link rel="next" title="ProductSpaceUfuncs.absolute" href="odl.util.ufuncs.ProductSpaceUfuncs.absolute.html"/>
+        <link rel="prev" title="ufuncs" href="../odl.util.ufuncs.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.util.html">util</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.util.graphics.html">graphics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.util.normalize.html">normalize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.util.npy_compat.html">npy_compat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.util.numerics.html">numerics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.util.testutils.html">testutils</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.util.ufuncs.html">ufuncs</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.util.ufuncs.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.util.utility.html">utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.util.vectorization.html">vectorization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.util.html">util</a> &raquo;</li>
+        
+          <li><a href="../odl.util.ufuncs.html">ufuncs</a> &raquo;</li>
+        
+      <li>ProductSpaceUfuncs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.util.ufuncs.ProductSpaceUfuncs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="productspaceufuncs">
+<h1>ProductSpaceUfuncs<a class="headerlink" href="#productspaceufuncs" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.util.ufuncs.ProductSpaceUfuncs">
+<em class="property">class </em><code class="descclassname">odl.util.ufuncs.</code><code class="descname">ProductSpaceUfuncs</code><span class="sig-paren">(</span><em>elem</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/util/ufuncs.html#ProductSpaceUfuncs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.util.ufuncs.ProductSpaceUfuncs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Ufuncs for <a class="reference internal" href="odl.space.pspace.ProductSpaceElement.html#odl.space.pspace.ProductSpaceElement" title="odl.space.pspace.ProductSpaceElement"><code class="xref any py py-class docutils literal"><span class="pre">ProductSpaceElement</span></code></a> objects.</p>
+<p>Internal object, should not be created except in <a class="reference internal" href="odl.space.pspace.ProductSpaceElement.html#odl.space.pspace.ProductSpaceElement" title="odl.space.pspace.ProductSpaceElement"><code class="xref any py py-class docutils literal"><span class="pre">ProductSpaceElement</span></code></a>.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.absolute.html#odl.util.ufuncs.ProductSpaceUfuncs.absolute" title="odl.util.ufuncs.ProductSpaceUfuncs.absolute"><code class="xref py py-obj docutils literal"><span class="pre">absolute</span></code></a>([out])</td>
+<td>Calculate the absolute value element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.add.html#odl.util.ufuncs.ProductSpaceUfuncs.add" title="odl.util.ufuncs.ProductSpaceUfuncs.add"><code class="xref py py-obj docutils literal"><span class="pre">add</span></code></a>(x2[,&nbsp;out])</td>
+<td>Add arguments element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.arccos.html#odl.util.ufuncs.ProductSpaceUfuncs.arccos" title="odl.util.ufuncs.ProductSpaceUfuncs.arccos"><code class="xref py py-obj docutils literal"><span class="pre">arccos</span></code></a>([out])</td>
+<td>Trigonometric inverse cosine, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.arccosh.html#odl.util.ufuncs.ProductSpaceUfuncs.arccosh" title="odl.util.ufuncs.ProductSpaceUfuncs.arccosh"><code class="xref py py-obj docutils literal"><span class="pre">arccosh</span></code></a>([out])</td>
+<td>Inverse hyperbolic cosine, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.arcsin.html#odl.util.ufuncs.ProductSpaceUfuncs.arcsin" title="odl.util.ufuncs.ProductSpaceUfuncs.arcsin"><code class="xref py py-obj docutils literal"><span class="pre">arcsin</span></code></a>([out])</td>
+<td>Inverse sine, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.arcsinh.html#odl.util.ufuncs.ProductSpaceUfuncs.arcsinh" title="odl.util.ufuncs.ProductSpaceUfuncs.arcsinh"><code class="xref py py-obj docutils literal"><span class="pre">arcsinh</span></code></a>([out])</td>
+<td>Inverse hyperbolic sine element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.arctan.html#odl.util.ufuncs.ProductSpaceUfuncs.arctan" title="odl.util.ufuncs.ProductSpaceUfuncs.arctan"><code class="xref py py-obj docutils literal"><span class="pre">arctan</span></code></a>([out])</td>
+<td>Trigonometric inverse tangent, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.arctan2.html#odl.util.ufuncs.ProductSpaceUfuncs.arctan2" title="odl.util.ufuncs.ProductSpaceUfuncs.arctan2"><code class="xref py py-obj docutils literal"><span class="pre">arctan2</span></code></a>(x2[,&nbsp;out])</td>
+<td>Element-wise arc tangent of <code class="docutils literal"><span class="pre">x1/x2</span></code> choosing the quadrant correctly.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.arctanh.html#odl.util.ufuncs.ProductSpaceUfuncs.arctanh" title="odl.util.ufuncs.ProductSpaceUfuncs.arctanh"><code class="xref py py-obj docutils literal"><span class="pre">arctanh</span></code></a>([out])</td>
+<td>Inverse hyperbolic tangent element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.bitwise_and.html#odl.util.ufuncs.ProductSpaceUfuncs.bitwise_and" title="odl.util.ufuncs.ProductSpaceUfuncs.bitwise_and"><code class="xref py py-obj docutils literal"><span class="pre">bitwise_and</span></code></a>(x2[,&nbsp;out])</td>
+<td>Compute the bit-wise AND of two arrays element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.bitwise_or.html#odl.util.ufuncs.ProductSpaceUfuncs.bitwise_or" title="odl.util.ufuncs.ProductSpaceUfuncs.bitwise_or"><code class="xref py py-obj docutils literal"><span class="pre">bitwise_or</span></code></a>(x2[,&nbsp;out])</td>
+<td>Compute the bit-wise OR of two arrays element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.bitwise_xor.html#odl.util.ufuncs.ProductSpaceUfuncs.bitwise_xor" title="odl.util.ufuncs.ProductSpaceUfuncs.bitwise_xor"><code class="xref py py-obj docutils literal"><span class="pre">bitwise_xor</span></code></a>(x2[,&nbsp;out])</td>
+<td>Compute the bit-wise XOR of two arrays element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.ceil.html#odl.util.ufuncs.ProductSpaceUfuncs.ceil" title="odl.util.ufuncs.ProductSpaceUfuncs.ceil"><code class="xref py py-obj docutils literal"><span class="pre">ceil</span></code></a>([out])</td>
+<td>Return the ceiling of the input, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.conj.html#odl.util.ufuncs.ProductSpaceUfuncs.conj" title="odl.util.ufuncs.ProductSpaceUfuncs.conj"><code class="xref py py-obj docutils literal"><span class="pre">conj</span></code></a>([out])</td>
+<td>Return the complex conjugate, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.copysign.html#odl.util.ufuncs.ProductSpaceUfuncs.copysign" title="odl.util.ufuncs.ProductSpaceUfuncs.copysign"><code class="xref py py-obj docutils literal"><span class="pre">copysign</span></code></a>(x2[,&nbsp;out])</td>
+<td>Change the sign of x1 to that of x2, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.cos.html#odl.util.ufuncs.ProductSpaceUfuncs.cos" title="odl.util.ufuncs.ProductSpaceUfuncs.cos"><code class="xref py py-obj docutils literal"><span class="pre">cos</span></code></a>([out])</td>
+<td>Cosine element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.cosh.html#odl.util.ufuncs.ProductSpaceUfuncs.cosh" title="odl.util.ufuncs.ProductSpaceUfuncs.cosh"><code class="xref py py-obj docutils literal"><span class="pre">cosh</span></code></a>([out])</td>
+<td>Hyperbolic cosine, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.deg2rad.html#odl.util.ufuncs.ProductSpaceUfuncs.deg2rad" title="odl.util.ufuncs.ProductSpaceUfuncs.deg2rad"><code class="xref py py-obj docutils literal"><span class="pre">deg2rad</span></code></a>([out])</td>
+<td>Convert angles from degrees to radians.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.divide.html#odl.util.ufuncs.ProductSpaceUfuncs.divide" title="odl.util.ufuncs.ProductSpaceUfuncs.divide"><code class="xref py py-obj docutils literal"><span class="pre">divide</span></code></a>(x2[,&nbsp;out])</td>
+<td>Returns a true division of the inputs, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.equal.html#odl.util.ufuncs.ProductSpaceUfuncs.equal" title="odl.util.ufuncs.ProductSpaceUfuncs.equal"><code class="xref py py-obj docutils literal"><span class="pre">equal</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return (x1 == x2) element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.exp.html#odl.util.ufuncs.ProductSpaceUfuncs.exp" title="odl.util.ufuncs.ProductSpaceUfuncs.exp"><code class="xref py py-obj docutils literal"><span class="pre">exp</span></code></a>([out])</td>
+<td>Calculate the exponential of all elements in the input array.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.exp2.html#odl.util.ufuncs.ProductSpaceUfuncs.exp2" title="odl.util.ufuncs.ProductSpaceUfuncs.exp2"><code class="xref py py-obj docutils literal"><span class="pre">exp2</span></code></a>([out])</td>
+<td>Calculate <code class="docutils literal"><span class="pre">2**p</span></code> for all <code class="docutils literal"><span class="pre">p</span></code> in the input array.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.expm1.html#odl.util.ufuncs.ProductSpaceUfuncs.expm1" title="odl.util.ufuncs.ProductSpaceUfuncs.expm1"><code class="xref py py-obj docutils literal"><span class="pre">expm1</span></code></a>([out])</td>
+<td>Calculate <code class="docutils literal"><span class="pre">exp(x)</span> <span class="pre">-</span> <span class="pre">1</span></code> for all elements in the array.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.floor.html#odl.util.ufuncs.ProductSpaceUfuncs.floor" title="odl.util.ufuncs.ProductSpaceUfuncs.floor"><code class="xref py py-obj docutils literal"><span class="pre">floor</span></code></a>([out])</td>
+<td>Return the floor of the input, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.floor_divide.html#odl.util.ufuncs.ProductSpaceUfuncs.floor_divide" title="odl.util.ufuncs.ProductSpaceUfuncs.floor_divide"><code class="xref py py-obj docutils literal"><span class="pre">floor_divide</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return the largest integer smaller or equal to the division of the inputs.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.fmax.html#odl.util.ufuncs.ProductSpaceUfuncs.fmax" title="odl.util.ufuncs.ProductSpaceUfuncs.fmax"><code class="xref py py-obj docutils literal"><span class="pre">fmax</span></code></a>(x2[,&nbsp;out])</td>
+<td>Element-wise maximum of array elements.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.fmin.html#odl.util.ufuncs.ProductSpaceUfuncs.fmin" title="odl.util.ufuncs.ProductSpaceUfuncs.fmin"><code class="xref py py-obj docutils literal"><span class="pre">fmin</span></code></a>(x2[,&nbsp;out])</td>
+<td>Element-wise minimum of array elements.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.fmod.html#odl.util.ufuncs.ProductSpaceUfuncs.fmod" title="odl.util.ufuncs.ProductSpaceUfuncs.fmod"><code class="xref py py-obj docutils literal"><span class="pre">fmod</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return the element-wise remainder of division.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.greater.html#odl.util.ufuncs.ProductSpaceUfuncs.greater" title="odl.util.ufuncs.ProductSpaceUfuncs.greater"><code class="xref py py-obj docutils literal"><span class="pre">greater</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return the truth value of (x1 &gt; x2) element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.greater_equal.html#odl.util.ufuncs.ProductSpaceUfuncs.greater_equal" title="odl.util.ufuncs.ProductSpaceUfuncs.greater_equal"><code class="xref py py-obj docutils literal"><span class="pre">greater_equal</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return the truth value of (x1 &gt;= x2) element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.hypot.html#odl.util.ufuncs.ProductSpaceUfuncs.hypot" title="odl.util.ufuncs.ProductSpaceUfuncs.hypot"><code class="xref py py-obj docutils literal"><span class="pre">hypot</span></code></a>(x2[,&nbsp;out])</td>
+<td>Given the “legs” of a right triangle, return its hypotenuse.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.invert.html#odl.util.ufuncs.ProductSpaceUfuncs.invert" title="odl.util.ufuncs.ProductSpaceUfuncs.invert"><code class="xref py py-obj docutils literal"><span class="pre">invert</span></code></a>([out])</td>
+<td>Compute bit-wise inversion, or bit-wise NOT, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.isfinite.html#odl.util.ufuncs.ProductSpaceUfuncs.isfinite" title="odl.util.ufuncs.ProductSpaceUfuncs.isfinite"><code class="xref py py-obj docutils literal"><span class="pre">isfinite</span></code></a>([out])</td>
+<td>Test element-wise for finiteness (not infinity or not Not a Number).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.isinf.html#odl.util.ufuncs.ProductSpaceUfuncs.isinf" title="odl.util.ufuncs.ProductSpaceUfuncs.isinf"><code class="xref py py-obj docutils literal"><span class="pre">isinf</span></code></a>([out])</td>
+<td>Test element-wise for positive or negative infinity.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.isnan.html#odl.util.ufuncs.ProductSpaceUfuncs.isnan" title="odl.util.ufuncs.ProductSpaceUfuncs.isnan"><code class="xref py py-obj docutils literal"><span class="pre">isnan</span></code></a>([out])</td>
+<td>Test element-wise for NaN and return result as a boolean array.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.left_shift.html#odl.util.ufuncs.ProductSpaceUfuncs.left_shift" title="odl.util.ufuncs.ProductSpaceUfuncs.left_shift"><code class="xref py py-obj docutils literal"><span class="pre">left_shift</span></code></a>(x2[,&nbsp;out])</td>
+<td>Shift the bits of an integer to the left.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.less.html#odl.util.ufuncs.ProductSpaceUfuncs.less" title="odl.util.ufuncs.ProductSpaceUfuncs.less"><code class="xref py py-obj docutils literal"><span class="pre">less</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return the truth value of (x1 &lt; x2) element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.less_equal.html#odl.util.ufuncs.ProductSpaceUfuncs.less_equal" title="odl.util.ufuncs.ProductSpaceUfuncs.less_equal"><code class="xref py py-obj docutils literal"><span class="pre">less_equal</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return the truth value of (x1 =&lt; x2) element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.log.html#odl.util.ufuncs.ProductSpaceUfuncs.log" title="odl.util.ufuncs.ProductSpaceUfuncs.log"><code class="xref py py-obj docutils literal"><span class="pre">log</span></code></a>([out])</td>
+<td>Natural logarithm, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.log10.html#odl.util.ufuncs.ProductSpaceUfuncs.log10" title="odl.util.ufuncs.ProductSpaceUfuncs.log10"><code class="xref py py-obj docutils literal"><span class="pre">log10</span></code></a>([out])</td>
+<td>Return the base 10 logarithm of the input array, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.log1p.html#odl.util.ufuncs.ProductSpaceUfuncs.log1p" title="odl.util.ufuncs.ProductSpaceUfuncs.log1p"><code class="xref py py-obj docutils literal"><span class="pre">log1p</span></code></a>([out])</td>
+<td>Return the natural logarithm of one plus the input array, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.log2.html#odl.util.ufuncs.ProductSpaceUfuncs.log2" title="odl.util.ufuncs.ProductSpaceUfuncs.log2"><code class="xref py py-obj docutils literal"><span class="pre">log2</span></code></a>([out])</td>
+<td>Base-2 logarithm of <code class="docutils literal"><span class="pre">x</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.logaddexp.html#odl.util.ufuncs.ProductSpaceUfuncs.logaddexp" title="odl.util.ufuncs.ProductSpaceUfuncs.logaddexp"><code class="xref py py-obj docutils literal"><span class="pre">logaddexp</span></code></a>(x2[,&nbsp;out])</td>
+<td>Logarithm of the sum of exponentiations of the inputs.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.logaddexp2.html#odl.util.ufuncs.ProductSpaceUfuncs.logaddexp2" title="odl.util.ufuncs.ProductSpaceUfuncs.logaddexp2"><code class="xref py py-obj docutils literal"><span class="pre">logaddexp2</span></code></a>(x2[,&nbsp;out])</td>
+<td>Logarithm of the sum of exponentiations of the inputs in base-2.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.logical_and.html#odl.util.ufuncs.ProductSpaceUfuncs.logical_and" title="odl.util.ufuncs.ProductSpaceUfuncs.logical_and"><code class="xref py py-obj docutils literal"><span class="pre">logical_and</span></code></a>(x2[,&nbsp;out])</td>
+<td>Compute the truth value of x1 AND x2 element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.logical_not.html#odl.util.ufuncs.ProductSpaceUfuncs.logical_not" title="odl.util.ufuncs.ProductSpaceUfuncs.logical_not"><code class="xref py py-obj docutils literal"><span class="pre">logical_not</span></code></a>([out])</td>
+<td>Compute the truth value of NOT x element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.logical_or.html#odl.util.ufuncs.ProductSpaceUfuncs.logical_or" title="odl.util.ufuncs.ProductSpaceUfuncs.logical_or"><code class="xref py py-obj docutils literal"><span class="pre">logical_or</span></code></a>(x2[,&nbsp;out])</td>
+<td>Compute the truth value of x1 OR x2 element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.logical_xor.html#odl.util.ufuncs.ProductSpaceUfuncs.logical_xor" title="odl.util.ufuncs.ProductSpaceUfuncs.logical_xor"><code class="xref py py-obj docutils literal"><span class="pre">logical_xor</span></code></a>(x2[,&nbsp;out])</td>
+<td>Compute the truth value of x1 XOR x2, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.max.html#odl.util.ufuncs.ProductSpaceUfuncs.max" title="odl.util.ufuncs.ProductSpaceUfuncs.max"><code class="xref py py-obj docutils literal"><span class="pre">max</span></code></a>()</td>
+<td>Return the maximum of <code class="docutils literal"><span class="pre">self</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.maximum.html#odl.util.ufuncs.ProductSpaceUfuncs.maximum" title="odl.util.ufuncs.ProductSpaceUfuncs.maximum"><code class="xref py py-obj docutils literal"><span class="pre">maximum</span></code></a>(x2[,&nbsp;out])</td>
+<td>Element-wise maximum of array elements.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.min.html#odl.util.ufuncs.ProductSpaceUfuncs.min" title="odl.util.ufuncs.ProductSpaceUfuncs.min"><code class="xref py py-obj docutils literal"><span class="pre">min</span></code></a>()</td>
+<td>Return the minimum of <code class="docutils literal"><span class="pre">self</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.minimum.html#odl.util.ufuncs.ProductSpaceUfuncs.minimum" title="odl.util.ufuncs.ProductSpaceUfuncs.minimum"><code class="xref py py-obj docutils literal"><span class="pre">minimum</span></code></a>(x2[,&nbsp;out])</td>
+<td>Element-wise minimum of array elements.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.mod.html#odl.util.ufuncs.ProductSpaceUfuncs.mod" title="odl.util.ufuncs.ProductSpaceUfuncs.mod"><code class="xref py py-obj docutils literal"><span class="pre">mod</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return element-wise remainder of division.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.modf.html#odl.util.ufuncs.ProductSpaceUfuncs.modf" title="odl.util.ufuncs.ProductSpaceUfuncs.modf"><code class="xref py py-obj docutils literal"><span class="pre">modf</span></code></a>([out1,&nbsp;out2])</td>
+<td>Return the fractional and integral parts of an array, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.multiply.html#odl.util.ufuncs.ProductSpaceUfuncs.multiply" title="odl.util.ufuncs.ProductSpaceUfuncs.multiply"><code class="xref py py-obj docutils literal"><span class="pre">multiply</span></code></a>(x2[,&nbsp;out])</td>
+<td>Multiply arguments element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.negative.html#odl.util.ufuncs.ProductSpaceUfuncs.negative" title="odl.util.ufuncs.ProductSpaceUfuncs.negative"><code class="xref py py-obj docutils literal"><span class="pre">negative</span></code></a>([out])</td>
+<td>Numerical negative, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.not_equal.html#odl.util.ufuncs.ProductSpaceUfuncs.not_equal" title="odl.util.ufuncs.ProductSpaceUfuncs.not_equal"><code class="xref py py-obj docutils literal"><span class="pre">not_equal</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return (x1 != x2) element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.power.html#odl.util.ufuncs.ProductSpaceUfuncs.power" title="odl.util.ufuncs.ProductSpaceUfuncs.power"><code class="xref py py-obj docutils literal"><span class="pre">power</span></code></a>(x2[,&nbsp;out])</td>
+<td>First array elements raised to powers from second array, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.prod.html#odl.util.ufuncs.ProductSpaceUfuncs.prod" title="odl.util.ufuncs.ProductSpaceUfuncs.prod"><code class="xref py py-obj docutils literal"><span class="pre">prod</span></code></a>()</td>
+<td>Return the product of <code class="docutils literal"><span class="pre">self</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.rad2deg.html#odl.util.ufuncs.ProductSpaceUfuncs.rad2deg" title="odl.util.ufuncs.ProductSpaceUfuncs.rad2deg"><code class="xref py py-obj docutils literal"><span class="pre">rad2deg</span></code></a>([out])</td>
+<td>Convert angles from radians to degrees.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.reciprocal.html#odl.util.ufuncs.ProductSpaceUfuncs.reciprocal" title="odl.util.ufuncs.ProductSpaceUfuncs.reciprocal"><code class="xref py py-obj docutils literal"><span class="pre">reciprocal</span></code></a>([out])</td>
+<td>Return the reciprocal of the argument, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.remainder.html#odl.util.ufuncs.ProductSpaceUfuncs.remainder" title="odl.util.ufuncs.ProductSpaceUfuncs.remainder"><code class="xref py py-obj docutils literal"><span class="pre">remainder</span></code></a>(x2[,&nbsp;out])</td>
+<td>Return element-wise remainder of division.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.right_shift.html#odl.util.ufuncs.ProductSpaceUfuncs.right_shift" title="odl.util.ufuncs.ProductSpaceUfuncs.right_shift"><code class="xref py py-obj docutils literal"><span class="pre">right_shift</span></code></a>(x2[,&nbsp;out])</td>
+<td>Shift the bits of an integer to the right.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.rint.html#odl.util.ufuncs.ProductSpaceUfuncs.rint" title="odl.util.ufuncs.ProductSpaceUfuncs.rint"><code class="xref py py-obj docutils literal"><span class="pre">rint</span></code></a>([out])</td>
+<td>Round elements of the array to the nearest integer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.sign.html#odl.util.ufuncs.ProductSpaceUfuncs.sign" title="odl.util.ufuncs.ProductSpaceUfuncs.sign"><code class="xref py py-obj docutils literal"><span class="pre">sign</span></code></a>([out])</td>
+<td>Returns an element-wise indication of the sign of a number.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.signbit.html#odl.util.ufuncs.ProductSpaceUfuncs.signbit" title="odl.util.ufuncs.ProductSpaceUfuncs.signbit"><code class="xref py py-obj docutils literal"><span class="pre">signbit</span></code></a>([out])</td>
+<td>Returns element-wise True where signbit is set (less than zero).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.sin.html#odl.util.ufuncs.ProductSpaceUfuncs.sin" title="odl.util.ufuncs.ProductSpaceUfuncs.sin"><code class="xref py py-obj docutils literal"><span class="pre">sin</span></code></a>([out])</td>
+<td>Trigonometric sine, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.sinh.html#odl.util.ufuncs.ProductSpaceUfuncs.sinh" title="odl.util.ufuncs.ProductSpaceUfuncs.sinh"><code class="xref py py-obj docutils literal"><span class="pre">sinh</span></code></a>([out])</td>
+<td>Hyperbolic sine, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.sqrt.html#odl.util.ufuncs.ProductSpaceUfuncs.sqrt" title="odl.util.ufuncs.ProductSpaceUfuncs.sqrt"><code class="xref py py-obj docutils literal"><span class="pre">sqrt</span></code></a>([out])</td>
+<td>Return the positive square-root of an array, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.square.html#odl.util.ufuncs.ProductSpaceUfuncs.square" title="odl.util.ufuncs.ProductSpaceUfuncs.square"><code class="xref py py-obj docutils literal"><span class="pre">square</span></code></a>([out])</td>
+<td>Return the element-wise square of the input.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.subtract.html#odl.util.ufuncs.ProductSpaceUfuncs.subtract" title="odl.util.ufuncs.ProductSpaceUfuncs.subtract"><code class="xref py py-obj docutils literal"><span class="pre">subtract</span></code></a>(x2[,&nbsp;out])</td>
+<td>Subtract arguments, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.sum.html#odl.util.ufuncs.ProductSpaceUfuncs.sum" title="odl.util.ufuncs.ProductSpaceUfuncs.sum"><code class="xref py py-obj docutils literal"><span class="pre">sum</span></code></a>()</td>
+<td>Return the sum of <code class="docutils literal"><span class="pre">self</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.tan.html#odl.util.ufuncs.ProductSpaceUfuncs.tan" title="odl.util.ufuncs.ProductSpaceUfuncs.tan"><code class="xref py py-obj docutils literal"><span class="pre">tan</span></code></a>([out])</td>
+<td>Compute tangent element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.tanh.html#odl.util.ufuncs.ProductSpaceUfuncs.tanh" title="odl.util.ufuncs.ProductSpaceUfuncs.tanh"><code class="xref py py-obj docutils literal"><span class="pre">tanh</span></code></a>([out])</td>
+<td>Compute hyperbolic tangent element-wise.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.true_divide.html#odl.util.ufuncs.ProductSpaceUfuncs.true_divide" title="odl.util.ufuncs.ProductSpaceUfuncs.true_divide"><code class="xref py py-obj docutils literal"><span class="pre">true_divide</span></code></a>(x2[,&nbsp;out])</td>
+<td>Returns a true division of the inputs, element-wise.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.util.ufuncs.ProductSpaceUfuncs.trunc.html#odl.util.ufuncs.ProductSpaceUfuncs.trunc" title="odl.util.ufuncs.ProductSpaceUfuncs.trunc"><code class="xref py py-obj docutils literal"><span class="pre">trunc</span></code></a>([out])</td>
+<td>Return the truncated value of the input, element-wise.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.util.ufuncs.ProductSpaceUfuncs.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>elem</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/util/ufuncs.html#ProductSpaceUfuncs.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.util.ufuncs.ProductSpaceUfuncs.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create ufunc wrapper for <code class="docutils literal"><span class="pre">elem</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.util.ufuncs.ProductSpaceUfuncs.absolute.html" class="btn btn-neutral float-right" title="ProductSpaceUfuncs.absolute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../odl.util.ufuncs.html" class="btn btn-neutral" title="ufuncs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

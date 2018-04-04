@@ -1,0 +1,33 @@
+Parallel3dAxisGeometry
+=================================================
+
+.. currentmodule:: odl.tomo.geometry.parallel
+
+.. autoclass:: Parallel3dAxisGeometry
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         Parallel3dAxisGeometry.__getitem__
+         Parallel3dAxisGeometry.det_axes
+         Parallel3dAxisGeometry.det_point_position
+         Parallel3dAxisGeometry.det_refpoint
+         Parallel3dAxisGeometry.det_to_src
+         Parallel3dAxisGeometry.frommatrix
+         Parallel3dAxisGeometry.rotation_matrix
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

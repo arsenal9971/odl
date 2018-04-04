@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpace._multiply
+========================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpace._multiply

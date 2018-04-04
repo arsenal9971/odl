@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.solvers.nonsmooth.douglas_rachford &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.solvers.nonsmooth.douglas_rachford</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.solvers.nonsmooth.douglas_rachford</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;Douglas-Rachford splitting algorithm for convex optimization.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+
+<span class="kn">from</span> <span class="nn">odl.operator</span> <span class="k">import</span> <span class="n">Operator</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;douglas_rachford_pd&#39;</span><span class="p">,)</span>
+
+
+<div class="viewcode-block" id="douglas_rachford_pd"><a class="viewcode-back" href="../../../../generated/odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd.html#odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd">[docs]</a><span class="k">def</span> <span class="nf">douglas_rachford_pd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span>
+                        <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Douglas-Rachford primal-dual splitting algorithm.</span>
+
+<span class="sd">    Minimizes the sum of several convex functions composed with linear</span>
+<span class="sd">    operators::</span>
+
+<span class="sd">        min_x f(x) + sum_i g_i(L_i x)</span>
+
+<span class="sd">    where ``f``, ``g_i`` are convex functions, ``L_i`` are linear `Operator`&#39;s.</span>
+
+<span class="sd">    Can also be used to solve the more general problem::</span>
+
+<span class="sd">        min_x f(x) + sum_i (g_i @ l_i)(L_i x)</span>
+
+<span class="sd">    where ``l_i`` are convex functions and ``@`` is the infimal convolution::</span>
+
+<span class="sd">        (g @ l)(x) = inf_y g(y) + l(x - y)</span>
+
+<span class="sd">    For references on the algorithm, see algorithm 3.1 in [BH2013].</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : `LinearSpaceElement`</span>
+<span class="sd">        Initial point, updated in-place.</span>
+<span class="sd">    f : `Functional`</span>
+<span class="sd">        `proximal factory` for the function ``f``.</span>
+<span class="sd">    g : sequence of `Functional`&#39;s</span>
+<span class="sd">        Sequence of of the functions ``g_i``. Needs to have</span>
+<span class="sd">        ``g[i].convex_conj.proximal``.</span>
+<span class="sd">    L : sequence of `Operator`&#39;s</span>
+<span class="sd">        Sequence of `Opeartor`&#39;s with as many elements as ``g``.</span>
+<span class="sd">    tau : float</span>
+<span class="sd">        Step size parameter for ``f``.</span>
+<span class="sd">    sigma : sequence of floats</span>
+<span class="sd">        Step size parameters for the ``g_i``&#39;s.</span>
+<span class="sd">    niter : int</span>
+<span class="sd">        Number of iterations.</span>
+<span class="sd">    callback : callable, optional</span>
+<span class="sd">        Function called with the current iterate after each iteration.</span>
+
+<span class="sd">    Other Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    l : sequence of `Functional`&#39;s, optional</span>
+<span class="sd">        Sequence of of the functions ``l_i``. Needs to have</span>
+<span class="sd">        ``l[i].convex_conj.proximal``.</span>
+<span class="sd">        If omitted, the simpler problem without ``l_i``  will be considered.</span>
+<span class="sd">    lam : float or callable, optional</span>
+<span class="sd">        Overrelaxation step size. If callable, it should take an index</span>
+<span class="sd">        (starting at zero) and return the corresponding step size.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The mathematical problem to solve is</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">       \min_x f(x) + \sum_{i=0}^n (g_i \Box l_i)(L_i x),</span>
+
+<span class="sd">    where :math:`f`, :math:`g_i`, :math:`l_i` are proper, convex and lower</span>
+<span class="sd">    semicontinuous and :math:`L_i` are linear operators. The infimal</span>
+<span class="sd">    convolution :math:`g \Box l` is defined by</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">       (g \Box l)(x) = \inf_y g(y) + l(x - y).</span>
+
+<span class="sd">    The simplified problem,</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \min_x f(x) + \sum_{i=0}^n g_i(L_i x),</span>
+
+<span class="sd">    can be obtained by setting</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        l(x) = 0 \\text{ if } x = 0, \infty \\text{ else.}</span>
+
+<span class="sd">    To guarantee convergence, the parameters :math:`\\tau`, :math:`\\sigma_i`</span>
+<span class="sd">    and :math:`L_i` need to satisfy</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">       \\tau \\sum_{i=1}^n \\sigma_i ||L_i||^2 &lt; 4</span>
+
+<span class="sd">    The parameter :math:`\\lambda` needs to satisfy :math:`0 &lt; \\lambda &lt; 2`</span>
+<span class="sd">    and if it is given as a function it needs to satisfy</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \\sum_{n=1}^\infty \\lambda_n (2 - \\lambda_n) = +\infty.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    odl.solvers.nonsmooth.primal_dual_hybrid_gradient.pdhg :</span>
+<span class="sd">        Solver for similar problems.</span>
+<span class="sd">    odl.solvers.nonsmooth.forward_backward.forward_backward_pd :</span>
+<span class="sd">        Solver for similar problems which can additionaly handle a</span>
+<span class="sd">        differentiable term.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [BH2013] Bot, R I, and Hendrich, C. *A Douglas-Rachford type</span>
+<span class="sd">    primal-dual method for solving inclusions with mixtures of</span>
+<span class="sd">    composite and parallel-sum type monotone operators*. SIAM Journal</span>
+<span class="sd">    on Optimization, 23.4 (2013), pp 2541--2565.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Problem size</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+
+    <span class="c1"># Validate input</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">Operator</span><span class="p">)</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">L</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`L` not a sequence of operators&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">is_linear</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">L</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;not all operators in `L` are linear&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">domain</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">L</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`x` not in the domain of all operators&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span> <span class="o">!=</span> <span class="n">m</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;len(sigma) != len(L)&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">!=</span> <span class="n">m</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;len(prox_cc_g) != len(L)&#39;</span><span class="p">)</span>
+
+    <span class="n">prox_cc_g</span> <span class="o">=</span> <span class="p">[</span><span class="n">gi</span><span class="o">.</span><span class="n">convex_conj</span><span class="o">.</span><span class="n">proximal</span> <span class="k">for</span> <span class="n">gi</span> <span class="ow">in</span> <span class="n">g</span><span class="p">]</span>
+
+    <span class="c1"># Get parameters from kwargs</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">l</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">!=</span> <span class="n">m</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`l` does not have the same number of &#39;</span>
+                         <span class="s1">&#39;elements as `L`&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">l</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">prox_cc_l</span> <span class="o">=</span> <span class="p">[</span><span class="n">li</span><span class="o">.</span><span class="n">convex_conj</span><span class="o">.</span><span class="n">proximal</span> <span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">l</span><span class="p">]</span>
+
+    <span class="n">lam_in</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;lam&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">lam_in</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">lam_in</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`lam` must callable or a number between 0 and 2&#39;</span><span class="p">)</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="n">lam_in</span> <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">lam_in</span><span class="p">)</span> <span class="k">else</span> <span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">lam_in</span>
+
+    <span class="c1"># Check for unused parameters</span>
+    <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;unexpected keyword argument: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+
+    <span class="c1"># Pre-allocate values</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">Li</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span> <span class="k">for</span> <span class="n">Li</span> <span class="ow">in</span> <span class="n">L</span><span class="p">]</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="p">[</span><span class="n">Li</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span> <span class="k">for</span> <span class="n">Li</span> <span class="ow">in</span> <span class="n">L</span><span class="p">]</span>
+    <span class="n">z1</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span>
+    <span class="n">z2</span> <span class="o">=</span> <span class="p">[</span><span class="n">Li</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span> <span class="k">for</span> <span class="n">Li</span> <span class="ow">in</span> <span class="n">L</span><span class="p">]</span>
+    <span class="n">w1</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span>
+    <span class="n">w2</span> <span class="o">=</span> <span class="p">[</span><span class="n">Li</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span> <span class="k">for</span> <span class="n">Li</span> <span class="ow">in</span> <span class="n">L</span><span class="p">]</span>
+
+    <span class="c1"># Temporaries (not in original article)</span>
+    <span class="n">tmp_domain</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">niter</span><span class="p">):</span>
+        <span class="n">lam_k</span> <span class="o">=</span> <span class="n">lam</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Compute tmp_domain = sum(Li.adjoint(vi) for Li, vi in zip(L, v))</span>
+            <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">out</span><span class="o">=</span><span class="n">tmp_domain</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">Li</span><span class="p">,</span> <span class="n">vi</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+                <span class="n">Li</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(</span><span class="n">vi</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">p1</span><span class="p">)</span>
+                <span class="n">tmp_domain</span> <span class="o">+=</span> <span class="n">p1</span>
+
+            <span class="n">tmp_domain</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">tau</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp_domain</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tmp_domain</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">f</span><span class="o">.</span><span class="n">proximal</span><span class="p">(</span><span class="n">tau</span><span class="p">)(</span><span class="n">tmp_domain</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">p1</span><span class="p">)</span>
+        <span class="n">w1</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">w1</span><span class="p">)</span>
+            <span class="n">prox_cc_g</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">sigma</span><span class="p">[</span><span class="n">i</span><span class="p">])(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">p2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">w2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">p2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Compute:</span>
+            <span class="c1"># tmp_domain = sum(Li.adjoint(w2i) for Li, w2i in zip(L, w2))</span>
+            <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(</span><span class="n">w2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">out</span><span class="o">=</span><span class="n">tmp_domain</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">Li</span><span class="p">,</span> <span class="n">w2i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">w2</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+                <span class="n">Li</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(</span><span class="n">w2i</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">z1</span><span class="p">)</span>
+                <span class="n">tmp_domain</span> <span class="o">+=</span> <span class="n">z1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tmp_domain</span><span class="o">.</span><span class="n">set_zero</span><span class="p">()</span>
+
+        <span class="n">z1</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="o">-</span> <span class="p">(</span><span class="n">tau</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">),</span> <span class="n">tmp_domain</span><span class="p">)</span>
+
+        <span class="c1"># Compute x += lam(k) * (z1 - p1)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lam_k</span><span class="p">,</span> <span class="n">z1</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">lam_k</span><span class="p">,</span> <span class="n">p1</span><span class="p">)</span>
+
+        <span class="n">tmp_domain</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">w1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">l</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># In this case the infimal convolution is used.</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">w2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">tmp_domain</span><span class="p">)</span>
+                <span class="n">prox_cc_l</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">sigma</span><span class="p">[</span><span class="n">i</span><span class="p">])(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">z2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># If the infimal convolution is not given, prox_cc_l is the</span>
+                <span class="c1"># identity and hence omitted. For more details, see the</span>
+                <span class="c1"># documentation.</span>
+                <span class="n">z2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">w2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">tmp_domain</span><span class="p">))</span>
+
+            <span class="c1"># Compute v[i] += lam(k) * (z2[i] - p2[i])</span>
+            <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lam_k</span><span class="p">,</span> <span class="n">z2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lincomb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">-</span><span class="n">lam_k</span><span class="p">,</span> <span class="n">p2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">callback</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">callback</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+
+    <span class="c1"># The final result is actually in p1 according to the algorithm, so we need</span>
+    <span class="c1"># to assign here.</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

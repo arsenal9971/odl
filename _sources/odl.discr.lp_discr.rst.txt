@@ -1,0 +1,30 @@
+lp_discr
+========
+
+Lebesgue L^p type discretizations of function spaces.
+
+.. currentmodule:: odl.discr.lp_discr
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.discr.lp_discr.DiscreteLp
+   ~odl.discr.lp_discr.DiscreteLpElement
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.discr.lp_discr.discr_sequence_space
+   ~odl.discr.lp_discr.uniform_discr
+   ~odl.discr.lp_discr.uniform_discr_fromdiscr
+   ~odl.discr.lp_discr.uniform_discr_fromintv
+   ~odl.discr.lp_discr.uniform_discr_frompartition
+   ~odl.discr.lp_discr.uniform_discr_fromspace
+

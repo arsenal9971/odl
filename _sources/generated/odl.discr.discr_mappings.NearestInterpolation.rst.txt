@@ -1,0 +1,31 @@
+NearestInterpolation
+=============================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. autoclass:: NearestInterpolation
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NearestInterpolation.__call__
+         NearestInterpolation.__eq__
+         NearestInterpolation._call
+         NearestInterpolation.derivative
+         NearestInterpolation.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

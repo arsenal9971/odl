@@ -1,0 +1,31 @@
+WaveletTransform
+===================================
+
+.. currentmodule:: odl.trafos.wavelet
+
+.. autoclass:: WaveletTransform
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         WaveletTransform.__call__
+         WaveletTransform._call
+         WaveletTransform.derivative
+         WaveletTransform.norm
+         WaveletTransform.scales
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

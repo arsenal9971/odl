@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpace._lincomb
+=======================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpace._lincomb

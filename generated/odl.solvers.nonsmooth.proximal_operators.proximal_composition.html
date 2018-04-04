@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>proximal_composition &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="proximal_operators" href="../odl.solvers.nonsmooth.proximal_operators.html"/>
+        <link rel="next" title="proximal_const_func" href="odl.solvers.nonsmooth.proximal_operators.proximal_const_func.html"/>
+        <link rel="prev" title="proximal_box_constraint" href="odl.solvers.nonsmooth.proximal_operators.proximal_box_constraint.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.solvers.html">solvers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.functional.html">functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.iterative.html">iterative</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.solvers.nonsmooth.html">nonsmooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.admm.html">admm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.alternating_dual_updates.html">alternating_dual_updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.douglas_rachford.html">douglas_rachford</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.forward_backward.html">forward_backward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html">primal_dual_hybrid_gradient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_gradient_solvers.html">proximal_gradient_solvers</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_operators.html">proximal_operators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.smooth.html">smooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.html">solvers</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.html">nonsmooth</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.proximal_operators.html">proximal_operators</a> &raquo;</li>
+        
+      <li>proximal_composition</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.solvers.nonsmooth.proximal_operators.proximal_composition.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="proximal-composition">
+<h1>proximal_composition<a class="headerlink" href="#proximal-composition" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.solvers.nonsmooth.proximal_operators.proximal_composition">
+<code class="descclassname">odl.solvers.nonsmooth.proximal_operators.</code><code class="descname">proximal_composition</code><span class="sig-paren">(</span><em>proximal</em>, <em>operator</em>, <em>mu</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/nonsmooth/proximal_operators.html#proximal_composition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.nonsmooth.proximal_operators.proximal_composition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proximal operator factory of functional composed with unitary operator.</p>
+<p>For a functional <code class="docutils literal"><span class="pre">F</span></code> and a linear unitary <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a> <code class="docutils literal"><span class="pre">L</span></code> this is the
+factory for the proximal operator of <code class="docutils literal"><span class="pre">F</span> <span class="pre">*</span> <span class="pre">L</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>proximal <span class="classifier-delimiter">:</span> <span class="classifier">callable</span></dt>
+<dd><p class="first last">A factory function that, when called with a step size returns the
+proximal operator of <code class="docutils literal"><span class="pre">F</span></code></p>
+</dd>
+<dt>operator <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a></span></dt>
+<dd><p class="first last">The operator to compose the functional with</p>
+</dd>
+<dt>mu <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">operator.field</span></code> element</span></dt>
+<dd><p class="first last">Scalar such that <code class="docutils literal"><span class="pre">(operator.adjoint</span> <span class="pre">*</span> <span class="pre">operator)(x)</span> <span class="pre">=</span> <span class="pre">mu</span> <span class="pre">*</span> <span class="pre">x</span></code></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt>prox_factory <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd><p class="first last">Factory for the proximal operator to be initialized</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Given a linear operator <img class="math" src="../_images/math/ae2b750f71e1fc0daaa3de9a85d42794d7cd1326.png" alt="L"/> with the property that for a scalar
+<img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/></p>
+<div class="math">
+<p><img src="../_images/math/a47285e083de3035e33dd4fe4eb5e777db8d5a84.png" alt="L^*(L(x)) = \mu * x"/></p>
+</div><p>and a convex function <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/>, the following identity holds</p>
+<div class="math">
+<p><img src="../_images/math/426d9ba3a3b24ac2f2b45a95a300e6206a1d0347.png" alt="\mathrm{prox}_{\sigma F \circ L}(x) = x + \frac{1}{\mu}
+L^* \left( \mathrm{prox}_{\mu \sigma F}(Lx) - Lx \right)"/></p>
+</div><p>This factory function implements this functionality.</p>
+<p>There is no simple formula for more general operators.</p>
+<p>The function cannot verify that the operator is unitary, the user needs
+to verify this.</p>
+<p>For reference on the identity used, see [CP2011c].</p>
+<p class="rubric">References</p>
+<p>[CP2011c] Combettes, P L, and Pesquet, J-C. <em>Proximal splitting
+methods in signal processing.</em> In:  Bauschke, H H, Burachik, R S,
+Combettes, P L, Elser, V, Luke, D R, and Wolkowicz, H. Fixed-point
+algorithms for inverse problems in science and engineering, Springer,
+2011.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.solvers.nonsmooth.proximal_operators.proximal_const_func.html" class="btn btn-neutral float-right" title="proximal_const_func" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.solvers.nonsmooth.proximal_operators.proximal_box_constraint.html" class="btn btn-neutral" title="proximal_box_constraint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

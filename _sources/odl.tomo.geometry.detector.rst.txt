@@ -1,0 +1,20 @@
+detector
+========
+
+Detectors for tomographic imaging.
+
+.. currentmodule:: odl.tomo.geometry.detector
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.tomo.geometry.detector.CircleSectionDetector
+   ~odl.tomo.geometry.detector.Detector
+   ~odl.tomo.geometry.detector.Flat1dDetector
+   ~odl.tomo.geometry.detector.Flat2dDetector
+
+

@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLp.default_dtype
+===========================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLp.default_dtype

@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSpaceElement.divide
+=======================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSpaceElement.divide

@@ -1,0 +1,6 @@
+pywt_single_level_recon
+=========================================================
+
+.. currentmodule:: odl.trafos.backends.pywt_bindings
+
+.. autofunction:: pywt_single_level_recon

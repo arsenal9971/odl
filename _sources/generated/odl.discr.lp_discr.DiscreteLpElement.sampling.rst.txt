@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpElement.sampling
+=============================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLpElement.sampling

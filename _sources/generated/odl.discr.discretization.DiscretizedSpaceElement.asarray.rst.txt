@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSpaceElement.asarray
+========================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSpaceElement.asarray

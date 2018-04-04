@@ -1,0 +1,6 @@
+pywt_pad_mode
+===============================================
+
+.. currentmodule:: odl.trafos.backends.pywt_bindings
+
+.. autofunction:: pywt_pad_mode

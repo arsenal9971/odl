@@ -1,0 +1,32 @@
+L2Norm
+=================================================
+
+.. currentmodule:: odl.solvers.functional.default_functionals
+
+.. autoclass:: L2Norm
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         L2Norm.__call__
+         L2Norm._call
+         L2Norm.bregman
+         L2Norm.derivative
+         L2Norm.norm
+         L2Norm.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

@@ -1,0 +1,8 @@
+:orphan:
+
+BackProjectorByBinWrapper.__call__
+==================================================================
+
+.. currentmodule:: odl.tomo.backends.stir_bindings
+
+.. automethod:: BackProjectorByBinWrapper.__call__

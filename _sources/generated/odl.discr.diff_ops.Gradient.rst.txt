@@ -1,0 +1,30 @@
+Gradient
+===========================
+
+.. currentmodule:: odl.discr.diff_ops
+
+.. autoclass:: Gradient
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         Gradient.__call__
+         Gradient._call
+         Gradient.derivative
+         Gradient.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

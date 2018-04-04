@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>conjugate_gradient_nonlinear &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="nonlinear_cg" href="../odl.solvers.smooth.nonlinear_cg.html"/>
+        <link rel="next" title="util" href="../odl.solvers.util.html"/>
+        <link rel="prev" title="nonlinear_cg" href="../odl.solvers.smooth.nonlinear_cg.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.solvers.html">solvers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.functional.html">functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.iterative.html">iterative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.nonsmooth.html">nonsmooth</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.solvers.smooth.html">smooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.smooth.gradient.html">gradient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.smooth.newton.html">newton</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.solvers.smooth.nonlinear_cg.html">nonlinear_cg</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.html">solvers</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.smooth.html">smooth</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.smooth.nonlinear_cg.html">nonlinear_cg</a> &raquo;</li>
+        
+      <li>conjugate_gradient_nonlinear</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.solvers.smooth.nonlinear_cg.conjugate_gradient_nonlinear.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conjugate-gradient-nonlinear">
+<h1>conjugate_gradient_nonlinear<a class="headerlink" href="#conjugate-gradient-nonlinear" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.solvers.smooth.nonlinear_cg.conjugate_gradient_nonlinear">
+<code class="descclassname">odl.solvers.smooth.nonlinear_cg.</code><code class="descname">conjugate_gradient_nonlinear</code><span class="sig-paren">(</span><em>f</em>, <em>x</em>, <em>line_search=1.0</em>, <em>maxiter=1000</em>, <em>nreset=0</em>, <em>tol=1e-16</em>, <em>beta_method='FR'</em>, <em>callback=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/smooth/nonlinear_cg.html#conjugate_gradient_nonlinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.smooth.nonlinear_cg.conjugate_gradient_nonlinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conjugate gradient for nonlinear problems.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.solvers.functional.functional.Functional.html#odl.solvers.functional.functional.Functional" title="odl.solvers.functional.functional.Functional"><code class="xref any py py-class docutils literal"><span class="pre">Functional</span></code></a></span></dt>
+<dd><p class="first last">Functional with <code class="docutils literal"><span class="pre">f.gradient</span></code>.</p>
+</dd>
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">op.domain</span></code> element</span></dt>
+<dd><p class="first last">Vector to which the result is written. Its initial value is
+used as starting point of the iteration, and its values are
+updated in each iteration step.</p>
+</dd>
+<dt>line_search <span class="classifier-delimiter">:</span> <span class="classifier">float or <a class="reference internal" href="odl.solvers.util.steplen.LineSearch.html#odl.solvers.util.steplen.LineSearch" title="odl.solvers.util.steplen.LineSearch"><code class="xref any py py-class docutils literal"><span class="pre">LineSearch</span></code></a>, optional</span></dt>
+<dd><p class="first last">Strategy to choose the step length. If a float is given, it is used as
+a fixed step length.</p>
+</dd>
+<dt>maxiter <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">Maximum number of iterations to perform.</p>
+</dd>
+<dt>nreset <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">Number of times the solver should be reset. Default: no reset.</p>
+</dd>
+<dt>tol <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first last">Tolerance that should be used to terminating the iteration.</p>
+</dd>
+<dt>beta_method <span class="classifier-delimiter">:</span> <span class="classifier">{‘FR’, ‘PR’, ‘HS’, ‘DY’}, optional</span></dt>
+<dd><p class="first">Method to calculate <code class="docutils literal"><span class="pre">beta</span></code> in the iterates.</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">'FR'</span></code> : Fletcher-Reeves</li>
+<li><code class="docutils literal"><span class="pre">'PR'</span></code> : Polak-Ribiere</li>
+<li><code class="docutils literal"><span class="pre">'HS'</span></code> : Hestenes-Stiefel</li>
+<li><code class="docutils literal"><span class="pre">'DY'</span></code> : Dai-Yuan</li>
+</ul>
+</dd>
+<dt>callback <span class="classifier-delimiter">:</span> <span class="classifier">callable, optional</span></dt>
+<dd><p class="first last">Object executing code per iteration, e.g. plotting each iterate.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">bfgs_method</span></code></dt>
+<dd>Quasi-newton solver for the same problem</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">conjugate_gradient</span></code></dt>
+<dd>Optimized solver for least-squares problem with linear</dd>
+</dl>
+<p><code class="xref py py-obj docutils literal"><span class="pre">and</span></code></p>
+<dl class="docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">conjugate_gradient_normal</span></code></dt>
+<dd>Equivalent solver but for least-squares problem</dd>
+</dl>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">with</span></code></p>
+</div>
+<p class="rubric">Notes</p>
+<p>This is a general and optimized implementation of the nonlinear conjguate
+gradient method for solving a general unconstrained optimization problem</p>
+<div class="math">
+<p><img src="../_images/math/deb449c2f246d4f8ea50d0f8c935737b2adfe71e.png" alt="\min f(x)"/></p>
+</div><p>for a differentiable functional
+<img class="math" src="../_images/math/96b77328c116f4850bbd84c94c42ea2968c73782.png" alt="f: \mathcal{X}\to \mathbb{R}"/> on a Hilbert space
+<img class="math" src="../_images/math/343a944b6a22dc1a14dfecd2ef0d255012e38380.png" alt="\mathcal{X}"/>. It does so by finding a zero of the gradient</p>
+<div class="math">
+<p><img src="../_images/math/39871bce668f9c81395f785d84cfdebcf5285555.png" alt="\nabla f: \mathcal{X} \to \mathcal{X}."/></p>
+</div><p>The method is described in a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Nonlinear_conjugate_gradient_method">Wikipedia article</a>.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../odl.solvers.util.html" class="btn btn-neutral float-right" title="util" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../odl.solvers.smooth.nonlinear_cg.html" class="btn btn-neutral" title="nonlinear_cg" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

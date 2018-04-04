@@ -1,0 +1,21 @@
+skimage_radon
+=============
+
+Radon transform (ray transform) in 2d using skimage.transform.
+
+.. currentmodule:: odl.tomo.backends.skimage_radon
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.tomo.backends.skimage_radon.clamped_interpolation
+   ~odl.tomo.backends.skimage_radon.skimage_radon_back_projector
+   ~odl.tomo.backends.skimage_radon.skimage_radon_forward
+   ~odl.tomo.backends.skimage_radon.skimage_sinogram_space
+   ~odl.tomo.backends.skimage_radon.skimage_theta
+

@@ -1,0 +1,43 @@
+DiscreteLpElement
+====================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. autoclass:: DiscreteLpElement
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         DiscreteLpElement.__eq__
+         DiscreteLpElement.__getitem__
+         DiscreteLpElement.__setitem__
+         DiscreteLpElement.asarray
+         DiscreteLpElement.assign
+         DiscreteLpElement.astype
+         DiscreteLpElement.conj
+         DiscreteLpElement.copy
+         DiscreteLpElement.dist
+         DiscreteLpElement.divide
+         DiscreteLpElement.inner
+         DiscreteLpElement.lincomb
+         DiscreteLpElement.multiply
+         DiscreteLpElement.norm
+         DiscreteLpElement.sampling
+         DiscreteLpElement.set_zero
+         DiscreteLpElement.show
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

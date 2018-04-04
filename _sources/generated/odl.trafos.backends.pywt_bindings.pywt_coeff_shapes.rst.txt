@@ -1,0 +1,6 @@
+pywt_coeff_shapes
+===================================================
+
+.. currentmodule:: odl.trafos.backends.pywt_bindings
+
+.. autofunction:: pywt_coeff_shapes

@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSpaceElement.lincomb
+========================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSpaceElement.lincomb

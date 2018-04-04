@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>About ODL &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="Getting Started" href="getting_started.html"/>
+        <link rel="next" title="Installing ODL" href="installing.html"/>
+        <link rel="prev" title="Getting Started" href="getting_started.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="getting_started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">About ODL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#set">Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linearspace">LinearSpace</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spaces-of-n-tuples">Spaces of n-tuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-spaces">Function spaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#discretizations">Discretizations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#operators">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-features">Further features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installing.html">Installing ODL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing_conda.html">Installing ODL using conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing_pip.html">Installing ODL using pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing_source.html">Installing ODL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing_extensions.html">Installing ODL extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first_steps.html">First steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="getting_started.html">Getting Started</a> &raquo;</li>
+        
+      <li>About ODL</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/getting_started/about_odl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="about-odl">
+<span id="id1"></span><h1>About ODL<a class="headerlink" href="#about-odl" title="Permalink to this headline">¶</a></h1>
+<p>Operator Discretization Library (ODL) is a Python library for fast prototyping focusing on (but not restricted to) inverse problems.
+ODL is being developed at <a class="reference external" href="https://www.kth.se/en/sci/institutioner/math">KTH Royal Institute of Technology, Stockholm</a>, and <a class="reference external" href="https://www.cwi.nl">Centrum Wiskunde &amp; Informatica (CWI), Amsterdam</a>.</p>
+<p>The main intent of ODL is to enable mathematicians and applied scientists to use different numerical methods on real-world problems without having to implement all necessary parts from the bottom up.
+This is reached by an <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a> structure which encapsulates all application-specific parts, and a high-level formulation of solvers which usually expect an operator, data and additional parameters.
+The main advantages of this approach is that</p>
+<ol class="arabic simple">
+<li>Different problems can be solved with the same method (e.g. TV regularization) by simply switching operator and data.</li>
+<li>The same problem can be solved with different methods by simply calling into different solvers.</li>
+<li>Solvers and application-specific code need to be written only once, in one place, and can be tested individually.</li>
+<li>Adding new applications or solution methods becomes a much easier task.</li>
+</ol>
+<p>ODL implements many abstract mathematical notions such as sets, vector spaces and operators.
+In the following, a few are shown by example.</p>
+<div class="section" id="set">
+<h2>Set<a class="headerlink" href="#set" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference internal" href="../generated/odl.set.sets.Set.html#odl.set.sets.Set" title="odl.set.sets.Set"><code class="xref any py py-class docutils literal"><span class="pre">Set</span></code></a> is the fundamental building block of ODL objects. It mirrors the mathematical concept of a <a class="reference external" href="https://en.wikipedia.org/wiki/Set_%28mathematics%29">set</a> in that it can tell if an object belongs to it or not:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">interv</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">IntervalProd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">0.5</span> <span class="ow">in</span> <span class="n">interv</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">2.0</span> <span class="ow">in</span> <span class="n">interv</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>The most commonly used sets in ODL are <a class="reference internal" href="../generated/odl.set.sets.RealNumbers.html#odl.set.sets.RealNumbers" title="odl.set.sets.RealNumbers"><code class="xref any py py-class docutils literal"><span class="pre">RealNumbers</span></code></a> (set of all <a class="reference external" href="https://en.wikipedia.org/wiki/Real_number">real numbers</a>) and <a class="reference internal" href="../generated/odl.set.domain.IntervalProd.html#odl.set.domain.IntervalProd" title="odl.set.domain.IntervalProd"><code class="xref any py py-class docutils literal"><span class="pre">IntervalProd</span></code></a> (“Interval product”, <a class="reference external" href="https://en.wikipedia.org/wiki/Hypercube">rectangular boxes</a> of arbitrary dimension).</p>
+</div>
+<div class="section" id="linearspace">
+<h2>LinearSpace<a class="headerlink" href="#linearspace" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../generated/odl.set.space.LinearSpace.html#odl.set.space.LinearSpace" title="odl.set.space.LinearSpace"><code class="xref any py py-class docutils literal"><span class="pre">LinearSpace</span></code></a> class is the most important subclass of <a class="reference internal" href="../generated/odl.set.sets.Set.html#odl.set.sets.Set" title="odl.set.sets.Set"><code class="xref any py py-class docutils literal"><span class="pre">Set</span></code></a>.
+It is a general (abstract) implementation of a mathematical <a class="reference external" href="https://en.wikipedia.org/wiki/Vector_space">vector space</a> and has a couple of widely used concrete realizations.</p>
+<div class="section" id="spaces-of-n-tuples">
+<h3>Spaces of n-tuples<a class="headerlink" href="#spaces-of-n-tuples" title="Permalink to this headline">¶</a></h3>
+<p>Large parts of basic functionality, e.g. arithmetic or inner products, rest on array computations, i.e. computations on tuples of elements of the same kind.
+Typically, these vector spaces are of the type <img class="math" src="../_images/math/aca08c7654fff610587263efea7222e0075cbaf0.png" alt="\mathbb{F}^n"/>, where <img class="math" src="../_images/math/17de0418d4f0524ae882aecce59d6ea2ba542692.png" alt="\mathbb{F}"/> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Field_%28mathematics%29">field</a> (usually <img class="math" src="../_images/math/862f34b3353bdbde5cfdfac98fa8db35c9fa3d40.png" alt="\mathbb{R}"/> or <img class="math" src="../_images/math/d077c9383c0323fad40ad51f8123ebbf38bba3aa.png" alt="\mathbb{C}"/>), and <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/> a positive integer.
+Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c3</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">cn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">c3</span><span class="o">.</span><span class="n">element</span><span class="p">([</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1j</span><span class="p">,</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2j</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">c3</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>  <span class="c1"># vector of all ones</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># sum of the elements</span>
+<span class="go">(6-1j)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="function-spaces">
+<h3>Function spaces<a class="headerlink" href="#function-spaces" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Function_space">function space</a> is a set of functions <img class="math" src="../_images/math/17b8215e71d331ab9df4e5f88bda4764b3d8c423.png" alt="f: \mathcal{X} \to \mathcal{Y}"/> with fixed domain and range (more accurately: <a class="reference external" href="https://en.wikipedia.org/wiki/Codomain">codomain</a>), where <img class="math" src="../_images/math/a1ff04bf6ed93828c62762f9cc289fd2fa018979.png" alt="\mathcal{Y}"/> is a vector space.
+The ODL implementation <a class="reference internal" href="../generated/odl.space.fspace.FunctionSpace.html#odl.space.fspace.FunctionSpace" title="odl.space.fspace.FunctionSpace"><code class="xref any py py-class docutils literal"><span class="pre">FunctionSpace</span></code></a> covers only the cases <img class="math" src="../_images/math/e8a306383f6468fd04c98340e2710f540debc3b8.png" alt="\mathcal{Y} = \mathbb{R}"/> or <img class="math" src="../_images/math/d077c9383c0323fad40ad51f8123ebbf38bba3aa.png" alt="\mathbb{C}"/> since the general case has large overlaps with <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a>.
+Note that we do not make a distinction between different types of function spaces with respect to regularity, integrability etc. on an <em>abstract</em> level since there is no obvious way to check it.</p>
+<p>As linear spaces, function spaces support some interesting operations:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">odl</span><span class="o">.</span><span class="n">IntervalProd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp_plus_one</span> <span class="o">=</span> <span class="n">exp</span> <span class="o">+</span> <span class="n">space</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp_plus_one</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio_func</span> <span class="o">=</span> <span class="n">exp_plus_one</span> <span class="o">/</span> <span class="n">exp</span>  <span class="c1"># x -&gt; (exp(x) + 1) / exp(x)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio_func</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># 3 / 2</span>
+<span class="go">1.5</span>
+</pre></div>
+</div>
+<p>A big advantage of the function space implementation in ODL is that the evaluation of functions is <a class="reference external" href="https://en.wikipedia.org/wiki/Array_programming">vectorized</a>, i.e. that the values of a function can be computed from an array of input data “at once”, without looping in Python (which is slow, in general).
+What follows is a simple example, see the <a class="reference internal" href="../guide/vectorization_guide.html#vectorization-in-depth"><span class="std std-ref">Vectorized functions</span></a> guide for instructions on how to write vectorization-compatible functions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">odl</span><span class="o">.</span><span class="n">IntervalProd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">array([ 1.        ,  2.71828183,  7.3890561 ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># works</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="discretizations">
+<h3>Discretizations<a class="headerlink" href="#discretizations" title="Permalink to this headline">¶</a></h3>
+<p>A discretization typically represents the finite-dimensional, concrete counterpart of an infinite-dimensional, abstract vector space, which makes it accessible to computations.
+In ODL, a <a class="reference internal" href="../guide/glossary.html#term-discretization"><code class="xref any std std-term docutils literal"><span class="pre">Discretization</span></code></a> instance encompasses both continuous and discrete spaces as well as the mappings take one into the other.
+The canonical example is the space <img class="math" src="../_images/math/73aadc10836be4dc58b48aaa6aacd1fd72805350.png" alt="L^2(\Omega)"/> of real-valued square-integrable functions on a rectangular domain (we take an interval for simplicity).
+It is the default in the convenience function <a class="reference internal" href="../generated/odl.discr.lp_discr.uniform_discr.html#odl.discr.lp_discr.uniform_discr" title="odl.discr.lp_discr.uniform_discr"><code class="xref any py py-func docutils literal"><span class="pre">uniform_discr</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l2_discr</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">uniform_discr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Omega = [0, 1], 5 subintervals</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">l2_discr</span><span class="p">)</span>
+<span class="go">&lt;class &#39;odl.discr.lp_discr.DiscreteLp&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2_discr</span><span class="o">.</span><span class="n">exponent</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2_discr</span><span class="o">.</span><span class="n">domain</span>
+<span class="go">IntervalProd(0.0, 1.0)</span>
+</pre></div>
+</div>
+<p>Discretizations have a large number of useful functionality, for example the direct and vectorized sampling of continuously defined functions.
+If we, for example, want to discretize the function <code class="docutils literal"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">exp(-x)</span></code>, we can simply pass it to the <code class="docutils literal"><span class="pre">element()</span></code> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">exp_discr</span> <span class="o">=</span> <span class="n">l2_discr</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">exp_discr</span><span class="p">)</span>
+<span class="go">&lt;class &#39;odl.discr.lp_discr.DiscreteLpElement&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">exp_discr</span><span class="p">)</span>
+<span class="go">[0.904837418036, 0.740818220682, 0.606530659713, 0.496585303791, 0.406569659741]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp_discr</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(5,)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h2>
+<p>This is the central class and general notion in ODL.
+The concept is derived from the mathematical theory of <a class="reference external" href="https://en.wikipedia.org/wiki/Operator_%28mathematics%29">operators</a> and implements many of its core properties.
+Any functionality that is implemented as an <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a> has access to the full machinery of operator arithmetic, composition, differentiation and much more.
+It is the universal interface between application-specific code (e.g. line projectors in tomography for a given geometry) and other parts of the library that are written in an abstract mathematical language.
+The large benefit of this approach is that once an operator is fully implemented and functional, it can be used seamlessly by, e.g., optimization routines that expect an operator and data (among others) as input.</p>
+<p>As a small example, we study the problem of solving a linear system with 2 equations and 3 unknowns.
+We use <a class="reference external" href="https://en.wikipedia.org/wiki/Landweber_iteration">Landweber’s method</a> to get a least-squares solution and plot the intermediate residual norm.
+The method needs a relaxation <img class="math" src="../_images/math/5cff9e85be8bf1f900a877d8a96285bdcf6096f0.png" alt="\lambda &lt; 2 / \lVert A\rvert^2"/> to converge - in our case, the right-hand side is 0.14, so we choose 0.1.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span>
+<span class="gp">... </span>                   <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix_op</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">MatrixOperator</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>  <span class="c1"># operator defined by the matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix_op</span><span class="o">.</span><span class="n">domain</span>
+<span class="go">rn(3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix_op</span><span class="o">.</span><span class="n">range</span>
+<span class="go">rn(2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">niter</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reco</span> <span class="o">=</span> <span class="n">matrix_op</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span>  <span class="c1"># starting with the zero vector</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">niter</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">residual</span> <span class="o">=</span> <span class="n">matrix_op</span><span class="p">(</span><span class="n">reco</span><span class="p">)</span> <span class="o">-</span> <span class="n">data</span>
+<span class="gp">... </span>    <span class="n">reco</span> <span class="o">-=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">matrix_op</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(</span><span class="n">residual</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{:.3}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">residual</span><span class="o">.</span><span class="n">norm</span><span class="p">()))</span>
+<span class="go">1.41</span>
+<span class="go">0.583</span>
+<span class="go">0.24</span>
+<span class="go">0.0991</span>
+<span class="go">0.0409</span>
+</pre></div>
+</div>
+<p>If we now exchange <code class="docutils literal"><span class="pre">matrix_op</span></code> and <code class="docutils literal"><span class="pre">data</span></code> with a tomographic projector and line integral data, not a single line of code in the reconstruction method changes since the operator interface is exactly the same.</p>
+</div>
+<div class="section" id="further-features">
+<h2>Further features<a class="headerlink" href="#further-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>A unified structure <a class="reference internal" href="../generated/odl.tomo.geometry.geometry.Geometry.html#odl.tomo.geometry.geometry.Geometry" title="odl.tomo.geometry.geometry.Geometry"><code class="xref any py py-class docutils literal"><span class="pre">Geometry</span></code></a> for representing tomographic acquisition geometries</li>
+<li>Interfaces to fast external libraries, e.g. <a class="reference external" href="https://github.com/astra-toolbox/astra-toolbox">ASTRA</a> for X-ray tomography, <a class="reference external" href="http://stir.sourceforge.net/">STIR</a> for emission tomography (preliminary), <a class="reference external" href="https://pypi.python.org/pypi/pyFFTW">pyFFTW</a> for fast Fourier transforms, …</li>
+<li>A growing number of “must-have” operators like <a class="reference internal" href="../generated/odl.discr.diff_ops.Gradient.html#odl.discr.diff_ops.Gradient" title="odl.discr.diff_ops.Gradient"><code class="xref any py py-class docutils literal"><span class="pre">Gradient</span></code></a>, <a class="reference internal" href="../generated/odl.trafos.fourier.FourierTransform.html#odl.trafos.fourier.FourierTransform" title="odl.trafos.fourier.FourierTransform"><code class="xref any py py-class docutils literal"><span class="pre">FourierTransform</span></code></a>, <a class="reference internal" href="../generated/odl.trafos.wavelet.WaveletTransform.html#odl.trafos.wavelet.WaveletTransform" title="odl.trafos.wavelet.WaveletTransform"><code class="xref any py py-class docutils literal"><span class="pre">WaveletTransform</span></code></a></li>
+<li>Several solvers for variational inverse problems, ranging from simple <a class="reference internal" href="../generated/odl.solvers.smooth.gradient.steepest_descent.html#odl.solvers.smooth.gradient.steepest_descent" title="odl.solvers.smooth.gradient.steepest_descent"><code class="xref any py py-func docutils literal"><span class="pre">gradient</span> <span class="pre">methods</span></code></a> to state-of-the-art non-smooth primal-dual splitting methods like <a class="reference internal" href="../generated/odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd.html#odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd" title="odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd"><code class="xref any py py-func docutils literal"><span class="pre">Douglas-Rachford</span></code></a></li>
+<li>Standardized tests for the correctness of implementations of operators and spaces, e.g. does the adjoint operator fulfill its defining relation?</li>
+<li><a class="reference external" href="https://github.com/odlgroup/odlcuda">CUDA-accelerated data containers</a> as a replacement for <a class="reference external" href="http://www.numpy.org/">Numpy</a></li>
+</ul>
+</div>
+<div class="section" id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../guide/linearspace_guide.html#linearspace-in-depth"><span class="std std-ref">Linear spaces</span></a></li>
+<li><a class="reference internal" href="../guide/operator_guide.html#operators-in-depth"><span class="std std-ref">Operators</span></a></li>
+<li><a class="reference internal" href="../math/discretization.html#discretizations"><span class="std std-ref">Discretizations</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installing.html" class="btn btn-neutral float-right" title="Installing ODL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting_started.html" class="btn btn-neutral" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

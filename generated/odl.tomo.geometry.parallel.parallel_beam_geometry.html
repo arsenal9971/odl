@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>parallel_beam_geometry &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="parallel" href="../odl.tomo.geometry.parallel.html"/>
+        <link rel="next" title="spect" href="../odl.tomo.geometry.spect.html"/>
+        <link rel="prev" title="ParallelBeamGeometry.rotation_matrix" href="odl.tomo.geometry.parallel.ParallelBeamGeometry.rotation_matrix.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.tomo.html">tomo</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.analytic.html">analytic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.backends.html">backends</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.tomo.geometry.html">geometry</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.tomo.geometry.conebeam.html">conebeam</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.tomo.geometry.detector.html">detector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.tomo.geometry.geometry.html">geometry</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.tomo.geometry.parallel.html">parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.tomo.geometry.spect.html">spect</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.operators.html">operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.tomo.html">tomo</a> &raquo;</li>
+        
+          <li><a href="../odl.tomo.geometry.html">geometry</a> &raquo;</li>
+        
+          <li><a href="../odl.tomo.geometry.parallel.html">parallel</a> &raquo;</li>
+        
+      <li>parallel_beam_geometry</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.tomo.geometry.parallel.parallel_beam_geometry.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parallel-beam-geometry">
+<h1>parallel_beam_geometry<a class="headerlink" href="#parallel-beam-geometry" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.tomo.geometry.parallel.parallel_beam_geometry">
+<code class="descclassname">odl.tomo.geometry.parallel.</code><code class="descname">parallel_beam_geometry</code><span class="sig-paren">(</span><em>space</em>, <em>num_angles=None</em>, <em>det_shape=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/tomo/geometry/parallel.html#parallel_beam_geometry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.tomo.geometry.parallel.parallel_beam_geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create default parallel beam geometry from <code class="docutils literal"><span class="pre">space</span></code>.</p>
+<p>This is intended for simple test cases where users do not need the full
+flexibility of the geometries, but simply want a geometry that works.</p>
+<p>This default geometry gives a fully sampled sinogram according to the
+Nyquist criterion, which in general results in a very large number of
+samples. In particular, a <code class="docutils literal"><span class="pre">space</span></code> that is not centered at the origin
+can result in very large detectors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>space <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html#odl.discr.lp_discr.DiscreteLp" title="odl.discr.lp_discr.DiscreteLp"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLp</span></code></a></span></dt>
+<dd><p class="first last">Reconstruction space, the space of the volumetric data to be projected.
+Needs to be 2d or 3d.</p>
+</dd>
+<dt>num_angles <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">Number of angles.
+Default: Enough to fully sample the data, see Notes.</p>
+</dd>
+<dt>det_shape <span class="classifier-delimiter">:</span> <span class="classifier">int or sequence of int, optional</span></dt>
+<dd><p class="first last">Number of detector pixels.
+Default: Enough to fully sample the data, see Notes.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt>geometry <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.tomo.geometry.parallel.ParallelBeamGeometry.html#odl.tomo.geometry.parallel.ParallelBeamGeometry" title="odl.tomo.geometry.parallel.ParallelBeamGeometry"><code class="xref any py py-class docutils literal"><span class="pre">ParallelBeamGeometry</span></code></a></span></dt>
+<dd><p class="first last">If <code class="docutils literal"><span class="pre">space</span></code> is 2d, return a <a class="reference internal" href="odl.tomo.geometry.parallel.Parallel2dGeometry.html#odl.tomo.geometry.parallel.Parallel2dGeometry" title="odl.tomo.geometry.parallel.Parallel2dGeometry"><code class="xref any py py-class docutils literal"><span class="pre">Parallel2dGeometry</span></code></a>.
+If <code class="docutils literal"><span class="pre">space</span></code> is 3d, return a <a class="reference internal" href="odl.tomo.geometry.parallel.Parallel3dAxisGeometry.html#odl.tomo.geometry.parallel.Parallel3dAxisGeometry" title="odl.tomo.geometry.parallel.Parallel3dAxisGeometry"><code class="xref any py py-class docutils literal"><span class="pre">Parallel3dAxisGeometry</span></code></a>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>According to <a class="reference internal" href="#nw20011" id="id1">[NW20011]</a>, pages 72–74, a function
+<img class="math" src="../_images/math/4d9e5a9c6310b693eb88a6caa627de0144d14787.png" alt="f : \mathbb{R}^2 \to \mathbb{R}"/> that has compact support</p>
+<div class="math">
+<p><img src="../_images/math/bf61b57bad8f01ff30f5aae9555724eed3eb6e00.png" alt="\| x \| &gt; \rho  \implies f(x) = 0,"/></p>
+</div><p>and is essentially bandlimited</p>
+<div class="math">
+<p><img src="../_images/math/33642249542608eb6a400a7885f5daa8f8bfd9fa.png" alt="\| \xi \| &gt; \Omega \implies \hat{f}(\xi) \approx 0,"/></p>
+</div><p>can be fully reconstructed from a parallel beam ray transform
+if (1) the projection angles are sampled with a spacing of
+<img class="math" src="../_images/math/c7b55a1556ec5759ac35d7d3dbeefc5f7ed3be8a.png" alt="\Delta \psi"/> such that</p>
+<div class="math">
+<p><img src="../_images/math/1d3827925e0fd0350417d90ecf14893fe1dcb3bd.png" alt="\Delta \psi \leq \frac{\pi}{\rho \Omega},"/></p>
+</div><p>and (2) the detector is sampled with an interval <img class="math" src="../_images/math/f9d91006739aeb824bfed347b83f1c6d87a5c938.png" alt="\Delta s"/>
+that satisfies</p>
+<div class="math">
+<p><img src="../_images/math/7de5e0e67cbd4791d3e52eb7e9bd3240ada6fa19.png" alt="\Delta s \leq \frac{\pi}{\Omega}."/></p>
+</div><p>The geometry returned by this function satisfies these conditions exactly.</p>
+<p>If the domain is 3-dimensional, the geometry is “separable”, in that each
+slice along the z-dimension of the data is treated as independed 2d data.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="nw20011" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[NW20011]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Natterer, F and Wuebbeling, F.
+<em>Mathematical Methods in Image Reconstruction</em>.
+SIAM, 2001.
+<a class="reference external" href="https://dx.doi.org/10.1137/1.9780898718324">https://dx.doi.org/10.1137/1.9780898718324</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Create a parallel beam geometry from a 2d space:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">uniform_discr</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">geometry</span> <span class="o">=</span> <span class="n">parallel_beam_geometry</span><span class="p">(</span><span class="n">space</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">geometry</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">size</span>
+<span class="go">45</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">geometry</span><span class="o">.</span><span class="n">detector</span><span class="o">.</span><span class="n">size</span>
+<span class="go">31</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../odl.tomo.geometry.spect.html" class="btn btn-neutral float-right" title="spect" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.tomo.geometry.parallel.ParallelBeamGeometry.rotation_matrix.html" class="btn btn-neutral" title="ParallelBeamGeometry.rotation_matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

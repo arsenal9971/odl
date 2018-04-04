@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSpace.multiply
+==================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSpace.multiply

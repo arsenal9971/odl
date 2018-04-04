@@ -1,0 +1,1768 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.space.fspace &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.space.fspace</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.space.fspace</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;Spaces of scalar-, vector- and tensor-valued functions on a given domain.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">builtins</span> <span class="k">import</span> <span class="nb">object</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">odl.set</span> <span class="k">import</span> <span class="n">RealNumbers</span><span class="p">,</span> <span class="n">ComplexNumbers</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">LinearSpace</span>
+<span class="kn">from</span> <span class="nn">odl.set.space</span> <span class="k">import</span> <span class="n">LinearSpaceElement</span>
+<span class="kn">from</span> <span class="nn">odl.util</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">is_real_dtype</span><span class="p">,</span> <span class="n">is_complex_floating_dtype</span><span class="p">,</span> <span class="n">dtype_repr</span><span class="p">,</span> <span class="n">dtype_str</span><span class="p">,</span>
+    <span class="n">complex_dtype</span><span class="p">,</span> <span class="n">real_dtype</span><span class="p">,</span> <span class="n">signature_string</span><span class="p">,</span>
+    <span class="n">is_valid_input_array</span><span class="p">,</span> <span class="n">is_valid_input_meshgrid</span><span class="p">,</span>
+    <span class="n">out_shape_from_array</span><span class="p">,</span> <span class="n">out_shape_from_meshgrid</span><span class="p">,</span> <span class="n">vectorize</span><span class="p">,</span> <span class="n">writable_array</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">odl.util.utility</span> <span class="k">import</span> <span class="n">preload_first_arg</span><span class="p">,</span> <span class="n">getargspec</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;FunctionSpace&#39;</span><span class="p">,)</span>
+
+
+<span class="k">def</span> <span class="nf">_check_out_arg</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if ``func`` has an (optional) ``out`` argument.</span>
+
+<span class="sd">    Also verify that the signature of ``func`` has no ``*args`` since</span>
+<span class="sd">    they make argument propagation a hassle.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    func : callable</span>
+<span class="sd">        Object that should be inspected.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    has_out : bool</span>
+<span class="sd">        ``True`` if the signature has an ``out`` argument, ``False``</span>
+<span class="sd">        otherwise.</span>
+<span class="sd">    out_is_optional : bool</span>
+<span class="sd">        ``True`` if ``out`` is present and optional in the signature,</span>
+<span class="sd">        ``False`` otherwise.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    TypeError</span>
+<span class="sd">        If ``func``&#39;s signature has ``*args``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="n">kw_only</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">kwonlyargs</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="n">kw_only</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">varargs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;*args not allowed in function signature&#39;</span><span class="p">)</span>
+
+    <span class="n">pos_args</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">args</span>
+    <span class="n">pos_defaults</span> <span class="o">=</span> <span class="p">()</span> <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">defaults</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">spec</span><span class="o">.</span><span class="n">defaults</span>
+
+    <span class="n">has_out</span> <span class="o">=</span> <span class="s1">&#39;out&#39;</span> <span class="ow">in</span> <span class="n">pos_args</span> <span class="ow">or</span> <span class="s1">&#39;out&#39;</span> <span class="ow">in</span> <span class="n">kw_only</span>
+    <span class="k">if</span> <span class="s1">&#39;out&#39;</span> <span class="ow">in</span> <span class="n">pos_args</span><span class="p">:</span>
+        <span class="n">has_out</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">out_is_optional</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">pos_args</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;out&#39;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos_args</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos_defaults</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="s1">&#39;out&#39;</span> <span class="ow">in</span> <span class="n">kw_only</span><span class="p">:</span>
+        <span class="n">has_out</span> <span class="o">=</span> <span class="n">out_is_optional</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">has_out</span> <span class="o">=</span> <span class="n">out_is_optional</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="n">has_out</span><span class="p">,</span> <span class="n">out_is_optional</span>
+
+
+<span class="k">def</span> <span class="nf">_default_in_place</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Default in-place evaluation method.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">_call_out_of_place</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+        <span class="c1"># Different shapes encountered, need to broadcast</span>
+        <span class="n">flat_results</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">is_valid_input_array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+            <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">is_valid_input_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+            <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;bad input&#39;</span><span class="p">)</span>
+
+        <span class="n">bcast_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">scalar_out_shape</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">flat_results</span><span class="p">]</span>
+        <span class="c1"># New array that is flat in the `out_shape` axes, reshape it</span>
+        <span class="c1"># to the final `out_shape + scalar_shape`, using the same</span>
+        <span class="c1"># order (&#39;C&#39;) as the initial `result.ravel()`.</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bcast_results</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">out_shape</span> <span class="o">+</span> <span class="n">scalar_out_shape</span><span class="p">)</span>
+
+    <span class="c1"># The following code is required to remove extra axes, e.g., when</span>
+    <span class="c1"># the result has shape (2, 1, 3) but should have shape (2, 3).</span>
+    <span class="c1"># For those cases, broadcasting doesn&#39;t apply.</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">reshaped</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="c1"># This is the case when `result` must be broadcast</span>
+        <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">result</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">reshaped</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span> <span class="nf">_default_out_of_place</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Default in-place evaluation method.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_valid_input_array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+        <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">is_valid_input_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+        <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;cannot use in-place method to implement &#39;</span>
+                        <span class="s1">&#39;out-of-place non-vectorized evaluation&#39;</span><span class="p">)</span>
+
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">scalar_out_dtype</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">result_type</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">out_shape</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">out_shape</span> <span class="o">+</span> <span class="n">scalar_out_shape</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">out_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">func</span><span class="o">.</span><span class="n">_call_in_place</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span> <span class="nf">_fcall_out_type</span><span class="p">(</span><span class="n">fcall</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if ``fcall`` has (optional) output argument.</span>
+
+<span class="sd">    This function is intended to work with all types of callables</span>
+<span class="sd">    that are used as input to `FunctionSpace.element`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fcall</span><span class="p">,</span> <span class="n">FunctionSpaceElement</span><span class="p">):</span>
+        <span class="n">call_has_out</span> <span class="o">=</span> <span class="n">fcall</span><span class="o">.</span><span class="n">_call_has_out</span>
+        <span class="n">call_out_optional</span> <span class="o">=</span> <span class="n">fcall</span><span class="o">.</span><span class="n">_call_out_optional</span>
+
+    <span class="c1"># Numpy Ufuncs and similar objects (e.g. Numba DUfuncs)</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fcall</span><span class="p">,</span> <span class="s1">&#39;nin&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fcall</span><span class="p">,</span> <span class="s1">&#39;nout&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">fcall</span><span class="o">.</span><span class="n">nin</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;ufunc </span><span class="si">{}</span><span class="s1"> has </span><span class="si">{}</span><span class="s1"> input parameter(s), &#39;</span>
+                             <span class="s1">&#39;expected 1&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fcall</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">fcall</span><span class="o">.</span><span class="n">nin</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">fcall</span><span class="o">.</span><span class="n">nout</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;ufunc </span><span class="si">{}</span><span class="s1"> has </span><span class="si">{}</span><span class="s1"> output parameter(s), &#39;</span>
+                             <span class="s1">&#39;expected at most 1&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fcall</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">fcall</span><span class="o">.</span><span class="n">nout</span><span class="p">))</span>
+        <span class="n">call_has_out</span> <span class="o">=</span> <span class="n">call_out_optional</span> <span class="o">=</span> <span class="p">(</span><span class="n">fcall</span><span class="o">.</span><span class="n">nout</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">fcall</span><span class="p">):</span>
+        <span class="n">call_has_out</span><span class="p">,</span> <span class="n">call_out_optional</span> <span class="o">=</span> <span class="n">_check_out_arg</span><span class="p">(</span><span class="n">fcall</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">callable</span><span class="p">(</span><span class="n">fcall</span><span class="p">):</span>
+        <span class="n">call_has_out</span><span class="p">,</span> <span class="n">call_out_optional</span> <span class="o">=</span> <span class="n">_check_out_arg</span><span class="p">(</span><span class="n">fcall</span><span class="o">.</span><span class="fm">__call__</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;object </span><span class="si">{!r}</span><span class="s1"> not callable&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fcall</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">call_has_out</span><span class="p">,</span> <span class="n">call_out_optional</span>
+
+
+<div class="viewcode-block" id="FunctionSpace"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace.html#odl.space.fspace.FunctionSpace">[docs]</a><span class="k">class</span> <span class="nc">FunctionSpace</span><span class="p">(</span><span class="n">LinearSpace</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;A vector space of functions.</span>
+
+<span class="sd">    Elements in this space represent scalar-, vector- or tensor-valued</span>
+<span class="sd">    functions on some set, usually a subset of a Euclidean space</span>
+<span class="sd">    :math:`\mathbb{R}^d`. The functions support vectorized evaluation,</span>
+<span class="sd">    see `the vectorization guide</span>
+<span class="sd">    &lt;https://odlgroup.github.io/odl/guide/vectorization_guide.html&gt;`_</span>
+<span class="sd">    for details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="FunctionSpace.__init__"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace.html#odl.space.fspace.FunctionSpace.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">out_dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        domain : `Set`</span>
+<span class="sd">            The domain of the functions.</span>
+<span class="sd">        out_dtype : optional</span>
+<span class="sd">            Data type of the return value of a function in this</span>
+<span class="sd">            space. Can be provided in any way the `numpy.dtype`</span>
+<span class="sd">            constructor understands, e.g. as built-in type or as a string.</span>
+
+<span class="sd">            To create a space of vector- or tensor-valued functions,</span>
+<span class="sd">            use a dtype with a shape, e.g.,</span>
+<span class="sd">            ``np.dtype((float, (2, 3)))``.</span>
+
+<span class="sd">            For ``None``, the data type of function outputs is inferred</span>
+<span class="sd">            lazily at runtime.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Real-valued functions on the interval [0, 1]:</span>
+
+<span class="sd">        &gt;&gt;&gt; domain = odl.IntervalProd(0, 1)</span>
+<span class="sd">        &gt;&gt;&gt; odl.FunctionSpace(domain)</span>
+<span class="sd">        FunctionSpace(IntervalProd(0.0, 1.0))</span>
+
+<span class="sd">        Complex-valued functions on the same domain can be created by</span>
+<span class="sd">        specifying ``out_dtype``:</span>
+
+<span class="sd">        &gt;&gt;&gt; odl.FunctionSpace(domain, out_dtype=complex)</span>
+<span class="sd">        FunctionSpace(IntervalProd(0.0, 1.0), out_dtype=complex)</span>
+
+<span class="sd">        To get vector- or tensor-valued functions, specify</span>
+<span class="sd">        ``out_dtype`` with shape:</span>
+
+<span class="sd">        &gt;&gt;&gt; vec_dtype = np.dtype((float, (3,)))  # 3 components</span>
+<span class="sd">        &gt;&gt;&gt; odl.FunctionSpace(domain, out_dtype=vec_dtype)</span>
+<span class="sd">        FunctionSpace(IntervalProd(0.0, 1.0), out_dtype=(&#39;float64&#39;, (3,)))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">Set</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`domain` must be a `Set` instance, got </span><span class="si">{!r}</span><span class="s1">&#39;</span>
+                            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__domain</span> <span class="o">=</span> <span class="n">domain</span>
+
+        <span class="c1"># Prevent None from being converted to float64 by np.dtype</span>
+        <span class="k">if</span> <span class="n">out_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__out_dtype</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__out_dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">out_dtype</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">is_real_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">):</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="n">RealNumbers</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">is_complex_floating_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">):</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="n">ComplexNumbers</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">FunctionSpace</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+        <span class="c1"># Init cache attributes for real / complex variants</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">==</span> <span class="n">RealNumbers</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__real_out_dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__real_space</span> <span class="o">=</span> <span class="bp">self</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__complex_out_dtype</span> <span class="o">=</span> <span class="n">complex_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">,</span>
+                                                     <span class="n">default</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="nb">object</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__complex_space</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">==</span> <span class="n">ComplexNumbers</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__real_out_dtype</span> <span class="o">=</span> <span class="n">real_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__real_space</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__complex_out_dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__complex_space</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__real_out_dtype</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__real_space</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__complex_out_dtype</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__complex_space</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">domain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set from which a function in this space can take inputs.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__domain</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">out_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Output data type (including shape) of a function in this space.</span>
+
+<span class="sd">        If ``None``, the output data type is not pre-defined and instead</span>
+<span class="sd">        inferred at run-time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__out_dtype</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scalar_out_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Scalar variant of ``out_dtype`` in case it has a shape.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">real_out_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The real dtype corresponding to this space&#39;s `out_dtype`.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__real_out_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="s1">&#39;no real variant of output dtype </span><span class="si">{}</span><span class="s1"> defined&#39;</span>
+                <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype_repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__real_out_dtype</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">complex_out_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The complex dtype corresponding to this space&#39;s `out_dtype`.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__complex_out_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="s1">&#39;no complex variant of output dtype </span><span class="si">{}</span><span class="s1"> defined&#39;</span>
+                <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype_repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__complex_out_dtype</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">out_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Shape of function values, ``()`` for scalar output.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">,</span> <span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tensor_valued</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;``True`` if functions have multi-dim. output, else ``False``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_shape</span> <span class="o">!=</span> <span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">real_space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The space corresponding to this space&#39;s `real_dtype`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real_out_dtype</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">complex_space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The space corresponding to this space&#39;s `complex_dtype`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">complex_out_dtype</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FunctionSpace.element"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace.element.html#odl.space.fspace.FunctionSpace.element">[docs]</a>    <span class="k">def</span> <span class="nf">element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fcall</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a `FunctionSpace` element.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fcall : callable, optional</span>
+<span class="sd">            The actual instruction for out-of-place evaluation.</span>
+<span class="sd">            It must return a `FunctionSpace.range` element or a</span>
+<span class="sd">            `numpy.ndarray` of such (vectorized call).</span>
+<span class="sd">            If ``fcall`` is a `FunctionSpaceElement`, it is wrapped</span>
+<span class="sd">            as a new `FunctionSpaceElement`.</span>
+<span class="sd">            Default: `zero`.</span>
+<span class="sd">        vectorized : bool, optional</span>
+<span class="sd">            If ``True``, assume that ``fcall`` supports vectorized</span>
+<span class="sd">            evaluation. For ``False``, the function is decorated with a</span>
+<span class="sd">            vectorizer, which implies that two elements created this way</span>
+<span class="sd">            from the same function are regarded as not equal.</span>
+<span class="sd">            The ``False`` option cannot be used if ``fcall`` has an</span>
+<span class="sd">            ``out`` parameter.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        element : `FunctionSpaceElement`</span>
+<span class="sd">            The new element, always supporting vectorization.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Scalar-valued functions are straightforward to create:</span>
+
+<span class="sd">        &gt;&gt;&gt; fspace = odl.FunctionSpace(odl.IntervalProd(0, 1))</span>
+<span class="sd">        &gt;&gt;&gt; func = fspace.element(lambda x: x - 1)</span>
+<span class="sd">        &gt;&gt;&gt; func(0.5)</span>
+<span class="sd">        -0.5</span>
+<span class="sd">        &gt;&gt;&gt; func([0.1, 0.5, 0.6])</span>
+<span class="sd">        array([-0.9, -0.5, -0.4])</span>
+
+<span class="sd">        It is also possible to use functions with parameters. Note that</span>
+<span class="sd">        such extra parameters have to be given by keyword when calling</span>
+<span class="sd">        the function:</span>
+
+<span class="sd">        &gt;&gt;&gt; def f(x, b):</span>
+<span class="sd">        ...     return x + b</span>
+<span class="sd">        &gt;&gt;&gt; func = fspace.element(f)</span>
+<span class="sd">        &gt;&gt;&gt; func([0.1, 0.5, 0.6], b=1)</span>
+<span class="sd">        array([ 1.1, 1.5,  1.6])</span>
+<span class="sd">        &gt;&gt;&gt; func([0.1, 0.5, 0.6], b=-1)</span>
+<span class="sd">        array([-0.9, -0.5, -0.4])</span>
+
+<span class="sd">        Vector-valued functions can eiter be given as a sequence of</span>
+<span class="sd">        scalar-valued functions or as a single function that returns</span>
+<span class="sd">        a sequence:</span>
+
+<span class="sd">        &gt;&gt;&gt; # Space of vector-valued functions with 2 components</span>
+<span class="sd">        &gt;&gt;&gt; fspace = odl.FunctionSpace(odl.IntervalProd(0, 1),</span>
+<span class="sd">        ...                            out_dtype=(float, (2,)))</span>
+<span class="sd">        &gt;&gt;&gt; # Possibility 1: provide component functions</span>
+<span class="sd">        &gt;&gt;&gt; func1 = fspace.element([lambda x: x + 1, np.negative])</span>
+<span class="sd">        &gt;&gt;&gt; func1(0.5)</span>
+<span class="sd">        array([ 1.5, -0.5])</span>
+<span class="sd">        &gt;&gt;&gt; func1([0.1, 0.5, 0.6])</span>
+<span class="sd">        array([[ 1.1,  1.5,  1.6],</span>
+<span class="sd">               [-0.1, -0.5, -0.6]])</span>
+<span class="sd">        &gt;&gt;&gt; # Possibility 2: single function returning a sequence</span>
+<span class="sd">        &gt;&gt;&gt; func2 = fspace.element(lambda x: (x + 1, -x))</span>
+<span class="sd">        &gt;&gt;&gt; func2(0.5)</span>
+<span class="sd">        array([ 1.5, -0.5])</span>
+<span class="sd">        &gt;&gt;&gt; func2([0.1, 0.5, 0.6])</span>
+<span class="sd">        array([[ 1.1,  1.5,  1.6],</span>
+<span class="sd">               [-0.1, -0.5, -0.6]])</span>
+
+<span class="sd">        If the function(s) include(s) an ``out`` parameter, it can be</span>
+<span class="sd">        provided to hold the final result:</span>
+
+<span class="sd">        &gt;&gt;&gt; # Sequence of functions with `out` parameter</span>
+<span class="sd">        &gt;&gt;&gt; def f1(x, out):</span>
+<span class="sd">        ...     out[:] = x + 1</span>
+<span class="sd">        &gt;&gt;&gt; def f2(x, out):</span>
+<span class="sd">        ...     out[:] = -x</span>
+<span class="sd">        &gt;&gt;&gt; func = fspace.element([f1, f2])</span>
+<span class="sd">        &gt;&gt;&gt; out = np.empty((2, 3))  # needs to match expected output shape</span>
+<span class="sd">        &gt;&gt;&gt; result = func([0.1, 0.5, 0.6], out=out)</span>
+<span class="sd">        &gt;&gt;&gt; out</span>
+<span class="sd">        array([[ 1.1,  1.5,  1.6],</span>
+<span class="sd">               [-0.1, -0.5, -0.6]])</span>
+<span class="sd">        &gt;&gt;&gt; result is out</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; # Single function assigning to components of `out`</span>
+<span class="sd">        &gt;&gt;&gt; def f(x, out):</span>
+<span class="sd">        ...     out[0] = x + 1</span>
+<span class="sd">        ...     out[1] = -x</span>
+<span class="sd">        &gt;&gt;&gt; func = fspace.element(f)</span>
+<span class="sd">        &gt;&gt;&gt; out = np.empty((2, 3))  # needs to match expected output shape</span>
+<span class="sd">        &gt;&gt;&gt; result = func([0.1, 0.5, 0.6], out=out)</span>
+<span class="sd">        &gt;&gt;&gt; out</span>
+<span class="sd">        array([[ 1.1,  1.5,  1.6],</span>
+<span class="sd">               [-0.1, -0.5, -0.6]])</span>
+<span class="sd">        &gt;&gt;&gt; result is out</span>
+<span class="sd">        True</span>
+
+<span class="sd">        Tensor-valued functions and functions defined on higher-dimensional</span>
+<span class="sd">        domains work just analogously:</span>
+
+<span class="sd">        &gt;&gt;&gt; fspace = odl.FunctionSpace(odl.IntervalProd([0, 0], [1, 1]),</span>
+<span class="sd">        ...                            out_dtype=(float, (2, 3)))</span>
+<span class="sd">        &gt;&gt;&gt; def pyfunc(x):</span>
+<span class="sd">        ...     return [[x[0], x[1], x[0] + x[1]],</span>
+<span class="sd">        ...             [1, 0, 2 * (x[0] + x[1])]]</span>
+<span class="sd">        &gt;&gt;&gt; func1 = fspace.element(pyfunc)</span>
+<span class="sd">        &gt;&gt;&gt; # Points are given such that the first axis indexes the</span>
+<span class="sd">        &gt;&gt;&gt; # components and the second enumerates the points.</span>
+<span class="sd">        &gt;&gt;&gt; # We evaluate at [0.0, 0.5] and [0.0, 1.0] here.</span>
+<span class="sd">        &gt;&gt;&gt; eval_pts = np.array([[0.0, 0.5],</span>
+<span class="sd">        ...                      [0.0, 1.0]]).T</span>
+<span class="sd">        &gt;&gt;&gt; func1(eval_pts).shape</span>
+<span class="sd">        (2, 3, 2)</span>
+<span class="sd">        &gt;&gt;&gt; func1(eval_pts)</span>
+<span class="sd">        array([[[ 0. ,  0. ],</span>
+<span class="sd">                [ 0.5,  1. ],</span>
+<span class="sd">                [ 0.5,  1. ]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">               [[ 1. ,  1. ],</span>
+<span class="sd">                [ 0. ,  0. ],</span>
+<span class="sd">                [ 1. ,  2. ]]])</span>
+
+<span class="sd">        Furthermore, it is allowed to use scalar constants instead of</span>
+<span class="sd">        functions if the function is given as sequence:</span>
+
+<span class="sd">        &gt;&gt;&gt; seq = [[lambda x: x[0], lambda x: x[1], lambda x: x[0] + x[1]],</span>
+<span class="sd">        ...        [1, 0, lambda x: 2 * (x[0] + x[1])]]</span>
+<span class="sd">        &gt;&gt;&gt; func2 = fspace.element(seq)</span>
+<span class="sd">        &gt;&gt;&gt; func2(eval_pts)</span>
+<span class="sd">        array([[[ 0. ,  0. ],</span>
+<span class="sd">                [ 0.5,  1. ],</span>
+<span class="sd">                [ 0.5,  1. ]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">               [[ 1. ,  1. ],</span>
+<span class="sd">                [ 0. ,  0. ],</span>
+<span class="sd">                [ 1. ,  2. ]]])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">fcall</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">fcall</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fcall</span>
+        <span class="k">elif</span> <span class="n">callable</span><span class="p">(</span><span class="n">fcall</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">vectorized</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fcall</span><span class="p">,</span> <span class="s1">&#39;nin&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fcall</span><span class="p">,</span> <span class="s1">&#39;nout&#39;</span><span class="p">):</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;`fcall` </span><span class="si">{!r}</span><span class="s1"> is a ufunc-like object, &#39;</span>
+                                  <span class="s1">&#39;use vectorized=True&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fcall</span><span class="p">),</span>
+                                  <span class="ne">RuntimeWarning</span><span class="p">)</span>
+                <span class="n">has_out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_check_out_arg</span><span class="p">(</span><span class="n">fcall</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">has_out</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;non-vectorized `fcall` with `out` &#39;</span>
+                                    <span class="s1">&#39;parameter not allowed&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">otypes</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">otypes</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="n">fcall</span> <span class="o">=</span> <span class="n">vectorize</span><span class="p">(</span><span class="n">otypes</span><span class="o">=</span><span class="n">otypes</span><span class="p">)(</span><span class="n">fcall</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fcall</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># This is for the case that an array-like of callables</span>
+            <span class="c1"># is provided</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">fcall</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_shape</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s1">&#39;invalid `fcall` </span><span class="si">{!r}</span><span class="s1">: expected `None`, a callable or &#39;</span>
+                    <span class="s1">&#39;an array-like of callables whose shape matches &#39;</span>
+                    <span class="s1">&#39;`out_shape` </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_shape</span><span class="p">))</span>
+
+            <span class="n">fcalls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fcall</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">vectorized</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">==</span> <span class="n">RealNumbers</span><span class="p">():</span>
+                    <span class="n">otypes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">]</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">==</span> <span class="n">ComplexNumbers</span><span class="p">():</span>
+                    <span class="n">otypes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;complex128&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">otypes</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="c1"># Vectorize, preserving scalars</span>
+                <span class="n">fcalls</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">else</span> <span class="n">vectorize</span><span class="p">(</span><span class="n">otypes</span><span class="o">=</span><span class="n">otypes</span><span class="p">)(</span><span class="n">f</span><span class="p">)</span>
+                          <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fcalls</span><span class="p">]</span>
+
+            <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Function wrapping an array of callables.</span>
+
+<span class="sd">                This wrapper does the following for out-of-place</span>
+<span class="sd">                evaluation (when ``out=None``):</span>
+
+<span class="sd">                1. Collect the results of all function evaluations into</span>
+<span class="sd">                   a list, handling all kinds of sequence entries</span>
+<span class="sd">                   (normal function, ufunc, constant, etc.).</span>
+<span class="sd">                2. Broadcast all results to the desired shape that is</span>
+<span class="sd">                   determined by the space&#39;s ``out_shape`` and the</span>
+<span class="sd">                   shape(s) of the input.</span>
+<span class="sd">                3. Form a big array containing the final result.</span>
+
+<span class="sd">                The in-place version is simpler because broadcasting</span>
+<span class="sd">                happens automatically when assigning to the components</span>
+<span class="sd">                of ``out``. Hence, we only have</span>
+
+<span class="sd">                1. Assign the result of the evaluation of the i-th</span>
+<span class="sd">                   function to ``out_flat[i]``, possibly using the</span>
+<span class="sd">                   ``out`` parameter of the function.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="k">if</span> <span class="n">is_valid_input_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                    <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_valid_input_array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                    <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;bad input&#39;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># Out-of-place evaluation</span>
+
+                    <span class="c1"># Collect results of member functions into a list.</span>
+                    <span class="c1"># Put simply, all that happens here is</span>
+                    <span class="c1"># `results.append(f(x))`, just for a bunch of cases</span>
+                    <span class="c1"># and with or without `out`.</span>
+                    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fcalls</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+                            <span class="c1"># Constant function</span>
+                            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+                            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;element </span><span class="si">{!r}</span><span class="s1"> of sequence not &#39;</span>
+                                            <span class="s1">&#39;callable&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+                        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;nin&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;nout&#39;</span><span class="p">):</span>
+                            <span class="c1"># ufunc-like object</span>
+                            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">has_out</span> <span class="o">=</span> <span class="s1">&#39;out&#39;</span> <span class="ow">in</span> <span class="n">getargspec</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">args</span>
+                            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;unsupported callable </span><span class="si">{!r}</span><span class="s1">&#39;</span>
+                                                <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="n">has_out</span><span class="p">:</span>
+                                    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">scalar_out_shape</span><span class="p">,</span>
+                                                   <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+                                    <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+                    <span class="c1"># Broadcast to required shape and convert to array.</span>
+                    <span class="c1"># This will raise an error if the shape of some member</span>
+                    <span class="c1"># array is wrong, since in that case the resulting</span>
+                    <span class="c1"># dtype would be `object`.</span>
+                    <span class="n">bcast_results</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">reshaped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">scalar_out_shape</span><span class="p">)</span>
+                        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                            <span class="n">bcast_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                                <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">scalar_out_shape</span><span class="p">))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">bcast_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reshaped</span><span class="p">)</span>
+
+                    <span class="n">out_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bcast_results</span><span class="p">,</span>
+                                       <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+
+                    <span class="k">return</span> <span class="n">out_arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_shape</span> <span class="o">+</span> <span class="n">scalar_out_shape</span><span class="p">)</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># In-place evaluation</span>
+
+                    <span class="c1"># This is a precaution in case out is not contiguous</span>
+                    <span class="k">with</span> <span class="n">writable_array</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_arr</span><span class="p">:</span>
+                        <span class="c1"># Flatten tensor axes to work on one tensor</span>
+                        <span class="c1"># component (= scalar function) at a time</span>
+                        <span class="n">out_comps</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,)</span> <span class="o">+</span> <span class="n">scalar_out_shape</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">out_comp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">fcalls</span><span class="p">,</span> <span class="n">out_comps</span><span class="p">):</span>
+                            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+                                <span class="n">out_comp</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">f</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">has_out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_fcall_out_type</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                                <span class="k">if</span> <span class="n">has_out</span><span class="p">:</span>
+                                    <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out_comp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">out_comp</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapper</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FunctionSpace.zero"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace.zero.html#odl.space.fspace.FunctionSpace.zero">[docs]</a>    <span class="k">def</span> <span class="nf">zero</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function mapping anything to zero.&quot;&quot;&quot;</span>
+        <span class="c1"># Since `FunctionSpace.lincomb` may be slow, we implement this</span>
+        <span class="c1"># function directly.</span>
+        <span class="c1"># The unused **kwargs are needed to support combination with</span>
+        <span class="c1"># functions that take parameters.</span>
+        <span class="k">def</span> <span class="nf">zero_vec</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Zero function, vectorized.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">is_valid_input_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">is_valid_input_array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;invalid input type&#39;</span><span class="p">)</span>
+
+            <span class="c1"># For tensor-valued functions</span>
+            <span class="n">out_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_shape</span> <span class="o">+</span> <span class="n">scalar_out_shape</span>
+
+            <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">out_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Need to go through an array to fill with the correct</span>
+                <span class="c1"># zero value for all dtypes</span>
+                <span class="n">fill_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">fill_value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">zero_vec</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FunctionSpace.one"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace.one.html#odl.space.fspace.FunctionSpace.one">[docs]</a>    <span class="k">def</span> <span class="nf">one</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function mapping anything to one.&quot;&quot;&quot;</span>
+        <span class="c1"># See zero() for remarks</span>
+        <span class="k">def</span> <span class="nf">one_vec</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;One function, vectorized.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">is_valid_input_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">is_valid_input_array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;invalid input type&#39;</span><span class="p">)</span>
+
+            <span class="n">out_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_shape</span> <span class="o">+</span> <span class="n">scalar_out_shape</span>
+
+            <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">out_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fill_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">fill_value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">one_vec</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FunctionSpace.__eq__"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace.__eq__.html#odl.space.fspace.FunctionSpace.__eq__">[docs]</a>    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self == other``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        equals : bool</span>
+<span class="sd">            ``True`` if ``other`` is a `FunctionSpace` with same</span>
+<span class="sd">            `FunctionSpace.domain`, `FunctionSpace.field` and</span>
+<span class="sd">            `FunctionSpace.out_dtype`, ``False`` otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">domain</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``hash(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">))</span>
+
+<div class="viewcode-block" id="FunctionSpace.__contains__"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace.__contains__.html#odl.space.fspace.FunctionSpace.__contains__">[docs]</a>    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``other in self``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        equals : bool</span>
+<span class="sd">            ``True`` if ``other`` is a `FunctionSpaceElement`</span>
+<span class="sd">            whose `FunctionSpaceElement.space` attribute</span>
+<span class="sd">            equals this space, ``False`` otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_type</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="n">other</span><span class="o">.</span><span class="n">space</span> <span class="o">==</span> <span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_astype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_dtype</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Internal helper for ``astype``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">out_dtype</span><span class="o">=</span><span class="n">out_dtype</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FunctionSpace.astype"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace.astype.html#odl.space.fspace.FunctionSpace.astype">[docs]</a>    <span class="k">def</span> <span class="nf">astype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_dtype</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a copy of this space with new ``out_dtype``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        out_dtype :</span>
+<span class="sd">            Output data type of the returned space. Can be given in any</span>
+<span class="sd">            way `numpy.dtype` understands, e.g. as string (``&#39;complex64&#39;``)</span>
+<span class="sd">            or built-in type (``complex``). ``None`` is interpreted as</span>
+<span class="sd">            ``&#39;float64&#39;``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        newspace : `FunctionSpace`</span>
+<span class="sd">            The version of this space with given data type</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out_dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">out_dtype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">out_dtype</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="c1"># Try to use caching for real and complex versions (exact dtype</span>
+        <span class="c1"># mappings). This may fail for certain dtype, in which case we</span>
+        <span class="c1"># just go to `_astype` directly.</span>
+        <span class="n">real_dtype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;real_out_dtype&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">real_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_astype</span><span class="p">(</span><span class="n">out_dtype</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">out_dtype</span> <span class="o">==</span> <span class="n">real_dtype</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__real_space</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__real_space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_astype</span><span class="p">(</span><span class="n">out_dtype</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__real_space</span>
+            <span class="k">elif</span> <span class="n">out_dtype</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">complex_out_dtype</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__complex_space</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__complex_space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_astype</span><span class="p">(</span><span class="n">out_dtype</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__complex_space</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_astype</span><span class="p">(</span><span class="n">out_dtype</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FunctionSpace._lincomb"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace._lincomb.html#odl.space.fspace.FunctionSpace._lincomb">[docs]</a>    <span class="k">def</span> <span class="nf">_lincomb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Linear combination of ``f1`` and ``f2``.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The additions and multiplications are implemented via simple</span>
+<span class="sd">        Python functions, so non-vectorized versions are slow.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Avoid infinite recursions by making a copy of the functions</span>
+        <span class="n">f1_copy</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">f2_copy</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">lincomb_oop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Linear combination, out-of-place version.&quot;&quot;&quot;</span>
+            <span class="c1"># Not optimized since that raises issues with alignment</span>
+            <span class="c1"># of input and partial results</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">f1_copy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                                 <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">f2_copy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                                 <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="n">tmp</span>
+            <span class="k">return</span> <span class="n">out</span>
+
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_out_of_place</span> <span class="o">=</span> <span class="n">lincomb_oop</span>
+        <span class="n">decorator</span> <span class="o">=</span> <span class="n">preload_first_arg</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s1">&#39;in-place&#39;</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_in_place</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">_default_in_place</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_has_out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">_call_out_optional</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+<div class="viewcode-block" id="FunctionSpace._multiply"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace._multiply.html#odl.space.fspace.FunctionSpace._multiply">[docs]</a>    <span class="k">def</span> <span class="nf">_multiply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pointwise multiplication of ``f1`` and ``f2``.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The multiplication is implemented with a simple Python</span>
+<span class="sd">        function, so the non-vectorized versions are slow.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Avoid infinite recursions by making a copy of the functions</span>
+        <span class="n">f1_copy</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">f2_copy</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">product_oop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Product out-of-place evaluation function.&quot;&quot;&quot;</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">f1_copy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">*</span> <span class="n">f2_copy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                              <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_out_of_place</span> <span class="o">=</span> <span class="n">product_oop</span>
+        <span class="n">decorator</span> <span class="o">=</span> <span class="n">preload_first_arg</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s1">&#39;in-place&#39;</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_in_place</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">_default_in_place</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_has_out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">_call_out_optional</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+<div class="viewcode-block" id="FunctionSpace._divide"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpace._divide.html#odl.space.fspace.FunctionSpace._divide">[docs]</a>    <span class="k">def</span> <span class="nf">_divide</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pointwise division of ``f1`` and ``f2``.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The division is implemented with a simple Python</span>
+<span class="sd">        function, so the non-vectorized versions are slow.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Avoid infinite recursions by making a copy of the functions</span>
+        <span class="n">f1_copy</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">f2_copy</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">quotient_oop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Quotient out-of-place evaluation function.&quot;&quot;&quot;</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">f1_copy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">/</span> <span class="n">f2_copy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                              <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_out_of_place</span> <span class="o">=</span> <span class="n">quotient_oop</span>
+        <span class="n">decorator</span> <span class="o">=</span> <span class="n">preload_first_arg</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s1">&#39;in-place&#39;</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_in_place</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">_default_in_place</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_has_out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">_call_out_optional</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+    <span class="k">def</span> <span class="nf">_scalar_power</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute ``p``-th power of ``f`` for ``p`` scalar.&quot;&quot;&quot;</span>
+        <span class="c1"># Avoid infinite recursions by making a copy of the function</span>
+        <span class="n">f_copy</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">pow_posint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Power function for positive integer ``n``, out-of-place.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">ipow_posint</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="n">n</span>
+
+        <span class="k">def</span> <span class="nf">ipow_posint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Power function for positive integer ``n``, in-place.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">x</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">*=</span> <span class="n">x</span>
+                <span class="k">return</span> <span class="n">ipow_posint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">x</span> <span class="o">*=</span> <span class="n">x</span>
+                <span class="n">ipow_posint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">x</span> <span class="o">*=</span> <span class="n">tmp</span>
+                <span class="k">return</span> <span class="n">x</span>
+
+        <span class="k">def</span> <span class="nf">power_oop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Power out-of-place evaluation function.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">p</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="n">p</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pow_posint</span><span class="p">(</span><span class="n">f_copy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">)),</span>
+                                  <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">f_copy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">p</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_out_of_place</span> <span class="o">=</span> <span class="n">power_oop</span>
+        <span class="n">decorator</span> <span class="o">=</span> <span class="n">preload_first_arg</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s1">&#39;in-place&#39;</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_in_place</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">_default_in_place</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_call_has_out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">_call_out_optional</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="k">def</span> <span class="nf">_realpart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function returning the real part of the result from ``f``.&quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">f_re</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                                <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">real</span>
+
+        <span class="k">if</span> <span class="n">is_real_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">real_space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">f_re</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_imagpart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function returning the imaginary part of the result from ``f``.&quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">f_im</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                                <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">imag</span>
+
+        <span class="k">if</span> <span class="n">is_real_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">real_space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">f_im</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_conj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function returning the complex conjugate of a result.&quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">f_conj</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                                <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">is_real_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">f_conj</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">byaxis_out</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Object to index along output dimensions.</span>
+
+<span class="sd">        This is only valid for non-trivial `out_shape`.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Indexing with integers or slices:</span>
+
+<span class="sd">        &gt;&gt;&gt; domain = odl.IntervalProd(0, 1)</span>
+<span class="sd">        &gt;&gt;&gt; fspace = odl.FunctionSpace(domain, out_dtype=(float, (2, 3, 4)))</span>
+<span class="sd">        &gt;&gt;&gt; fspace.byaxis_out[0]</span>
+<span class="sd">        FunctionSpace(IntervalProd(0.0, 1.0), out_dtype=(&#39;float64&#39;, (2,)))</span>
+<span class="sd">        &gt;&gt;&gt; fspace.byaxis_out[1]</span>
+<span class="sd">        FunctionSpace(IntervalProd(0.0, 1.0), out_dtype=(&#39;float64&#39;, (3,)))</span>
+<span class="sd">        &gt;&gt;&gt; fspace.byaxis_out[1:]</span>
+<span class="sd">        FunctionSpace(IntervalProd(0.0, 1.0), out_dtype=(&#39;float64&#39;, (3, 4)))</span>
+
+<span class="sd">        Lists can be used to stack spaces arbitrarily:</span>
+
+<span class="sd">        &gt;&gt;&gt; fspace.byaxis_out[[2, 1, 2]]</span>
+<span class="sd">        FunctionSpace(IntervalProd(0.0, 1.0), out_dtype=(&#39;float64&#39;, (4, 3, 4)))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">space</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="k">class</span> <span class="nc">FspaceByaxisOut</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+            <span class="sd">&quot;&quot;&quot;Helper class for indexing by output axes.&quot;&quot;&quot;</span>
+
+            <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Return ``self[indices]``.</span>
+
+<span class="sd">                Parameters</span>
+<span class="sd">                ----------</span>
+<span class="sd">                indices : index expression</span>
+<span class="sd">                    Object used to index the output components.</span>
+
+<span class="sd">                Returns</span>
+<span class="sd">                -------</span>
+<span class="sd">                space : `FunctionSpace`</span>
+<span class="sd">                    The resulting space with same domain and scalar output</span>
+<span class="sd">                    data type, but indexed output components.</span>
+
+<span class="sd">                Raises</span>
+<span class="sd">                ------</span>
+<span class="sd">                IndexError</span>
+<span class="sd">                    If this is a space of scalar-valued functions.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="nb">iter</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                    <span class="n">newshape</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">out_shape</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">newshape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">space</span><span class="o">.</span><span class="n">out_shape</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">)</span>
+
+                <span class="n">dtype</span> <span class="o">=</span> <span class="p">(</span><span class="n">space</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">,</span> <span class="n">newshape</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">space</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">out_dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+
+            <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+                <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="n">space</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.byaxis_out&#39;</span>
+
+        <span class="k">return</span> <span class="n">FspaceByaxisOut</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">byaxis_in</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Object to index ``self`` along input dimensions.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Indexing with integers or slices:</span>
+
+<span class="sd">        &gt;&gt;&gt; domain = odl.IntervalProd([0, 0, 0], [1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; fspace = odl.FunctionSpace(domain)</span>
+<span class="sd">        &gt;&gt;&gt; fspace.byaxis_in[0]</span>
+<span class="sd">        FunctionSpace(IntervalProd(0.0, 1.0))</span>
+<span class="sd">        &gt;&gt;&gt; fspace.byaxis_in[1]</span>
+<span class="sd">        FunctionSpace(IntervalProd(0.0, 2.0))</span>
+<span class="sd">        &gt;&gt;&gt; fspace.byaxis_in[1:]</span>
+<span class="sd">        FunctionSpace(IntervalProd([ 0.,  0.], [ 2.,  3.]))</span>
+
+<span class="sd">        Lists can be used to stack spaces arbitrarily:</span>
+
+<span class="sd">        &gt;&gt;&gt; fspace.byaxis_in[[2, 1, 2]]</span>
+<span class="sd">        FunctionSpace(IntervalProd([ 0.,  0.,  0.], [ 3.,  2.,  3.]))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">space</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="k">class</span> <span class="nc">FspaceByaxisIn</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+            <span class="sd">&quot;&quot;&quot;Helper class for indexing by input axes.&quot;&quot;&quot;</span>
+
+            <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Return ``self[indices]``.</span>
+
+<span class="sd">                Parameters</span>
+<span class="sd">                ----------</span>
+<span class="sd">                indices : index expression</span>
+<span class="sd">                    Object used to index the space domain.</span>
+
+<span class="sd">                Returns</span>
+<span class="sd">                -------</span>
+<span class="sd">                space : `FunctionSpace`</span>
+<span class="sd">                    The resulting space with same output data type, but</span>
+<span class="sd">                    indexed domain.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="n">domain</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">domain</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">out_dtype</span><span class="o">=</span><span class="n">space</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">)</span>
+
+            <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+                <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="n">space</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.byaxis_in&#39;</span>
+
+        <span class="k">return</span> <span class="n">FspaceByaxisIn</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">examples</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return example functions in the space.</span>
+
+<span class="sd">        Example functions include:</span>
+
+<span class="sd">        Zero</span>
+<span class="sd">        One</span>
+<span class="sd">        Heaviside function</span>
+<span class="sd">        Hypercube characteristic function</span>
+<span class="sd">        Hypersphere characteristic function</span>
+<span class="sd">        Gaussian</span>
+<span class="sd">        Linear gradients</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: adapt for tensor-valued functions</span>
+
+        <span class="c1"># Get the points and calculate some statistics on them</span>
+        <span class="n">mins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">maxs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">means</span> <span class="o">=</span> <span class="p">(</span><span class="n">maxs</span> <span class="o">+</span> <span class="n">mins</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">stds</span> <span class="o">=</span> <span class="p">(</span><span class="n">maxs</span> <span class="o">-</span> <span class="n">mins</span><span class="p">)</span> <span class="o">/</span> <span class="mf">4.0</span>
+        <span class="n">ndim</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="s1">&#39;ndim&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Zero and One</span>
+        <span class="k">yield</span> <span class="p">(</span><span class="s1">&#39;Zero&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">zero</span><span class="p">())</span>
+        <span class="k">yield</span> <span class="p">(</span><span class="s1">&#39;One&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">one</span><span class="p">())</span>
+
+        <span class="c1"># Indicator function in first dimension</span>
+        <span class="k">def</span> <span class="nf">step_fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">means</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">yield</span> <span class="p">(</span><span class="s1">&#39;Step&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">step_fun</span><span class="p">))</span>
+
+        <span class="c1"># Indicator function on hypercube</span>
+        <span class="k">def</span> <span class="nf">cube_fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">for</span> <span class="n">points</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="n">stds</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">points</span> <span class="o">&lt;</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">std</span><span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">points</span> <span class="o">&gt;</span> <span class="n">mean</span> <span class="o">-</span> <span class="n">std</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+        <span class="k">yield</span> <span class="p">(</span><span class="s1">&#39;Cube&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">cube_fun</span><span class="p">))</span>
+
+        <span class="c1"># Indicator function on a ball</span>
+        <span class="k">if</span> <span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Only if ndim &gt; 1, don&#39;t duplicate cube</span>
+            <span class="k">def</span> <span class="nf">ball_fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">xi</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">std</span> <span class="o">**</span> <span class="mi">2</span>
+                        <span class="k">for</span> <span class="n">xi</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="n">stds</span><span class="p">))</span>
+                <span class="k">return</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mf">1.0</span>
+
+            <span class="k">yield</span> <span class="p">(</span><span class="s1">&#39;Ball&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">ball_fun</span><span class="p">))</span>
+
+        <span class="c1"># Gaussian function</span>
+        <span class="k">def</span> <span class="nf">gaussian_fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">xi</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">std</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+                     <span class="k">for</span> <span class="n">xi</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="n">stds</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r2</span><span class="p">)</span>
+
+        <span class="k">yield</span> <span class="p">(</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">gaussian_fun</span><span class="p">))</span>
+
+        <span class="c1"># Gradient in each dimensions</span>
+        <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">gradient_fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">-</span> <span class="n">mins</span><span class="p">[</span><span class="n">axis</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">maxs</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">-</span> <span class="n">mins</span><span class="p">[</span><span class="n">axis</span><span class="p">])</span>
+
+            <span class="k">yield</span> <span class="p">(</span><span class="s1">&#39;Grad </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">axis</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">gradient_fun</span><span class="p">))</span>
+
+        <span class="c1"># Gradient in all dimensions</span>
+        <span class="k">if</span> <span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Only if ndim &gt; 1, don&#39;t duplicate grad 0</span>
+            <span class="k">def</span> <span class="nf">all_gradient_fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">xi</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span>
+                           <span class="k">for</span> <span class="n">xi</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span><span class="p">))</span>
+
+            <span class="k">yield</span> <span class="p">(</span><span class="s1">&#39;Grad all&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">all_gradient_fun</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;`FunctionSpaceElement`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">FunctionSpaceElement</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="n">posargs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">]</span>
+        <span class="n">optargs</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;out_dtype&#39;</span><span class="p">,</span> <span class="n">dtype_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">),</span> <span class="s1">&#39;float&#39;</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tensor_valued</span> <span class="ow">or</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">complex</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)):</span>
+            <span class="n">optmod</span> <span class="o">=</span> <span class="s1">&#39;!s&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">optmod</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">inner_str</span> <span class="o">=</span> <span class="n">signature_string</span><span class="p">(</span><span class="n">posargs</span><span class="p">,</span> <span class="n">optargs</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;!r&#39;</span><span class="p">,</span> <span class="n">optmod</span><span class="p">])</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">inner_str</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``str(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FunctionSpaceElement"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpaceElement.html#odl.space.fspace.FunctionSpaceElement">[docs]</a><span class="k">class</span> <span class="nc">FunctionSpaceElement</span><span class="p">(</span><span class="n">LinearSpaceElement</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Representation of a `FunctionSpace` element.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="FunctionSpaceElement.__init__"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpaceElement.html#odl.space.fspace.FunctionSpaceElement.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">fcall</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fspace : `FunctionSpace`</span>
+<span class="sd">            Set of functions this element lives in.</span>
+<span class="sd">        fcall : callable</span>
+<span class="sd">            Object used to evaluate the function. Must support</span>
+<span class="sd">            vectorization and accept a sequence of</span>
+<span class="sd">            coordinate arrays ``x[0], ..., x[d]`` in sparse or dense</span>
+<span class="sd">            form, and return (or write to the ``out`` array) an</span>
+<span class="sd">            array of appropriate shape.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FunctionSpaceElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fspace</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_has_out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_optional</span> <span class="o">=</span> <span class="n">_fcall_out_type</span><span class="p">(</span><span class="n">fcall</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_has_out</span><span class="p">:</span>
+            <span class="c1"># Out-of-place-only</span>
+            <span class="n">decorator</span> <span class="o">=</span> <span class="n">preload_first_arg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;in-place&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call_in_place</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">_default_in_place</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_of_place</span> <span class="o">=</span> <span class="n">fcall</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_optional</span><span class="p">:</span>
+            <span class="c1"># Dual-use</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call_in_place</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_of_place</span> <span class="o">=</span> <span class="n">fcall</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># In-place-only</span>
+            <span class="n">decorator</span> <span class="o">=</span> <span class="n">preload_first_arg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;out-of-place&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_of_place</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">_default_out_of_place</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call_in_place</span> <span class="o">=</span> <span class="n">fcall</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">domain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set of objects on which this function can be evaluated.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">domain</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">out_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Output data type of this function.</span>
+
+<span class="sd">        If ``None``, the output data type is not uniquely pre-defined.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">out_dtype</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scalar_out_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Scalar variant of ``out_dtype`` in case it has a shape.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">scalar_out_dtype</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">out_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Shape of function values, ``()`` for scalar output.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">out_shape</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tensor_valued</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;``True`` if the output is multi-dim. output, else ``False``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">tensor_valued</span>
+
+<div class="viewcode-block" id="FunctionSpaceElement._call"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpaceElement._call.html#odl.space.fspace.FunctionSpaceElement._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raw evaluation method.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_of_place</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call_in_place</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FunctionSpaceElement.__call__"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpaceElement.__call__.html#odl.space.fspace.FunctionSpaceElement.__call__">[docs]</a>    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self(x[, out, **kwargs])``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : `domain` `element-like`, `meshgrid` or `numpy.ndarray`</span>
+<span class="sd">            Input argument for the function evaluation. Conditions</span>
+<span class="sd">            on ``x`` depend on its type:</span>
+
+<span class="sd">            element-like: must be a castable to a domain element</span>
+
+<span class="sd">            meshgrid: length must be ``space.ndim``, and the arrays must</span>
+<span class="sd">            be broadcastable against each other.</span>
+
+<span class="sd">            array:  shape must be ``(d, N)``, where ``d`` is the number</span>
+<span class="sd">            of dimensions of the function domain</span>
+
+<span class="sd">        out : `numpy.ndarray`, optional</span>
+<span class="sd">            Output argument holding the result of the function</span>
+<span class="sd">            evaluation, can only be used for vectorized</span>
+<span class="sd">            functions. Its shape must be equal to</span>
+<span class="sd">            ``np.broadcast(*x).shape``.</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        bounds_check : bool</span>
+<span class="sd">            If ``True``, check if all input points lie in the function</span>
+<span class="sd">            domain in the case of vectorized evaluation. This requires</span>
+<span class="sd">            the domain to implement `Set.contains_all`.</span>
+<span class="sd">            Default: ``True`` if `space` has a ``field``, ``False``</span>
+<span class="sd">            otherwise.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : `range` element or `numpy.ndarray` of elements</span>
+<span class="sd">            Result of the function evaluation. If ``out`` was provided,</span>
+<span class="sd">            the returned object is a reference to it.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        TypeError</span>
+<span class="sd">            If ``x`` is not a valid vectorized evaluation argument.</span>
+
+<span class="sd">            If ``out`` is neither ``None`` nor a `numpy.ndarray` of</span>
+<span class="sd">            adequate shape and data type.</span>
+
+<span class="sd">        ValueError</span>
+<span class="sd">            If ``bounds_check == True`` and some evaluation points fall</span>
+<span class="sd">            outside the valid domain.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        In the following we have an ``ndim=2``-dimensional domain. The</span>
+<span class="sd">        following shows valid arrays and meshgrids for input:</span>
+
+<span class="sd">        &gt;&gt;&gt; fspace = odl.FunctionSpace(odl.IntervalProd([0, 0], [1, 1]))</span>
+<span class="sd">        &gt;&gt;&gt; func = fspace.element(lambda x: x[1] - x[0])</span>
+<span class="sd">        &gt;&gt;&gt; # 3 evaluation points, given point per point, each of which</span>
+<span class="sd">        &gt;&gt;&gt; # is contained in the function domain.</span>
+<span class="sd">        &gt;&gt;&gt; points = [[0, 0],</span>
+<span class="sd">        ...           [0, 1],</span>
+<span class="sd">        ...           [0.5, 0.1]]</span>
+<span class="sd">        &gt;&gt;&gt; # The array provided to `func` must be transposed since</span>
+<span class="sd">        &gt;&gt;&gt; # the first axis must index the components of the points and</span>
+<span class="sd">        &gt;&gt;&gt; # the second axis must enumerate them.</span>
+<span class="sd">        &gt;&gt;&gt; array = np.array(points).T</span>
+<span class="sd">        &gt;&gt;&gt; array.shape  # should be `ndim` x N</span>
+<span class="sd">        (2, 3)</span>
+<span class="sd">        &gt;&gt;&gt; func(array)</span>
+<span class="sd">        array([ 0. ,  1. , -0.4])</span>
+<span class="sd">        &gt;&gt;&gt; # A meshgrid is an `ndim`-long sequence of 1D Numpy arrays</span>
+<span class="sd">        &gt;&gt;&gt; # containing the coordinates of the points. We use</span>
+<span class="sd">        &gt;&gt;&gt; # 2 * 3 = 6 points here.</span>
+<span class="sd">        &gt;&gt;&gt; comp0 = np.array([0.0, 1.0])  # first components</span>
+<span class="sd">        &gt;&gt;&gt; comp1 = np.array([0.0, 0.5, 1.0])  # second components</span>
+<span class="sd">        &gt;&gt;&gt; # The following adds extra dimensions to enable broadcasting.</span>
+<span class="sd">        &gt;&gt;&gt; mesh = odl.discr.grid.sparse_meshgrid(comp0, comp1)</span>
+<span class="sd">        &gt;&gt;&gt; len(mesh)  # should be `ndim`</span>
+<span class="sd">        2</span>
+<span class="sd">        &gt;&gt;&gt; func(mesh)</span>
+<span class="sd">        array([[ 0. ,  0.5,  1. ],</span>
+<span class="sd">               [-1. , -0.5,  0. ]])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">bounds_check</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;bounds_check&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bounds_check</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="s1">&#39;contains_all&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;bounds check not possible for &#39;</span>
+                                 <span class="s1">&#39;domain </span><span class="si">{}</span><span class="s1">, missing `contains_all()` &#39;</span>
+                                 <span class="s1">&#39;method&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">bounds_check</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">field</span><span class="p">,</span> <span class="s1">&#39;contains_all&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;bounds check not possible for &#39;</span>
+                                 <span class="s1">&#39;field </span><span class="si">{}</span><span class="s1">, missing `contains_all()` &#39;</span>
+                                 <span class="s1">&#39;method&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">field</span><span class="p">))</span>
+
+        <span class="n">ndim</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="s1">&#39;ndim&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># Check for input type and determine output shape</span>
+        <span class="k">if</span> <span class="n">is_valid_input_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+            <span class="n">scalar_in</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">scalar_out</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="c1"># Avoid operations on tuples like x * 2 by casting to array</span>
+            <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="kc">None</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">is_valid_input_array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">scalar_in</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">scalar_out</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># make a (d, 1) array</span>
+            <span class="n">scalar_in</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">scalar_out_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
+            <span class="n">scalar_out</span> <span class="o">=</span> <span class="p">(</span><span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">tensor_valued</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Unknown input</span>
+            <span class="n">txt_1d</span> <span class="o">=</span> <span class="s1">&#39; or (n,)&#39;</span> <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;argument </span><span class="si">{!r}</span><span class="s1"> not a valid function &#39;</span>
+                            <span class="s1">&#39;input. Expected an element of the domain &#39;</span>
+                            <span class="s1">&#39;</span><span class="si">{domain}</span><span class="s1">, an array-like with shape &#39;</span>
+                            <span class="s1">&#39;(</span><span class="si">{domain.ndim}</span><span class="s1">, n)</span><span class="si">{}</span><span class="s1"> or a length-</span><span class="si">{domain.ndim}</span><span class="s1"> &#39;</span>
+                            <span class="s1">&#39;meshgrid tuple.&#39;</span>
+                            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">txt_1d</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">))</span>
+
+        <span class="c1"># Check bounds if specified</span>
+        <span class="k">if</span> <span class="n">bounds_check</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">contains_all</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;input contains points outside &#39;</span>
+                                 <span class="s1">&#39;the domain </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">scalar_in</span><span class="p">:</span>
+            <span class="n">out_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_shape</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_shape</span> <span class="o">+</span> <span class="n">scalar_out_shape</span>
+
+        <span class="c1"># Call the function and check out shape, before or after</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+                    <span class="c1"># TypeError is raised if a meshgrid was used but the</span>
+                    <span class="c1"># function expected an array (1d only). In this case we try</span>
+                    <span class="c1"># again with the first meshgrid vector.</span>
+                    <span class="c1"># IndexError is raised in expressions like x[x &gt; 0] since</span>
+                    <span class="c1"># &quot;x &gt; 0&quot; evaluates to &#39;True&#39;, i.e. 1, and that index is</span>
+                    <span class="c1"># out of range for a meshgrid tuple of length 1 :-). To get</span>
+                    <span class="c1"># the real errors with indexing, we check again for the</span>
+                    <span class="c1"># same scenario (scalar output when not valid) as in the</span>
+                    <span class="c1"># first case.</span>
+                    <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Here we don&#39;t catch exceptions since they are likely true</span>
+                <span class="c1"># errors</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
+                <span class="c1"># Cast to proper dtype if needed, also convert to array if out</span>
+                <span class="c1"># is a scalar.</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">scalar_in</span><span class="p">:</span>
+                    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">+</span> <span class="n">out_shape</span><span class="p">:</span>
+                    <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">out_shape</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">out_shape</span> <span class="o">!=</span> <span class="p">()</span> <span class="ow">and</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">out_shape</span><span class="p">:</span>
+                    <span class="c1"># Broadcast the returned element, but not in the</span>
+                    <span class="c1"># scalar case. The resulting array may be read-only,</span>
+                    <span class="c1"># in which case we copy.</span>
+                    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">out_shape</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">out</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">writeable</span><span class="p">:</span>
+                        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">tensor_valued</span><span class="p">:</span>
+                <span class="c1"># The out object can be any array-like of objects with shapes</span>
+                <span class="c1"># that should all be broadcastable to scalar_out_shape.</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span> <span class="ow">or</span> <span class="n">scalar_in</span><span class="p">:</span>
+                    <span class="c1"># Some results don&#39;t have correct shape, need to</span>
+                    <span class="c1"># broadcast</span>
+                    <span class="n">bcast_res</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">ravel</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="c1"># As usual, 1d is tedious to deal with. This</span>
+                            <span class="c1"># code deals with extra dimensions in result</span>
+                            <span class="c1"># components that stem from using x instead of</span>
+                            <span class="c1"># x[0] in a function.</span>
+                            <span class="c1"># Without this, broadcasting fails.</span>
+                            <span class="n">shp</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="p">())</span>
+                            <span class="k">if</span> <span class="n">shp</span> <span class="ow">and</span> <span class="n">shp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+                        <span class="n">bcast_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">scalar_out_shape</span><span class="p">))</span>
+
+                    <span class="n">out_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bcast_res</span><span class="p">,</span>
+                                       <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+                      <span class="n">results</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s1">&#39;result is of dtype </span><span class="si">{}</span><span class="s1">, expected </span><span class="si">{}</span><span class="s1">&#39;</span>
+                        <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype_repr</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+                                  <span class="n">dtype_repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">)))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">out_arr</span> <span class="o">=</span> <span class="n">results</span>
+
+                <span class="n">out</span> <span class="o">=</span> <span class="n">out_arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">out_shape</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># TODO: improve message</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;bad output of function call&#39;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;output </span><span class="si">{!r}</span><span class="s1"> not a `numpy.ndarray` &#39;</span>
+                                <span class="s1">&#39;instance&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">out_shape</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="ow">and</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">out_shape</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;output shape </span><span class="si">{}</span><span class="s1"> not equal to shape &#39;</span>
+                                 <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> expected from input&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">out_shape</span><span class="p">))</span>
+            <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+                    <span class="n">out</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scalar_out_dtype</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`out.dtype` (</span><span class="si">{}</span><span class="s1">) does not match out_dtype &#39;</span>
+                                 <span class="s1">&#39;(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tensor_valued</span><span class="p">:</span>
+                <span class="c1"># TypeError for meshgrid in 1d, but expected array (see above)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Check output values</span>
+        <span class="k">if</span> <span class="n">bounds_check</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">contains_all</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;output contains values not in the field &#39;</span>
+                                 <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">field</span><span class="p">))</span>
+
+        <span class="c1"># Numpy &lt; 1.12 does not implement __complex__ for arrays (in contrast</span>
+        <span class="c1"># to __float__), so we have to fish out the scalar ourselves.</span>
+        <span class="k">if</span> <span class="n">scalar_out</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">field</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">out</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">out</span></div>
+
+<div class="viewcode-block" id="FunctionSpaceElement.assign"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpaceElement.assign.html#odl.space.fspace.FunctionSpaceElement.assign">[docs]</a>    <span class="k">def</span> <span class="nf">assign</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Assign ``other`` to ``self``.</span>
+
+<span class="sd">        This is implemented without `FunctionSpace.lincomb` to ensure that</span>
+<span class="sd">        ``self == other`` evaluates to True after ``self.assign(other)``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`other` </span><span class="si">{!r}</span><span class="s1"> is not an element of the space &#39;</span>
+                            <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> of this function&#39;</span>
+                            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_in_place</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_call_in_place</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_of_place</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_call_out_of_place</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_has_out</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_call_has_out</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_optional</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_call_out_optional</span></div>
+
+<div class="viewcode-block" id="FunctionSpaceElement.copy"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpaceElement.copy.html#odl.space.fspace.FunctionSpaceElement.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an identical (deep) copy of this element.&quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">()</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="FunctionSpaceElement.__eq__"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpaceElement.__eq__.html#odl.space.fspace.FunctionSpaceElement.__eq__">[docs]</a>    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self == other``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        equals : bool</span>
+<span class="sd">            ``True`` if ``other`` is a `FunctionSpaceElement` with</span>
+<span class="sd">            ``other.space == self.space``, and the functions for evaluation</span>
+<span class="sd">            of ``self`` and ``other`` are the same, ``False``</span>
+<span class="sd">            otherwise.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Since there is potentially a lot of function wrapping going on,</span>
+<span class="sd">        it is very hard to find the &quot;true&quot; function behind a</span>
+<span class="sd">        `FunctionSpaceElement` for comparison. Therefore, users</span>
+<span class="sd">        should be aware that very often, comparison evaluates to ``False``</span>
+<span class="sd">        even if two elements were generated from the same function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">other</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># We try to unwrap one level, which is better than nothing</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_call_has_out</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_call_has_out</span> <span class="ow">or</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_optional</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_call_out_optional</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_has_out</span><span class="p">:</span>
+            <span class="c1"># Out-of-place can be wrapped in this case, so we compare only</span>
+            <span class="c1"># the in-place methods.</span>
+            <span class="n">funcs_equal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_in_place</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_call_in_place</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Just the opposite of the first case</span>
+            <span class="n">funcs_equal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_of_place</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_call_out_of_place</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">space</span> <span class="ow">and</span> <span class="n">funcs_equal</span></div>
+
+    <span class="c1"># Power functions are more general than the ones in LinearSpace</span>
+    <span class="k">def</span> <span class="nf">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;`f.__pow__(p) &lt;==&gt; f ** p`.&quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">_scalar_power</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="k">def</span> <span class="nf">__ipow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;`f.__ipow__(p) &lt;==&gt; f **= p`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">_scalar_power</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pointwise real part of this function.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">_realpart</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">imag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pointwise imaginary part of this function.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">_imagpart</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FunctionSpaceElement.conj"><a class="viewcode-back" href="../../../generated/odl.space.fspace.FunctionSpaceElement.conj.html#odl.space.fspace.FunctionSpaceElement.conj">[docs]</a>    <span class="k">def</span> <span class="nf">conj</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pointwise complex conjugate of this function.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">_conj</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``str(self)``.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_has_out</span><span class="p">:</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_in_place</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_of_place</span>
+
+        <span class="c1"># Try to get a pretty-print name of the function</span>
+        <span class="n">fname</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">func</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1"> --&gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_dtype</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_has_out</span><span class="p">:</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_in_place</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_out_of_place</span>
+
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{!r}</span><span class="s1">.element(</span><span class="si">{!r}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">odl.util.testutils</span> <span class="k">import</span> <span class="n">run_doctests</span>
+    <span class="n">run_doctests</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FunctionSpace &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="fspace" href="../odl.space.fspace.html"/>
+        <link rel="next" title="FunctionSpace._dist" href="odl.space.fspace.FunctionSpace._dist.html"/>
+        <link rel="prev" title="fspace" href="../odl.space.fspace.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.space.html">space</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.base_tensors.html">base_tensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.entry_points.html">entry_points</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.space.fspace.html">fspace</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">FunctionSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.fspace.FunctionSpaceElement.html">FunctionSpaceElement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.npy_tensors.html">npy_tensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.pspace.html">pspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.space_utils.html">space_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.weighting.html">weighting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.space.html">space</a> &raquo;</li>
+        
+          <li><a href="../odl.space.fspace.html">fspace</a> &raquo;</li>
+        
+      <li>FunctionSpace</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.space.fspace.FunctionSpace.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="functionspace">
+<h1>FunctionSpace<a class="headerlink" href="#functionspace" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.space.fspace.FunctionSpace">
+<em class="property">class </em><code class="descclassname">odl.space.fspace.</code><code class="descname">FunctionSpace</code><span class="sig-paren">(</span><em>domain</em>, <em>out_dtype=&lt;class 'float'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/space/fspace.html#FunctionSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.space.fspace.FunctionSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.set.space.LinearSpace.html#odl.set.space.LinearSpace" title="odl.set.space.LinearSpace"><code class="xref py py-class docutils literal"><span class="pre">odl.set.space.LinearSpace</span></code></a></p>
+<p>A vector space of functions.</p>
+<p>Elements in this space represent scalar-, vector- or tensor-valued
+functions on some set, usually a subset of a Euclidean space
+<img class="math" src="../_images/math/d8694ed87c3529dd999c8d5ddad4e17badc958fc.png" alt="\mathbb{R}^d"/>. The functions support vectorized evaluation,
+see <a class="reference external" href="https://odlgroup.github.io/odl/guide/vectorization_guide.html">the vectorization guide</a>
+for details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">byaxis_in</span></code></dt>
+<dd><p class="first last">Object to index <code class="docutils literal"><span class="pre">self</span></code> along input dimensions.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">byaxis_out</span></code></dt>
+<dd><p class="first last">Object to index along output dimensions.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">complex_out_dtype</span></code></dt>
+<dd><p class="first last">The complex dtype corresponding to this space’s <code class="xref any docutils literal"><span class="pre">out_dtype</span></code>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">complex_space</span></code></dt>
+<dd><p class="first last">The space corresponding to this space’s <a class="reference internal" href="odl.util.utility.complex_dtype.html#odl.util.utility.complex_dtype" title="odl.util.utility.complex_dtype"><code class="xref any py py-func docutils literal"><span class="pre">complex_dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">domain</span></code></dt>
+<dd><p class="first last">Set from which a function in this space can take inputs.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">element_type</span></code></dt>
+<dd><p class="first last"><a class="reference internal" href="odl.space.fspace.FunctionSpaceElement.html#odl.space.fspace.FunctionSpaceElement" title="odl.space.fspace.FunctionSpaceElement"><code class="xref any py py-class docutils literal"><span class="pre">FunctionSpaceElement</span></code></a></p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">examples</span></code></dt>
+<dd><p class="first last">Return example functions in the space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">field</span></code></dt>
+<dd><p class="first last">Scalar field of numbers for this vector space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">out_dtype</span></code></dt>
+<dd><p class="first last">Output data type (including shape) of a function in this space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">out_shape</span></code></dt>
+<dd><p class="first last">Shape of function values, <code class="docutils literal"><span class="pre">()</span></code> for scalar output.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">real_out_dtype</span></code></dt>
+<dd><p class="first last">The real dtype corresponding to this space’s <code class="xref any docutils literal"><span class="pre">out_dtype</span></code>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">real_space</span></code></dt>
+<dd><p class="first last">The space corresponding to this space’s <a class="reference internal" href="odl.util.utility.real_dtype.html#odl.util.utility.real_dtype" title="odl.util.utility.real_dtype"><code class="xref any py py-func docutils literal"><span class="pre">real_dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">scalar_out_dtype</span></code></dt>
+<dd><p class="first last">Scalar variant of <code class="docutils literal"><span class="pre">out_dtype</span></code> in case it has a shape.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">tensor_valued</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if functions have multi-dim. output, else <code class="docutils literal"><span class="pre">False</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace._dist.html#odl.space.fspace.FunctionSpace._dist" title="odl.space.fspace.FunctionSpace._dist"><code class="xref py py-obj docutils literal"><span class="pre">_dist</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the distance between <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace._divide.html#odl.space.fspace.FunctionSpace._divide" title="odl.space.fspace.FunctionSpace._divide"><code class="xref py py-obj docutils literal"><span class="pre">_divide</span></code></a>(f1,&nbsp;f2,&nbsp;out)</td>
+<td>Pointwise division of <code class="docutils literal"><span class="pre">f1</span></code> and <code class="docutils literal"><span class="pre">f2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace._inner.html#odl.space.fspace.FunctionSpace._inner" title="odl.space.fspace.FunctionSpace._inner"><code class="xref py py-obj docutils literal"><span class="pre">_inner</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the inner product of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace._lincomb.html#odl.space.fspace.FunctionSpace._lincomb" title="odl.space.fspace.FunctionSpace._lincomb"><code class="xref py py-obj docutils literal"><span class="pre">_lincomb</span></code></a>(a,&nbsp;f1,&nbsp;b,&nbsp;f2,&nbsp;out)</td>
+<td>Linear combination of <code class="docutils literal"><span class="pre">f1</span></code> and <code class="docutils literal"><span class="pre">f2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace._multiply.html#odl.space.fspace.FunctionSpace._multiply" title="odl.space.fspace.FunctionSpace._multiply"><code class="xref py py-obj docutils literal"><span class="pre">_multiply</span></code></a>(f1,&nbsp;f2,&nbsp;out)</td>
+<td>Pointwise multiplication of <code class="docutils literal"><span class="pre">f1</span></code> and <code class="docutils literal"><span class="pre">f2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace._norm.html#odl.space.fspace.FunctionSpace._norm" title="odl.space.fspace.FunctionSpace._norm"><code class="xref py py-obj docutils literal"><span class="pre">_norm</span></code></a>(x)</td>
+<td>Return the norm of <code class="docutils literal"><span class="pre">x</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.astype.html#odl.space.fspace.FunctionSpace.astype" title="odl.space.fspace.FunctionSpace.astype"><code class="xref py py-obj docutils literal"><span class="pre">astype</span></code></a>(out_dtype)</td>
+<td>Return a copy of this space with new <code class="docutils literal"><span class="pre">out_dtype</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.contains_all.html#odl.space.fspace.FunctionSpace.contains_all" title="odl.space.fspace.FunctionSpace.contains_all"><code class="xref py py-obj docutils literal"><span class="pre">contains_all</span></code></a>(other)</td>
+<td>Test if all elements in <code class="docutils literal"><span class="pre">other</span></code> are contained in this set.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.contains_set.html#odl.space.fspace.FunctionSpace.contains_set" title="odl.space.fspace.FunctionSpace.contains_set"><code class="xref py py-obj docutils literal"><span class="pre">contains_set</span></code></a>(other)</td>
+<td>Test if <code class="docutils literal"><span class="pre">other</span></code> is a subset of this set.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.dist.html#odl.space.fspace.FunctionSpace.dist" title="odl.space.fspace.FunctionSpace.dist"><code class="xref py py-obj docutils literal"><span class="pre">dist</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the distance between <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.divide.html#odl.space.fspace.FunctionSpace.divide" title="odl.space.fspace.FunctionSpace.divide"><code class="xref py py-obj docutils literal"><span class="pre">divide</span></code></a>(x1,&nbsp;x2[,&nbsp;out])</td>
+<td>Return the pointwise quotient of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.element.html#odl.space.fspace.FunctionSpace.element" title="odl.space.fspace.FunctionSpace.element"><code class="xref py py-obj docutils literal"><span class="pre">element</span></code></a>([fcall,&nbsp;vectorized])</td>
+<td>Create a <a class="reference internal" href="#odl.space.fspace.FunctionSpace" title="odl.space.fspace.FunctionSpace"><code class="xref any py py-class docutils literal"><span class="pre">FunctionSpace</span></code></a> element.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.inner.html#odl.space.fspace.FunctionSpace.inner" title="odl.space.fspace.FunctionSpace.inner"><code class="xref py py-obj docutils literal"><span class="pre">inner</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the inner product of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.lincomb.html#odl.space.fspace.FunctionSpace.lincomb" title="odl.space.fspace.FunctionSpace.lincomb"><code class="xref py py-obj docutils literal"><span class="pre">lincomb</span></code></a>(a,&nbsp;x1[,&nbsp;b,&nbsp;x2,&nbsp;out])</td>
+<td>Implement <code class="docutils literal"><span class="pre">out[:]</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">x1</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">*</span> <span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.multiply.html#odl.space.fspace.FunctionSpace.multiply" title="odl.space.fspace.FunctionSpace.multiply"><code class="xref py py-obj docutils literal"><span class="pre">multiply</span></code></a>(x1,&nbsp;x2[,&nbsp;out])</td>
+<td>Return the pointwise product of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.norm.html#odl.space.fspace.FunctionSpace.norm" title="odl.space.fspace.FunctionSpace.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>(x)</td>
+<td>Return the norm of <code class="docutils literal"><span class="pre">x</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.one.html#odl.space.fspace.FunctionSpace.one" title="odl.space.fspace.FunctionSpace.one"><code class="xref py py-obj docutils literal"><span class="pre">one</span></code></a>()</td>
+<td>Function mapping anything to one.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.fspace.FunctionSpace.zero.html#odl.space.fspace.FunctionSpace.zero" title="odl.space.fspace.FunctionSpace.zero"><code class="xref py py-obj docutils literal"><span class="pre">zero</span></code></a>()</td>
+<td>Function mapping anything to zero.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.space.fspace.FunctionSpace.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>domain</em>, <em>out_dtype=&lt;class 'float'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/space/fspace.html#FunctionSpace.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.space.fspace.FunctionSpace.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>domain <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.set.sets.Set.html#odl.set.sets.Set" title="odl.set.sets.Set"><code class="xref any py py-class docutils literal"><span class="pre">Set</span></code></a></span></dt>
+<dd><p class="first last">The domain of the functions.</p>
+</dd>
+<dt>out_dtype <span class="classifier-delimiter">:</span> <span class="classifier">optional</span></dt>
+<dd><p class="first">Data type of the return value of a function in this
+space. Can be provided in any way the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.14)"><code class="xref any docutils literal"><span class="pre">numpy.dtype</span></code></a>
+constructor understands, e.g. as built-in type or as a string.</p>
+<p>To create a space of vector- or tensor-valued functions,
+use a dtype with a shape, e.g.,
+<code class="docutils literal"><span class="pre">np.dtype((float,</span> <span class="pre">(2,</span> <span class="pre">3)))</span></code>.</p>
+<p class="last">For <code class="docutils literal"><span class="pre">None</span></code>, the data type of function outputs is inferred
+lazily at runtime.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Real-valued functions on the interval [0, 1]:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">domain</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">IntervalProd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">odl</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+<span class="go">FunctionSpace(IntervalProd(0.0, 1.0))</span>
+</pre></div>
+</div>
+<p>Complex-valued functions on the same domain can be created by
+specifying <code class="docutils literal"><span class="pre">out_dtype</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">odl</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">out_dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+<span class="go">FunctionSpace(IntervalProd(0.0, 1.0), out_dtype=complex)</span>
+</pre></div>
+</div>
+<p>To get vector- or tensor-valued functions, specify
+<code class="docutils literal"><span class="pre">out_dtype</span></code> with shape:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vec_dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">((</span><span class="nb">float</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)))</span>  <span class="c1"># 3 components</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">odl</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">out_dtype</span><span class="o">=</span><span class="n">vec_dtype</span><span class="p">)</span>
+<span class="go">FunctionSpace(IntervalProd(0.0, 1.0), out_dtype=(&#39;float64&#39;, (3,)))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.space.fspace.FunctionSpace._dist.html" class="btn btn-neutral float-right" title="FunctionSpace._dist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../odl.space.fspace.html" class="btn btn-neutral" title="fspace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

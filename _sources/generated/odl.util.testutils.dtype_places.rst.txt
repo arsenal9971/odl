@@ -1,0 +1,6 @@
+dtype_places
+===============================
+
+.. currentmodule:: odl.util.testutils
+
+.. autofunction:: dtype_places

@@ -1,0 +1,8 @@
+:orphan:
+
+FailCounter.fail
+===================================
+
+.. currentmodule:: odl.util.testutils
+
+.. automethod:: FailCounter.fail

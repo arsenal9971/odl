@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpElement.divide
+===========================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLpElement.divide

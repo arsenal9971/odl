@@ -1,0 +1,6 @@
+uniform_noise
+===============================
+
+.. currentmodule:: odl.phantom.noise
+
+.. autofunction:: uniform_noise

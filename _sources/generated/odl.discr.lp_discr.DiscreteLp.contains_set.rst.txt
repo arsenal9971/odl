@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLp.contains_set
+==========================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLp.contains_set

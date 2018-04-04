@@ -1,0 +1,6 @@
+copysign
+================================
+
+.. currentmodule:: odl.ufunc_ops.ufunc_ops
+
+.. autofunction:: copysign

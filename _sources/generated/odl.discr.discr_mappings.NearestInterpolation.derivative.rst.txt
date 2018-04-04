@@ -1,0 +1,8 @@
+:orphan:
+
+NearestInterpolation.derivative
+========================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: NearestInterpolation.derivative

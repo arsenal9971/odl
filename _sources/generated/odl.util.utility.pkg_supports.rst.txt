@@ -1,0 +1,6 @@
+pkg_supports
+=============================
+
+.. currentmodule:: odl.util.utility
+
+.. autofunction:: pkg_supports

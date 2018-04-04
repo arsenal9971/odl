@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpace.__eq__
+=====================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpace.__eq__

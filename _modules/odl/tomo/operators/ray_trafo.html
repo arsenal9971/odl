@@ -1,0 +1,793 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.tomo.operators.ray_trafo &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.tomo.operators.ray_trafo</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.tomo.operators.ray_trafo</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;Ray transforms.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">odl.discr</span> <span class="k">import</span> <span class="n">DiscreteLp</span>
+<span class="kn">from</span> <span class="nn">odl.operator</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">odl.space</span> <span class="k">import</span> <span class="n">FunctionSpace</span>
+<span class="kn">from</span> <span class="nn">odl.tomo.geometry</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">Geometry</span><span class="p">,</span> <span class="n">Parallel2dGeometry</span><span class="p">,</span> <span class="n">Parallel3dAxisGeometry</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">odl.space.weighting</span> <span class="k">import</span> <span class="n">ConstWeighting</span>
+<span class="kn">from</span> <span class="nn">odl.tomo.backends</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">ASTRA_AVAILABLE</span><span class="p">,</span> <span class="n">ASTRA_CUDA_AVAILABLE</span><span class="p">,</span> <span class="n">SKIMAGE_AVAILABLE</span><span class="p">,</span>
+    <span class="n">astra_supports</span><span class="p">,</span> <span class="n">ASTRA_VERSION</span><span class="p">,</span>
+    <span class="n">astra_cpu_forward_projector</span><span class="p">,</span> <span class="n">astra_cpu_back_projector</span><span class="p">,</span>
+    <span class="n">AstraCudaProjectorImpl</span><span class="p">,</span> <span class="n">AstraCudaBackProjectorImpl</span><span class="p">,</span>
+    <span class="n">skimage_radon_forward</span><span class="p">,</span> <span class="n">skimage_radon_back_projector</span><span class="p">)</span>
+
+
+<span class="n">ASTRA_CPU_AVAILABLE</span> <span class="o">=</span> <span class="n">ASTRA_AVAILABLE</span>
+<span class="n">_SUPPORTED_IMPL</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;astra_cpu&#39;</span><span class="p">,</span> <span class="s1">&#39;astra_cuda&#39;</span><span class="p">,</span> <span class="s1">&#39;skimage&#39;</span><span class="p">)</span>
+<span class="n">_AVAILABLE_IMPLS</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="n">ASTRA_CPU_AVAILABLE</span><span class="p">:</span>
+    <span class="n">_AVAILABLE_IMPLS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;astra_cpu&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">ASTRA_CUDA_AVAILABLE</span><span class="p">:</span>
+    <span class="n">_AVAILABLE_IMPLS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;astra_cuda&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SKIMAGE_AVAILABLE</span><span class="p">:</span>
+    <span class="n">_AVAILABLE_IMPLS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;skimage&#39;</span><span class="p">)</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;RayTransform&#39;</span><span class="p">,</span> <span class="s1">&#39;RayBackProjection&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="RayTransformBase"><a class="viewcode-back" href="../../../../generated/odl.tomo.operators.ray_trafo.RayTransformBase.html#odl.tomo.operators.ray_trafo.RayTransformBase">[docs]</a><span class="k">class</span> <span class="nc">RayTransformBase</span><span class="p">(</span><span class="n">Operator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Base class for ray transforms containing common attributes.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="RayTransformBase.__init__"><a class="viewcode-back" href="../../../../generated/odl.tomo.operators.ray_trafo.RayTransformBase.html#odl.tomo.operators.ray_trafo.RayTransformBase.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reco_space</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="n">variant</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        reco_space : `DiscreteLp`</span>
+<span class="sd">            Discretized reconstruction space, the domain of the forward</span>
+<span class="sd">            operator or the range of the adjoint (back-projection).</span>
+<span class="sd">        geometry : `Geometry`</span>
+<span class="sd">            Geometry of the transform that contains information about</span>
+<span class="sd">            the data structure.</span>
+<span class="sd">        variant : {&#39;forward&#39;, &#39;backward&#39;}</span>
+<span class="sd">            Variant of the transform, i.e., whether the ray transform</span>
+<span class="sd">            or its back-projection should be created.</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        impl : {`None`, &#39;astra_cuda&#39;, &#39;astra_cpu&#39;, &#39;skimage&#39;}, optional</span>
+<span class="sd">            Implementation back-end for the transform. Supported back-ends:</span>
+
+<span class="sd">            - ``&#39;astra_cuda&#39;``: ASTRA toolbox, using CUDA, 2D or 3D</span>
+<span class="sd">            - ``&#39;astra_cpu&#39;``: ASTRA toolbox using CPU, only 2D</span>
+<span class="sd">            - ``&#39;skimage&#39;``: scikit-image, only 2D parallel with square</span>
+<span class="sd">              reconstruction space.</span>
+
+<span class="sd">            For the default ``None``, the fastest available back-end is</span>
+<span class="sd">            used.</span>
+
+<span class="sd">        interp : {&#39;nearest&#39;, &#39;linear&#39;}, optional</span>
+<span class="sd">            Interpolation type for the discretization of the projection</span>
+<span class="sd">            space. This has no effect if ``proj_space`` is given explicitly.</span>
+<span class="sd">            Default: ``&#39;nearest&#39;``</span>
+<span class="sd">        proj_space : `DiscreteLp`, optional</span>
+<span class="sd">            Discretized projection (sinogram) space, the range of the forward</span>
+<span class="sd">            operator or the domain of the adjoint (back-projection).</span>
+<span class="sd">            Default: Inferred from parameters.</span>
+<span class="sd">        use_cache : bool, optional</span>
+<span class="sd">            If ``True``, data is cached. This gives a significant speed-up</span>
+<span class="sd">            at the expense of a notable memory overhead, both on the GPU</span>
+<span class="sd">            and on the CPU, since a full volume and a projection dataset</span>
+<span class="sd">            are stored. That may be prohibitive in 3D.</span>
+<span class="sd">            Default: True</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The ASTRA backend is faster if data are given with</span>
+<span class="sd">        ``dtype=&#39;float32&#39;`` and storage order &#39;C&#39;. Otherwise copies will be</span>
+<span class="sd">        needed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">variant</span><span class="p">,</span> <span class="n">variant_in</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">variant</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">variant</span>
+        <span class="k">if</span> <span class="n">variant</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span> <span class="s1">&#39;backward&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`variant` </span><span class="si">{!r}</span><span class="s1"> not understood&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">variant_in</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;forward&#39;</span><span class="p">:</span>
+            <span class="n">reco_name</span> <span class="o">=</span> <span class="s1">&#39;domain&#39;</span>
+            <span class="n">proj_name</span> <span class="o">=</span> <span class="s1">&#39;range&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">reco_name</span> <span class="o">=</span> <span class="s1">&#39;range&#39;</span>
+            <span class="n">proj_name</span> <span class="o">=</span> <span class="s1">&#39;domain&#39;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reco_space</span><span class="p">,</span> <span class="n">DiscreteLp</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`</span><span class="si">{}</span><span class="s1">` must be a `DiscreteLp` instance, got &#39;</span>
+                            <span class="s1">&#39;</span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reco_name</span><span class="p">,</span> <span class="n">reco_space</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">Geometry</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`geometry` must be a `Geometry` instance, got &#39;</span>
+                            <span class="s1">&#39;</span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geometry</span><span class="p">))</span>
+
+        <span class="c1"># Handle backend choice</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">_AVAILABLE_IMPLS</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;no ray transform back-end available; &#39;</span>
+                               <span class="s1">&#39;this requires 3rd party packages, please &#39;</span>
+                               <span class="s1">&#39;check the install docs&#39;</span><span class="p">)</span>
+        <span class="n">impl</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;impl&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">impl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Select fastest available</span>
+            <span class="k">if</span> <span class="n">ASTRA_CUDA_AVAILABLE</span><span class="p">:</span>
+                <span class="n">impl</span> <span class="o">=</span> <span class="s1">&#39;astra_cuda&#39;</span>
+            <span class="k">elif</span> <span class="n">ASTRA_AVAILABLE</span><span class="p">:</span>
+                <span class="n">impl</span> <span class="o">=</span> <span class="s1">&#39;astra_cpu&#39;</span>
+                <span class="k">if</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="mi">512</span> <span class="o">**</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                        <span class="s2">&quot;The best available backend (&#39;astra_cpu&#39;) may be too &quot;</span>
+                        <span class="s2">&quot;slow for volumes of this size. Consider using &quot;</span>
+                        <span class="s2">&quot;&#39;astra_cuda&#39; if your machine has an Nvidia GPU. &quot;</span>
+                        <span class="s2">&quot;This warning can be disabled by explicitly setting &quot;</span>
+                        <span class="s2">&quot;`impl=&#39;astra_cpu&#39;`.&quot;</span><span class="p">,</span>
+                        <span class="ne">RuntimeWarning</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">SKIMAGE_AVAILABLE</span><span class="p">:</span>
+                <span class="n">impl</span> <span class="o">=</span> <span class="s1">&#39;skimage&#39;</span>
+                <span class="k">if</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="mi">256</span> <span class="o">**</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                        <span class="s2">&quot;The best available backend (&#39;skimage&#39;) may be too &quot;</span>
+                        <span class="s2">&quot;slow for volumes of this size. Consider using ASTRA. &quot;</span>
+                        <span class="s2">&quot;This warning can be disabled by explicitly setting &quot;</span>
+                        <span class="s2">&quot;`impl=&#39;skimage&#39;`.&quot;</span><span class="p">,</span>
+                        <span class="ne">RuntimeWarning</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;bad impl&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">impl</span><span class="p">,</span> <span class="n">impl_in</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">impl</span>
+            <span class="k">if</span> <span class="n">impl</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_SUPPORTED_IMPL</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`impl` </span><span class="si">{!r}</span><span class="s1"> not understood&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">impl_in</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">impl</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_AVAILABLE_IMPLS</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{!r}</span><span class="s1"> back-end not available&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">impl</span><span class="p">))</span>
+
+        <span class="c1"># Cache for input/output arrays of transforms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_cache</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;use_cache&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Sanity checks</span>
+        <span class="k">if</span> <span class="n">impl</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;astra&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">geometry</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">impl</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`impl` </span><span class="si">{!r}</span><span class="s1"> only works for 2d&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">impl_in</span><span class="p">))</span>
+
+            <span class="c1"># Print a warning if the detector midpoint normal vector at any</span>
+            <span class="c1"># angle is perpendicular to the geometry axis in parallel 3d</span>
+            <span class="c1"># single-axis geometry -- this is broken in some ASTRA versions</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">Parallel3dAxisGeometry</span><span class="p">)</span> <span class="ow">and</span>
+                    <span class="ow">not</span> <span class="n">astra_supports</span><span class="p">(</span><span class="s1">&#39;par3d_det_mid_pt_perp_to_axis&#39;</span><span class="p">)):</span>
+                <span class="n">axis</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">axis</span>
+                <span class="n">mid_pt</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">det_params</span><span class="o">.</span><span class="n">mid_pt</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">angles</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span>
+                                  <span class="n">geometry</span><span class="o">.</span><span class="n">det_to_src</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">mid_pt</span><span class="p">)))</span> <span class="o">&lt;</span> <span class="mf">1e-4</span><span class="p">:</span>
+                        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                            <span class="s1">&#39;angle </span><span class="si">{}</span><span class="s1">: detector midpoint normal </span><span class="si">{}</span><span class="s1"> is &#39;</span>
+                            <span class="s1">&#39;perpendicular to the geometry axis </span><span class="si">{}</span><span class="s1"> in &#39;</span>
+                            <span class="s1">&#39;`Parallel3dAxisGeometry`; this is broken in &#39;</span>
+                            <span class="s1">&#39;ASTRA v</span><span class="si">{}</span><span class="s1">, please upgrade to v1.8 or later&#39;</span>
+                            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">geometry</span><span class="o">.</span><span class="n">det_to_src</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">mid_pt</span><span class="p">),</span>
+                                      <span class="n">axis</span><span class="p">,</span> <span class="n">ASTRA_VERSION</span><span class="p">),</span>
+                            <span class="ne">RuntimeWarning</span><span class="p">)</span>
+                        <span class="k">break</span>
+
+        <span class="k">elif</span> <span class="n">impl</span> <span class="o">==</span> <span class="s1">&#39;skimage&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">Parallel2dGeometry</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{!r}</span><span class="s2"> backend only supports 2d parallel &quot;</span>
+                                <span class="s1">&#39;geometries&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">impl</span><span class="p">))</span>
+
+            <span class="n">mid_pt</span> <span class="o">=</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">mid_pt</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">mid_pt</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`</span><span class="si">{}</span><span class="s1">` must be centered at (0, 0), got &#39;</span>
+                                 <span class="s1">&#39;midpoint </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reco_name</span><span class="p">,</span> <span class="n">mid_pt</span><span class="p">))</span>
+
+            <span class="n">shape</span> <span class="o">=</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">shape</span>
+            <span class="k">if</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`</span><span class="si">{}</span><span class="s1">.shape` must have equal entries, &#39;</span>
+                                 <span class="s1">&#39;got </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reco_name</span><span class="p">,</span> <span class="n">shape</span><span class="p">))</span>
+
+            <span class="n">extent</span> <span class="o">=</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">extent</span>
+            <span class="k">if</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`</span><span class="si">{}</span><span class="s1">.extent` must have equal entries, &#39;</span>
+                                 <span class="s1">&#39;got </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reco_name</span><span class="p">,</span> <span class="n">extent</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">ndim</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`</span><span class="si">{}</span><span class="s1">.ndim` not equal to `geometry.ndim`: &#39;</span>
+                             <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> != </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reco_name</span><span class="p">,</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span>
+                                               <span class="n">geometry</span><span class="o">.</span><span class="n">ndim</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__geometry</span> <span class="o">=</span> <span class="n">geometry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__impl</span> <span class="o">=</span> <span class="n">impl</span>
+
+        <span class="c1"># Generate or check projection space</span>
+        <span class="n">proj_space</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;proj_space&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">proj_space</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dtype</span> <span class="o">=</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">dtype</span>
+            <span class="n">proj_fspace</span> <span class="o">=</span> <span class="n">FunctionSpace</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">out_dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">is_weighted</span><span class="p">:</span>
+                <span class="n">weighting</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">reco_space</span><span class="o">.</span><span class="n">weighting</span><span class="p">,</span> <span class="n">ConstWeighting</span><span class="p">)</span> <span class="ow">and</span>
+                  <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">reco_space</span><span class="o">.</span><span class="n">weighting</span><span class="o">.</span><span class="n">const</span><span class="p">,</span>
+                             <span class="n">reco_space</span><span class="o">.</span><span class="n">cell_volume</span><span class="p">)):</span>
+                <span class="c1"># Approximate cell volume</span>
+                <span class="c1"># TODO: find a way to treat angles and detector differently</span>
+                <span class="c1"># regarding weighting. While the detector should be uniformly</span>
+                <span class="c1"># discretized, the angles do not have to and often are not.</span>
+                <span class="c1"># The needed partition property is available since</span>
+                <span class="c1"># commit a551190d, but weighting is not adapted yet.</span>
+                <span class="c1"># See also issue #286</span>
+                <span class="n">extent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">prod</span><span class="p">())</span>
+                <span class="n">size</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+                <span class="n">weighting</span> <span class="o">=</span> <span class="n">extent</span> <span class="o">/</span> <span class="n">size</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;unknown weighting of domain&#39;</span><span class="p">)</span>
+
+            <span class="n">proj_tspace</span> <span class="o">=</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">tspace_type</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+                                                 <span class="n">weighting</span><span class="o">=</span><span class="n">weighting</span><span class="p">,</span>
+                                                 <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">geometry</span><span class="o">.</span><span class="n">motion_partition</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">angle_labels</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="n">geometry</span><span class="o">.</span><span class="n">motion_partition</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">angle_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">varphi$&#39;</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">geometry</span><span class="o">.</span><span class="n">motion_partition</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="c1"># TODO: check order</span>
+                <span class="n">angle_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">vartheta$&#39;</span><span class="p">,</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">varphi$&#39;</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">geometry</span><span class="o">.</span><span class="n">motion_partition</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="c1"># TODO: check order</span>
+                <span class="n">angle_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">vartheta$&#39;</span><span class="p">,</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">varphi$&#39;</span><span class="p">,</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">psi$&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">angle_labels</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="n">geometry</span><span class="o">.</span><span class="n">det_partition</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">det_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$s$&#39;</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">geometry</span><span class="o">.</span><span class="n">det_partition</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">det_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$u$&#39;</span><span class="p">,</span> <span class="s1">&#39;$v$&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">det_labels</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="n">angle_labels</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">det_labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Fallback for unknown configuration</span>
+                <span class="n">axis_labels</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">axis_labels</span> <span class="o">=</span> <span class="n">angle_labels</span> <span class="o">+</span> <span class="n">det_labels</span>
+
+            <span class="n">proj_interp</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;interp&#39;</span><span class="p">,</span> <span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+            <span class="n">proj_space</span> <span class="o">=</span> <span class="n">DiscreteLp</span><span class="p">(</span>
+                <span class="n">proj_fspace</span><span class="p">,</span> <span class="n">geometry</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span> <span class="n">proj_tspace</span><span class="p">,</span>
+                <span class="n">interp</span><span class="o">=</span><span class="n">proj_interp</span><span class="p">,</span> <span class="n">axis_labels</span><span class="o">=</span><span class="n">axis_labels</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># proj_space was given, checking some stuff</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_space</span><span class="p">,</span> <span class="n">DiscreteLp</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`</span><span class="si">{}</span><span class="s1">` must be a `DiscreteLp` instance, &#39;</span>
+                                <span class="s1">&#39;got </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">proj_name</span><span class="p">,</span> <span class="n">proj_space</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">proj_space</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`</span><span class="si">{}</span><span class="s1">.shape` not equal to `geometry.shape`: &#39;</span>
+                                 <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> != </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">proj_name</span><span class="p">,</span> <span class="n">proj_space</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+                                                   <span class="n">geometry</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">proj_space</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">reco_space</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`</span><span class="si">{}</span><span class="s1">.dtype` not equal to `</span><span class="si">{}</span><span class="s1">.dtype`: &#39;</span>
+                                 <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> != </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">proj_name</span><span class="p">,</span> <span class="n">reco_name</span><span class="p">,</span>
+                                                   <span class="n">proj_space</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+                                                   <span class="n">reco_space</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+
+        <span class="c1"># Reserve name for cached properties (used for efficiency reasons)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_astra_wrapper</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Extra kwargs that can be reused for adjoint etc. These must</span>
+        <span class="c1"># be retrieved with `get` instead of `pop` above.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extra_kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+        <span class="c1"># Finally, initialize the Operator structure</span>
+        <span class="k">if</span> <span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;forward&#39;</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">(</span><span class="n">RayTransformBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+                <span class="n">domain</span><span class="o">=</span><span class="n">reco_space</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">proj_space</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;backward&#39;</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">(</span><span class="n">RayTransformBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+                <span class="n">domain</span><span class="o">=</span><span class="n">proj_space</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">reco_space</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Implementation back-end for the evaluation of this operator.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__impl</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Geometry of this operator.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__geometry</span>
+
+<div class="viewcode-block" id="RayTransformBase._call"><a class="viewcode-back" href="../../../../generated/odl.tomo.operators.ray_trafo.RayTransformBase._call.html#odl.tomo.operators.ray_trafo.RayTransformBase._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self(x[, out])``.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">is_real</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_real</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">is_complex</span><span class="p">:</span>
+            <span class="n">result_parts</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_call_real</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s1">&#39;real&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_call_real</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s1">&#39;imag&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))]</span>
+
+            <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">element</span><span class="p">()</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">result_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">imag</span> <span class="o">=</span> <span class="n">result_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">return</span> <span class="n">out</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;bad domain </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="RayTransform"><a class="viewcode-back" href="../../../../generated/odl.tomo.operators.ray_trafo.RayTransform.html#odl.tomo.operators.ray_trafo.RayTransform">[docs]</a><span class="k">class</span> <span class="nc">RayTransform</span><span class="p">(</span><span class="n">RayTransformBase</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Discrete Ray transform between L^p spaces.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="RayTransform.__init__"><a class="viewcode-back" href="../../../../generated/odl.tomo.operators.ray_trafo.RayTransform.html#odl.tomo.operators.ray_trafo.RayTransform.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        domain : `DiscreteLp`</span>
+<span class="sd">            Discretized reconstruction space, the domain of the forward</span>
+<span class="sd">            projector.</span>
+<span class="sd">        geometry : `Geometry`</span>
+<span class="sd">            Geometry of the transform, containing information about</span>
+<span class="sd">            the operator range (projection/sinogram space).</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        impl : {`None`, &#39;astra_cuda&#39;, &#39;astra_cpu&#39;, &#39;skimage&#39;}, optional</span>
+<span class="sd">            Implementation back-end for the transform. Supported back-ends:</span>
+
+<span class="sd">            - ``&#39;astra_cuda&#39;``: ASTRA toolbox, using CUDA, 2D or 3D</span>
+<span class="sd">            - ``&#39;astra_cpu&#39;``: ASTRA toolbox using CPU, only 2D</span>
+<span class="sd">            - ``&#39;skimage&#39;``: scikit-image, only 2D parallel with square</span>
+<span class="sd">              reconstruction space.</span>
+
+<span class="sd">            For the default ``None``, the fastest available back-end is</span>
+<span class="sd">            used, tried in the above order.</span>
+<span class="sd">        interp : {&#39;nearest&#39;, &#39;linear&#39;}, optional</span>
+<span class="sd">            Interpolation type for the discretization of the operator</span>
+<span class="sd">            range. This has no effect if ``range`` is given explicitly.</span>
+<span class="sd">            Default: ``&#39;nearest&#39;``</span>
+<span class="sd">        range : `DiscreteLp`, optional</span>
+<span class="sd">            Discretized projection (sinogram) space, the range of the</span>
+<span class="sd">            forward projector.</span>
+<span class="sd">            Default: Inferred from parameters.</span>
+<span class="sd">        use_cache : bool, optional</span>
+<span class="sd">            If ``True``, data is cached. This gives a significant speed-up</span>
+<span class="sd">            at the expense of a notable memory overhead, both on the GPU</span>
+<span class="sd">            and on the CPU, since a full volume and a projection dataset</span>
+<span class="sd">            are stored. That may be prohibitive in 3D.</span>
+<span class="sd">            Default: True</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The ASTRA backend is faster if data is given with ``dtype`` &#39;float32&#39;</span>
+<span class="sd">        and storage order &#39;C&#39;. Otherwise copies will be needed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">range</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;range&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RayTransform</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">reco_space</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span> <span class="n">proj_space</span><span class="o">=</span><span class="nb">range</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span>
+            <span class="n">variant</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_call_real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_real</span><span class="p">,</span> <span class="n">out_real</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Real-space forward projection for the current set-up.</span>
+
+<span class="sd">        This method also sets ``self._astra_projector`` for</span>
+<span class="sd">        ``impl=&#39;astra_cuda&#39;`` and enabled cache.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;astra&#39;</span><span class="p">):</span>
+            <span class="n">backend</span><span class="p">,</span> <span class="n">data_impl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">data_impl</span> <span class="o">==</span> <span class="s1">&#39;cpu&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">astra_cpu_forward_projector</span><span class="p">(</span>
+                    <span class="n">x_real</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">real_space</span><span class="p">,</span> <span class="n">out_real</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">data_impl</span> <span class="o">==</span> <span class="s1">&#39;cuda&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_astra_wrapper</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">astra_wrapper</span> <span class="o">=</span> <span class="n">AstraCudaProjectorImpl</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">real_space</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">real_space</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_cache</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_astra_wrapper</span> <span class="o">=</span> <span class="n">astra_wrapper</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">astra_wrapper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_astra_wrapper</span>
+
+                <span class="k">return</span> <span class="n">astra_wrapper</span><span class="o">.</span><span class="n">call_forward</span><span class="p">(</span><span class="n">x_real</span><span class="p">,</span> <span class="n">out_real</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Should never happen</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;bad `impl` </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">impl</span> <span class="o">==</span> <span class="s1">&#39;skimage&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">skimage_radon_forward</span><span class="p">(</span><span class="n">x_real</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span>
+                                         <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">real_space</span><span class="p">,</span> <span class="n">out_real</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Should never happen</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;bad `impl` </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adjoint of this operator.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        adjoint : `RayBackProjection`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span>
+
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extra_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span> <span class="o">=</span> <span class="n">RayBackProjection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span>
+                                          <span class="n">impl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="p">,</span>
+                                          <span class="n">use_cache</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_cache</span><span class="p">,</span>
+                                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span></div>
+
+
+<div class="viewcode-block" id="RayBackProjection"><a class="viewcode-back" href="../../../../generated/odl.tomo.operators.ray_trafo.RayBackProjection.html#odl.tomo.operators.ray_trafo.RayBackProjection">[docs]</a><span class="k">class</span> <span class="nc">RayBackProjection</span><span class="p">(</span><span class="n">RayTransformBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Adjoint of the discrete Ray transform between L^p spaces.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="RayBackProjection.__init__"><a class="viewcode-back" href="../../../../generated/odl.tomo.operators.ray_trafo.RayBackProjection.html#odl.tomo.operators.ray_trafo.RayBackProjection.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        range : `DiscreteLp`</span>
+<span class="sd">            Discretized reconstruction space, the range of the</span>
+<span class="sd">            backprojection operator.</span>
+<span class="sd">        geometry : `Geometry`</span>
+<span class="sd">            Geometry of the transform, containing information about</span>
+<span class="sd">            the operator domain (projection/sinogram space).</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        impl : {`None`, &#39;astra_cuda&#39;, &#39;astra_cpu&#39;, &#39;skimage&#39;}, optional</span>
+<span class="sd">            Implementation back-end for the transform. Supported back-ends:</span>
+
+<span class="sd">            - ``&#39;astra_cuda&#39;``: ASTRA toolbox, using CUDA, 2D or 3D</span>
+<span class="sd">            - ``&#39;astra_cpu&#39;``: ASTRA toolbox using CPU, only 2D</span>
+<span class="sd">            - ``&#39;skimage&#39;``: scikit-image, only 2D parallel with square</span>
+<span class="sd">              reconstruction space.</span>
+
+<span class="sd">            For the default ``None``, the fastest available back-end is</span>
+<span class="sd">-           used, tried in the above order.</span>
+<span class="sd">        interp : {&#39;nearest&#39;, &#39;linear&#39;}, optional</span>
+<span class="sd">            Interpolation type for the discretization of the operator</span>
+<span class="sd">            domain. This has no effect if ``domain`` is given explicitly.</span>
+<span class="sd">            Default: ``&#39;nearest&#39;``</span>
+<span class="sd">        domain : `DiscreteLp`, optional</span>
+<span class="sd">            Discretized projection (sinogram) space, the domain of the</span>
+<span class="sd">            backprojection operator.</span>
+<span class="sd">            Default: Inferred from parameters.</span>
+<span class="sd">        use_cache : bool, optional</span>
+<span class="sd">            If ``True``, data is cached. This gives a significant speed-up</span>
+<span class="sd">            at the expense of a notable memory overhead, both on the GPU</span>
+<span class="sd">            and on the CPU, since a full volume and a projection dataset</span>
+<span class="sd">            are stored. That may be prohibitive in 3D.</span>
+<span class="sd">            Default: True</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The ASTRA backend is faster if data is given with ``dtype`` &#39;float32&#39;</span>
+<span class="sd">        and storage order &#39;C&#39;. Otherwise copies will be needed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;domain&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RayBackProjection</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">reco_space</span><span class="o">=</span><span class="nb">range</span><span class="p">,</span> <span class="n">proj_space</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span>
+            <span class="n">variant</span><span class="o">=</span><span class="s1">&#39;backward&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_call_real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_real</span><span class="p">,</span> <span class="n">out_real</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Real-space back-projection for the current set-up.</span>
+
+<span class="sd">        This method also sets ``self._astra_backprojector`` for</span>
+<span class="sd">        ``impl=&#39;astra_cuda&#39;`` and enabled cache.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;astra&#39;</span><span class="p">):</span>
+            <span class="n">backend</span><span class="p">,</span> <span class="n">data_impl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">data_impl</span> <span class="o">==</span> <span class="s1">&#39;cpu&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">astra_cpu_back_projector</span><span class="p">(</span><span class="n">x_real</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">real_space</span><span class="p">,</span>
+                                                <span class="n">out_real</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">data_impl</span> <span class="o">==</span> <span class="s1">&#39;cuda&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_astra_wrapper</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">astra_wrapper</span> <span class="o">=</span> <span class="n">AstraCudaBackProjectorImpl</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">real_space</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">real_space</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_cache</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_astra_wrapper</span> <span class="o">=</span> <span class="n">astra_wrapper</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">astra_wrapper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_astra_wrapper</span>
+
+                <span class="k">return</span> <span class="n">astra_wrapper</span><span class="o">.</span><span class="n">call_backward</span><span class="p">(</span><span class="n">x_real</span><span class="p">,</span> <span class="n">out_real</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Should never happen</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;bad `impl` </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">impl</span> <span class="o">==</span> <span class="s1">&#39;skimage&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">skimage_radon_back_projector</span><span class="p">(</span><span class="n">x_real</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">real_space</span><span class="p">,</span>
+                                                <span class="n">out_real</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Should never happen</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;bad `impl` </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adjoint of this operator.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        adjoint : `RayTransform`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span>
+
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extra_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;range&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span> <span class="o">=</span> <span class="n">RayTransform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span>
+                                     <span class="n">impl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">impl</span><span class="p">,</span>
+                                     <span class="n">use_cache</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_cache</span><span class="p">,</span>
+                                     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">odl.util.testutils</span> <span class="k">import</span> <span class="n">run_doctests</span>
+    <span class="n">run_doctests</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

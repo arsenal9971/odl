@@ -1,0 +1,34 @@
+FourierTransform
+===================================
+
+.. currentmodule:: odl.trafos.fourier
+
+.. autoclass:: FourierTransform
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         FourierTransform.__call__
+         FourierTransform._call
+         FourierTransform.clear_fftw_plan
+         FourierTransform.clear_temporaries
+         FourierTransform.create_temporaries
+         FourierTransform.derivative
+         FourierTransform.init_fftw_plan
+         FourierTransform.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

@@ -1,0 +1,32 @@
+negative_func
+=====================================
+
+.. currentmodule:: odl.ufunc_ops.ufunc_ops
+
+.. autoclass:: negative_func
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         negative_func.__call__
+         negative_func._call
+         negative_func.bregman
+         negative_func.derivative
+         negative_func.norm
+         negative_func.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

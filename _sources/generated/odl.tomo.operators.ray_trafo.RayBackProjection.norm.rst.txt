@@ -1,0 +1,8 @@
+:orphan:
+
+RayBackProjection.norm
+===================================================
+
+.. currentmodule:: odl.tomo.operators.ray_trafo
+
+.. automethod:: RayBackProjection.norm

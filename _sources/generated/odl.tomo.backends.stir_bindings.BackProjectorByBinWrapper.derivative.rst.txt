@@ -1,0 +1,8 @@
+:orphan:
+
+BackProjectorByBinWrapper.derivative
+====================================================================
+
+.. currentmodule:: odl.tomo.backends.stir_bindings
+
+.. automethod:: BackProjectorByBinWrapper.derivative

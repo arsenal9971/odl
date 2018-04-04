@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpElement.__getitem__
+================================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLpElement.__getitem__

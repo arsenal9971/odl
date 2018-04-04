@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>NumpyTensorSpace &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="npy_tensors" href="../odl.space.npy_tensors.html"/>
+        <link rel="next" title="NumpyTensorSpace._dist" href="odl.space.npy_tensors.NumpyTensorSpace._dist.html"/>
+        <link rel="prev" title="NumpyTensor.show" href="odl.space.npy_tensors.NumpyTensor.show.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.space.html">space</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.base_tensors.html">base_tensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.entry_points.html">entry_points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.fspace.html">fspace</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.space.npy_tensors.html">npy_tensors</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="odl.space.npy_tensors.NumpyTensor.html">NumpyTensor</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">NumpyTensorSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpaceArrayWeighting.html">NumpyTensorSpaceArrayWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpaceConstWeighting.html">NumpyTensorSpaceConstWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpaceCustomDist.html">NumpyTensorSpaceCustomDist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpaceCustomInner.html">NumpyTensorSpaceCustomInner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpaceCustomNorm.html">NumpyTensorSpaceCustomNorm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.npy_tensors.npy_weighted_dist.html">npy_weighted_dist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.npy_tensors.npy_weighted_inner.html">npy_weighted_inner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.npy_tensors.npy_weighted_norm.html">npy_weighted_norm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.pspace.html">pspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.space_utils.html">space_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.weighting.html">weighting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.space.html">space</a> &raquo;</li>
+        
+          <li><a href="../odl.space.npy_tensors.html">npy_tensors</a> &raquo;</li>
+        
+      <li>NumpyTensorSpace</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.space.npy_tensors.NumpyTensorSpace.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numpytensorspace">
+<h1>NumpyTensorSpace<a class="headerlink" href="#numpytensorspace" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.space.npy_tensors.NumpyTensorSpace">
+<em class="property">class </em><code class="descclassname">odl.space.npy_tensors.</code><code class="descname">NumpyTensorSpace</code><span class="sig-paren">(</span><em>shape</em>, <em>dtype=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/space/npy_tensors.html#NumpyTensorSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.space.npy_tensors.NumpyTensorSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.space.base_tensors.TensorSpace.html#odl.space.base_tensors.TensorSpace" title="odl.space.base_tensors.TensorSpace"><code class="xref py py-class docutils literal"><span class="pre">odl.space.base_tensors.TensorSpace</span></code></a></p>
+<p>Set of tensors of arbitrary data type, implemented with NumPy.</p>
+<p>A tensor is, in the most general sense, a multi-dimensional array
+that allows operations per entry (keep the rank constant),
+reductions / contractions (reduce the rank) and broadcasting
+(raises the rank).
+For non-numeric data type like <code class="docutils literal"><span class="pre">object</span></code>, the range of valid
+operations is rather limited since such a set of tensors does not
+define a vector space.
+Any numeric data type, on the other hand, is considered valid for
+a tensor space, although certain operations - like division with
+integer dtype - are not guaranteed to yield reasonable results.</p>
+<p>Under these restrictions, all basic vector space operations are
+supported by this class, along with reductions based on arithmetic
+or comparison, and element-wise mathematical functions (“ufuncs”).</p>
+<p>This class is implemented using <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.14)"><code class="xref any docutils literal"><span class="pre">numpy.ndarray</span></code></a>’s as back-end.</p>
+<p>See the <a class="reference external" href="https://en.wikipedia.org/wiki/Tensor">Wikipedia article on tensors</a> for further details.
+See also [Hac2012] “Part I Algebraic Tensors” for a rigorous
+treatment of tensors with a definition close to this one.</p>
+<p>Note also that this notion of tensors is the same as in popular
+Deep Learning frameworks.</p>
+<p class="rubric">References</p>
+<p>[Hac2012] Hackbusch, W. <em>Tensor Spaces and Numerical Tensor Calculus</em>.
+Springer, 2012.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">byaxis</span></code></dt>
+<dd><p class="first last">Return the subspace defined along one or several dimensions.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">complex_dtype</span></code></dt>
+<dd><p class="first last">The complex dtype corresponding to this space’s <a class="reference internal" href="../guide/glossary.html#term-dtype"><code class="xref any std std-term docutils literal"><span class="pre">dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">complex_space</span></code></dt>
+<dd><p class="first last">The space corresponding to this space’s <a class="reference internal" href="odl.util.utility.complex_dtype.html#odl.util.utility.complex_dtype" title="odl.util.utility.complex_dtype"><code class="xref any py py-func docutils literal"><span class="pre">complex_dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">default_order</span></code></dt>
+<dd><p class="first last">Default storage order for new elements in this space: <code class="docutils literal"><span class="pre">'C'</span></code>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code></dt>
+<dd><p class="first last">Scalar data type of each entry in an element of this space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">element_type</span></code></dt>
+<dd><p class="first last">Type of elements in this space: <a class="reference internal" href="odl.space.npy_tensors.NumpyTensor.html#odl.space.npy_tensors.NumpyTensor" title="odl.space.npy_tensors.NumpyTensor"><code class="xref any py py-class docutils literal"><span class="pre">NumpyTensor</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">examples</span></code></dt>
+<dd><p class="first last">Return example random vectors.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">exponent</span></code></dt>
+<dd><p class="first last">Exponent of the norm and the distance.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">field</span></code></dt>
+<dd><p class="first last">Scalar field of numbers for this vector space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">impl</span></code></dt>
+<dd><p class="first last">Name of the implementation back-end: <code class="docutils literal"><span class="pre">'numpy'</span></code>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_complex</span></code></dt>
+<dd><p class="first last">True if this is a space of complex tensors.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_real</span></code></dt>
+<dd><p class="first last">True if this is a space of real tensors.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_weighted</span></code></dt>
+<dd><p class="first last">Return <code class="docutils literal"><span class="pre">True</span></code> if the space is not weighted by constant 1.0.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">itemsize</span></code></dt>
+<dd><p class="first last">Size in bytes of one entry in an element of this space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">nbytes</span></code></dt>
+<dd><p class="first last">Total number of bytes used by an element of this space in memory.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">ndim</span></code></dt>
+<dd><p class="first last">Number of axes (=dimensions) of this space, also called “rank”.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">real_dtype</span></code></dt>
+<dd><p class="first last">The real dtype corresponding to this space’s <a class="reference internal" href="../guide/glossary.html#term-dtype"><code class="xref any std std-term docutils literal"><span class="pre">dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">real_space</span></code></dt>
+<dd><p class="first last">The space corresponding to this space’s <a class="reference internal" href="odl.util.utility.real_dtype.html#odl.util.utility.real_dtype" title="odl.util.utility.real_dtype"><code class="xref any py py-func docutils literal"><span class="pre">real_dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></dt>
+<dd><p class="first last">Number of scalar elements per axis.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></dt>
+<dd><p class="first last">Total number of entries in an element of this space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">weighting</span></code></dt>
+<dd><p class="first last">This space’s weighting scheme.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace._dist.html#odl.space.npy_tensors.NumpyTensorSpace._dist" title="odl.space.npy_tensors.NumpyTensorSpace._dist"><code class="xref py py-obj docutils literal"><span class="pre">_dist</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the distance between <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace._divide.html#odl.space.npy_tensors.NumpyTensorSpace._divide" title="odl.space.npy_tensors.NumpyTensorSpace._divide"><code class="xref py py-obj docutils literal"><span class="pre">_divide</span></code></a>(x1,&nbsp;x2,&nbsp;out)</td>
+<td>Compute the entry-wise quotient <code class="docutils literal"><span class="pre">x1</span> <span class="pre">/</span> <span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace._inner.html#odl.space.npy_tensors.NumpyTensorSpace._inner" title="odl.space.npy_tensors.NumpyTensorSpace._inner"><code class="xref py py-obj docutils literal"><span class="pre">_inner</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the inner product of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace._lincomb.html#odl.space.npy_tensors.NumpyTensorSpace._lincomb" title="odl.space.npy_tensors.NumpyTensorSpace._lincomb"><code class="xref py py-obj docutils literal"><span class="pre">_lincomb</span></code></a>(a,&nbsp;x1,&nbsp;b,&nbsp;x2,&nbsp;out)</td>
+<td>Implement the linear combination of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace._multiply.html#odl.space.npy_tensors.NumpyTensorSpace._multiply" title="odl.space.npy_tensors.NumpyTensorSpace._multiply"><code class="xref py py-obj docutils literal"><span class="pre">_multiply</span></code></a>(x1,&nbsp;x2,&nbsp;out)</td>
+<td>Compute the entry-wise product <code class="docutils literal"><span class="pre">out</span> <span class="pre">=</span> <span class="pre">x1</span> <span class="pre">*</span> <span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace._norm.html#odl.space.npy_tensors.NumpyTensorSpace._norm" title="odl.space.npy_tensors.NumpyTensorSpace._norm"><code class="xref py py-obj docutils literal"><span class="pre">_norm</span></code></a>(x)</td>
+<td>Return the norm of <code class="docutils literal"><span class="pre">x</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.astype.html#odl.space.npy_tensors.NumpyTensorSpace.astype" title="odl.space.npy_tensors.NumpyTensorSpace.astype"><code class="xref py py-obj docutils literal"><span class="pre">astype</span></code></a>(dtype)</td>
+<td>Return a copy of this space with new <code class="docutils literal"><span class="pre">dtype</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.available_dtypes.html#odl.space.npy_tensors.NumpyTensorSpace.available_dtypes" title="odl.space.npy_tensors.NumpyTensorSpace.available_dtypes"><code class="xref py py-obj docutils literal"><span class="pre">available_dtypes</span></code></a>()</td>
+<td>Return the set of data types available in this implementation.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.contains_all.html#odl.space.npy_tensors.NumpyTensorSpace.contains_all" title="odl.space.npy_tensors.NumpyTensorSpace.contains_all"><code class="xref py py-obj docutils literal"><span class="pre">contains_all</span></code></a>(other)</td>
+<td>Test if all elements in <code class="docutils literal"><span class="pre">other</span></code> are contained in this set.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.contains_set.html#odl.space.npy_tensors.NumpyTensorSpace.contains_set" title="odl.space.npy_tensors.NumpyTensorSpace.contains_set"><code class="xref py py-obj docutils literal"><span class="pre">contains_set</span></code></a>(other)</td>
+<td>Test if <code class="docutils literal"><span class="pre">other</span></code> is a subset of this set.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.default_dtype.html#odl.space.npy_tensors.NumpyTensorSpace.default_dtype" title="odl.space.npy_tensors.NumpyTensorSpace.default_dtype"><code class="xref py py-obj docutils literal"><span class="pre">default_dtype</span></code></a>([field])</td>
+<td>Return the default data type of this class for a given field.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.dist.html#odl.space.npy_tensors.NumpyTensorSpace.dist" title="odl.space.npy_tensors.NumpyTensorSpace.dist"><code class="xref py py-obj docutils literal"><span class="pre">dist</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the distance between <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.divide.html#odl.space.npy_tensors.NumpyTensorSpace.divide" title="odl.space.npy_tensors.NumpyTensorSpace.divide"><code class="xref py py-obj docutils literal"><span class="pre">divide</span></code></a>(x1,&nbsp;x2[,&nbsp;out])</td>
+<td>Return the pointwise quotient of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.element.html#odl.space.npy_tensors.NumpyTensorSpace.element" title="odl.space.npy_tensors.NumpyTensorSpace.element"><code class="xref py py-obj docutils literal"><span class="pre">element</span></code></a>([inp,&nbsp;data_ptr,&nbsp;order])</td>
+<td>Create a new element.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.inner.html#odl.space.npy_tensors.NumpyTensorSpace.inner" title="odl.space.npy_tensors.NumpyTensorSpace.inner"><code class="xref py py-obj docutils literal"><span class="pre">inner</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the inner product of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.lincomb.html#odl.space.npy_tensors.NumpyTensorSpace.lincomb" title="odl.space.npy_tensors.NumpyTensorSpace.lincomb"><code class="xref py py-obj docutils literal"><span class="pre">lincomb</span></code></a>(a,&nbsp;x1[,&nbsp;b,&nbsp;x2,&nbsp;out])</td>
+<td>Implement <code class="docutils literal"><span class="pre">out[:]</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">x1</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">*</span> <span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.multiply.html#odl.space.npy_tensors.NumpyTensorSpace.multiply" title="odl.space.npy_tensors.NumpyTensorSpace.multiply"><code class="xref py py-obj docutils literal"><span class="pre">multiply</span></code></a>(x1,&nbsp;x2[,&nbsp;out])</td>
+<td>Return the pointwise product of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.norm.html#odl.space.npy_tensors.NumpyTensorSpace.norm" title="odl.space.npy_tensors.NumpyTensorSpace.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>(x)</td>
+<td>Return the norm of <code class="docutils literal"><span class="pre">x</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.one.html#odl.space.npy_tensors.NumpyTensorSpace.one" title="odl.space.npy_tensors.NumpyTensorSpace.one"><code class="xref py py-obj docutils literal"><span class="pre">one</span></code></a>()</td>
+<td>Return a tensor of all ones.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.zero.html#odl.space.npy_tensors.NumpyTensorSpace.zero" title="odl.space.npy_tensors.NumpyTensorSpace.zero"><code class="xref py py-obj docutils literal"><span class="pre">zero</span></code></a>()</td>
+<td>Return a tensor of all zeros.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.space.npy_tensors.NumpyTensorSpace.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>shape</em>, <em>dtype=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/space/npy_tensors.html#NumpyTensorSpace.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.space.npy_tensors.NumpyTensorSpace.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>shape <span class="classifier-delimiter">:</span> <span class="classifier">positive int or sequence of positive ints</span></dt>
+<dd><p class="first last">Number of entries per axis for elements in this space. A
+single integer results in a space with rank 1, i.e., 1 axis.</p>
+</dd>
+<dt>dtype :</dt>
+<dd><p class="first last">Data type of each element. Can be provided in any
+way the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.14)"><code class="xref any docutils literal"><span class="pre">numpy.dtype</span></code></a> function understands, e.g.
+as built-in type or as a string. For <code class="docutils literal"><span class="pre">None</span></code>,
+the <a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.default_dtype.html#odl.space.npy_tensors.NumpyTensorSpace.default_dtype" title="odl.space.npy_tensors.NumpyTensorSpace.default_dtype"><code class="xref any py py-meth docutils literal"><span class="pre">default_dtype</span></code></a> of this space (<code class="docutils literal"><span class="pre">float64</span></code>) is used.</p>
+</dd>
+<dt>exponent <span class="classifier-delimiter">:</span> <span class="classifier">positive float, optional</span></dt>
+<dd><p class="first">Exponent of the norm. For values other than 2.0, no
+inner product is defined.</p>
+<p>This option has no impact if either <code class="docutils literal"><span class="pre">dist</span></code>, <code class="docutils literal"><span class="pre">norm</span></code> or
+<code class="docutils literal"><span class="pre">inner</span></code> is given, or if <code class="docutils literal"><span class="pre">dtype</span></code> is non-numeric.</p>
+<p class="last">Default: 2.0</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt>weighting <span class="classifier-delimiter">:</span> <span class="classifier">optional</span></dt>
+<dd><p class="first">Use weighted inner product, norm, and dist. The following
+types are supported as <code class="docutils literal"><span class="pre">weighting</span></code>:</p>
+<p><code class="docutils literal"><span class="pre">None</span></code>: no weighting, i.e. weighting with <code class="docutils literal"><span class="pre">1.0</span></code> (default).</p>
+<p><a class="reference internal" href="odl.space.weighting.Weighting.html#odl.space.weighting.Weighting" title="odl.space.weighting.Weighting"><code class="xref any py py-class docutils literal"><span class="pre">Weighting</span></code></a>: Use this weighting as-is. Compatibility
+with this space’s elements is not checked during init.</p>
+<p><code class="docutils literal"><span class="pre">float</span></code>: Weighting by a constant.</p>
+<p>array-like: Pointwise weighting by an array.</p>
+<p class="last">This option cannot be combined with <code class="docutils literal"><span class="pre">dist</span></code>,
+<code class="docutils literal"><span class="pre">norm</span></code> or <code class="docutils literal"><span class="pre">inner</span></code>. It also cannot be used in case of
+non-numeric <code class="docutils literal"><span class="pre">dtype</span></code>.</p>
+</dd>
+<dt>dist <span class="classifier-delimiter">:</span> <span class="classifier">callable, optional</span></dt>
+<dd><p class="first">Distance function defining a metric on the space.
+It must accept two <a class="reference internal" href="odl.space.npy_tensors.NumpyTensor.html#odl.space.npy_tensors.NumpyTensor" title="odl.space.npy_tensors.NumpyTensor"><code class="xref any py py-class docutils literal"><span class="pre">NumpyTensor</span></code></a> arguments and return
+a non-negative real number. See <code class="docutils literal"><span class="pre">Notes</span></code> for
+mathematical requirements.</p>
+<p>By default, <code class="docutils literal"><span class="pre">dist(x,</span> <span class="pre">y)</span></code> is calculated as <code class="docutils literal"><span class="pre">norm(x</span> <span class="pre">-</span> <span class="pre">y)</span></code>.</p>
+<p class="last">This option cannot be combined with <code class="docutils literal"><span class="pre">weight</span></code>,
+<code class="docutils literal"><span class="pre">norm</span></code> or <code class="docutils literal"><span class="pre">inner</span></code>. It also cannot be used in case of
+non-numeric <code class="docutils literal"><span class="pre">dtype</span></code>.</p>
+</dd>
+<dt>norm <span class="classifier-delimiter">:</span> <span class="classifier">callable, optional</span></dt>
+<dd><p class="first">The norm implementation. It must accept a
+<a class="reference internal" href="odl.space.npy_tensors.NumpyTensor.html#odl.space.npy_tensors.NumpyTensor" title="odl.space.npy_tensors.NumpyTensor"><code class="xref any py py-class docutils literal"><span class="pre">NumpyTensor</span></code></a> argument, return a non-negative real number.
+See <code class="docutils literal"><span class="pre">Notes</span></code> for mathematical requirements.</p>
+<p>By default, <code class="docutils literal"><span class="pre">norm(x)</span></code> is calculated as <code class="docutils literal"><span class="pre">inner(x,</span> <span class="pre">x)</span></code>.</p>
+<p class="last">This option cannot be combined with <code class="docutils literal"><span class="pre">weight</span></code>,
+<code class="docutils literal"><span class="pre">dist</span></code> or <code class="docutils literal"><span class="pre">inner</span></code>. It also cannot be used in case of
+non-numeric <code class="docutils literal"><span class="pre">dtype</span></code>.</p>
+</dd>
+<dt>inner <span class="classifier-delimiter">:</span> <span class="classifier">callable, optional</span></dt>
+<dd><p class="first">The inner product implementation. It must accept two
+<a class="reference internal" href="odl.space.npy_tensors.NumpyTensor.html#odl.space.npy_tensors.NumpyTensor" title="odl.space.npy_tensors.NumpyTensor"><code class="xref any py py-class docutils literal"><span class="pre">NumpyTensor</span></code></a> arguments and return an element of the field
+of the space (usually real or complex number).
+See <code class="docutils literal"><span class="pre">Notes</span></code> for mathematical requirements.</p>
+<p class="last">This option cannot be combined with <code class="docutils literal"><span class="pre">weight</span></code>,
+<code class="docutils literal"><span class="pre">dist</span></code> or <code class="docutils literal"><span class="pre">norm</span></code>. It also cannot be used in case of
+non-numeric <code class="docutils literal"><span class="pre">dtype</span></code>.</p>
+</dd>
+<dt>kwargs :</dt>
+<dd><p class="first last">Further keyword arguments are passed to the weighting
+classes.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">rn</span></code></dt>
+<dd>constructor for real tensor spaces</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">cn</span></code></dt>
+<dd>constructor for complex tensor spaces</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">tensor_space</span></code></dt>
+<dd>constructor for tensor spaces of arbitrary scalar data type</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li>A distance function or metric on a space <img class="math" src="../_images/math/343a944b6a22dc1a14dfecd2ef0d255012e38380.png" alt="\mathcal{X}"/>
+is a mapping
+<img class="math" src="../_images/math/c8a7acd9cfc3870b409fa289bc39ec23d5a8c1d6.png" alt="d:\mathcal{X} \times \mathcal{X} \to \mathbb{R}"/>
+satisfying the following conditions for all space elements
+<img class="math" src="../_images/math/625d14b33d5a7d080acca5de29d591279297872a.png" alt="x, y, z"/>:<ul>
+<li><img class="math" src="../_images/math/d294d08fbf4b8a3d9ed60f181412a7b657a85a3b.png" alt="d(x, y) \geq 0"/>,</li>
+<li><img class="math" src="../_images/math/0bcf047fb1665c92b65b748770e81413ffb0a499.png" alt="d(x, y) = 0 \Leftrightarrow x = y"/>,</li>
+<li><img class="math" src="../_images/math/30167084d70160c7dedaa9ac8d98666d78dcf9f1.png" alt="d(x, y) = d(y, x)"/>,</li>
+<li><img class="math" src="../_images/math/4de3806e24f272a8807913aa3e77a2eb87334402.png" alt="d(x, y) \leq d(x, z) + d(z, y)"/>.</li>
+</ul>
+</li>
+<li>A norm on a space <img class="math" src="../_images/math/343a944b6a22dc1a14dfecd2ef0d255012e38380.png" alt="\mathcal{X}"/> is a mapping
+<img class="math" src="../_images/math/5474743de4cfaf1f9a2701c869e0427d5daa92ef.png" alt="\| \cdot \|:\mathcal{X} \to \mathbb{R}"/>
+satisfying the following conditions for all
+space elements <img class="math" src="../_images/math/fcce496443affb182964cfcbd662a06c582f104b.png" alt="x, y"/>: and scalars <img class="math" src="../_images/math/63751cb2e98ba393b0f22e45ca127c3cebb61487.png" alt="s"/>:<ul>
+<li><img class="math" src="../_images/math/21ada4757ad5f8e25f06d08bc69467238e0d0c6c.png" alt="\| x\| \geq 0"/>,</li>
+<li><img class="math" src="../_images/math/cfd7852166e86f7a5421a6d0b746aded9f5d4459.png" alt="\| x\| = 0 \Leftrightarrow x = 0"/>,</li>
+<li><img class="math" src="../_images/math/fcd13a4d6c243916ad139ce445469ac3af123732.png" alt="\| sx\| = |s| \cdot \| x \|"/>,</li>
+<li><img class="math" src="../_images/math/c506d669e909c081e3ed9b98328f16b56e306045.png" alt="\| x+y\| \leq \| x\| +
+\| y\|"/>.</li>
+</ul>
+</li>
+<li>An inner product on a space <img class="math" src="../_images/math/343a944b6a22dc1a14dfecd2ef0d255012e38380.png" alt="\mathcal{X}"/> over a field
+<img class="math" src="../_images/math/16d2c06b8f568cd2ad9908fe324882169f588312.png" alt="\mathbb{F} = \mathbb{R}"/> or <img class="math" src="../_images/math/d077c9383c0323fad40ad51f8123ebbf38bba3aa.png" alt="\mathbb{C}"/> is a
+mapping
+<img class="math" src="../_images/math/71d07324fc1a6258cb71ee2d2f225d6bd1c7cd82.png" alt="\langle\cdot, \cdot\rangle: \mathcal{X} \times
+\mathcal{X} \to \mathbb{F}"/>
+satisfying the following conditions for all
+space elements <img class="math" src="../_images/math/625d14b33d5a7d080acca5de29d591279297872a.png" alt="x, y, z"/>: and scalars <img class="math" src="../_images/math/63751cb2e98ba393b0f22e45ca127c3cebb61487.png" alt="s"/>:<ul>
+<li><img class="math" src="../_images/math/322e895d7963084da242a5a46ba8025437f5d6bb.png" alt="\langle x, y\rangle =
+\overline{\langle y, x\rangle}"/>,</li>
+<li><img class="math" src="../_images/math/4e20de9eae9bd38c3eddbac47905a3693fc069c0.png" alt="\langle sx + y, z\rangle = s \langle x, z\rangle +
+\langle y, z\rangle"/>,</li>
+<li><img class="math" src="../_images/math/dd875d5eca4ba0ce89c0ee1a6ece592792db3453.png" alt="\langle x, x\rangle = 0 \Leftrightarrow x = 0"/>.</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Examples</p>
+<p>Explicit initialization with the class constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">NumpyTensorSpace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span>
+<span class="go">rn(3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">dtype(&#39;float64&#39;)</span>
+</pre></div>
+</div>
+<p>A more convenient way is to use factory functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">rn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">weighting</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span>
+<span class="go">rn(3, weighting=[1, 2, 3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">tensor_space</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span>
+<span class="go">tensor_space((2, 3), dtype=int)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.space.npy_tensors.NumpyTensorSpace._dist.html" class="btn btn-neutral float-right" title="NumpyTensorSpace._dist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.space.npy_tensors.NumpyTensor.show.html" class="btn btn-neutral" title="NumpyTensor.show" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

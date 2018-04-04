@@ -1,0 +1,36 @@
+RectPartition
+=================================
+
+.. currentmodule:: odl.discr.partition
+
+.. autoclass:: RectPartition
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         RectPartition.__eq__
+         RectPartition.__getitem__
+         RectPartition.append
+         RectPartition.approx_equals
+         RectPartition.index
+         RectPartition.insert
+         RectPartition.max
+         RectPartition.min
+         RectPartition.points
+         RectPartition.squeeze
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

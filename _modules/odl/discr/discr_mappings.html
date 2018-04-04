@@ -1,0 +1,1217 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.discr.discr_mappings &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.discr.discr_mappings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.discr.discr_mappings</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;Mappings between abstract (continuous) and discrete sets.</span>
+
+<span class="sd">Includes grid evaluation (collocation) and various interpolation</span>
+<span class="sd">operators.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">builtins</span> <span class="k">import</span> <span class="nb">object</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">product</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">odl.operator</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">odl.discr.partition</span> <span class="k">import</span> <span class="n">RectPartition</span>
+<span class="kn">from</span> <span class="nn">odl.space.base_tensors</span> <span class="k">import</span> <span class="n">TensorSpace</span>
+<span class="kn">from</span> <span class="nn">odl.space</span> <span class="k">import</span> <span class="n">FunctionSpace</span>
+<span class="kn">from</span> <span class="nn">odl.util</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">is_valid_input_meshgrid</span><span class="p">,</span> <span class="n">out_shape_from_array</span><span class="p">,</span> <span class="n">out_shape_from_meshgrid</span><span class="p">,</span>
+    <span class="n">is_string</span><span class="p">,</span> <span class="n">is_numeric_dtype</span><span class="p">,</span> <span class="n">signature_string</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">dtype_repr</span><span class="p">,</span>
+    <span class="n">writable_array</span><span class="p">)</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;FunctionSpaceMapping&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;PointCollocation&#39;</span><span class="p">,</span> <span class="s1">&#39;NearestInterpolation&#39;</span><span class="p">,</span> <span class="s1">&#39;LinearInterpolation&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;PerAxisInterpolation&#39;</span><span class="p">)</span>
+
+<span class="n">_SUPPORTED_INTERP_SCHEMES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="FunctionSpaceMapping"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.FunctionSpaceMapping.html#odl.discr.discr_mappings.FunctionSpaceMapping">[docs]</a><span class="k">class</span> <span class="nc">FunctionSpaceMapping</span><span class="p">(</span><span class="n">Operator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Abstract base class for function set discretization mappings.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="FunctionSpaceMapping.__init__"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.FunctionSpaceMapping.html#odl.discr.discr_mappings.FunctionSpaceMapping.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_type</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">tspace</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        map_type : {&#39;sampling&#39;, &#39;interpolation&#39;}</span>
+<span class="sd">            The type of operator</span>
+<span class="sd">        fspace : `FunctionSpace`</span>
+<span class="sd">            The non-discretized (abstract) set of functions to be</span>
+<span class="sd">            discretized</span>
+<span class="sd">        partition : `RectPartition`</span>
+<span class="sd">            Partition of (a subset of) ``fspace.domain`` based on a</span>
+<span class="sd">            `RectGrid`.</span>
+<span class="sd">        tspace : `TensorSpace`</span>
+<span class="sd">            Space providing containers for the values/coefficients of a</span>
+<span class="sd">            discretized object. Its `TensorSpace.shape` must be equal</span>
+<span class="sd">            to ``partition.shape``.</span>
+<span class="sd">        linear : bool, optional</span>
+<span class="sd">            Create a linear operator if ``True``, otherwise a non-linear</span>
+<span class="sd">            operator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">map_type</span><span class="p">,</span> <span class="n">map_type_in</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">map_type</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">map_type</span>
+        <span class="k">if</span> <span class="n">map_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;sampling&#39;</span><span class="p">,</span> <span class="s1">&#39;interpolation&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`map_type` </span><span class="si">{!r}</span><span class="s1"> not understood&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">map_type_in</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fspace</span><span class="p">,</span> <span class="n">FunctionSpace</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`fspace` </span><span class="si">{!r}</span><span class="s1"> is not a `FunctionSpace` &#39;</span>
+                            <span class="s1">&#39;instance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fspace</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">RectPartition</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`partition` </span><span class="si">{!r}</span><span class="s1"> is not a `RectPartition` &#39;</span>
+                            <span class="s1">&#39;instance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">partition</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tspace</span><span class="p">,</span> <span class="n">TensorSpace</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`tspace` </span><span class="si">{!r}</span><span class="s1"> is not a `TensorSpace` instance&#39;</span>
+                            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tspace</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">fspace</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">contains_set</span><span class="p">(</span><span class="n">partition</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> not contained in the domain </span><span class="si">{}</span><span class="s1"> &#39;</span>
+                             <span class="s1">&#39;of the function set </span><span class="si">{}</span><span class="s1">&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">fspace</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">fspace</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">tspace</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">partition</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`tspace.shape` not equal to `partition.shape`: &#39;</span>
+                             <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> != </span><span class="si">{}</span><span class="s1">&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tspace</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">partition</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">fspace</span> <span class="k">if</span> <span class="n">map_type</span> <span class="o">==</span> <span class="s1">&#39;sampling&#39;</span> <span class="k">else</span> <span class="n">tspace</span>
+        <span class="nb">range</span> <span class="o">=</span> <span class="n">tspace</span> <span class="k">if</span> <span class="n">map_type</span> <span class="o">==</span> <span class="s1">&#39;sampling&#39;</span> <span class="k">else</span> <span class="n">fspace</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FunctionSpaceMapping</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">domain</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="n">linear</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__partition</span> <span class="o">=</span> <span class="n">partition</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_linear</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">field</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`fspace.field` cannot be `None` for &#39;</span>
+                                <span class="s1">&#39;`linear=True`&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">is_numeric_dtype</span><span class="p">(</span><span class="n">tspace</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`tspace.dtype` must be a numeric data type &#39;</span>
+                                <span class="s1">&#39;for `linear=True`, got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                                <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype_repr</span><span class="p">(</span><span class="n">tspace</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="n">fspace</span><span class="o">.</span><span class="n">field</span> <span class="o">!=</span> <span class="n">tspace</span><span class="o">.</span><span class="n">field</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`fspace.field` not equal to `tspace.field`: &#39;</span>
+                                 <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> != </span><span class="si">{}</span><span class="s1">&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fspace</span><span class="o">.</span><span class="n">field</span><span class="p">,</span> <span class="n">tspace</span><span class="o">.</span><span class="n">field</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="FunctionSpaceMapping.__eq__"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.FunctionSpaceMapping.__eq__.html#odl.discr.discr_mappings.FunctionSpaceMapping.__eq__">[docs]</a>    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self == other``.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span> <span class="ow">is</span> <span class="n">other</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">and</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">domain</span> <span class="ow">and</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">range</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">range</span> <span class="ow">and</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">partition</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">partition</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``hash(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Underlying domain partition.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__partition</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sampling grid.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">grid</span></div>
+
+
+<div class="viewcode-block" id="PointCollocation"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.PointCollocation.html#odl.discr.discr_mappings.PointCollocation">[docs]</a><span class="k">class</span> <span class="nc">PointCollocation</span><span class="p">(</span><span class="n">FunctionSpaceMapping</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Function evaluation at grid points.</span>
+
+<span class="sd">    This operator evaluates a given function in a set of points. These</span>
+<span class="sd">    points are given as the sampling grid of a partition of the</span>
+<span class="sd">    function domain. The result of this evaluation is an array of</span>
+<span class="sd">    function values at these points.</span>
+
+<span class="sd">    If, for example, a function is defined on the interval [0, 1],</span>
+<span class="sd">    and a partition divides the interval into ``N`` subintervals,</span>
+<span class="sd">    the resulting array will have length ``N``. The sampling points</span>
+<span class="sd">    are defined by the partition, usually they are the midpoints</span>
+<span class="sd">    of the subintervals.</span>
+
+<span class="sd">    In higher dimensions, the same principle is applied, with the</span>
+<span class="sd">    only difference being the additional information about the ordering</span>
+<span class="sd">    of the axes in the flat storage array (C- vs. Fortran ordering).</span>
+
+<span class="sd">    This operator is the default `DiscretizedSet.sampling` used by all</span>
+<span class="sd">    core discretization classes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PointCollocation.__init__"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.PointCollocation.html#odl.discr.discr_mappings.PointCollocation.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">tspace</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fspace : `FunctionSpace`</span>
+<span class="sd">            Non-discretized (abstract) set of functions to be</span>
+<span class="sd">            discretized. ``fspace.domain`` must provide a</span>
+<span class="sd">            `Set.contains_set` method.</span>
+<span class="sd">        partition : `RectPartition`</span>
+<span class="sd">            Partition of (a subset of) ``fspace.domain`` based on a</span>
+<span class="sd">            `RectGrid`.</span>
+<span class="sd">        tspace : `TensorSpace`</span>
+<span class="sd">            Space providing containers for the values/coefficients of a</span>
+<span class="sd">            discretized object. Its `TensorSpace.shape` must be equal</span>
+<span class="sd">            to ``partition.shape``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Define a set of functions from the rectangle [1, 3] x [2, 5]</span>
+<span class="sd">        to the real numbers:</span>
+
+<span class="sd">        &gt;&gt;&gt; rect = odl.IntervalProd([1, 3], [2, 5])</span>
+<span class="sd">        &gt;&gt;&gt; fspace = odl.FunctionSpace(rect)</span>
+
+<span class="sd">        Partition the rectangle by a rectilinear grid:</span>
+
+<span class="sd">        &gt;&gt;&gt; rect = odl.IntervalProd([1, 3], [2, 5])</span>
+<span class="sd">        &gt;&gt;&gt; grid = odl.RectGrid([1, 2], [3, 4, 5])</span>
+<span class="sd">        &gt;&gt;&gt; partition = odl.RectPartition(rect, grid)</span>
+<span class="sd">        &gt;&gt;&gt; tspace = odl.rn(grid.shape)</span>
+
+<span class="sd">        Finally create the operator and test it on a function:</span>
+
+<span class="sd">        &gt;&gt;&gt; coll_op = PointCollocation(fspace, partition, tspace)</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # Properly vectorized function</span>
+<span class="sd">        &gt;&gt;&gt; func_elem = fspace.element(lambda x: x[0] - x[1])</span>
+<span class="sd">        &gt;&gt;&gt; coll_op(func_elem)</span>
+<span class="sd">        rn((2, 3)).element(</span>
+<span class="sd">            [[-2., -3., -4.],</span>
+<span class="sd">             [-1., -2., -3.]]</span>
+<span class="sd">        )</span>
+
+<span class="sd">        We can use a Python function directly without creating a</span>
+<span class="sd">        function space element:</span>
+
+<span class="sd">        &gt;&gt;&gt; coll_op(lambda x: x[0] - x[1])</span>
+<span class="sd">        rn((2, 3)).element(</span>
+<span class="sd">            [[-2., -3., -4.],</span>
+<span class="sd">             [-1., -2., -3.]]</span>
+<span class="sd">        )</span>
+
+<span class="sd">        Broadcasting and ``out`` parameters are supported:</span>
+
+<span class="sd">        &gt;&gt;&gt; out = tspace.element()</span>
+<span class="sd">        &gt;&gt;&gt; result = coll_op(func_elem, out=out)</span>
+<span class="sd">        &gt;&gt;&gt; result is out</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; out</span>
+<span class="sd">        rn((2, 3)).element(</span>
+<span class="sd">            [[-2., -3., -4.],</span>
+<span class="sd">             [-1., -2., -3.]]</span>
+<span class="sd">        )</span>
+
+<span class="sd">        It is possible to use parametric functions and pass the parameters</span>
+<span class="sd">        during operator call:</span>
+
+<span class="sd">        &gt;&gt;&gt; def plus_c(x, c=0):</span>
+<span class="sd">        ...     return x[0] - x[1] + c</span>
+<span class="sd">        &gt;&gt;&gt; coll_op(plus_c)  # uses default c = 0</span>
+<span class="sd">        rn((2, 3)).element(</span>
+<span class="sd">            [[-2., -3., -4.],</span>
+<span class="sd">             [-1., -2., -3.]]</span>
+<span class="sd">        )</span>
+<span class="sd">        &gt;&gt;&gt; coll_op(plus_c, c=2)</span>
+<span class="sd">        rn((2, 3)).element(</span>
+<span class="sd">            [[ 0., -1., -2.],</span>
+<span class="sd">             [ 1.,  0., -1.]]</span>
+<span class="sd">        )</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This operator expects its input functions to be written in</span>
+<span class="sd">        a vectorization-conforming manner to ensure fast evaluation.</span>
+<span class="sd">        See the `ODL vectorization guide`_ for a detailed introduction.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        odl.discr.grid.RectGrid.meshgrid</span>
+<span class="sd">        numpy.meshgrid</span>
+
+<span class="sd">        References</span>
+<span class="sd">        ----------</span>
+<span class="sd">        .. _ODL vectorization guide:</span>
+<span class="sd">           https://odlgroup.github.io/odl/guide/in_depth/\</span>
+<span class="sd">vectorization_guide.html</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">linear</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fspace</span><span class="p">,</span> <span class="s1">&#39;field&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PointCollocation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="s1">&#39;sampling&#39;</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">tspace</span><span class="p">,</span> <span class="n">linear</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PointCollocation._call"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.PointCollocation._call.html#odl.discr.discr_mappings.PointCollocation._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self(func[, out, **kwargs])``.&quot;&quot;&quot;</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">meshgrid</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">writable_array</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_arr</span><span class="p">:</span>
+                <span class="n">func</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out_arr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="n">posargs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">]</span>
+        <span class="n">inner_str</span> <span class="o">=</span> <span class="n">signature_string</span><span class="p">(</span><span class="n">posargs</span><span class="p">,</span> <span class="p">[],</span>
+                                     <span class="n">sep</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">],</span>
+                                     <span class="n">mod</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;!r&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">indent</span><span class="p">(</span><span class="n">inner_str</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="NearestInterpolation"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.NearestInterpolation.html#odl.discr.discr_mappings.NearestInterpolation">[docs]</a><span class="k">class</span> <span class="nc">NearestInterpolation</span><span class="p">(</span><span class="n">FunctionSpaceMapping</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Nearest neighbor interpolation as an `Operator`.</span>
+
+<span class="sd">    Given points ``x1 &lt; x2 &lt; ... &lt; xN``, and values ``f1, ..., fN``,</span>
+<span class="sd">    nearest neighbor interpolation at ``x`` is defined by::</span>
+
+<span class="sd">        I(x) = fj  with j such that |x - xj| is minimal.</span>
+
+<span class="sd">    The ambiguity at the midpoints is resolved by preferring one of the</span>
+<span class="sd">    neighbors. For higher dimensions, this rule is applied per</span>
+<span class="sd">    component.</span>
+
+<span class="sd">    The nearest neighbor interpolation operator is defined as the</span>
+<span class="sd">    mapping from the values ``f1, ..., fN`` to the function ``I(x)``</span>
+<span class="sd">    (as a whole).</span>
+
+<span class="sd">    In higher dimensions, this principle is applied per axis, the</span>
+<span class="sd">    only difference being the additional information about the ordering</span>
+<span class="sd">    of the axes in the flat storage array (C- vs. Fortran ordering).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="NearestInterpolation.__init__"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.NearestInterpolation.html#odl.discr.discr_mappings.NearestInterpolation.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">tspace</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fspace : `FunctionSpace`</span>
+<span class="sd">            Non-discretized (abstract) set of functions to be</span>
+<span class="sd">            discretized. ``fspace.domain`` must provide a</span>
+<span class="sd">            `Set.contains_set` method.</span>
+<span class="sd">        partition : `RectPartition`</span>
+<span class="sd">            Partition of (a subset of) ``fspace.domain`` based on a</span>
+<span class="sd">            spatial grid.</span>
+<span class="sd">        tspace : `TensorSpace`</span>
+<span class="sd">            Space providing containers for the values/coefficients of a</span>
+<span class="sd">            discretized object. Its `TensorSpace.shape` must be equal</span>
+<span class="sd">            to ``partition.shape``.</span>
+<span class="sd">        variant : {&#39;left&#39;, &#39;right&#39;}, optional</span>
+<span class="sd">            Behavior variant at the midpoint between neighbors.</span>
+
+<span class="sd">                ``&#39;left&#39;``: favor left neighbor (default)</span>
+
+<span class="sd">                ``&#39;right&#39;``: favor right neighbor</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        We test nearest neighbor interpolation with a non-scalar</span>
+<span class="sd">        data type in 2d:</span>
+
+<span class="sd">        &gt;&gt;&gt; rect = odl.IntervalProd([0, 0], [1, 1])</span>
+<span class="sd">        &gt;&gt;&gt; fspace = odl.FunctionSpace(rect, out_dtype=&#39;U1&#39;)</span>
+
+<span class="sd">        Partitioning the domain uniformly with no nodes on the boundary</span>
+<span class="sd">        (will shift the grid points):</span>
+
+<span class="sd">        &gt;&gt;&gt; part = odl.uniform_partition_fromintv(rect, [4, 2])</span>
+<span class="sd">        &gt;&gt;&gt; part.grid.coord_vectors</span>
+<span class="sd">        (array([ 0.125,  0.375,  0.625,  0.875]), array([ 0.25,  0.75]))</span>
+
+<span class="sd">        Now we initialize the operator and test it with some points:</span>
+
+<span class="sd">        &gt;&gt;&gt; tspace = odl.tensor_space(part.shape, dtype=&#39;U1&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; interp_op = NearestInterpolation(fspace, part, tspace)</span>
+<span class="sd">        &gt;&gt;&gt; values = np.array([[&#39;m&#39;, &#39;y&#39;],</span>
+<span class="sd">        ...                    [&#39;s&#39;, &#39;t&#39;],</span>
+<span class="sd">        ...                    [&#39;r&#39;, &#39;i&#39;],</span>
+<span class="sd">        ...                    [&#39;n&#39;, &#39;g&#39;]])</span>
+<span class="sd">        &gt;&gt;&gt; function = interp_op(values)</span>
+<span class="sd">        &gt;&gt;&gt; print(function([0.3, 0.6]))  # closest to index (1, 1) -&gt; 3</span>
+<span class="sd">        t</span>
+<span class="sd">        &gt;&gt;&gt; out = np.empty(2, dtype=&#39;U1&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; pts = np.array([[0.3, 0.6],</span>
+<span class="sd">        ...                 [1.0, 1.0]])</span>
+<span class="sd">        &gt;&gt;&gt; out = function(pts.T, out=out)  # returns original out</span>
+<span class="sd">        &gt;&gt;&gt; all(out == [&#39;t&#39;, &#39;g&#39;])</span>
+<span class="sd">        True</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        LinearInterpolation : (bi-/tri-/...)linear interpolation</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        - **Important:** if called on a point array, the points are</span>
+<span class="sd">          assumed to be sorted in ascending order in each dimension</span>
+<span class="sd">          for efficiency reasons.</span>
+<span class="sd">        - Nearest neighbor interpolation is the only scheme which works</span>
+<span class="sd">          with data of non-numeric data type since it does not involve any</span>
+<span class="sd">          arithmetic operations on the values, in contrast to other</span>
+<span class="sd">          interpolation methods.</span>
+<span class="sd">        - The distinction between left and right variants is currently</span>
+<span class="sd">          made by changing ``&lt;=`` to ``&lt;`` at one place. This difference</span>
+<span class="sd">          may not be noticable in some situations due to rounding errors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">linear</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fspace</span><span class="p">,</span> <span class="s1">&#39;field&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NearestInterpolation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="s1">&#39;interpolation&#39;</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">tspace</span><span class="p">,</span> <span class="n">linear</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__variant</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">variant</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`variant` </span><span class="si">{!r}</span><span class="s2"> not understood&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">variant</span><span class="p">))</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">variant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The variant (left / right) of interpolation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__variant</span>
+
+<div class="viewcode-block" id="NearestInterpolation._call"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.NearestInterpolation._call.html#odl.discr.discr_mappings.NearestInterpolation._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self(x[, out])``.&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: pass reasonable options on to the interpolator</span>
+        <span class="k">def</span> <span class="nf">nearest</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Interpolating function with vectorization.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">is_valid_input_meshgrid</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="n">input_type</span> <span class="o">=</span> <span class="s1">&#39;meshgrid&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">input_type</span> <span class="o">=</span> <span class="s1">&#39;array&#39;</span>
+
+            <span class="n">interpolator</span> <span class="o">=</span> <span class="n">_NearestInterpolator</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">coord_vectors</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">variant</span><span class="p">,</span>
+                <span class="n">input_type</span><span class="o">=</span><span class="n">input_type</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">interpolator</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">nearest</span><span class="p">,</span> <span class="n">vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="n">posargs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">]</span>
+        <span class="n">optargs</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;variant&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">)]</span>
+        <span class="n">inner_str</span> <span class="o">=</span> <span class="n">signature_string</span><span class="p">(</span><span class="n">posargs</span><span class="p">,</span> <span class="n">optargs</span><span class="p">,</span>
+                                     <span class="n">sep</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">],</span>
+                                     <span class="n">mod</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;!r&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">indent</span><span class="p">(</span><span class="n">inner_str</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="LinearInterpolation"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.LinearInterpolation.html#odl.discr.discr_mappings.LinearInterpolation">[docs]</a><span class="k">class</span> <span class="nc">LinearInterpolation</span><span class="p">(</span><span class="n">FunctionSpaceMapping</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Linear interpolation interpolation as an `Operator`.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="LinearInterpolation.__init__"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.LinearInterpolation.html#odl.discr.discr_mappings.LinearInterpolation.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">tspace</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fspace : `FunctionSpace`</span>
+<span class="sd">            Non-discretized (abstract) space of functions to be</span>
+<span class="sd">            discretized. ``fspace.domain`` must provide a</span>
+<span class="sd">            `Set.contains_set` method.</span>
+<span class="sd">        partition : `RectPartition`</span>
+<span class="sd">            Partition of (a subset of) ``fspace.domain`` based on a</span>
+<span class="sd">            `RectGrid`</span>
+<span class="sd">        tspace : `TensorSpace`</span>
+<span class="sd">            Space providing containers for the values/coefficients of a</span>
+<span class="sd">            discretized object. Its `TensorSpace.shape` must be equal</span>
+<span class="sd">            to ``partition.shape``, and its `TensorSpace.field` must</span>
+<span class="sd">            match ``fspace.field``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fspace</span><span class="p">,</span> <span class="s1">&#39;field&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`fspace.field` cannot be `None`&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearInterpolation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="s1">&#39;interpolation&#39;</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">tspace</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LinearInterpolation._call"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.LinearInterpolation._call.html#odl.discr.discr_mappings.LinearInterpolation._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self(x[, out])``.&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: pass reasonable options on to the interpolator</span>
+        <span class="k">def</span> <span class="nf">linear</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Interpolating function with vectorization.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">is_valid_input_meshgrid</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="n">input_type</span> <span class="o">=</span> <span class="s1">&#39;meshgrid&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">input_type</span> <span class="o">=</span> <span class="s1">&#39;array&#39;</span>
+
+            <span class="n">interpolator</span> <span class="o">=</span> <span class="n">_LinearInterpolator</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">coord_vectors</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="n">input_type</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">interpolator</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="n">posargs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">]</span>
+        <span class="n">inner_str</span> <span class="o">=</span> <span class="n">signature_string</span><span class="p">(</span><span class="n">posargs</span><span class="p">,</span> <span class="p">[],</span>
+                                     <span class="n">sep</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">],</span>
+                                     <span class="n">mod</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;!r&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">indent</span><span class="p">(</span><span class="n">inner_str</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="PerAxisInterpolation"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.PerAxisInterpolation.html#odl.discr.discr_mappings.PerAxisInterpolation">[docs]</a><span class="k">class</span> <span class="nc">PerAxisInterpolation</span><span class="p">(</span><span class="n">FunctionSpaceMapping</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Interpolation scheme set for each axis individually.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PerAxisInterpolation.__init__"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.PerAxisInterpolation.html#odl.discr.discr_mappings.PerAxisInterpolation.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">tspace</span><span class="p">,</span> <span class="n">schemes</span><span class="p">,</span> <span class="n">nn_variants</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fspace : `FunctionSpace`</span>
+<span class="sd">            Non-discretized (abstract) space of functions to be</span>
+<span class="sd">            discretized. ``fspace.domain`` must provide a</span>
+<span class="sd">            `Set.contains_set` method.</span>
+<span class="sd">        partition : `RectPartition`</span>
+<span class="sd">            Partition of (a subset of) ``fspace.domain`` based on a</span>
+<span class="sd">            `RectGrid`</span>
+<span class="sd">        tspace : `TensorSpace`</span>
+<span class="sd">            Space providing containers for the values/coefficients of a</span>
+<span class="sd">            discretized object. Its `TensorSpace.shape` must be equal</span>
+<span class="sd">            to ``partition.shape``, and its `TensorSpace.field` must</span>
+<span class="sd">            match ``fspace.field``.</span>
+<span class="sd">        schemes : string or sequence of strings</span>
+<span class="sd">            Indicates which interpolation scheme to use for which axis.</span>
+<span class="sd">            A single string is interpreted as a global scheme for all</span>
+<span class="sd">            axes.</span>
+<span class="sd">        nn_variants : string or sequence of strings, optional</span>
+<span class="sd">            Which variant (&#39;left&#39; or &#39;right&#39;) to use in nearest neighbor</span>
+<span class="sd">            interpolation for which axis. A single string is interpreted</span>
+<span class="sd">            as a global variant for all axes.</span>
+<span class="sd">            This option has no effect for schemes other than nearest</span>
+<span class="sd">            neighbor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fspace</span><span class="p">,</span> <span class="s1">&#39;field&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`fspace.field` cannot be `None`&#39;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">PerAxisInterpolation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="s1">&#39;interpolation&#39;</span><span class="p">,</span> <span class="n">fspace</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">tspace</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">schemes_in</span> <span class="o">=</span> <span class="n">schemes</span>
+        <span class="k">if</span> <span class="n">is_string</span><span class="p">(</span><span class="n">schemes</span><span class="p">):</span>
+            <span class="n">scheme</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schemes</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">scheme</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_SUPPORTED_INTERP_SCHEMES</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`schemes` </span><span class="si">{!r}</span><span class="s1"> not understood&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">schemes_in</span><span class="p">))</span>
+            <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="n">scheme</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">ndim</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">scm</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="n">scm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+                       <span class="k">for</span> <span class="n">scm</span> <span class="ow">in</span> <span class="n">schemes</span><span class="p">]</span>
+
+        <span class="n">nn_variants_in</span> <span class="o">=</span> <span class="n">nn_variants</span>
+        <span class="k">if</span> <span class="n">nn_variants</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nn_variants</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;left&#39;</span> <span class="k">if</span> <span class="n">scm</span> <span class="o">==</span> <span class="s1">&#39;nearest&#39;</span> <span class="k">else</span> <span class="kc">None</span>
+                           <span class="k">for</span> <span class="n">scm</span> <span class="ow">in</span> <span class="n">schemes</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">is_string</span><span class="p">(</span><span class="n">nn_variants</span><span class="p">):</span>
+                <span class="c1"># Make list with `nn_variants` where `schemes == &#39;nearest&#39;`,</span>
+                <span class="c1"># else `None` (variants only applies to axes with nn</span>
+                <span class="c1"># interpolation)</span>
+                <span class="n">nn_variants</span> <span class="o">=</span> <span class="p">[</span><span class="n">nn_variants</span> <span class="k">if</span> <span class="n">scm</span> <span class="o">==</span> <span class="s1">&#39;nearest&#39;</span> <span class="k">else</span> <span class="kc">None</span>
+                               <span class="k">for</span> <span class="n">scm</span> <span class="ow">in</span> <span class="n">schemes</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">nn_variants_in</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`nn_variants` </span><span class="si">{!r}</span><span class="s1"> not understood&#39;</span>
+                                     <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nn_variants_in</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">nn_variants</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">var</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+                               <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">nn_variants</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+            <span class="c1"># Reaching a raise condition here only happens for invalid</span>
+            <span class="c1"># sequences of inputs, single-input case has been checked above</span>
+            <span class="k">if</span> <span class="n">schemes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_SUPPORTED_INTERP_SCHEMES</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`interp[</span><span class="si">{}</span><span class="s1">]=</span><span class="si">{!r}</span><span class="s1">` not understood&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">schemes_in</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">))</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">schemes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;nearest&#39;</span> <span class="ow">and</span>
+                    <span class="n">nn_variants</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`nn_variants[</span><span class="si">{}</span><span class="s1">]=</span><span class="si">{!r}</span><span class="s1">` not understood&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nn_variants_in</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">schemes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;nearest&#39;</span> <span class="ow">and</span> <span class="n">nn_variants</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;in axis </span><span class="si">{}</span><span class="s1">: `nn_variants` cannot be used &#39;</span>
+                                 <span class="s1">&#39;with `interp=</span><span class="si">{!r}</span><span class="s1">&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">schemes_in</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__schemes</span> <span class="o">=</span> <span class="n">schemes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__nn_variants</span> <span class="o">=</span> <span class="n">nn_variants</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">schemes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of interpolation schemes, one for each axis.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__schemes</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nn_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of nearest neighbor variants, one for each axis.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__nn_variants</span>
+
+<div class="viewcode-block" id="PerAxisInterpolation._call"><a class="viewcode-back" href="../../../generated/odl.discr.discr_mappings.PerAxisInterpolation._call.html#odl.discr.discr_mappings.PerAxisInterpolation._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an interpolator from grid values ``x``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : `Tensor`</span>
+<span class="sd">            The array of values to be interpolated</span>
+<span class="sd">        out : `FunctionSpaceElement`, optional</span>
+<span class="sd">            Element in which to store the interpolator</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : `FunctionSpaceElement`</span>
+<span class="sd">            Per-axis interpolator for the grid of this operator. If</span>
+<span class="sd">            ``out`` was provided, the returned object is a reference</span>
+<span class="sd">            to it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">per_axis_interp</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Interpolating function with vectorization.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">is_valid_input_meshgrid</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="n">input_type</span> <span class="o">=</span> <span class="s1">&#39;meshgrid&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">input_type</span> <span class="o">=</span> <span class="s1">&#39;array&#39;</span>
+
+            <span class="n">interpolator</span> <span class="o">=</span> <span class="n">_PerAxisInterpolator</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">coord_vectors</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span>
+                <span class="n">schemes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">schemes</span><span class="p">,</span> <span class="n">nn_variants</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nn_variants</span><span class="p">,</span>
+                <span class="n">input_type</span><span class="o">=</span><span class="n">input_type</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">interpolator</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">per_axis_interp</span><span class="p">,</span> <span class="n">vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">scm</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">scm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span><span class="p">):</span>
+            <span class="n">schemes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">schemes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span>
+
+        <span class="n">posargs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">schemes</span><span class="p">]</span>
+
+        <span class="n">nn_relevant</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nn_variants</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">nn_relevant</span><span class="p">:</span>
+            <span class="c1"># No NN axes, ignore nn_variants</span>
+            <span class="n">optargs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Use single string if all are equal, one per axis otherwise</span>
+            <span class="n">first_relevant</span> <span class="o">=</span> <span class="n">nn_relevant</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">var</span> <span class="o">==</span> <span class="n">first_relevant</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">nn_relevant</span><span class="p">):</span>
+                <span class="n">variants</span> <span class="o">=</span> <span class="n">first_relevant</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">variants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nn_variants</span>
+
+            <span class="n">optargs</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;nn_variants&#39;</span><span class="p">,</span> <span class="n">variants</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">)]</span>
+
+        <span class="n">inner_str</span> <span class="o">=</span> <span class="n">signature_string</span><span class="p">(</span><span class="n">posargs</span><span class="p">,</span> <span class="n">optargs</span><span class="p">,</span>
+                                     <span class="n">sep</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">],</span>
+                                     <span class="n">mod</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;!r&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">indent</span><span class="p">(</span><span class="n">inner_str</span><span class="p">))</span></div>
+
+
+<span class="k">class</span> <span class="nc">_Interpolator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Abstract interpolator class.</span>
+
+<span class="sd">    The code is adapted from SciPy&#39;s `RegularGridInterpolator</span>
+<span class="sd">    &lt;http://docs.scipy.org/doc/scipy/reference/generated/\</span>
+<span class="sd">scipy.interpolate.RegularGridInterpolator.html&gt;`_ class.</span>
+
+<span class="sd">    The init method does not convert to floating point to</span>
+<span class="sd">    support arbitrary data type for nearest neighbor interpolation.</span>
+
+<span class="sd">    Subclasses need to override ``_evaluate`` for concrete</span>
+<span class="sd">    implementations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord_vecs</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">input_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        coord_vecs : sequence of `numpy.ndarray`&#39;s</span>
+<span class="sd">            Coordinate vectors defining the interpolation grid</span>
+<span class="sd">        values : `array-like`</span>
+<span class="sd">            Grid values to use for interpolation</span>
+<span class="sd">        input_type : {&#39;array&#39;, &#39;meshgrid&#39;}</span>
+<span class="sd">            Type of expected input values in ``__call__``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">typ_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">input_type</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">typ_</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="s1">&#39;meshgrid&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`input_type` (</span><span class="si">{}</span><span class="s1">) not understood&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">input_type</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">coord_vecs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">values</span><span class="o">.</span><span class="n">ndim</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;there are </span><span class="si">{}</span><span class="s1"> point arrays, but `values` has </span><span class="si">{}</span><span class="s1"> &#39;</span>
+                             <span class="s1">&#39;dimensions&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coord_vecs</span><span class="p">),</span>
+                                                 <span class="n">values</span><span class="o">.</span><span class="n">ndim</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coord_vecs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;the points in dimension </span><span class="si">{}</span><span class="s1"> must be &#39;</span>
+                                 <span class="s1">&#39;1-dimensional&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;there are </span><span class="si">{}</span><span class="s1"> points and </span><span class="si">{}</span><span class="s1"> values in &#39;</span>
+                                 <span class="s1">&#39;dimension </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">),</span>
+                                                       <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">coord_vecs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">coord_vecs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_type</span> <span class="o">=</span> <span class="n">input_type</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Do the interpolation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : `meshgrid` or `numpy.ndarray`</span>
+<span class="sd">            Evaluation points of the interpolator</span>
+<span class="sd">        out : `numpy.ndarray`, optional</span>
+<span class="sd">            Array to which the results are written. Needs to have</span>
+<span class="sd">            correct shape according to input ``x``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : `numpy.ndarray`</span>
+<span class="sd">            Interpolated values. If ``out`` was given, the returned</span>
+<span class="sd">            object is a reference to it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coord_vecs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_type</span> <span class="o">==</span> <span class="s1">&#39;array&#39;</span><span class="p">:</span>
+            <span class="c1"># Make a (1, n) array from one with shape (n,)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="n">ndim</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="n">ndim</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;number of vectors in x is </span><span class="si">{}</span><span class="s1"> instead of &#39;</span>
+                                 <span class="s1">&#39;the grid dimension </span><span class="si">{}</span><span class="s1">&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">ndim</span><span class="p">))</span>
+            <span class="n">out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`out` </span><span class="si">{!r}</span><span class="s1"> not a `numpy.ndarray` &#39;</span>
+                                <span class="s1">&#39;instance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">out_shape</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;output shape </span><span class="si">{}</span><span class="s1"> not equal to expected &#39;</span>
+                                 <span class="s1">&#39;shape </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">out_shape</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;output dtype </span><span class="si">{}</span><span class="s1"> not equal to expected &#39;</span>
+                                 <span class="s1">&#39;dtype </span><span class="si">{}</span><span class="s1">&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+
+        <span class="n">indices</span><span class="p">,</span> <span class="n">norm_distances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_indices</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">norm_distances</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_find_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find indices and distances of the given nodes.</span>
+
+<span class="sd">        Can be overridden by subclasses to improve efficiency.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># find relevant edges between which xi are situated</span>
+        <span class="n">index_vecs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># compute distance to lower edge in unity units</span>
+        <span class="n">norm_distances</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># iterate through dimensions</span>
+        <span class="k">for</span> <span class="n">xi</span><span class="p">,</span> <span class="n">cvec</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coord_vecs</span><span class="p">):</span>
+            <span class="n">idcs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">cvec</span><span class="p">,</span> <span class="n">xi</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+            <span class="n">idcs</span><span class="p">[</span><span class="n">idcs</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">idcs</span><span class="p">[</span><span class="n">idcs</span> <span class="o">&gt;</span> <span class="n">cvec</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">cvec</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">2</span>
+            <span class="n">index_vecs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idcs</span><span class="p">)</span>
+
+            <span class="n">norm_distances</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">xi</span> <span class="o">-</span> <span class="n">cvec</span><span class="p">[</span><span class="n">idcs</span><span class="p">])</span> <span class="o">/</span>
+                                  <span class="p">(</span><span class="n">cvec</span><span class="p">[</span><span class="n">idcs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">cvec</span><span class="p">[</span><span class="n">idcs</span><span class="p">]))</span>
+
+        <span class="k">return</span> <span class="n">index_vecs</span><span class="p">,</span> <span class="n">norm_distances</span>
+
+    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">norm_distances</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Evaluation method, needs to be overridden.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;abstract method&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_NearestInterpolator</span><span class="p">(</span><span class="n">_Interpolator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Nearest neighbor interpolator.</span>
+
+<span class="sd">    The code is adapted from SciPy&#39;s `RegularGridInterpolator</span>
+<span class="sd">    &lt;http://docs.scipy.org/doc/scipy/reference/generated/\</span>
+<span class="sd">scipy.interpolate.RegularGridInterpolator.html&gt;`_ class.</span>
+
+<span class="sd">    This implementation is faster than the more generic one in the</span>
+<span class="sd">    `_PerAxisPointwiseInterpolator`. Compared to the original code,</span>
+<span class="sd">    support of ``&#39;left&#39;`` and ``&#39;right&#39;`` variants are added.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord_vecs</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">input_type</span><span class="p">,</span> <span class="n">variant</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        coord_vecs : sequence of `numpy.ndarray`&#39;s</span>
+<span class="sd">            Coordinate vectors defining the interpolation grid</span>
+<span class="sd">        values : `array-like`</span>
+<span class="sd">            Grid values to use for interpolation</span>
+<span class="sd">        input_type : {&#39;array&#39;, &#39;meshgrid&#39;}</span>
+<span class="sd">            Type of expected input values in ``__call__``</span>
+<span class="sd">        variant : {&#39;left&#39;, &#39;right&#39;}</span>
+<span class="sd">            Indicates which neighbor to prefer in the interpolation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_NearestInterpolator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">coord_vecs</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">input_type</span><span class="p">)</span>
+        <span class="n">variant_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">variant</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">variant_</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;variant &#39;</span><span class="si">{}</span><span class="s2">&#39; not understood&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">variant_</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">=</span> <span class="n">variant_</span>
+
+    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">norm_distances</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Evaluate nearest interpolation.&quot;&quot;&quot;</span>
+        <span class="n">idx_res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">yi</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">norm_distances</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span>
+                <span class="n">idx_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">yi</span> <span class="o">&lt;=</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">idx_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">yi</span> <span class="o">&lt;</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">idx_res</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">out</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">idx_res</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_compute_nearest_weights_edge</span><span class="p">(</span><span class="n">idcs</span><span class="p">,</span> <span class="n">ndist</span><span class="p">,</span> <span class="n">variant</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Helper for nearest interpolation mimicing the linear case.&quot;&quot;&quot;</span>
+    <span class="c1"># Get out-of-bounds indices from the norm_distances. Negative</span>
+    <span class="c1"># means &quot;too low&quot;, larger than or equal to 1 means &quot;too high&quot;</span>
+    <span class="n">lo</span> <span class="o">=</span> <span class="p">(</span><span class="n">ndist</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="p">(</span><span class="n">ndist</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># For &quot;too low&quot; nodes, the lower neighbor gets weight zero;</span>
+    <span class="c1"># &quot;too high&quot; gets 1.</span>
+    <span class="k">if</span> <span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span>
+        <span class="n">w_lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ndist</span> <span class="o">&lt;=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">w_lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ndist</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="n">w_lo</span><span class="p">[</span><span class="n">lo</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">w_lo</span><span class="p">[</span><span class="n">hi</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># For &quot;too high&quot; nodes, the upper neighbor gets weight zero;</span>
+    <span class="c1"># &quot;too low&quot; gets 1.</span>
+    <span class="k">if</span> <span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span>
+        <span class="n">w_hi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ndist</span> <span class="o">&lt;=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">w_hi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ndist</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="n">w_hi</span><span class="p">[</span><span class="n">lo</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">w_hi</span><span class="p">[</span><span class="n">hi</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># For upper/lower out-of-bounds nodes, we need to set the</span>
+    <span class="c1"># lower/upper neighbors to the last/first grid point</span>
+    <span class="n">edge</span> <span class="o">=</span> <span class="p">[</span><span class="n">idcs</span><span class="p">,</span> <span class="n">idcs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">hi</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">lo</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">w_lo</span><span class="p">,</span> <span class="n">w_hi</span><span class="p">,</span> <span class="n">edge</span>
+
+
+<span class="k">def</span> <span class="nf">_compute_linear_weights_edge</span><span class="p">(</span><span class="n">idcs</span><span class="p">,</span> <span class="n">ndist</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Helper for linear interpolation.&quot;&quot;&quot;</span>
+    <span class="c1"># Get out-of-bounds indices from the norm_distances. Negative</span>
+    <span class="c1"># means &quot;too low&quot;, larger than or equal to 1 means &quot;too high&quot;</span>
+    <span class="n">lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ndist</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ndist</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># For &quot;too low&quot; nodes, the lower neighbor gets weight zero;</span>
+    <span class="c1"># &quot;too high&quot; gets 2 - yi (since yi &gt;= 1)</span>
+    <span class="n">w_lo</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ndist</span><span class="p">)</span>
+    <span class="n">w_lo</span><span class="p">[</span><span class="n">lo</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">w_lo</span><span class="p">[</span><span class="n">hi</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># For &quot;too high&quot; nodes, the upper neighbor gets weight zero;</span>
+    <span class="c1"># &quot;too low&quot; gets 1 + yi (since yi &lt; 0)</span>
+    <span class="n">w_hi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">ndist</span><span class="p">)</span>
+    <span class="n">w_hi</span><span class="p">[</span><span class="n">lo</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">w_hi</span><span class="p">[</span><span class="n">hi</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># For upper/lower out-of-bounds nodes, we need to set the</span>
+    <span class="c1"># lower/upper neighbors to the last/first grid point</span>
+    <span class="n">edge</span> <span class="o">=</span> <span class="p">[</span><span class="n">idcs</span><span class="p">,</span> <span class="n">idcs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">hi</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">lo</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">w_lo</span><span class="p">,</span> <span class="n">w_hi</span><span class="p">,</span> <span class="n">edge</span>
+
+
+<span class="k">def</span> <span class="nf">_create_weight_edge_lists</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">norm_distances</span><span class="p">,</span> <span class="n">schemes</span><span class="p">,</span> <span class="n">variants</span><span class="p">):</span>
+    <span class="c1"># Precalculate indices and weights (per axis)</span>
+    <span class="n">low_weights</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">high_weights</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">edge_indices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">idcs</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">scm</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+            <span class="nb">zip</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">norm_distances</span><span class="p">,</span> <span class="n">schemes</span><span class="p">,</span> <span class="n">variants</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">scm</span> <span class="o">==</span> <span class="s1">&#39;nearest&#39;</span><span class="p">:</span>
+            <span class="n">w_lo</span><span class="p">,</span> <span class="n">w_hi</span><span class="p">,</span> <span class="n">edge</span> <span class="o">=</span> <span class="n">_compute_nearest_weights_edge</span><span class="p">(</span>
+                <span class="n">idcs</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">scm</span> <span class="o">==</span> <span class="s1">&#39;linear&#39;</span><span class="p">:</span>
+            <span class="n">w_lo</span><span class="p">,</span> <span class="n">w_hi</span><span class="p">,</span> <span class="n">edge</span> <span class="o">=</span> <span class="n">_compute_linear_weights_edge</span><span class="p">(</span>
+                <span class="n">idcs</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;scheme &#39;</span><span class="si">{}</span><span class="s2">&#39; at index </span><span class="si">{}</span><span class="s2"> not supported&quot;</span>
+                             <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scm</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+
+        <span class="n">low_weights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w_lo</span><span class="p">)</span>
+        <span class="n">high_weights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w_hi</span><span class="p">)</span>
+        <span class="n">edge_indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">low_weights</span><span class="p">,</span> <span class="n">high_weights</span><span class="p">,</span> <span class="n">edge_indices</span>
+
+
+<span class="k">class</span> <span class="nc">_PerAxisInterpolator</span><span class="p">(</span><span class="n">_Interpolator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Interpolator where the scheme is set per axis.</span>
+
+<span class="sd">    This allows to use e.g. nearest neighbor interpolation in the</span>
+<span class="sd">    first dimension and linear in dimensions 2 and 3.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord_vecs</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">input_type</span><span class="p">,</span> <span class="n">schemes</span><span class="p">,</span> <span class="n">nn_variants</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        coord_vecs : sequence of `numpy.ndarray`&#39;s</span>
+<span class="sd">            Coordinate vectors defining the interpolation grid</span>
+<span class="sd">        values : `array-like`</span>
+<span class="sd">            Grid values to use for interpolation</span>
+<span class="sd">        input_type : {&#39;array&#39;, &#39;meshgrid&#39;}</span>
+<span class="sd">            Type of expected input values in ``__call__``</span>
+<span class="sd">        schemes : sequence of strings</span>
+<span class="sd">            Indicates which interpolation scheme to use for which axis</span>
+<span class="sd">        nn_variants : sequence of strings</span>
+<span class="sd">            Which variant (&#39;left&#39; or &#39;right&#39;) to use in nearest neighbor</span>
+<span class="sd">            interpolation for which axis.</span>
+<span class="sd">            This option has no effect for schemes other than nearest</span>
+<span class="sd">            neighbor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_PerAxisInterpolator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">coord_vecs</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">input_type</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span> <span class="o">=</span> <span class="n">schemes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nn_variants</span> <span class="o">=</span> <span class="n">nn_variants</span>
+
+    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">norm_distances</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Evaluate linear interpolation.</span>
+
+<span class="sd">        Modified for in-place evaluation and treatment of out-of-bounds</span>
+<span class="sd">        points by implicitly assuming 0 at the next node.&quot;&quot;&quot;</span>
+        <span class="c1"># slice for broadcasting over trailing dimensions in self.values</span>
+        <span class="n">vslice</span> <span class="o">=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),)</span> <span class="o">+</span> <span class="p">(</span><span class="kc">None</span><span class="p">,)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">out_shape</span> <span class="o">=</span> <span class="n">out_shape_from_meshgrid</span><span class="p">(</span><span class="n">norm_distances</span><span class="p">)</span>
+            <span class="n">out_dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">out_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">out_dtype</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="c1"># Weights and indices (per axis)</span>
+        <span class="n">low_weights</span><span class="p">,</span> <span class="n">high_weights</span><span class="p">,</span> <span class="n">edge_indices</span> <span class="o">=</span> <span class="n">_create_weight_edge_lists</span><span class="p">(</span>
+            <span class="n">indices</span><span class="p">,</span> <span class="n">norm_distances</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nn_variants</span><span class="p">)</span>
+
+        <span class="c1"># Iterate over all possible combinations of [i, i+1] for each</span>
+        <span class="c1"># axis, resulting in a loop of length 2**ndim</span>
+        <span class="k">for</span> <span class="n">lo_hi</span><span class="p">,</span> <span class="n">edge</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="p">([[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">))),</span>
+                               <span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">edge_indices</span><span class="p">)):</span>
+            <span class="n">weight</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="c1"># TODO: determine best summation order from array strides</span>
+            <span class="k">for</span> <span class="n">lh</span><span class="p">,</span> <span class="n">w_lo</span><span class="p">,</span> <span class="n">w_hi</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lo_hi</span><span class="p">,</span> <span class="n">low_weights</span><span class="p">,</span> <span class="n">high_weights</span><span class="p">):</span>
+
+                <span class="c1"># We don&#39;t multiply in-place to exploit the cheap operations</span>
+                <span class="c1"># in the beginning: sizes grow gradually as following:</span>
+                <span class="c1"># (n, 1, 1, ...) -&gt; (n, m, 1, ...) -&gt; ...</span>
+                <span class="c1"># Hence, it is faster to build up the weight array instead</span>
+                <span class="c1"># of doing full-size operations from the beginning.</span>
+                <span class="k">if</span> <span class="n">lh</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
+                    <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">w_lo</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">w_hi</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">edge</span><span class="p">])</span> <span class="o">*</span> <span class="n">weight</span><span class="p">[</span><span class="n">vslice</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_LinearInterpolator</span><span class="p">(</span><span class="n">_PerAxisInterpolator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Linear (i.e. bi-/tri-/multi-linear) interpolator.</span>
+
+<span class="sd">    Convenience class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord_vecs</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">input_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        coord_vecs : sequence of `numpy.ndarray`&#39;s</span>
+<span class="sd">            Coordinate vectors defining the interpolation grid</span>
+<span class="sd">        values : `array-like`</span>
+<span class="sd">            Grid values to use for interpolation</span>
+<span class="sd">        input_type : {&#39;array&#39;, &#39;meshgrid&#39;}</span>
+<span class="sd">            Type of expected input values in ``__call__``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_LinearInterpolator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">coord_vecs</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">input_type</span><span class="p">,</span>
+            <span class="n">schemes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">coord_vecs</span><span class="p">),</span>
+            <span class="n">nn_variants</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">coord_vecs</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">odl.util.testutils</span> <span class="k">import</span> <span class="n">run_doctests</span>
+    <span class="n">run_doctests</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

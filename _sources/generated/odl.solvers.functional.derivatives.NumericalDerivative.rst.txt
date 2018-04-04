@@ -1,0 +1,30 @@
+NumericalDerivative
+======================================================
+
+.. currentmodule:: odl.solvers.functional.derivatives
+
+.. autoclass:: NumericalDerivative
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NumericalDerivative.__call__
+         NumericalDerivative._call
+         NumericalDerivative.derivative
+         NumericalDerivative.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

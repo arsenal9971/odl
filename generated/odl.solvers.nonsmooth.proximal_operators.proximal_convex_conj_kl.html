@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>proximal_convex_conj_kl &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="proximal_operators" href="../odl.solvers.nonsmooth.proximal_operators.html"/>
+        <link rel="next" title="proximal_convex_conj_kl_cross_entropy" href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_kl_cross_entropy.html"/>
+        <link rel="prev" title="proximal_convex_conj" href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.solvers.html">solvers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.functional.html">functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.iterative.html">iterative</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.solvers.nonsmooth.html">nonsmooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.admm.html">admm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.alternating_dual_updates.html">alternating_dual_updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.douglas_rachford.html">douglas_rachford</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.forward_backward.html">forward_backward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html">primal_dual_hybrid_gradient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_gradient_solvers.html">proximal_gradient_solvers</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_operators.html">proximal_operators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.smooth.html">smooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.html">solvers</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.html">nonsmooth</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.proximal_operators.html">proximal_operators</a> &raquo;</li>
+        
+      <li>proximal_convex_conj_kl</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_kl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="proximal-convex-conj-kl">
+<h1>proximal_convex_conj_kl<a class="headerlink" href="#proximal-convex-conj-kl" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_kl">
+<code class="descclassname">odl.solvers.nonsmooth.proximal_operators.</code><code class="descname">proximal_convex_conj_kl</code><span class="sig-paren">(</span><em>space</em>, <em>lam=1</em>, <em>g=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/nonsmooth/proximal_operators.html#proximal_convex_conj_kl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_kl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proximal operator factory of the convex conjugate of the KL divergence.</p>
+<p>Function returning the proximal operator of the convex conjugate of the
+functional F where F is the entropy-type Kullback-Leibler (KL) divergence:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">sum_i</span> <span class="p">(</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">g_i</span> <span class="o">+</span> <span class="n">g_i</span> <span class="n">ln</span><span class="p">(</span><span class="n">g_i</span><span class="p">)</span> <span class="o">-</span> <span class="n">g_i</span> <span class="n">ln</span><span class="p">(</span><span class="n">pos</span><span class="p">(</span><span class="n">x_i</span><span class="p">)))</span> <span class="o">+</span> <span class="n">ind_P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>with <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">g</span></code> elements in the linear space <code class="docutils literal"><span class="pre">X</span></code>, and <code class="docutils literal"><span class="pre">g</span></code>
+non-negative. Here, <code class="docutils literal"><span class="pre">pos</span></code> denotes the nonnegative part, and <code class="docutils literal"><span class="pre">ind_P</span></code> is
+the indicator function for nonnegativity.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>space <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.space.base_tensors.TensorSpace.html#odl.space.base_tensors.TensorSpace" title="odl.space.base_tensors.TensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">TensorSpace</span></code></a></span></dt>
+<dd><p class="first last">Space X which is the domain of the functional F</p>
+</dd>
+<dt>lam <span class="classifier-delimiter">:</span> <span class="classifier">positive float, optional</span></dt>
+<dd><p class="first last">Scaling factor.</p>
+</dd>
+<dt>g <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">space</span></code> element, optional</span></dt>
+<dd><p class="first last">Data term, positive. If None it is take as the one-element.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt>prox_factory <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd><p class="first last">Factory for the proximal operator to be initialized.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_kl_cross_entropy.html#odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_kl_cross_entropy" title="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_kl_cross_entropy"><code class="xref py py-obj docutils literal"><span class="pre">proximal_convex_conj_kl_cross_entropy</span></code></a></dt>
+<dd>proximal for releated functional</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The functional is given by the expression</p>
+<div class="math">
+<p><img src="../_images/math/2d1867ca9eafa31490c158776a7417baec37d024.png" alt="F(x) = \sum_i (x_i - g_i + g_i \ln(g_i) - g_i \ln(pos(x_i))) +
+I_{x \geq 0}(x)"/></p>
+</div><p>The indicator function <img class="math" src="../_images/math/fd89ab7ba73ea3df3909525e50c5d569d87aa249.png" alt="I_{x \geq 0}(x)"/> is used to restrict the
+domain of <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> such that <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> is defined over whole space
+<img class="math" src="../_images/math/7a7bb470119808e2db2879fc2b2526f467b7a40b.png" alt="X"/>. The non-negativity thresholding <img class="math" src="../_images/math/03e961b6221c0294e2b6b5a7436a1cb133afa6d7.png" alt="pos"/> is used to define
+<img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> in the real numbers.</p>
+<p>Note that the functional is not well-defined without a prior g. Hence, if g
+is omitted this will be interpreted as if g is equal to the one-element.</p>
+<p>The convex conjugate <img class="math" src="../_images/math/1c1d54d3f16ae001608fc9b14f9aadf0e00101a1.png" alt="F^*"/> of <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> is</p>
+<div class="math">
+<p><img src="../_images/math/0e16cf7e6573b4f3d2f6bac4d316fdee8c4db0bf.png" alt="F^*(p) = \sum_i (-g_i \ln(\text{pos}({1_X}_i - p_i))) +
+I_{1_X - p \geq 0}(p)"/></p>
+</div><p>where <img class="math" src="../_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/> is the variable dual to <img class="math" src="../_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>, and <img class="math" src="../_images/math/c74cef847ce88fab2fef0973ae6cd6fbeaf4c04d.png" alt="1_X"/> is an
+element of the space <img class="math" src="../_images/math/7a7bb470119808e2db2879fc2b2526f467b7a40b.png" alt="X"/> with all components set to 1.</p>
+<p>The proximal operator of the convex conjugate of F is</p>
+<div class="math">
+<p><img src="../_images/math/6da0ec9b88fe38e841f4b318f7d1df1b362da46b.png" alt="\mathrm{prox}_{\sigma (\lambda F)^*}(x) =
+\frac{\lambda 1_X + x - \sqrt{(x -  \lambda 1_X)^2 +
+4 \lambda \sigma g}}{2}"/></p>
+</div><p>where <img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> is the step size-like parameter, and <img class="math" src="../_images/math/76f1d8ace30435987c01a00ca53a71cba1f40e6c.png" alt="\lambda"/>
+is the weighting in front of the function <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/>.</p>
+<p>KL based objectives are common in MLEM optimization problems and are often
+used when data noise governed by a multivariate Poisson probability
+distribution is significant.</p>
+<p>The intermediate image estimates can have negative values even though
+the converged solution will be non-negative. Non-negative intermediate
+image estimates can be enforced by adding an indicator function ind_P
+the primal objective.</p>
+<p>This functional <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/>, described above, is related to the
+Kullback-Leibler cross entropy functional. The KL cross entropy is the one
+described in <a class="reference external" href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">this Wikipedia article</a>, and
+the functional <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> is obtained by switching place of the prior and
+the varialbe in the KL cross entropy functional. See the See Also section.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_kl_cross_entropy.html" class="btn btn-neutral float-right" title="proximal_convex_conj_kl_cross_entropy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj.html" class="btn btn-neutral" title="proximal_convex_conj" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

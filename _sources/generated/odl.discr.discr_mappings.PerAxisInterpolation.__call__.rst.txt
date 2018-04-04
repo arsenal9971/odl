@@ -1,0 +1,8 @@
+:orphan:
+
+PerAxisInterpolation.__call__
+======================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: PerAxisInterpolation.__call__

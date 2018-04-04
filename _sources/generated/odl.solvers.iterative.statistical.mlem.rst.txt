@@ -1,0 +1,6 @@
+mlem
+======================================
+
+.. currentmodule:: odl.solvers.iterative.statistical
+
+.. autofunction:: mlem

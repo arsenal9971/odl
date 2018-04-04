@@ -1,0 +1,6 @@
+signature_string
+=================================
+
+.. currentmodule:: odl.util.utility
+
+.. autofunction:: signature_string

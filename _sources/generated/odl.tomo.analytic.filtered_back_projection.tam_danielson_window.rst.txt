@@ -1,0 +1,6 @@
+tam_danielson_window
+===============================================================
+
+.. currentmodule:: odl.tomo.analytic.filtered_back_projection
+
+.. autofunction:: tam_danielson_window

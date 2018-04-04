@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.tomo.backends.skimage_radon &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.tomo.backends.skimage_radon</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.tomo.backends.skimage_radon</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;Radon transform (ray transform) in 2d using skimage.transform.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">skimage</span>
+    <span class="n">SKIMAGE_AVAILABLE</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">SKIMAGE_AVAILABLE</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="kn">from</span> <span class="nn">odl.discr</span> <span class="k">import</span> <span class="n">uniform_discr_frompartition</span><span class="p">,</span> <span class="n">uniform_partition</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;skimage_radon_forward&#39;</span><span class="p">,</span> <span class="s1">&#39;skimage_radon_back_projector&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;SKIMAGE_AVAILABLE&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="skimage_theta"><a class="viewcode-back" href="../../../../generated/odl.tomo.backends.skimage_radon.skimage_theta.html#odl.tomo.backends.skimage_radon.skimage_theta">[docs]</a><span class="k">def</span> <span class="nf">skimage_theta</span><span class="p">(</span><span class="n">geometry</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate angles in degrees with ODL skimage conventions.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">geometry</span><span class="o">.</span><span class="n">angles</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span></div>
+
+
+<div class="viewcode-block" id="skimage_sinogram_space"><a class="viewcode-back" href="../../../../generated/odl.tomo.backends.skimage_radon.skimage_sinogram_space.html#odl.tomo.backends.skimage_radon.skimage_sinogram_space">[docs]</a><span class="k">def</span> <span class="nf">skimage_sinogram_space</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">volume_space</span><span class="p">,</span> <span class="n">sinogram_space</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a range adapted to the skimage radon geometry.&quot;&quot;&quot;</span>
+    <span class="n">padded_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">volume_space</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="n">det_width</span> <span class="o">=</span> <span class="n">volume_space</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">skimage_detector_part</span> <span class="o">=</span> <span class="n">uniform_partition</span><span class="p">(</span><span class="o">-</span><span class="n">det_width</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+                                              <span class="n">det_width</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+                                              <span class="n">padded_size</span><span class="p">)</span>
+
+    <span class="n">skimage_range_part</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">motion_partition</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="n">skimage_detector_part</span><span class="p">)</span>
+
+    <span class="n">skimage_range</span> <span class="o">=</span> <span class="n">uniform_discr_frompartition</span><span class="p">(</span><span class="n">skimage_range_part</span><span class="p">,</span>
+                                                <span class="n">interp</span><span class="o">=</span><span class="n">sinogram_space</span><span class="o">.</span><span class="n">interp</span><span class="p">,</span>
+                                                <span class="n">dtype</span><span class="o">=</span><span class="n">sinogram_space</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">skimage_range</span></div>
+
+
+<div class="viewcode-block" id="clamped_interpolation"><a class="viewcode-back" href="../../../../generated/odl.tomo.backends.skimage_radon.clamped_interpolation.html#odl.tomo.backends.skimage_radon.clamped_interpolation">[docs]</a><span class="k">def</span> <span class="nf">clamped_interpolation</span><span class="p">(</span><span class="n">skimage_range</span><span class="p">,</span> <span class="n">sinogram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Interpolate in a possibly smaller space.</span>
+
+<span class="sd">    Sets all points that would be outside the domain to match the</span>
+<span class="sd">    boundary values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">min_x</span> <span class="o">=</span> <span class="n">skimage_range</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">min</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">max_x</span> <span class="o">=</span> <span class="n">skimage_range</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">max</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">interpolation_wrapper</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">max_x</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+
+        <span class="k">return</span> <span class="n">sinogram</span><span class="o">.</span><span class="n">interpolation</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">interpolation_wrapper</span></div>
+
+
+<div class="viewcode-block" id="skimage_radon_forward"><a class="viewcode-back" href="../../../../generated/odl.tomo.backends.skimage_radon.skimage_radon_forward.html#odl.tomo.backends.skimage_radon.skimage_radon_forward">[docs]</a><span class="k">def</span> <span class="nf">skimage_radon_forward</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate forward projection using skimage.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    volume : `DiscreteLpElement`</span>
+<span class="sd">        The volume to project</span>
+<span class="sd">    geometry : `Geometry`</span>
+<span class="sd">        The projection geometry to use</span>
+<span class="sd">    range : `DiscreteLp`</span>
+<span class="sd">        range of this projection (sinogram space)</span>
+<span class="sd">    out : ``range`` element, optional</span>
+<span class="sd">        An element in range that the result should be written to</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sinogram : ``range`` element</span>
+<span class="sd">        Sinogram given by the projection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Lazy import due to significant import time</span>
+    <span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <span class="n">radon</span>
+
+    <span class="c1"># Check basic requirements. Fully checking should be in wrapper</span>
+    <span class="k">assert</span> <span class="n">volume</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">volume</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">skimage_theta</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+    <span class="n">skimage_range</span> <span class="o">=</span> <span class="n">skimage_sinogram_space</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">volume</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="nb">range</span><span class="p">)</span>
+
+    <span class="c1"># Rotate volume from (x, y) to (rows, cols)</span>
+    <span class="n">sino_arr</span> <span class="o">=</span> <span class="n">radon</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">asarray</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span>
+                     <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">circle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">sinogram</span> <span class="o">=</span> <span class="n">skimage_range</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">sino_arr</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">range</span><span class="o">.</span><span class="n">element</span><span class="p">()</span>
+
+    <span class="n">out</span><span class="o">.</span><span class="n">sampling</span><span class="p">(</span><span class="n">clamped_interpolation</span><span class="p">(</span><span class="n">skimage_range</span><span class="p">,</span> <span class="n">sinogram</span><span class="p">))</span>
+
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">volume</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">cell_sides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">out</span> <span class="o">*=</span> <span class="n">scale</span>
+
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="skimage_radon_back_projector"><a class="viewcode-back" href="../../../../generated/odl.tomo.backends.skimage_radon.skimage_radon_back_projector.html#odl.tomo.backends.skimage_radon.skimage_radon_back_projector">[docs]</a><span class="k">def</span> <span class="nf">skimage_radon_back_projector</span><span class="p">(</span><span class="n">sinogram</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate forward projection using skimage.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sinogram : `DiscreteLpElement`</span>
+<span class="sd">        Sinogram (projections) to backproject.</span>
+<span class="sd">    geometry : `Geometry`</span>
+<span class="sd">        The projection geometry to use.</span>
+<span class="sd">    range : `DiscreteLp`</span>
+<span class="sd">        range of this projection (volume space).</span>
+<span class="sd">    out : ``range`` element, optional</span>
+<span class="sd">        An element in range that the result should be written to.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sinogram : ``range`` element</span>
+<span class="sd">        Sinogram given by the projection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Lazy import due to significant import time</span>
+    <span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <span class="n">iradon</span>
+
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">skimage_theta</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+    <span class="n">skimage_range</span> <span class="o">=</span> <span class="n">skimage_sinogram_space</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">sinogram</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="n">skimage_sinogram</span> <span class="o">=</span> <span class="n">skimage_range</span><span class="o">.</span><span class="n">element</span><span class="p">()</span>
+    <span class="n">skimage_sinogram</span><span class="o">.</span><span class="n">sampling</span><span class="p">(</span><span class="n">clamped_interpolation</span><span class="p">(</span><span class="nb">range</span><span class="p">,</span> <span class="n">sinogram</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">range</span><span class="o">.</span><span class="n">element</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Only do asserts here since these are backend functions</span>
+        <span class="k">assert</span> <span class="n">out</span> <span class="ow">in</span> <span class="nb">range</span>
+
+    <span class="c1"># Rotate back from (rows, cols) to (x, y)</span>
+    <span class="n">backproj</span> <span class="o">=</span> <span class="n">iradon</span><span class="p">(</span><span class="n">skimage_sinogram</span><span class="o">.</span><span class="n">asarray</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span>
+                      <span class="n">output_size</span><span class="o">=</span><span class="nb">range</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">circle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">backproj</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Empirically determined value, gives correct scaling</span>
+    <span class="n">scaling_factor</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">motion_params</span><span class="o">.</span><span class="n">length</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+    <span class="c1"># Correct in case of non-weighted spaces</span>
+    <span class="n">proj_extent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sinogram</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">prod</span><span class="p">())</span>
+    <span class="n">proj_size</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sinogram</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">proj_weighting</span> <span class="o">=</span> <span class="n">proj_extent</span> <span class="o">/</span> <span class="n">proj_size</span>
+
+    <span class="n">scaling_factor</span> <span class="o">*=</span> <span class="p">(</span><span class="n">sinogram</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">weighting</span><span class="o">.</span><span class="n">const</span> <span class="o">/</span>
+                       <span class="n">proj_weighting</span><span class="p">)</span>
+    <span class="n">scaling_factor</span> <span class="o">/=</span> <span class="p">(</span><span class="nb">range</span><span class="o">.</span><span class="n">weighting</span><span class="o">.</span><span class="n">const</span> <span class="o">/</span>
+                       <span class="nb">range</span><span class="o">.</span><span class="n">cell_volume</span><span class="p">)</span>
+
+    <span class="c1"># Correctly scale the output</span>
+    <span class="n">out</span> <span class="o">*=</span> <span class="n">scaling_factor</span>
+
+    <span class="k">return</span> <span class="n">out</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

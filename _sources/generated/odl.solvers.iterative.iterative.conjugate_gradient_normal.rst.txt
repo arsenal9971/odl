@@ -1,0 +1,6 @@
+conjugate_gradient_normal
+=========================================================
+
+.. currentmodule:: odl.solvers.iterative.iterative
+
+.. autofunction:: conjugate_gradient_normal

@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>osmlem &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="statistical" href="../odl.solvers.iterative.statistical.html"/>
+        <link rel="next" title="nonsmooth" href="../odl.solvers.nonsmooth.html"/>
+        <link rel="prev" title="mlem" href="odl.solvers.iterative.statistical.mlem.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.solvers.html">solvers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.functional.html">functional</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.solvers.iterative.html">iterative</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.iterative.iterative.html">iterative</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.solvers.iterative.statistical.html">statistical</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.nonsmooth.html">nonsmooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.smooth.html">smooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.html">solvers</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.iterative.html">iterative</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.iterative.statistical.html">statistical</a> &raquo;</li>
+        
+      <li>osmlem</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.solvers.iterative.statistical.osmlem.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="osmlem">
+<h1>osmlem<a class="headerlink" href="#osmlem" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.solvers.iterative.statistical.osmlem">
+<code class="descclassname">odl.solvers.iterative.statistical.</code><code class="descname">osmlem</code><span class="sig-paren">(</span><em>op</em>, <em>x</em>, <em>data</em>, <em>niter</em>, <em>noise='poisson'</em>, <em>callback=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/iterative/statistical.html#osmlem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.iterative.statistical.osmlem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ordered Subsets Maximum Likelihood Expectation Maximation algorithm.</p>
+<p>This solver attempts to solve:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">max_x</span> <span class="n">L</span><span class="p">(</span><span class="n">x</span> <span class="o">|</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">L(x,</span> <span class="pre">|</span> <span class="pre">data)</span></code> is the likelihood of <code class="docutils literal"><span class="pre">x</span></code> given <code class="docutils literal"><span class="pre">data</span></code>. The
+likelihood depends on the forward operators <code class="docutils literal"><span class="pre">op[0],</span> <span class="pre">...,</span> <span class="pre">op[n-1]</span></code> such
+that (approximately):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">op</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>where the precise form of <em>approximately</em> is determined by <code class="docutils literal"><span class="pre">noise</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>op <span class="classifier-delimiter">:</span> <span class="classifier">sequence of <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a></span></dt>
+<dd><p class="first last">Forward operators in the inverse problem.</p>
+</dd>
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">op.domain</span></code> element</span></dt>
+<dd><p class="first last">Vector to which the result is written. Its initial value is
+used as starting point of the iteration, and its values are
+updated in each iteration step.</p>
+</dd>
+<dt>data <span class="classifier-delimiter">:</span> <span class="classifier">sequence of <code class="docutils literal"><span class="pre">op.range</span></code> <a class="reference internal" href="../guide/glossary.html#term-element-like"><code class="xref any std std-term docutils literal"><span class="pre">element-like</span></code></a></span></dt>
+<dd><p class="first last">Right-hand sides of the equation defining the inverse problem.</p>
+</dd>
+<dt>niter <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of iterations.</p>
+</dd>
+<dt>noise <span class="classifier-delimiter">:</span> <span class="classifier">{‘poisson’}, optional</span></dt>
+<dd><p class="first last">Noise model determining the variant of MLEM.
+For <code class="docutils literal"><span class="pre">'poisson'</span></code>, the initial value of <code class="docutils literal"><span class="pre">x</span></code> should be
+non-negative.</p>
+</dd>
+<dt>callback <span class="classifier-delimiter">:</span> <span class="classifier">callable, optional</span></dt>
+<dd><p class="first last">Function called with the current iterate after each iteration.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt>sensitivities <span class="classifier-delimiter">:</span> <span class="classifier">float or <code class="docutils literal"><span class="pre">op.domain</span></code> <a class="reference internal" href="../guide/glossary.html#term-element-like"><code class="xref any std std-term docutils literal"><span class="pre">element-like</span></code></a>, optional</span></dt>
+<dd><p class="first last">Usable with <code class="docutils literal"><span class="pre">noise='poisson'</span></code>. The algorithm contains an <code class="docutils literal"><span class="pre">A^T</span> <span class="pre">1</span></code>
+term, if this parameter is given, it is replaced by it.
+Default: <code class="docutils literal"><span class="pre">op[i].adjoint(op[i].range.one())</span></code></p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="odl.solvers.iterative.statistical.mlem.html#odl.solvers.iterative.statistical.mlem" title="odl.solvers.iterative.statistical.mlem"><code class="xref py py-obj docutils literal"><span class="pre">mlem</span></code></a></dt>
+<dd>Ordinary MLEM algorithm without subsets.</dd>
+<dt><a class="reference internal" href="odl.solvers.iterative.statistical.loglikelihood.html#odl.solvers.iterative.statistical.loglikelihood" title="odl.solvers.iterative.statistical.loglikelihood"><code class="xref py py-obj docutils literal"><span class="pre">loglikelihood</span></code></a></dt>
+<dd>Function for calculating the logarithm of the likelihood</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Given a forward models <img class="math" src="../_images/math/c5d1698841c790aa1bf982d1e900a4b889c849ab.png" alt="A_i"/>, data <img class="math" src="../_images/math/79b19012e472bb27f43701fee56fde3495013f17.png" alt="g_i"/>, <img class="math" src="../_images/math/fe779a81d3e2400aa3a95d041011235985bd8b91.png" alt="i = 1, ..., M"/>
+and noise model <img class="math" src="../_images/math/7a7bb470119808e2db2879fc2b2526f467b7a40b.png" alt="X"/>, the algorithm attempts find an <img class="math" src="../_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> that
+maximizes:</p>
+<div class="math">
+<p><img src="../_images/math/9f0f8076cf500eb034ae2ea689c72e58a5f1512c.png" alt="\prod_{i=1}^M P(g_i | g_i \text{ is } X(A_i(x)) \text{ distributed})."/></p>
+</div><p>With ‘poisson’ noise the algorithm is given by partial updates:</p>
+<div class="math">
+<p><img src="../_images/math/6359832656006d7eabd9295efc01c263107d2875.png" alt="x_{n + m/M} =
+\frac{x_{n + (m - 1)/M}}{A_i^* 1} A_i^* (g_i / A_i(x_{n + (m - 1)/M}))"/></p>
+</div><p>for <img class="math" src="../_images/math/da4c9ff4d13887ad9520ae0be01715162563803b.png" alt="m = 1, ..., M"/> and <img class="math" src="../_images/math/bbeea2bfe1e168bcff379579d2d8d6f98847b871.png" alt="x_{n+1} = x_{n + M/M}"/>.</p>
+<p>The algorithm is not guaranteed to converge, but works for many practical
+problems.</p>
+<p class="rubric">References</p>
+<p>Natterer, F. Mathematical Methods in Image Reconstruction, section 5.3.2.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../odl.solvers.nonsmooth.html" class="btn btn-neutral float-right" title="nonsmooth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.solvers.iterative.statistical.mlem.html" class="btn btn-neutral" title="mlem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

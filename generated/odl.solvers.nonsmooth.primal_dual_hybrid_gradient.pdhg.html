@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pdhg &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="primal_dual_hybrid_gradient" href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html"/>
+        <link rel="next" title="proximal_gradient_solvers" href="../odl.solvers.nonsmooth.proximal_gradient_solvers.html"/>
+        <link rel="prev" title="primal_dual_hybrid_gradient" href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.solvers.html">solvers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.functional.html">functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.iterative.html">iterative</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.solvers.nonsmooth.html">nonsmooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.admm.html">admm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.alternating_dual_updates.html">alternating_dual_updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.douglas_rachford.html">douglas_rachford</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.forward_backward.html">forward_backward</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html">primal_dual_hybrid_gradient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_gradient_solvers.html">proximal_gradient_solvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_operators.html">proximal_operators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.smooth.html">smooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.html">solvers</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.html">nonsmooth</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html">primal_dual_hybrid_gradient</a> &raquo;</li>
+        
+      <li>pdhg</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.solvers.nonsmooth.primal_dual_hybrid_gradient.pdhg.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pdhg">
+<h1>pdhg<a class="headerlink" href="#pdhg" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.solvers.nonsmooth.primal_dual_hybrid_gradient.pdhg">
+<code class="descclassname">odl.solvers.nonsmooth.primal_dual_hybrid_gradient.</code><code class="descname">pdhg</code><span class="sig-paren">(</span><em>x</em>, <em>f</em>, <em>g</em>, <em>L</em>, <em>tau</em>, <em>sigma</em>, <em>niter</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/nonsmooth/primal_dual_hybrid_gradient.html#pdhg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.nonsmooth.primal_dual_hybrid_gradient.pdhg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Primal-dual hybrid gradient algorithm for convex optimization.</p>
+<p>First order primal-dual hybrid-gradient method for non-smooth convex
+optimization problems with known saddle-point structure. The
+primal formulation of the general problem is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">min_</span><span class="p">{</span><span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">}</span> <span class="n">f</span><span class="p">(</span><span class="n">L</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">L</span></code> is an operator and <code class="docutils literal"><span class="pre">f</span></code> and <code class="docutils literal"><span class="pre">g</span></code> are functionals.</p>
+<p>The primal-dual hybrid-gradient algorithm is a primal-dual algorithm, and
+basically consists of alternating a gradient ascent in the dual variable
+and a gradient descent in the primal variable. The proximal operator is
+used to generate a ascent direction for the convex conjugate of F and
+descent direction for G. Additionally an over-relaxation of the primal
+variable is performed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">L.domain</span></code> element</span></dt>
+<dd><p class="first last">Starting point of the iteration, updated in-place.</p>
+</dd>
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.solvers.functional.functional.Functional.html#odl.solvers.functional.functional.Functional" title="odl.solvers.functional.functional.Functional"><code class="xref any py py-class docutils literal"><span class="pre">Functional</span></code></a></span></dt>
+<dd><p class="first last">The function <code class="docutils literal"><span class="pre">f</span></code> in the problem definition. Needs to have
+<code class="docutils literal"><span class="pre">f.convex_conj.proximal</span></code>.</p>
+</dd>
+<dt>g <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.solvers.functional.functional.Functional.html#odl.solvers.functional.functional.Functional" title="odl.solvers.functional.functional.Functional"><code class="xref any py py-class docutils literal"><span class="pre">Functional</span></code></a></span></dt>
+<dd><p class="first last">The function <code class="docutils literal"><span class="pre">g</span></code> in the problem definition. Needs to have
+<code class="docutils literal"><span class="pre">g.proximal</span></code>.</p>
+</dd>
+<dt>L <span class="classifier-delimiter">:</span> <span class="classifier">linear <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a></span></dt>
+<dd><p class="first last">The linear operator that should be applied before <code class="docutils literal"><span class="pre">f</span></code>. Its range must
+match the domain of <code class="docutils literal"><span class="pre">f</span></code> and its domain must match the domain of
+<code class="docutils literal"><span class="pre">g</span></code>.</p>
+</dd>
+<dt>tau <span class="classifier-delimiter">:</span> <span class="classifier">positive float</span></dt>
+<dd><p class="first last">Step size parameter for the update of the primal (<code class="docutils literal"><span class="pre">g</span></code>) variable.</p>
+</dd>
+<dt>sigma <span class="classifier-delimiter">:</span> <span class="classifier">positive float</span></dt>
+<dd><p class="first last">Step size parameter for the update of the dual (<code class="docutils literal"><span class="pre">f</span></code>) variable.</p>
+</dd>
+<dt>niter <span class="classifier-delimiter">:</span> <span class="classifier">non-negative int</span></dt>
+<dd><p class="first last">Number of iterations.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt>callback <span class="classifier-delimiter">:</span> <span class="classifier">callable, optional</span></dt>
+<dd><p class="first last">Function called with the current iterate after each iteration.</p>
+</dd>
+<dt>theta <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first last">Relaxation parameter, required to fulfill <code class="docutils literal"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">theta</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code>.
+Default: 1</p>
+</dd>
+<dt>gamma_primal <span class="classifier-delimiter">:</span> <span class="classifier">non-negative float, optional</span></dt>
+<dd><p class="first last">Acceleration parameter. If not <code class="docutils literal"><span class="pre">None</span></code>, it overrides <code class="docutils literal"><span class="pre">theta</span></code> and
+causes variable relaxation parameter and step sizes to be used,
+with <code class="docutils literal"><span class="pre">tau</span></code> and <code class="docutils literal"><span class="pre">sigma</span></code> as initial values. Requires <code class="docutils literal"><span class="pre">g</span></code> to be
+strongly convex and <code class="docutils literal"><span class="pre">gamma_primal</span></code> being upper bounded by the strong
+convexity constant of <code class="docutils literal"><span class="pre">g</span></code>. Acceleration can either be done on the
+primal part or the dual part but not on both simultaneously.
+Default: <code class="docutils literal"><span class="pre">None</span></code></p>
+</dd>
+<dt>gamma_dual <span class="classifier-delimiter">:</span> <span class="classifier">non-negative float, optional</span></dt>
+<dd><p class="first last">Acceleration parameter as <code class="docutils literal"><span class="pre">gamma_primal</span></code> but for dual variable.
+Requires <code class="docutils literal"><span class="pre">f^*</span></code> to be strongly convex and <code class="docutils literal"><span class="pre">gamma_dual</span></code> being upper
+bounded by the strong convexity constant of <code class="docutils literal"><span class="pre">f^*</span></code>. Acceleration can
+either be done on the primal part or the dual part but not on both
+simultaneously.
+Default: <a href="#id1"><span class="problematic" id="id2">``</span></a>None`</p>
+</dd>
+<dt>x_relax <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">op.domain</span></code> element, optional</span></dt>
+<dd><p class="first last">Required to resume iteration. For <code class="docutils literal"><span class="pre">None</span></code>, a copy of the primal
+variable <code class="docutils literal"><span class="pre">x</span></code> is used.
+Default: <code class="docutils literal"><span class="pre">None</span></code></p>
+</dd>
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">op.range</span></code> element, optional</span></dt>
+<dd><p class="first last">Required to resume iteration. For <code class="docutils literal"><span class="pre">None</span></code>, <code class="docutils literal"><span class="pre">op.range.zero()</span></code>
+is used.
+Default: <code class="docutils literal"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd.html#odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd" title="odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd"><code class="xref py py-obj docutils literal"><span class="pre">odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd</span></code></a></dt>
+<dd>Solver for similar problems which can additionaly handle infimal convolutions and multiple forward operators.</dd>
+<dt><a class="reference internal" href="odl.solvers.nonsmooth.forward_backward.forward_backward_pd.html#odl.solvers.nonsmooth.forward_backward.forward_backward_pd" title="odl.solvers.nonsmooth.forward_backward.forward_backward_pd"><code class="xref py py-obj docutils literal"><span class="pre">odl.solvers.nonsmooth.forward_backward.forward_backward_pd</span></code></a></dt>
+<dd>Solver for similar problems which can additionaly handle infimal convolutions, multiple forward operators and a differentiable term.</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The problem of interest is</p>
+<div class="math">
+<p><img src="../_images/math/d88ae3a6dc69759b8ad763a71cf227831fa80bc6.png" alt="\min_{x \in X} f(L x) + g(x),"/></p>
+</div><p>where the formal conditions are that <img class="math" src="../_images/math/ae2b750f71e1fc0daaa3de9a85d42794d7cd1326.png" alt="L"/> is an operator
+between Hilbert spaces <img class="math" src="../_images/math/7a7bb470119808e2db2879fc2b2526f467b7a40b.png" alt="X"/> and <img class="math" src="../_images/math/0062c26909b3e07ee8f5a6285b2563d69bc979ff.png" alt="Y"/>.
+Further, <img class="math" src="../_images/math/ba91718a830a51d84eaab9a5f6e8dfcfa7e291da.png" alt="g : X \rightarrow [0, +\infty]"/> and
+<img class="math" src="../_images/math/7b54f704fbb9cf08b53738098e8d283ccb734975.png" alt="f : Y \rightarrow [0, +\infty]"/> are proper, convex,
+lower-semicontinuous functionals.</p>
+<p>Convergence is only guaranteed if <img class="math" src="../_images/math/ae2b750f71e1fc0daaa3de9a85d42794d7cd1326.png" alt="L"/> is linear, <img class="math" src="../_images/math/ffa04ecb8633c78317f6485c9ae5e14161db5a65.png" alt="X, Y"/>
+are finite dimensional and the step lengths <img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> and
+<img class="math" src="../_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> satisfy</p>
+<div class="math">
+<p><img src="../_images/math/d6848ef1879b3c077146c823e0df64a826317a56.png" alt="\tau \sigma \|L\|^2 &lt; 1"/></p>
+</div><p>where <img class="math" src="../_images/math/e2df270dec487a19a9769cb3b7f22d31b809a06c.png" alt="\|L\|"/> is the operator norm of <img class="math" src="../_images/math/ae2b750f71e1fc0daaa3de9a85d42794d7cd1326.png" alt="L"/>.</p>
+<p>It is often of interest to study problems that involve several operators,
+for example the classical TV regularized problem</p>
+<div class="math">
+<p><img src="../_images/math/bac330308bc6ef9aebef2ee7bc67a3f44858eabb.png" alt="\min_x \|Ax - b\|_2^2 + \|\nabla x\|_1."/></p>
+</div><p>Here it is tempting to let <img class="math" src="../_images/math/417a0c1b728b33ea0462eac739536274881ed855.png" alt="L=A"/>, <img class="math" src="../_images/math/5e7b14fcb778127bcdee6dd4726727a632212aeb.png" alt="f(y)=||y||_2^2"/> and
+<img class="math" src="../_images/math/0674c078ed87ba4e9870e97a2299230b378c9973.png" alt="g(x)=\|\nabla x\|_1"/>. This is however not feasible since the
+proximal of <img class="math" src="../_images/math/8d8d11d5519f44eeac88489e4e3f03e27072f028.png" alt="||\nabla x||_1"/> has no closed form expression.</p>
+<p>Instead, the problem can be formulated <img class="math" src="../_images/math/554a3584f1b6afa97c0f42b8e07c8487f8a94719.png" alt="L(x) = (A(x), \nabla x)"/>,
+<img class="math" src="../_images/math/f65ed47f9972210bbd39ef3bf86649d0e07e86e5.png" alt="f((x_1, x_2)) = \|x_1\|_2^2 + \|x_2\|_1"/>, <img class="math" src="../_images/math/593e56188efb4d959f05a05b0494336822fb5855.png" alt="g(x)=0"/>. See the
+examples folder for more information on how to do this.</p>
+<p>For a more detailed documentation see <a class="reference external" href="https://odlgroup.github.io/odl/guide/pdhg_guide.html">the PDHG guide</a> in the online
+documentation.</p>
+<p>References on the algorithm can be found in [CP2011a] and [CP2011b].</p>
+<p>This implementation of the CP algorithm is along the lines of
+[Sid+2012].</p>
+<p>The non-linear case is analyzed in [Val2014].</p>
+<p class="rubric">References</p>
+<p>[CP2011a] Chambolle, A and Pock, T. <em>A First-Order
+Primal-Dual Algorithm for Convex Problems with Applications to
+Imaging</em>. Journal of Mathematical Imaging and Vision, 40 (2011),
+pp 120-145.</p>
+<p>[CP2011b] Chambolle, A and Pock, T. <em>Diagonal
+preconditioning for first order primal-dual algorithms in convex
+optimization</em>. 2011 IEEE International Conference on Computer Vision
+(ICCV), 2011, pp 1762-1769.</p>
+<p>[Sid+2012] Sidky, E Y, Jorgensen, J H, and Pan, X.
+<em>Convex optimization problem prototyping for image reconstruction in
+computed tomography with the Chambolle-Pock algorithm</em>. Physics in
+Medicine and Biology, 57 (2012), pp 3065-3091.</p>
+<p>[Val2014] Valkonen, T.
+<em>A primal-dual hybrid gradient method for non-linear operators with
+applications to MRI</em>. Inverse Problems, 30 (2014).</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../odl.solvers.nonsmooth.proximal_gradient_solvers.html" class="btn btn-neutral float-right" title="proximal_gradient_solvers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html" class="btn btn-neutral" title="primal_dual_hybrid_gradient" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

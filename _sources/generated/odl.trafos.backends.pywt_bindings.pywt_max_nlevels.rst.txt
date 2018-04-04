@@ -1,0 +1,6 @@
+pywt_max_nlevels
+==================================================
+
+.. currentmodule:: odl.trafos.backends.pywt_bindings
+
+.. autofunction:: pywt_max_nlevels

@@ -1,0 +1,32 @@
+KullbackLeiblerCrossEntropy
+======================================================================
+
+.. currentmodule:: odl.solvers.functional.default_functionals
+
+.. autoclass:: KullbackLeiblerCrossEntropy
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         KullbackLeiblerCrossEntropy.__call__
+         KullbackLeiblerCrossEntropy._call
+         KullbackLeiblerCrossEntropy.bregman
+         KullbackLeiblerCrossEntropy.derivative
+         KullbackLeiblerCrossEntropy.norm
+         KullbackLeiblerCrossEntropy.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

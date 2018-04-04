@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpaceElement.divide
+============================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpaceElement.divide

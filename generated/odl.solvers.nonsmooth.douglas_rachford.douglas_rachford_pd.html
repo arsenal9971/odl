@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>douglas_rachford_pd &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="douglas_rachford" href="../odl.solvers.nonsmooth.douglas_rachford.html"/>
+        <link rel="next" title="forward_backward" href="../odl.solvers.nonsmooth.forward_backward.html"/>
+        <link rel="prev" title="douglas_rachford" href="../odl.solvers.nonsmooth.douglas_rachford.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.solvers.html">solvers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.functional.html">functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.iterative.html">iterative</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.solvers.nonsmooth.html">nonsmooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.admm.html">admm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.alternating_dual_updates.html">alternating_dual_updates</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.solvers.nonsmooth.douglas_rachford.html">douglas_rachford</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.forward_backward.html">forward_backward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html">primal_dual_hybrid_gradient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_gradient_solvers.html">proximal_gradient_solvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_operators.html">proximal_operators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.smooth.html">smooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.html">solvers</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.html">nonsmooth</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.douglas_rachford.html">douglas_rachford</a> &raquo;</li>
+        
+      <li>douglas_rachford_pd</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="douglas-rachford-pd">
+<h1>douglas_rachford_pd<a class="headerlink" href="#douglas-rachford-pd" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd">
+<code class="descclassname">odl.solvers.nonsmooth.douglas_rachford.</code><code class="descname">douglas_rachford_pd</code><span class="sig-paren">(</span><em>x</em>, <em>f</em>, <em>g</em>, <em>L</em>, <em>tau</em>, <em>sigma</em>, <em>niter</em>, <em>callback=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/nonsmooth/douglas_rachford.html#douglas_rachford_pd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.nonsmooth.douglas_rachford.douglas_rachford_pd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Douglas-Rachford primal-dual splitting algorithm.</p>
+<p>Minimizes the sum of several convex functions composed with linear
+operators:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">min_x</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">sum_i</span> <span class="n">g_i</span><span class="p">(</span><span class="n">L_i</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">f</span></code>, <code class="docutils literal"><span class="pre">g_i</span></code> are convex functions, <code class="docutils literal"><span class="pre">L_i</span></code> are linear <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a>’s.</p>
+<p>Can also be used to solve the more general problem:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">min_x</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">sum_i</span> <span class="p">(</span><span class="n">g_i</span> <span class="o">@</span> <span class="n">l_i</span><span class="p">)(</span><span class="n">L_i</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">l_i</span></code> are convex functions and <code class="docutils literal"><span class="pre">&#64;</span></code> is the infimal convolution:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">g</span> <span class="o">@</span> <span class="n">l</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">inf_y</span> <span class="n">g</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">l</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For references on the algorithm, see algorithm 3.1 in [BH2013].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.set.space.LinearSpaceElement.html#odl.set.space.LinearSpaceElement" title="odl.set.space.LinearSpaceElement"><code class="xref any py py-class docutils literal"><span class="pre">LinearSpaceElement</span></code></a></span></dt>
+<dd><p class="first last">Initial point, updated in-place.</p>
+</dd>
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.solvers.functional.functional.Functional.html#odl.solvers.functional.functional.Functional" title="odl.solvers.functional.functional.Functional"><code class="xref any py py-class docutils literal"><span class="pre">Functional</span></code></a></span></dt>
+<dd><p class="first last"><a class="reference internal" href="../guide/glossary.html#term-proximal-factory"><code class="xref any std std-term docutils literal"><span class="pre">proximal</span> <span class="pre">factory</span></code></a> for the function <code class="docutils literal"><span class="pre">f</span></code>.</p>
+</dd>
+<dt>g <span class="classifier-delimiter">:</span> <span class="classifier">sequence of <a class="reference internal" href="odl.solvers.functional.functional.Functional.html#odl.solvers.functional.functional.Functional" title="odl.solvers.functional.functional.Functional"><code class="xref any py py-class docutils literal"><span class="pre">Functional</span></code></a>’s</span></dt>
+<dd><p class="first last">Sequence of of the functions <code class="docutils literal"><span class="pre">g_i</span></code>. Needs to have
+<code class="docutils literal"><span class="pre">g[i].convex_conj.proximal</span></code>.</p>
+</dd>
+<dt>L <span class="classifier-delimiter">:</span> <span class="classifier">sequence of <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a>’s</span></dt>
+<dd><p class="first last">Sequence of <code class="xref any docutils literal"><span class="pre">Opeartor</span></code>’s with as many elements as <code class="docutils literal"><span class="pre">g</span></code>.</p>
+</dd>
+<dt>tau <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Step size parameter for <code class="docutils literal"><span class="pre">f</span></code>.</p>
+</dd>
+<dt>sigma <span class="classifier-delimiter">:</span> <span class="classifier">sequence of floats</span></dt>
+<dd><p class="first last">Step size parameters for the <code class="docutils literal"><span class="pre">g_i</span></code>’s.</p>
+</dd>
+<dt>niter <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of iterations.</p>
+</dd>
+<dt>callback <span class="classifier-delimiter">:</span> <span class="classifier">callable, optional</span></dt>
+<dd><p class="first last">Function called with the current iterate after each iteration.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt>l <span class="classifier-delimiter">:</span> <span class="classifier">sequence of <a class="reference internal" href="odl.solvers.functional.functional.Functional.html#odl.solvers.functional.functional.Functional" title="odl.solvers.functional.functional.Functional"><code class="xref any py py-class docutils literal"><span class="pre">Functional</span></code></a>’s, optional</span></dt>
+<dd><p class="first last">Sequence of of the functions <code class="docutils literal"><span class="pre">l_i</span></code>. Needs to have
+<code class="docutils literal"><span class="pre">l[i].convex_conj.proximal</span></code>.
+If omitted, the simpler problem without <code class="docutils literal"><span class="pre">l_i</span></code>  will be considered.</p>
+</dd>
+<dt>lam <span class="classifier-delimiter">:</span> <span class="classifier">float or callable, optional</span></dt>
+<dd><p class="first last">Overrelaxation step size. If callable, it should take an index
+(starting at zero) and return the corresponding step size.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="odl.solvers.nonsmooth.primal_dual_hybrid_gradient.pdhg.html#odl.solvers.nonsmooth.primal_dual_hybrid_gradient.pdhg" title="odl.solvers.nonsmooth.primal_dual_hybrid_gradient.pdhg"><code class="xref py py-obj docutils literal"><span class="pre">odl.solvers.nonsmooth.primal_dual_hybrid_gradient.pdhg</span></code></a></dt>
+<dd>Solver for similar problems.</dd>
+<dt><a class="reference internal" href="odl.solvers.nonsmooth.forward_backward.forward_backward_pd.html#odl.solvers.nonsmooth.forward_backward.forward_backward_pd" title="odl.solvers.nonsmooth.forward_backward.forward_backward_pd"><code class="xref py py-obj docutils literal"><span class="pre">odl.solvers.nonsmooth.forward_backward.forward_backward_pd</span></code></a></dt>
+<dd>Solver for similar problems which can additionaly handle a differentiable term.</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The mathematical problem to solve is</p>
+<div class="math">
+<p><img src="../_images/math/ce19c3c4a528f649e3623ece04657cd1d9118982.png" alt="\min_x f(x) + \sum_{i=0}^n (g_i \Box l_i)(L_i x),"/></p>
+</div><p>where <img class="math" src="../_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/>, <img class="math" src="../_images/math/79b19012e472bb27f43701fee56fde3495013f17.png" alt="g_i"/>, <img class="math" src="../_images/math/482e54b9315122e2bb78625a1c384da62e910c27.png" alt="l_i"/> are proper, convex and lower
+semicontinuous and <img class="math" src="../_images/math/a3af17b7dbd4e75d965f8393b7e812a0f1435418.png" alt="L_i"/> are linear operators. The infimal
+convolution <img class="math" src="../_images/math/6cfa5ad4673421da9e7108ff96c2f7d7a58d3212.png" alt="g \Box l"/> is defined by</p>
+<div class="math">
+<p><img src="../_images/math/9b7165a2d025e76559ff66d0d52903b0e326009e.png" alt="(g \Box l)(x) = \inf_y g(y) + l(x - y)."/></p>
+</div><p>The simplified problem,</p>
+<div class="math">
+<p><img src="../_images/math/273d8cc7ab518cd9b5d0fab4d3511dc18971bb34.png" alt="\min_x f(x) + \sum_{i=0}^n g_i(L_i x),"/></p>
+</div><p>can be obtained by setting</p>
+<div class="math">
+<p><img src="../_images/math/c2993a5447533c85768bb960fa1cc87d7c496aa0.png" alt="l(x) = 0 \text{ if } x = 0, \infty \text{ else.}"/></p>
+</div><p>To guarantee convergence, the parameters <img class="math" src="../_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/>, <img class="math" src="../_images/math/8b7987a1b64e009719daaf744c922bf934e69583.png" alt="\sigma_i"/>
+and <img class="math" src="../_images/math/a3af17b7dbd4e75d965f8393b7e812a0f1435418.png" alt="L_i"/> need to satisfy</p>
+<div class="math">
+<p><img src="../_images/math/66970d6645564f91c1ad00184f0ae593c32f058a.png" alt="\tau \sum_{i=1}^n \sigma_i ||L_i||^2 &lt; 4"/></p>
+</div><p>The parameter <img class="math" src="../_images/math/76f1d8ace30435987c01a00ca53a71cba1f40e6c.png" alt="\lambda"/> needs to satisfy <img class="math" src="../_images/math/95a06d8910cafe1b8e5f65d120924e4027063616.png" alt="0 &lt; \lambda &lt; 2"/>
+and if it is given as a function it needs to satisfy</p>
+<div class="math">
+<p><img src="../_images/math/1ff1dbf700dc18fc46fd777b0be9251c94392f2b.png" alt="\sum_{n=1}^\infty \lambda_n (2 - \lambda_n) = +\infty."/></p>
+</div><p class="rubric">References</p>
+<p>[BH2013] Bot, R I, and Hendrich, C. <em>A Douglas-Rachford type
+primal-dual method for solving inclusions with mixtures of
+composite and parallel-sum type monotone operators</em>. SIAM Journal
+on Optimization, 23.4 (2013), pp 2541–2565.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../odl.solvers.nonsmooth.forward_backward.html" class="btn btn-neutral float-right" title="forward_backward" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../odl.solvers.nonsmooth.douglas_rachford.html" class="btn btn-neutral" title="douglas_rachford" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

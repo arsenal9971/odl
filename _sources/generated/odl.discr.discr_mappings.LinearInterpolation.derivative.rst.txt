@@ -1,0 +1,8 @@
+:orphan:
+
+LinearInterpolation.derivative
+=======================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: LinearInterpolation.derivative

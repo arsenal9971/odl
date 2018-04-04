@@ -1,0 +1,6 @@
+skimage_sinogram_space
+======================================================
+
+.. currentmodule:: odl.tomo.backends.skimage_radon
+
+.. autofunction:: skimage_sinogram_space

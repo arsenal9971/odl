@@ -1,0 +1,6 @@
+stir_projector_from_file
+========================================================
+
+.. currentmodule:: odl.tomo.backends.stir_bindings
+
+.. autofunction:: stir_projector_from_file

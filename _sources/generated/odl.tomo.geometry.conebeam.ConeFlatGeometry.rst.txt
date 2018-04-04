@@ -1,0 +1,34 @@
+ConeFlatGeometry
+===========================================
+
+.. currentmodule:: odl.tomo.geometry.conebeam
+
+.. autoclass:: ConeFlatGeometry
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         ConeFlatGeometry.__getitem__
+         ConeFlatGeometry.det_axes
+         ConeFlatGeometry.det_point_position
+         ConeFlatGeometry.det_refpoint
+         ConeFlatGeometry.det_to_src
+         ConeFlatGeometry.frommatrix
+         ConeFlatGeometry.rotation_matrix
+         ConeFlatGeometry.src_position
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

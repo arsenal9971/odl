@@ -1,0 +1,6 @@
+noise_array
+==============================
+
+.. currentmodule:: odl.util.testutils
+
+.. autofunction:: noise_array

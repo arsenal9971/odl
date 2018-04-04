@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLp.lincomb
+=====================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLp.lincomb

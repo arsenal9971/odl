@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tensor &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="base_tensors" href="../odl.space.base_tensors.html"/>
+        <link rel="next" title="Tensor.asarray" href="odl.space.base_tensors.Tensor.asarray.html"/>
+        <link rel="prev" title="base_tensors" href="../odl.space.base_tensors.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.space.html">space</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.space.base_tensors.html">base_tensors</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.base_tensors.TensorSpace.html">TensorSpace</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.entry_points.html">entry_points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.fspace.html">fspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.npy_tensors.html">npy_tensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.pspace.html">pspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.space_utils.html">space_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.weighting.html">weighting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.space.html">space</a> &raquo;</li>
+        
+          <li><a href="../odl.space.base_tensors.html">base_tensors</a> &raquo;</li>
+        
+      <li>Tensor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.space.base_tensors.Tensor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tensor">
+<h1>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.space.base_tensors.Tensor">
+<em class="property">class </em><code class="descclassname">odl.space.base_tensors.</code><code class="descname">Tensor</code><span class="sig-paren">(</span><em>space</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/space/base_tensors.html#Tensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.space.base_tensors.Tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.set.space.LinearSpaceElement.html#odl.set.space.LinearSpaceElement" title="odl.set.space.LinearSpaceElement"><code class="xref py py-class docutils literal"><span class="pre">odl.set.space.LinearSpaceElement</span></code></a></p>
+<p>Abstract class for representation of <a class="reference internal" href="odl.space.base_tensors.TensorSpace.html#odl.space.base_tensors.TensorSpace" title="odl.space.base_tensors.TensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">TensorSpace</span></code></a> elements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">T</span></code></dt>
+<dd><p class="first last">This element’s transpose, i.e.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code></dt>
+<dd><p class="first last">Data type of each entry.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">impl</span></code></dt>
+<dd><p class="first last">Name of the implementation back-end of this tensor.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">itemsize</span></code></dt>
+<dd><p class="first last">Size in bytes of one tensor entry.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">nbytes</span></code></dt>
+<dd><p class="first last">Total number of bytes in memory occupied by this tensor.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">ndim</span></code></dt>
+<dd><p class="first last">Number of axes (=dimensions) of this tensor.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></dt>
+<dd><p class="first last">Number of elements per axis.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></dt>
+<dd><p class="first last">Total number of entries.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">space</span></code></dt>
+<dd><p class="first last">Space to which this element belongs.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">ufuncs</span></code></dt>
+<dd><p class="first last">Access to Numpy style universal functions.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.asarray.html#odl.space.base_tensors.Tensor.asarray" title="odl.space.base_tensors.Tensor.asarray"><code class="xref py py-obj docutils literal"><span class="pre">asarray</span></code></a>([out])</td>
+<td>Extract the data of this tensor as a Numpy array.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.assign.html#odl.space.base_tensors.Tensor.assign" title="odl.space.base_tensors.Tensor.assign"><code class="xref py py-obj docutils literal"><span class="pre">assign</span></code></a>(other)</td>
+<td>Assign the values of <code class="docutils literal"><span class="pre">other</span></code> to <code class="docutils literal"><span class="pre">self</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.astype.html#odl.space.base_tensors.Tensor.astype" title="odl.space.base_tensors.Tensor.astype"><code class="xref py py-obj docutils literal"><span class="pre">astype</span></code></a>(dtype)</td>
+<td>Return a copy of this element with new <code class="docutils literal"><span class="pre">dtype</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.copy.html#odl.space.base_tensors.Tensor.copy" title="odl.space.base_tensors.Tensor.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>()</td>
+<td>Create an identical (deep) copy of self.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.dist.html#odl.space.base_tensors.Tensor.dist" title="odl.space.base_tensors.Tensor.dist"><code class="xref py py-obj docutils literal"><span class="pre">dist</span></code></a>(other)</td>
+<td>Return the distance of <code class="docutils literal"><span class="pre">self</span></code> to <code class="docutils literal"><span class="pre">other</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.divide.html#odl.space.base_tensors.Tensor.divide" title="odl.space.base_tensors.Tensor.divide"><code class="xref py py-obj docutils literal"><span class="pre">divide</span></code></a>(other[,&nbsp;out])</td>
+<td>Return <code class="docutils literal"><span class="pre">out</span> <span class="pre">=</span> <span class="pre">self</span> <span class="pre">/</span> <span class="pre">other</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.inner.html#odl.space.base_tensors.Tensor.inner" title="odl.space.base_tensors.Tensor.inner"><code class="xref py py-obj docutils literal"><span class="pre">inner</span></code></a>(other)</td>
+<td>Return the inner product of <code class="docutils literal"><span class="pre">self</span></code> and <code class="docutils literal"><span class="pre">other</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.lincomb.html#odl.space.base_tensors.Tensor.lincomb" title="odl.space.base_tensors.Tensor.lincomb"><code class="xref py py-obj docutils literal"><span class="pre">lincomb</span></code></a>(a,&nbsp;x1[,&nbsp;b,&nbsp;x2])</td>
+<td>Implement <code class="docutils literal"><span class="pre">self[:]</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">x1</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">*</span> <span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.multiply.html#odl.space.base_tensors.Tensor.multiply" title="odl.space.base_tensors.Tensor.multiply"><code class="xref py py-obj docutils literal"><span class="pre">multiply</span></code></a>(other[,&nbsp;out])</td>
+<td>Return <code class="docutils literal"><span class="pre">out</span> <span class="pre">=</span> <span class="pre">self</span> <span class="pre">*</span> <span class="pre">other</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.norm.html#odl.space.base_tensors.Tensor.norm" title="odl.space.base_tensors.Tensor.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>()</td>
+<td>Return the norm of this element.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.set_zero.html#odl.space.base_tensors.Tensor.set_zero" title="odl.space.base_tensors.Tensor.set_zero"><code class="xref py py-obj docutils literal"><span class="pre">set_zero</span></code></a>()</td>
+<td>Set this element to zero.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.base_tensors.Tensor.show.html#odl.space.base_tensors.Tensor.show" title="odl.space.base_tensors.Tensor.show"><code class="xref py py-obj docutils literal"><span class="pre">show</span></code></a>([title,&nbsp;method,&nbsp;indices,&nbsp;force_show,&nbsp;fig])</td>
+<td>Display the function graphically.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.space.base_tensors.Tensor.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>space</em><span class="sig-paren">)</span><a class="headerlink" href="#odl.space.base_tensors.Tensor.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<p>All deriving classes must call this method to set the <code class="xref any docutils literal"><span class="pre">space</span></code>
+property.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.space.base_tensors.Tensor.asarray.html" class="btn btn-neutral float-right" title="Tensor.asarray" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../odl.space.base_tensors.html" class="btn btn-neutral" title="base_tensors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

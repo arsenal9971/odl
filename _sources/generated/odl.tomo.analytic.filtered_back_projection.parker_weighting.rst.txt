@@ -1,0 +1,6 @@
+parker_weighting
+===========================================================
+
+.. currentmodule:: odl.tomo.analytic.filtered_back_projection
+
+.. autofunction:: parker_weighting

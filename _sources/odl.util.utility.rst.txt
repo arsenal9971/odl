@@ -1,0 +1,41 @@
+utility
+=======
+
+Utilities mainly for internal use.
+
+.. currentmodule:: odl.util.utility
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.util.utility.NumpyRandomSeed
+   ~odl.util.utility.npy_printoptions
+   ~odl.util.utility.writable_array
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.util.utility.array_str
+   ~odl.util.utility.cache_arguments
+   ~odl.util.utility.complex_dtype
+   ~odl.util.utility.conj_exponent
+   ~odl.util.utility.dtype_repr
+   ~odl.util.utility.dtype_str
+   ~odl.util.utility.indent
+   ~odl.util.utility.is_string
+   ~odl.util.utility.nd_iterator
+   ~odl.util.utility.pkg_supports
+   ~odl.util.utility.preload_first_arg
+   ~odl.util.utility.real_dtype
+   ~odl.util.utility.run_from_ipython
+   ~odl.util.utility.signature_string
+   ~odl.util.utility.unique
+   ~odl.util.utility.with_metaclass
+

@@ -1,0 +1,6 @@
+euler_matrix
+==================================
+
+.. currentmodule:: odl.tomo.util.utility
+
+.. autofunction:: euler_matrix

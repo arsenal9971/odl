@@ -1,0 +1,6 @@
+derenzo_sources
+====================================
+
+.. currentmodule:: odl.phantom.emission
+
+.. autofunction:: derenzo_sources

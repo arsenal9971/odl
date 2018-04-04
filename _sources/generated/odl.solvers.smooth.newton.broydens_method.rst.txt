@@ -1,0 +1,6 @@
+broydens_method
+=========================================
+
+.. currentmodule:: odl.solvers.smooth.newton
+
+.. autofunction:: broydens_method

@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>LinDeformFixedTempl &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="linearized" href="../odl.deform.linearized.html"/>
+        <link rel="next" title="LinDeformFixedTempl._call" href="odl.deform.linearized.LinDeformFixedTempl._call.html"/>
+        <link rel="prev" title="LinDeformFixedDisp.norm" href="odl.deform.linearized.LinDeformFixedDisp.norm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.deform.html">deform</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.deform.linearized.html">linearized</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="odl.deform.linearized.LinDeformFixedDisp.html">LinDeformFixedDisp</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">LinDeformFixedTempl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.deform.linearized.linear_deform.html">linear_deform</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.deform.html">deform</a> &raquo;</li>
+        
+          <li><a href="../odl.deform.linearized.html">linearized</a> &raquo;</li>
+        
+      <li>LinDeformFixedTempl</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.deform.linearized.LinDeformFixedTempl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lindeformfixedtempl">
+<h1>LinDeformFixedTempl<a class="headerlink" href="#lindeformfixedtempl" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.deform.linearized.LinDeformFixedTempl">
+<em class="property">class </em><code class="descclassname">odl.deform.linearized.</code><code class="descname">LinDeformFixedTempl</code><span class="sig-paren">(</span><em>template</em>, <em>domain=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/deform/linearized.html#LinDeformFixedTempl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.deform.linearized.LinDeformFixedTempl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.operator.operator.Operator.html#odl.operator.operator.Operator" title="odl.operator.operator.Operator"><code class="xref py py-class docutils literal"><span class="pre">odl.operator.operator.Operator</span></code></a></p>
+<p>Deformation operator with fixed template acting on displacement fields.</p>
+<p>The operator has a fixed template <code class="docutils literal"><span class="pre">I</span></code> and maps a displacement
+field <code class="docutils literal"><span class="pre">v</span></code> to the new function <code class="docutils literal"><span class="pre">x</span> <span class="pre">--&gt;</span> <span class="pre">I(x</span> <span class="pre">+</span> <span class="pre">v(x))</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="odl.deform.linearized.LinDeformFixedDisp.html#odl.deform.linearized.LinDeformFixedDisp" title="odl.deform.linearized.LinDeformFixedDisp"><code class="xref py py-obj docutils literal"><span class="pre">LinDeformFixedDisp</span></code></a></dt>
+<dd>Deformation with a fixed displacement.</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For <img class="math" src="../_images/math/8456ad1e58f514d7026fdb4ecc91fde9c45132c7.png" alt="\Omega \subset \mathbb{R}^d"/>, we take <img class="math" src="../_images/math/c43bb6e86f47707197b565b95ec8b1da15023ea6.png" alt="X = L^p(\Omega)"/>
+to be the template space, i.e. <img class="math" src="../_images/math/a2bc2d6b0ce32c5fe839d427fd7b3dd29c833e80.png" alt="I \in X"/>. Then the vector field
+space is identified with <img class="math" src="../_images/math/d859f305e681364df21475b8e60393e6c760062b.png" alt="V := X^d"/>. Hence the deformation operator
+with fixed template maps <img class="math" src="../_images/math/fae0e7a73748991e5540d874416000583f64f58e.png" alt="V"/> into <img class="math" src="../_images/math/7a7bb470119808e2db2879fc2b2526f467b7a40b.png" alt="X"/>:</p>
+<div class="math">
+<p><img src="../_images/math/1a6a8d54831efa17ee5ca8cb7abbf6a43e85f8aa.png" alt="W_I : V \to X, \quad W_I(v) := I(\cdot + v(\cdot)),"/></p>
+</div><p>i.e., <img class="math" src="../_images/math/53f869e791b03787b5c392b41e84fefb13ff6444.png" alt="W_I(v)(x) = I(x + v(x))"/>.</p>
+<p>Note that this operator is non-linear. Its derivative at <img class="math" src="../_images/math/8d230554a01423c4c6560104b2918b65607c9406.png" alt="v"/> is
+an operator that maps <img class="math" src="../_images/math/fae0e7a73748991e5540d874416000583f64f58e.png" alt="V"/> into <img class="math" src="../_images/math/7a7bb470119808e2db2879fc2b2526f467b7a40b.png" alt="X"/>:</p>
+<div class="math">
+<p><img src="../_images/math/77a6807ce65bf39fce9603f9e8c6e0bca94c730d.png" alt="W_I'(v) : V \to X, \quad W_I'(v)(u) =
+\big&lt; \nabla I(\cdot + v(\cdot)), u \big&gt;_{\mathbb{R}^d},"/></p>
+</div><p>i.e., <img class="math" src="../_images/math/15638e191347ee4ff21eeb5e0799215a7e606e85.png" alt="W_I'(v)(u)(x) = \nabla I(x + v(x))^T u(x)"/>,</p>
+<p>which is to be understood as a point-wise inner product, resulting
+in a function in <img class="math" src="../_images/math/7a7bb470119808e2db2879fc2b2526f467b7a40b.png" alt="X"/>. And the adjoint of the preceding derivative
+is also an operator that maps <img class="math" src="../_images/math/7a7bb470119808e2db2879fc2b2526f467b7a40b.png" alt="X"/> into <img class="math" src="../_images/math/fae0e7a73748991e5540d874416000583f64f58e.png" alt="V"/>:</p>
+<div class="math">
+<p><img src="../_images/math/1547e48700e5a159e429b1ed8b157d81534072fc.png" alt="W_I'(v)^* : X \to V, \quad W_I'(v)^*(J) =
+J \, \nabla I(\cdot + v(\cdot)),"/></p>
+</div><p>i.e., <img class="math" src="../_images/math/f05b6d8f8cc3a294f4b122d468353e0055b8d038.png" alt="W_I'(v)^*(J)(x) = J(x) \, \nabla I(x + v(x))"/>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">adjoint</span></code></dt>
+<dd><p class="first last">Adjoint of this operator (abstract).</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">domain</span></code></dt>
+<dd><p class="first last">Set of objects on which this operator can be evaluated.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">inverse</span></code></dt>
+<dd><p class="first last">Return the operator inverse.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_functional</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator’s range is a <a class="reference internal" href="odl.set.sets.Field.html#odl.set.sets.Field" title="odl.set.sets.Field"><code class="xref any py py-class docutils literal"><span class="pre">Field</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_linear</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator is linear.</p>
+</dd>
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">range</span></code></a></dt>
+<dd><p class="first last">Set in which the result of an evaluation of this operator lies.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">template</span></code></dt>
+<dd><p class="first last">Fixed template of this deformation operator.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.deform.linearized.LinDeformFixedTempl._call.html#odl.deform.linearized.LinDeformFixedTempl._call" title="odl.deform.linearized.LinDeformFixedTempl._call"><code class="xref py py-obj docutils literal"><span class="pre">_call</span></code></a>(displacement[,&nbsp;out])</td>
+<td>Implementation of <code class="docutils literal"><span class="pre">self(displacement[,</span> <span class="pre">out])</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.deform.linearized.LinDeformFixedTempl.derivative.html#odl.deform.linearized.LinDeformFixedTempl.derivative" title="odl.deform.linearized.LinDeformFixedTempl.derivative"><code class="xref py py-obj docutils literal"><span class="pre">derivative</span></code></a>(displacement)</td>
+<td>Derivative of the operator at <code class="docutils literal"><span class="pre">displacement</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.deform.linearized.LinDeformFixedTempl.norm.html#odl.deform.linearized.LinDeformFixedTempl.norm" title="odl.deform.linearized.LinDeformFixedTempl.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>([estimate])</td>
+<td>Return the operator norm of this operator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.deform.linearized.LinDeformFixedTempl.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>template</em>, <em>domain=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/deform/linearized.html#LinDeformFixedTempl.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.deform.linearized.LinDeformFixedTempl.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>template <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.html#odl.discr.lp_discr.DiscreteLpElement" title="odl.discr.lp_discr.DiscreteLpElement"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLpElement</span></code></a></span></dt>
+<dd><p class="first last">Fixed template that is to be deformed.</p>
+</dd>
+<dt>domain <span class="classifier-delimiter">:</span> <span class="classifier">power space of <a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html#odl.discr.lp_discr.DiscreteLp" title="odl.discr.lp_discr.DiscreteLp"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLp</span></code></a>, optional</span></dt>
+<dd><p class="first last">The space of all allowed coordinates in the deformation.
+A <a class="reference internal" href="odl.space.pspace.ProductSpace.html#odl.space.pspace.ProductSpace" title="odl.space.pspace.ProductSpace"><code class="xref any py py-class docutils literal"><span class="pre">ProductSpace</span></code></a> of <code class="docutils literal"><span class="pre">template.ndim</span></code> copies of a function-space.
+It must fulfill
+<code class="docutils literal"><span class="pre">domain[0].partition</span> <span class="pre">==</span> <span class="pre">template.space.partition</span></code>, so
+this option is useful mainly when using different interpolations
+in displacement and template.
+Default: <code class="docutils literal"><span class="pre">template.space.real_space.tangent_bundle</span></code></p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Create a simple 1D template to initialize the operator and
+apply it to a displacement field. Where the displacement is zero,
+the output value is the same as the input value.
+In the 4-th point, the value is taken from 0.2 (one cell) to the
+left, i.e. 1.0.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">uniform_discr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">template</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">op</span> <span class="o">=</span> <span class="n">LinDeformFixedTempl</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disp_field</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">op</span><span class="p">(</span><span class="n">disp_field</span><span class="p">))</span>
+<span class="go">[ 0.,  0.,  1.,  1.,  0.]</span>
+</pre></div>
+</div>
+<p>The result depends on the chosen interpolation. With ‘linear’
+interpolation and an offset equal to half the distance between two
+points, 0.1, one gets the mean of the values.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">uniform_discr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">template</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">op</span> <span class="o">=</span> <span class="n">LinDeformFixedTempl</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disp_field</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">op</span><span class="p">(</span><span class="n">disp_field</span><span class="p">))</span>
+<span class="go">[ 0. ,  0. ,  1. ,  0.5,  0. ]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.deform.linearized.LinDeformFixedTempl._call.html" class="btn btn-neutral float-right" title="LinDeformFixedTempl._call" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.deform.linearized.LinDeformFixedDisp.norm.html" class="btn btn-neutral" title="LinDeformFixedDisp.norm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

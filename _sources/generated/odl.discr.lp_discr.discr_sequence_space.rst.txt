@@ -1,0 +1,6 @@
+discr_sequence_space
+=======================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. autofunction:: discr_sequence_space

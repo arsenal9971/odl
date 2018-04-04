@@ -1,0 +1,32 @@
+reciprocal_func
+=======================================
+
+.. currentmodule:: odl.ufunc_ops.ufunc_ops
+
+.. autoclass:: reciprocal_func
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         reciprocal_func.__call__
+         reciprocal_func._call
+         reciprocal_func.bregman
+         reciprocal_func.derivative
+         reciprocal_func.norm
+         reciprocal_func.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

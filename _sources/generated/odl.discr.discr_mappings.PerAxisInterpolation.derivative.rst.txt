@@ -1,0 +1,8 @@
+:orphan:
+
+PerAxisInterpolation.derivative
+========================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: PerAxisInterpolation.derivative

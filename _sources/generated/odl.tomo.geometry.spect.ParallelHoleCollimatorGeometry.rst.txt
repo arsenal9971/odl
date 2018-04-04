@@ -1,0 +1,33 @@
+ParallelHoleCollimatorGeometry
+======================================================
+
+.. currentmodule:: odl.tomo.geometry.spect
+
+.. autoclass:: ParallelHoleCollimatorGeometry
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         ParallelHoleCollimatorGeometry.__getitem__
+         ParallelHoleCollimatorGeometry.det_axes
+         ParallelHoleCollimatorGeometry.det_point_position
+         ParallelHoleCollimatorGeometry.det_refpoint
+         ParallelHoleCollimatorGeometry.det_to_src
+         ParallelHoleCollimatorGeometry.frommatrix
+         ParallelHoleCollimatorGeometry.rotation_matrix
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

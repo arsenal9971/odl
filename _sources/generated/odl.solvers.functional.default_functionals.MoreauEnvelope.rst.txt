@@ -1,0 +1,32 @@
+MoreauEnvelope
+=========================================================
+
+.. currentmodule:: odl.solvers.functional.default_functionals
+
+.. autoclass:: MoreauEnvelope
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         MoreauEnvelope.__call__
+         MoreauEnvelope._call
+         MoreauEnvelope.bregman
+         MoreauEnvelope.derivative
+         MoreauEnvelope.norm
+         MoreauEnvelope.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

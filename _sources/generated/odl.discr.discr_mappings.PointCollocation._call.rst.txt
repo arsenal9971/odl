@@ -1,0 +1,8 @@
+:orphan:
+
+PointCollocation._call
+===============================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: PointCollocation._call

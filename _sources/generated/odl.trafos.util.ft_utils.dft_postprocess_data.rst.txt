@@ -1,0 +1,6 @@
+dft_postprocess_data
+=============================================
+
+.. currentmodule:: odl.trafos.util.ft_utils
+
+.. autofunction:: dft_postprocess_data

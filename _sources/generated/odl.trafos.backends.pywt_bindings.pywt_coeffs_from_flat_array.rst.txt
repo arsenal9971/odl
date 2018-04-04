@@ -1,0 +1,6 @@
+pywt_coeffs_from_flat_array
+=============================================================
+
+.. currentmodule:: odl.trafos.backends.pywt_bindings
+
+.. autofunction:: pywt_coeffs_from_flat_array

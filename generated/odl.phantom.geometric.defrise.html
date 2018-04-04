@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>defrise &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="geometric" href="../odl.phantom.geometric.html"/>
+        <link rel="next" title="defrise_ellipses" href="odl.phantom.geometric.defrise_ellipses.html"/>
+        <link rel="prev" title="cuboid" href="odl.phantom.geometric.cuboid.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.phantom.html">phantom</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.phantom.emission.html">emission</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.phantom.geometric.html">geometric</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="odl.phantom.geometric.cuboid.html">cuboid</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">defrise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.phantom.geometric.defrise_ellipses.html">defrise_ellipses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.phantom.geometric.ellipsoid_phantom.html">ellipsoid_phantom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.phantom.geometric.indicate_proj_axis.html">indicate_proj_axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.phantom.geometric.smooth_cuboid.html">smooth_cuboid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.phantom.geometric.tgv_phantom.html">tgv_phantom</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.phantom.misc_phantoms.html">misc_phantoms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.phantom.noise.html">noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.phantom.phantom_utils.html">phantom_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.phantom.transmission.html">transmission</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.phantom.html">phantom</a> &raquo;</li>
+        
+          <li><a href="../odl.phantom.geometric.html">geometric</a> &raquo;</li>
+        
+      <li>defrise</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.phantom.geometric.defrise.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="defrise">
+<h1>defrise<a class="headerlink" href="#defrise" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.phantom.geometric.defrise">
+<code class="descclassname">odl.phantom.geometric.</code><code class="descname">defrise</code><span class="sig-paren">(</span><em>space</em>, <em>nellipses=8</em>, <em>alternating=False</em>, <em>min_pt=None</em>, <em>max_pt=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/phantom/geometric.html#defrise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.phantom.geometric.defrise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Phantom with regularily spaced ellipses.</p>
+<p>This phantom is often used to verify cone-beam algorithms.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>space <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html#odl.discr.lp_discr.DiscreteLp" title="odl.discr.lp_discr.DiscreteLp"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLp</span></code></a></span></dt>
+<dd><p class="first last">Space in which the phantom should be created, must be 2- or
+3-dimensional.</p>
+</dd>
+<dt>nellipses <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">Number of ellipses. If more ellipses are used, each ellipse becomes
+thinner.</p>
+</dd>
+<dt>alternating <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">True if the ellipses should have alternating densities (+1, -1),
+otherwise all ellipses have value +1.</p>
+</dd>
+<dt>min_pt, max_pt <span class="classifier-delimiter">:</span> <span class="classifier">array-like, optional</span></dt>
+<dd><p class="first">If provided, use these vectors to determine the bounding box of the
+phantom instead of <code class="docutils literal"><span class="pre">space.min_pt</span></code> and <code class="docutils literal"><span class="pre">space.max_pt</span></code>.
+It is currently required that <code class="docutils literal"><span class="pre">min_pt</span> <span class="pre">&gt;=</span> <span class="pre">space.min_pt</span></code> and
+<code class="docutils literal"><span class="pre">max_pt</span> <span class="pre">&lt;=</span> <span class="pre">space.max_pt</span></code>, i.e., shifting or scaling outside the
+original space is not allowed.</p>
+<p>Providing one of them results in a shift, e.g., for <code class="docutils literal"><span class="pre">min_pt</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">new_min_pt</span> <span class="o">=</span> <span class="n">min_pt</span>
+<span class="n">new_max_pt</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">max_pt</span> <span class="o">+</span> <span class="p">(</span><span class="n">min_pt</span> <span class="o">-</span> <span class="n">space</span><span class="o">.</span><span class="n">min_pt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">Providing both results in a scaled version of the phantom.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt>phantom <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">space</span></code> element</span></dt>
+<dd><p class="first last">The generated phantom in <code class="docutils literal"><span class="pre">space</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="odl.phantom.transmission.shepp_logan.html#odl.phantom.transmission.shepp_logan" title="odl.phantom.transmission.shepp_logan"><code class="xref py py-obj docutils literal"><span class="pre">odl.phantom.transmission.shepp_logan</span></code></a></p>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.phantom.geometric.defrise_ellipses.html" class="btn btn-neutral float-right" title="defrise_ellipses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.phantom.geometric.cuboid.html" class="btn btn-neutral" title="cuboid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

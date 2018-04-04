@@ -1,0 +1,6 @@
+cn
+========================
+
+.. currentmodule:: odl.space.space_utils
+
+.. autofunction:: cn

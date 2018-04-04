@@ -1,0 +1,8 @@
+:orphan:
+
+AstraCudaBackProjectorImpl.create_ids
+==================================================================
+
+.. currentmodule:: odl.tomo.backends.astra_cuda
+
+.. automethod:: AstraCudaBackProjectorImpl.create_ids

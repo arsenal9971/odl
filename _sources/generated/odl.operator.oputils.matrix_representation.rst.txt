@@ -1,0 +1,6 @@
+matrix_representation
+==========================================
+
+.. currentmodule:: odl.operator.oputils
+
+.. autofunction:: matrix_representation

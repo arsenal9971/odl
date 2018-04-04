@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpaceMapping.derivative
+========================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: FunctionSpaceMapping.derivative

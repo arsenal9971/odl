@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpElement.assign
+===========================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLpElement.assign

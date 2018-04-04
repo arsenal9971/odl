@@ -1,0 +1,8 @@
+:orphan:
+
+LinearInterpolation.norm
+=================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: LinearInterpolation.norm

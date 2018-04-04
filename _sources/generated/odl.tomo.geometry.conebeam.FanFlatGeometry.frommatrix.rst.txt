@@ -1,0 +1,8 @@
+:orphan:
+
+FanFlatGeometry.frommatrix
+=====================================================
+
+.. currentmodule:: odl.tomo.geometry.conebeam
+
+.. automethod:: FanFlatGeometry.frommatrix

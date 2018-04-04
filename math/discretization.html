@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Discretizations &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="Mathematical Background" href="math.html"/>
+        <link rel="next" title="Resizing Operators" href="resizing_ops.html"/>
+        <link rel="prev" title="Linear Spaces" href="linear_spaces.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="math.html">Mathematical Background</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linear_spaces.html">Linear Spaces</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Discretizations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mathematical-background">Mathematical background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-wikipedia-articles">Useful Wikipedia articles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="resizing_ops.html">Resizing Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="derivatives_guide.html">On the different notions of derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafos/index.html">Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solvers/solvers.html">Solvers</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="math.html">Mathematical Background</a> &raquo;</li>
+        
+      <li>Discretizations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/math/discretization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="discretizations">
+<span id="id1"></span><h1>Discretizations<a class="headerlink" href="#discretizations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mathematical-background">
+<h2>Mathematical background<a class="headerlink" href="#mathematical-background" title="Permalink to this headline">¶</a></h2>
+<p>In mathematics, the term <a class="reference internal" href="../guide/glossary.html#term-discretization"><span class="xref std std-term">discretization</span></a> stands for the transition from abstract, continuous,
+often infinite-dimensional objects to concrete, discrete, finite-dimensional counterparts. We define
+discretizations as tuples encompassing all necessary aspects involved in this transition. Let
+<img class="math" src="../_images/math/343a944b6a22dc1a14dfecd2ef0d255012e38380.png" alt="\mathcal{X}"/> be an arbitrary set, <img class="math" src="../_images/math/aca08c7654fff610587263efea7222e0075cbaf0.png" alt="\mathbb{F}^n"/> be the set of <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/>-tuples where
+each component lies in <img class="math" src="../_images/math/17de0418d4f0524ae882aecce59d6ea2ba542692.png" alt="\mathbb{F}"/>. We define two mappings</p>
+<div class="math">
+<p><img src="../_images/math/cfdad3d0c965d943a20977f55e4b2d843f1155b3.png" alt="\mathcal{R}_\mathcal{X}: \mathcal{X} \to \mathbb{F}^n,
+
+\mathcal{E}_\mathcal{X}: \mathbb{F}^n \to \mathcal{X},"/></p>
+</div><p>which we call <a class="reference internal" href="../guide/glossary.html#term-sampling"><span class="xref std std-term">sampling</span></a> and <a class="reference internal" href="../guide/glossary.html#term-interpolation"><span class="xref std std-term">interpolation</span></a>, respectively. Then, the discretization of
+<img class="math" src="../_images/math/343a944b6a22dc1a14dfecd2ef0d255012e38380.png" alt="\mathcal{X}"/> with respect to <img class="math" src="../_images/math/aca08c7654fff610587263efea7222e0075cbaf0.png" alt="\mathbb{F}^n"/> and the above operators is defined as the
+tuple</p>
+<div class="math">
+<p><img src="../_images/math/6ab4f9313fd4eee2a215872751e3d5cac352e16f.png" alt="\mathcal{D}(\mathcal{X}) = (\mathcal{X}, \mathbb{F}^n,
+\mathcal{R}_\mathcal{X}, \mathcal{E}_\mathcal{X})."/></p>
+</div><p>The following abstract diagram visualizes a discretization:</p>
+<a class="reference internal image-reference" href="../_images/discr.png"><img alt="../_images/discr.png" src="../_images/discr.png" style="width: 130.0px; height: 195.60000000000002px;" /></a>
+<p>TODO: write up in more detail</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Let <img class="math" src="../_images/math/91912f99d8e5b462e72cc729d146e476bbaa6bae.png" alt="\mathcal{X} = C([0, 1])"/> be the space of real-valued
+continuous functions on the interval <img class="math" src="../_images/math/02b99e25ae92d555c285768eb92a199abd3cf9e2.png" alt="[0, 1]"/>, and let <img class="math" src="../_images/math/43c6d877b0ff00fd15c69063745e46c7567418c5.png" alt="x_1 &lt; \dots &lt; x_n"/>
+be ordered sampling points in <img class="math" src="../_images/math/02b99e25ae92d555c285768eb92a199abd3cf9e2.png" alt="[0, 1]"/>.</p>
+<p><strong>Restriction operator:</strong></p>
+<p>We define the <em>grid collocation operator</em> as</p>
+<div class="math">
+<p><img src="../_images/math/b87374ed36741635aca0ec5283661c7c06ddc810.png" alt="\mathcal{C}: \mathcal{X} \to \mathbb{R}^n,
+
+\mathcal{C}(f) := \big(f(x_1), \dots, f(x_n)\big)."/></p>
+</div><p>The abstract object in this case is the input function <img class="math" src="../_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/>, and
+the operator evaluates this function at the given points, resulting in
+a vector in <img class="math" src="../_images/math/9dafe51124304e6cad6f2a5bbd436d549c8da1b8.png" alt="\mathbb{R}^n"/>.</p>
+<p>This operator is implemented as <a class="reference internal" href="../generated/odl.discr.discr_mappings.PointCollocation.html#odl.discr.discr_mappings.PointCollocation" title="odl.discr.discr_mappings.PointCollocation"><code class="xref any py py-class docutils literal"><span class="pre">PointCollocation</span></code></a>.</p>
+<p><strong>Extension operator:</strong></p>
+<p>Let discrete values <img class="math" src="../_images/math/099a0ac5143d60e503cf27553d6df9b8287e809d.png" alt="\bar f \in \mathbb{R}^n"/> be given. Consider the linear interpolation
+of those values at a point <img class="math" src="../_images/math/4f51f4fcc6636f44d11eed9717098ef0b8c6a6b2.png" alt="x \in [0, 1]"/>:</p>
+<div class="math">
+<p><img src="../_images/math/37684f2d4d6e8f4f0abea863179a22bd7b455788.png" alt="I(\bar f; x) := (1 - \lambda(x)) f_i + \lambda(x) f_{i+1},
+
+\lambda(x) = \frac{x - x_i}{x_{i+1} - x_i},"/></p>
+</div><p>where <img class="math" src="../_images/math/df0deb143e5ac127f00bd248ee8001ecae572adc.png" alt="i"/> is the index such that <img class="math" src="../_images/math/720d2866f5b7b117bc07e9331b0a532c68245aa8.png" alt="x \in [x_i, x_{i+1})"/>.</p>
+<p>Then we can define the linear interpolation operator as</p>
+<div class="math">
+<p><img src="../_images/math/e19f355ccbc6685515d7d232ba18069e8eebc344.png" alt="\mathcal{L} : \mathbb{R}^n \to C([0, 1]),
+
+\mathcal{L}(\bar f) := I(\bar f; \cdot),"/></p>
+</div><p>where <img class="math" src="../_images/math/d9c5f3656b976f69c008b71602d28ef8e4a529ac.png" alt="I(\bar f; \cdot)"/> stands for the function
+<img class="math" src="../_images/math/96963f6be2ef73037e95f413877b4a418cf2ee78.png" alt="x \mapsto I(\bar f; x)"/>.</p>
+<p>Hence, this operator maps the finite array <img class="math" src="../_images/math/099a0ac5143d60e503cf27553d6df9b8287e809d.png" alt="\bar f \in \mathbb{R}^n"/>
+to the abstract interpolating function <img class="math" src="../_images/math/d9c5f3656b976f69c008b71602d28ef8e4a529ac.png" alt="I(\bar f; \cdot)"/>.</p>
+<p>This interpolation scheme is implemented in the <a class="reference internal" href="../generated/odl.discr.discr_mappings.LinearInterpolation.html#odl.discr.discr_mappings.LinearInterpolation" title="odl.discr.discr_mappings.LinearInterpolation"><code class="xref any py py-class docutils literal"><span class="pre">LinearInterpolation</span></code></a> operator.</p>
+</div>
+<div class="section" id="useful-wikipedia-articles">
+<h2>Useful Wikipedia articles<a class="headerlink" href="#useful-wikipedia-articles" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Discretization">Discretization</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="resizing_ops.html" class="btn btn-neutral float-right" title="Resizing Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="linear_spaces.html" class="btn btn-neutral" title="Linear Spaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

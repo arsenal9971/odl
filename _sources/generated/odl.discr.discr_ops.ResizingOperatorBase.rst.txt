@@ -1,0 +1,30 @@
+ResizingOperatorBase
+========================================
+
+.. currentmodule:: odl.discr.discr_ops
+
+.. autoclass:: ResizingOperatorBase
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         ResizingOperatorBase.__call__
+         ResizingOperatorBase._call
+         ResizingOperatorBase.derivative
+         ResizingOperatorBase.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

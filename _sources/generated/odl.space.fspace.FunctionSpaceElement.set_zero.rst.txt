@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpaceElement.set_zero
+==============================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpaceElement.set_zero

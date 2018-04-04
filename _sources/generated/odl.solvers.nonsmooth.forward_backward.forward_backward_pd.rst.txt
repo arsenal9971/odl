@@ -1,0 +1,6 @@
+forward_backward_pd
+==========================================================
+
+.. currentmodule:: odl.solvers.nonsmooth.forward_backward
+
+.. autofunction:: forward_backward_pd

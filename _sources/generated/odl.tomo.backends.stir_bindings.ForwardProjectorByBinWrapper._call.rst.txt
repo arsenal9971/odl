@@ -1,0 +1,8 @@
+:orphan:
+
+ForwardProjectorByBinWrapper._call
+==================================================================
+
+.. currentmodule:: odl.tomo.backends.stir_bindings
+
+.. automethod:: ForwardProjectorByBinWrapper._call

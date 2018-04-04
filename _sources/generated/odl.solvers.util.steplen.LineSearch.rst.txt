@@ -1,0 +1,26 @@
+LineSearch
+===================================
+
+.. currentmodule:: odl.solvers.util.steplen
+
+.. autoclass:: LineSearch
+   :show-inheritance:
+   
+   
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         LineSearch.__call__
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

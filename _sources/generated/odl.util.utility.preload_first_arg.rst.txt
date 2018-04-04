@@ -1,0 +1,6 @@
+preload_first_arg
+==================================
+
+.. currentmodule:: odl.util.utility
+
+.. autofunction:: preload_first_arg

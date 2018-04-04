@@ -1,0 +1,6 @@
+OpTypeError
+=================================
+
+.. currentmodule:: odl.operator.operator
+
+.. autoexception:: OpTypeError

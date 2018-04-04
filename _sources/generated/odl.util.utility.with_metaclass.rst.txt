@@ -1,0 +1,6 @@
+with_metaclass
+===============================
+
+.. currentmodule:: odl.util.utility
+
+.. autofunction:: with_metaclass

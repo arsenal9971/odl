@@ -1,0 +1,6 @@
+flip
+========================
+
+.. currentmodule:: odl.util.npy_compat
+
+.. autofunction:: flip

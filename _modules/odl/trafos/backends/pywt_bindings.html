@@ -1,0 +1,1058 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.trafos.backends.pywt_bindings &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.trafos.backends.pywt_bindings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.trafos.backends.pywt_bindings</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;Bindings to the PyWavelets backend for wavelet transforms.</span>
+
+<span class="sd">`PyWavelets &lt;https://pywavelets.readthedocs.io/&gt;`_ is a Python library</span>
+<span class="sd">for wavelet transforms in arbitrary dimensions, featuring a large number</span>
+<span class="sd">of built-in wavelet filters.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">product</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">pywt</span>
+    <span class="n">PYWT_AVAILABLE</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">PYWT_AVAILABLE</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;PAD_MODES_ODL2PYWT&#39;</span><span class="p">,</span> <span class="s1">&#39;PYWT_SUPPORTED_MODES&#39;</span><span class="p">,</span> <span class="s1">&#39;PYWT_AVAILABLE&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;pywt_wavelet&#39;</span><span class="p">,</span> <span class="s1">&#39;pywt_pad_mode&#39;</span><span class="p">,</span> <span class="s1">&#39;pywt_coeff_shapes&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;pywt_flat_coeff_size&#39;</span><span class="p">,</span> <span class="s1">&#39;pywt_max_nlevels&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;pywt_flat_array_from_coeffs&#39;</span><span class="p">,</span> <span class="s1">&#39;pywt_coeffs_from_flat_array&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;pywt_single_level_decomp&#39;</span><span class="p">,</span> <span class="s1">&#39;pywt_single_level_recon&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;pywt_multi_level_decomp&#39;</span><span class="p">,</span> <span class="s1">&#39;pywt_multi_level_recon&#39;</span><span class="p">)</span>
+
+
+<span class="n">PAD_MODES_ODL2PYWT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;constant&#39;</span><span class="p">:</span> <span class="s1">&#39;zero&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;periodic&#39;</span><span class="p">:</span> <span class="s1">&#39;periodic&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;symmetric&#39;</span><span class="p">:</span> <span class="s1">&#39;symmetric&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;order0&#39;</span><span class="p">:</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;order1&#39;</span><span class="p">:</span> <span class="s1">&#39;smooth&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;pywt_periodic&#39;</span><span class="p">:</span> <span class="s1">&#39;periodization&#39;</span><span class="p">,</span>
+                      <span class="c1"># Upcoming version of Pywavelets adds this</span>
+                      <span class="c1"># &#39;reflect&#39;: &#39;reflect&#39;</span>
+                      <span class="p">}</span>
+<span class="n">PYWT_SUPPORTED_MODES</span> <span class="o">=</span> <span class="n">PAD_MODES_ODL2PYWT</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="pywt_wavelet"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_wavelet.html#odl.trafos.backends.pywt_bindings.pywt_wavelet">[docs]</a><span class="k">def</span> <span class="nf">pywt_wavelet</span><span class="p">(</span><span class="n">wavelet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert ``wavelet`` to a `pywt.Wavelet` instance.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">wavelet</span><span class="p">,</span> <span class="n">pywt</span><span class="o">.</span><span class="n">Wavelet</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">wavelet</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pywt</span><span class="o">.</span><span class="n">Wavelet</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="pywt_pad_mode"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_pad_mode.html#odl.trafos.backends.pywt_bindings.pywt_pad_mode">[docs]</a><span class="k">def</span> <span class="nf">pywt_pad_mode</span><span class="p">(</span><span class="n">pad_mode</span><span class="p">,</span> <span class="n">pad_const</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert ODL-style padding mode to pywt-style padding mode.&quot;&quot;&quot;</span>
+    <span class="n">pad_mode</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">pad_mode</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pad_mode</span> <span class="o">==</span> <span class="s1">&#39;constant&#39;</span> <span class="ow">and</span> <span class="n">pad_const</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;constant padding with constant != 0 not supported &#39;</span>
+                         <span class="s1">&#39;for `pywt` back-end&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">PAD_MODES_ODL2PYWT</span><span class="p">[</span><span class="n">pad_mode</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`pad_mode` &#39;</span><span class="si">{}</span><span class="s2">&#39; not understood&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pad_mode</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="pywt_coeff_shapes"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_coeff_shapes.html#odl.trafos.backends.pywt_bindings.pywt_coeff_shapes">[docs]</a><span class="k">def</span> <span class="nf">pywt_coeff_shapes</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">nlevels</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a list of coefficient shapes in the specified transform.</span>
+
+<span class="sd">    The wavelet transform specified by ``wavelet``, ``nlevels`` and</span>
+<span class="sd">    ``mode`` produces a sequence of approximation and detail</span>
+<span class="sd">    coefficients. This function computes the shape of those</span>
+<span class="sd">    coefficient arrays and returns them as a list.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape : sequence</span>
+<span class="sd">        Shape of an input to the transform.</span>
+<span class="sd">    wavelet : string or `pywt.Wavelet`</span>
+<span class="sd">        Specification of the wavelet to be used in the transform.</span>
+<span class="sd">        If a string is given, it is converted to a `pywt.Wavelet`.</span>
+<span class="sd">        Use `pywt.wavelist` to get a list of available wavelets.</span>
+<span class="sd">    nlevels : positive int</span>
+<span class="sd">        Number of scaling levels to be used in the decomposition. The</span>
+<span class="sd">        maximum number of levels can be calculated with</span>
+<span class="sd">        `pywt.dwt_max_level`.</span>
+<span class="sd">    mode : string, optional</span>
+<span class="sd">        PyWavelets style signal extension mode. See `signal extension modes`_</span>
+<span class="sd">        for available options.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    shapes : list</span>
+<span class="sd">        The shapes of the approximation and detail coefficients at</span>
+<span class="sd">        different scaling levels in the following order:</span>
+
+<span class="sd">            ``[shape_aN, shape_DN, ..., shape_D1]``</span>
+
+<span class="sd">        Here, ``shape_aN`` is the shape of the N-th level approximation</span>
+<span class="sd">        coefficient array, and ``shape_Di`` is the shape of all</span>
+<span class="sd">        i-th level detail coefficients.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pywt.dwt_coeff_len : function used to determine coefficient sizes at</span>
+<span class="sd">        each scaling level</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Determine the coefficient shapes for 2 scaling levels in 3 dimensions</span>
+<span class="sd">    with zero-padding. Approximation coefficient shape comes first, then</span>
+<span class="sd">    the level-2 detail coefficient and last the level-1 detail coefficient:</span>
+
+<span class="sd">    &gt;&gt;&gt; pywt_coeff_shapes(shape=(16, 17, 18), wavelet=&#39;db2&#39;, nlevels=2,</span>
+<span class="sd">    ...                   mode=&#39;zero&#39;)</span>
+<span class="sd">    [(6, 6, 6), (6, 6, 6), (9, 10, 10)]</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. _signal extension modes:</span>
+<span class="sd">       https://pywavelets.readthedocs.io/en/latest/ref/signal-extension-\</span>
+<span class="sd">modes.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">!=</span> <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`shape` may only contain integers, got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                         <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span>
+    <span class="n">wavelet</span> <span class="o">=</span> <span class="n">pywt_wavelet</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
+
+    <span class="n">nlevels</span><span class="p">,</span> <span class="n">nlevels_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nlevels</span><span class="p">),</span> <span class="n">nlevels</span>
+    <span class="k">if</span> <span class="n">nlevels_in</span> <span class="o">!=</span> <span class="n">nlevels</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`nlevels` must be integer, got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                         <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nlevels_in</span><span class="p">))</span>
+    <span class="n">max_nlevels</span> <span class="o">=</span> <span class="n">pywt_max_nlevels</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nlevels</span> <span class="o">&gt;</span> <span class="n">max_nlevels</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`nlevels` larger than maximum value </span><span class="si">{}</span><span class="s1">&#39;</span>
+                         <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nlevels_in</span><span class="p">,</span> <span class="n">max_nlevels</span><span class="p">))</span>
+
+    <span class="n">mode</span><span class="p">,</span> <span class="n">mode_in</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">mode</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">PYWT_SUPPORTED_MODES</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mode &#39;</span><span class="si">{}</span><span class="s2">&#39; not understood&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mode_in</span><span class="p">))</span>
+
+    <span class="c1"># Use pywt.dwt_coeff_len to determine the coefficient lengths at each</span>
+    <span class="c1"># scale recursively. Start with the image shape and use the last created</span>
+    <span class="c1"># shape for the next step.</span>
+    <span class="n">shape_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">shape</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nlevels</span><span class="p">):</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">pywt</span><span class="o">.</span><span class="n">dwt_coeff_len</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">filter_len</span><span class="o">=</span><span class="n">wavelet</span><span class="o">.</span><span class="n">dec_len</span><span class="p">,</span>
+                                         <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+                      <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">shape_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">shape_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="c1"># Add a duplicate of the last entry for the approximation coefficients</span>
+    <span class="n">shape_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shape_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># We created the list in reversed order, reverse it. Remove also the</span>
+    <span class="c1"># superfluous image shape at the end.</span>
+    <span class="n">shape_list</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="n">shape_list</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">shape_list</span></div>
+
+
+<div class="viewcode-block" id="pywt_max_nlevels"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_max_nlevels.html#odl.trafos.backends.pywt_bindings.pywt_max_nlevels">[docs]</a><span class="k">def</span> <span class="nf">pywt_max_nlevels</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the maximum number of wavelet levels.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape : sequence of ints</span>
+<span class="sd">        Shape of an input to the transform.</span>
+<span class="sd">    wavelet : string or `pywt.Wavelet`</span>
+<span class="sd">        Specification of the wavelet to be used in the transform.</span>
+<span class="sd">        If a string is given, it is converted to a `pywt.Wavelet`.</span>
+<span class="sd">        Use `pywt.wavelist` to get a list of available wavelets.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    max_nlevels : int</span>
+<span class="sd">        Maximum value for the nlevels option.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Find maximum nlevels for Haar wavelet:</span>
+
+<span class="sd">    &gt;&gt;&gt; pywt_max_nlevels([10], &#39;haar&#39;)</span>
+<span class="sd">    3</span>
+<span class="sd">    &gt;&gt;&gt; pywt_max_nlevels([1024], &#39;haar&#39;)</span>
+<span class="sd">    10</span>
+
+<span class="sd">    For multiple axes, the maximum nlevels is determined by the smallest shape:</span>
+
+<span class="sd">    &gt;&gt;&gt; pywt_max_nlevels([10, 1024], &#39;haar&#39;)</span>
+<span class="sd">    3</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">wavelet</span> <span class="o">=</span> <span class="n">pywt_wavelet</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
+
+    <span class="c1"># TODO: adapt for axes</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">pywt</span><span class="o">.</span><span class="n">dwt_max_level</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wavelet</span><span class="o">.</span><span class="n">dec_len</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="pywt_flat_coeff_size"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_flat_coeff_size.html#odl.trafos.backends.pywt_bindings.pywt_flat_coeff_size">[docs]</a><span class="k">def</span> <span class="nf">pywt_flat_coeff_size</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">nlevels</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the size of a flat array containing all coefficients.</span>
+
+<span class="sd">    The wavelet transform specified by ``wavelet``, ``nlevels`` and</span>
+<span class="sd">    ``mode`` produces a sequence of approximation and detail</span>
+<span class="sd">    coefficients. This function computes the total size of those</span>
+<span class="sd">    coefficients when stored in a flat vector.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape : sequence</span>
+<span class="sd">        Shape of an input to the transform.</span>
+<span class="sd">    wavelet : string or `pywt.Wavelet`</span>
+<span class="sd">        Specification of the wavelet to be used in the transform.</span>
+<span class="sd">        If a string is given, it is converted to a `pywt.Wavelet`.</span>
+<span class="sd">        Use `pywt.wavelist` to get a list of available wavelets.</span>
+<span class="sd">    nlevels : positive int</span>
+<span class="sd">        Number of scaling levels to be used in the decomposition. The</span>
+<span class="sd">        maximum number of levels can be calculated with</span>
+<span class="sd">        `pywt.dwt_max_level`.</span>
+<span class="sd">    mode : string, optional</span>
+<span class="sd">        PyWavelets style signal extension mode. See `signal extension modes`_</span>
+<span class="sd">        for available options.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    flat_size : int</span>
+<span class="sd">        Size of a flat array containing all approximation and detail</span>
+<span class="sd">        coefficients for the specified transform.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pywt_coeff_shapes : calculate the shapes of coefficients in a</span>
+<span class="sd">        specified wavelet transform</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Determine the total size of a flat coefficient array for 2 scaling</span>
+<span class="sd">    levels in 3 with zero-padding:</span>
+
+<span class="sd">    &gt;&gt;&gt; pywt_flat_coeff_size(shape=(16, 17, 18), wavelet=&#39;db2&#39;, nlevels=2,</span>
+<span class="sd">    ...                      mode=&#39;zero&#39;)</span>
+<span class="sd">    8028</span>
+<span class="sd">    &gt;&gt;&gt; 16 * 17 * 18  # original size, smaller -&gt; redundancy in transform</span>
+<span class="sd">    4896</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. _signal extension modes:</span>
+<span class="sd">       https://pywavelets.readthedocs.io/en/latest/ref/signal-extension-\</span>
+<span class="sd">modes.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">shapes</span> <span class="o">=</span> <span class="n">pywt_coeff_shapes</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">nlevels</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+    <span class="c1"># 1 x approx coeff and (2**n - 1) x detail coeff</span>
+    <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span>
+            <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+                                  <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span></div>
+
+
+<div class="viewcode-block" id="pywt_flat_array_from_coeffs"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_flat_array_from_coeffs.html#odl.trafos.backends.pywt_bindings.pywt_flat_array_from_coeffs">[docs]</a><span class="k">def</span> <span class="nf">pywt_flat_array_from_coeffs</span><span class="p">(</span><span class="n">coeffs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a flat array from a Pywavelets coefficient sequence.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    coeffs : ordered sequence</span>
+<span class="sd">        Sequence of approximation and detail coefficients in the format</span>
+
+<span class="sd">            ``[aN, DN, ... D1]``,</span>
+
+<span class="sd">        where ``aN`` is the N-th level approximation coefficient array and</span>
+<span class="sd">        ``Di`` the tuple of i-th level detail coefficient arrays.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    arr : `numpy.ndarray`</span>
+<span class="sd">        Flat coefficient vector containing approximation and detail</span>
+<span class="sd">        coefficients in the same order as they appear in ``coeffs``.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pywt_coeffs_from_flat_array : Conversion from flat array to</span>
+<span class="sd">        coefficient list, the inverse of this function.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Flatten a list of 1 approximation and ``2 ** 2 - 1 = 3`` detail</span>
+<span class="sd">    coefficients (sizes not representative):</span>
+
+<span class="sd">    &gt;&gt;&gt; approx = [[1, 1]]  # shape (1, 2)</span>
+<span class="sd">    &gt;&gt;&gt; details = ([[2, 2]], [[3, 3]], [[4, 4]])  # 3 * shape (1, 2)</span>
+<span class="sd">    &gt;&gt;&gt; pywt_flat_array_from_coeffs([approx, details])</span>
+<span class="sd">    array([1, 1, 2, 2, 3, 3, 4, 4])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># We convert to numpy array since we need the sizes anyway, and np.size</span>
+    <span class="c1"># is as expensive as np.asarray().size.</span>
+    <span class="n">approx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">details_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">flat_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">approx</span><span class="o">.</span><span class="n">size</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">details</span> <span class="ow">in</span> <span class="n">coeffs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">details</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">detail_arrs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span> <span class="k">for</span> <span class="n">detail</span> <span class="ow">in</span> <span class="n">details</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Single detail coefficient array</span>
+            <span class="n">detail_arrs</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">details</span><span class="p">),)</span>
+
+        <span class="n">flat_sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">detail_arrs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">details_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">detail_arrs</span><span class="p">)</span>
+
+    <span class="n">ndim</span> <span class="o">=</span> <span class="n">approx</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">approx</span><span class="o">.</span><span class="n">dtype</span>
+    <span class="n">dcoeffs_per_scale</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="n">flat_total_size</span> <span class="o">=</span> <span class="n">flat_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dcoeffs_per_scale</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span><span class="n">flat_sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">flat_coeff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">flat_total_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">stop</span> <span class="o">=</span> <span class="n">flat_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">flat_coeff</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">]</span> <span class="o">=</span> <span class="n">approx</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">fsize</span><span class="p">,</span> <span class="n">details</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">flat_sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">details_list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">detail</span> <span class="ow">in</span> <span class="n">details</span><span class="p">:</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">stop</span><span class="p">,</span> <span class="n">stop</span> <span class="o">+</span> <span class="n">fsize</span>
+            <span class="n">flat_coeff</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">]</span> <span class="o">=</span> <span class="n">detail</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">flat_coeff</span></div>
+
+
+<div class="viewcode-block" id="pywt_coeffs_from_flat_array"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_coeffs_from_flat_array.html#odl.trafos.backends.pywt_bindings.pywt_coeffs_from_flat_array">[docs]</a><span class="k">def</span> <span class="nf">pywt_coeffs_from_flat_array</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">shapes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a flat array into a ``pywt`` coefficient list.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr : `array-like`</span>
+<span class="sd">        A flat coefficient vector containing approximation and detail</span>
+<span class="sd">        coefficients with order and sizes determined by ``shapes``.</span>
+<span class="sd">    shapes : sequence</span>
+<span class="sd">        The shapes of the approximation and detail coefficients at</span>
+<span class="sd">        different scaling levels in the following order:</span>
+
+<span class="sd">            ``[shape_aN, shape_DN, ..., shape_D1]``</span>
+
+<span class="sd">        Here, ``shape_aN`` is the shape of the N-th level approximation</span>
+<span class="sd">        coefficient array, and ``shape_Di`` is the shape of all</span>
+<span class="sd">        i-th level detail coefficients.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    coeff_list : structured list</span>
+<span class="sd">        List of approximation and detail coefficients in the format</span>
+
+<span class="sd">            ``[aN, DN, ... D1]``,</span>
+
+<span class="sd">        where ``aN`` is the N-th level approximation coefficient array and</span>
+<span class="sd">        ``Di`` the tuple of i-th level detail coefficient arrays. Each of</span>
+<span class="sd">        the ``Di`` tuples has length ``2 ** ndim - 1``, where ``ndim`` is</span>
+<span class="sd">        the number of dimensions of ``arr``.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pywt_flat_array_from_coeffs : Conversion from coefficient list to</span>
+<span class="sd">        flat array, i.e. the inverse of this function.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Turn the flat array from the example in `pywt_flat_array_from_coeffs`</span>
+<span class="sd">    back into a coefficient list:</span>
+
+<span class="sd">    &gt;&gt;&gt; arr = [1, 1, 2, 2, 3, 3, 4, 4]</span>
+<span class="sd">    &gt;&gt;&gt; # approximation and detail coefficient shapes</span>
+<span class="sd">    &gt;&gt;&gt; shapes = [(1, 2), (1, 2)]</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; coeffs = pywt_coeffs_from_flat_array(arr, shapes)</span>
+<span class="sd">    &gt;&gt;&gt; approx, details = coeffs</span>
+<span class="sd">    &gt;&gt;&gt; print(approx)</span>
+<span class="sd">    [[1 1]]</span>
+<span class="sd">    &gt;&gt;&gt; print(details)</span>
+<span class="sd">    (array([[2, 2]]), array([[3, 3]]), array([[4, 4]]))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="n">flat_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shp</span><span class="p">)</span> <span class="k">for</span> <span class="n">shp</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">stop</span> <span class="o">=</span> <span class="n">flat_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">coeff_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+    <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">dcoeffs_per_scale</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">fsize</span><span class="p">,</span> <span class="n">shape</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">flat_sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">shapes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">stop</span><span class="p">,</span> <span class="n">stop</span> <span class="o">+</span> <span class="n">dcoeffs_per_scale</span> <span class="o">*</span> <span class="n">fsize</span>
+
+        <span class="n">detail_coeffs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">],</span> <span class="n">dcoeffs_per_scale</span><span class="p">))</span>
+
+        <span class="n">coeff_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">detail_coeffs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">coeff_list</span></div>
+
+
+<div class="viewcode-block" id="pywt_dict_keys"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_dict_keys.html#odl.trafos.backends.pywt_bindings.pywt_dict_keys">[docs]</a><span class="k">def</span> <span class="nf">pywt_dict_keys</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a list of coefficient dictionary keys as used in ``pywt``.</span>
+
+<span class="sd">    The dictionary keys are composed of the characters ``&#39;a&#39;`` and ``&#39;d&#39;``</span>
+<span class="sd">    and stand for &quot;approximation&quot; and &quot;detail&quot; coefficients. The letter</span>
+<span class="sd">    in the i-th position of a key string signalizes which filtering</span>
+<span class="sd">    operation the input undergoes in the i-th coordinate axis. For example,</span>
+<span class="sd">    ``&#39;ada&#39;`` stands for low-pass filtering (-&gt; approximation) in the</span>
+<span class="sd">    first and last axes and high-pass filtering (-&gt; detail) in the</span>
+<span class="sd">    middle axis.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    There are 8 variants for ``length=3``:</span>
+
+<span class="sd">    &gt;&gt;&gt; pywt_dict_keys(length=3)</span>
+<span class="sd">    [&#39;aaa&#39;, &#39;aad&#39;, &#39;ada&#39;, &#39;add&#39;, &#39;daa&#39;, &#39;dad&#39;, &#39;dda&#39;, &#39;ddd&#39;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="s1">&#39;ad&#39;</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">length</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="pywt_single_level_decomp"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_single_level_decomp.html#odl.trafos.backends.pywt_bindings.pywt_single_level_decomp">[docs]</a><span class="k">def</span> <span class="nf">pywt_single_level_decomp</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return single level wavelet decomposition coefficients from ``arr``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr : `array-like`</span>
+<span class="sd">        Input array to the wavelet decomposition.</span>
+<span class="sd">    wavelet : string or `pywt.Wavelet`</span>
+<span class="sd">        Specification of the wavelet to be used in the transform.</span>
+<span class="sd">        If a string is given, it is converted to a `pywt.Wavelet`.</span>
+<span class="sd">        Use `pywt.wavelist` to get a list of available wavelets.</span>
+<span class="sd">    mode : string, optional</span>
+<span class="sd">        PyWavelets style signal extension mode. See `signal extension modes`_</span>
+<span class="sd">        for available options.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    approx : `numpy.ndarray`</span>
+<span class="sd">        Approximation coefficients, a single array.</span>
+<span class="sd">    details : tuple of `numpy.ndarray`&#39;s</span>
+<span class="sd">        Detail coefficients, ``2 ** ndim - 1`` arrays, where ``ndim``</span>
+<span class="sd">        is the number of dimensions of ``arr``.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pywt_single_level_recon : Single-level reconstruction, i.e. the</span>
+<span class="sd">        inverse of this function.</span>
+<span class="sd">    pywt_multi_level_decomp : Multi-level version of the decompostion.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Decomposition of a small two-dimensional array using a Haar wavelet</span>
+<span class="sd">    and zero padding:</span>
+
+<span class="sd">    &gt;&gt;&gt; arr = [[1, 1, 1],</span>
+<span class="sd">    ...        [1, 0, 0],</span>
+<span class="sd">    ...        [0, 1, 1]]</span>
+<span class="sd">    &gt;&gt;&gt; coeffs = pywt_single_level_decomp(arr, wavelet=&#39;haar&#39;, mode=&#39;zero&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; approx, details = coeffs</span>
+<span class="sd">    &gt;&gt;&gt; print(approx)</span>
+<span class="sd">    [[ 1.5  0.5]</span>
+<span class="sd">     [ 0.5  0.5]]</span>
+<span class="sd">    &gt;&gt;&gt; for detail in details:</span>
+<span class="sd">    ...     print(detail)</span>
+<span class="sd">    [[ 0.5  0.5]</span>
+<span class="sd">     [-0.5  0.5]]</span>
+<span class="sd">    [[ 0.5  0.5]</span>
+<span class="sd">     [ 0.5  0.5]]</span>
+<span class="sd">    [[-0.5  0.5]</span>
+<span class="sd">     [-0.5  0.5]]</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. _signal extension modes:</span>
+<span class="sd">       https://pywavelets.readthedocs.io/en/latest/ref/signal-extension-\</span>
+<span class="sd">modes.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Handle input</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="n">wavelet</span> <span class="o">=</span> <span class="n">pywt_wavelet</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
+    <span class="n">mode</span><span class="p">,</span> <span class="n">mode_in</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">mode</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">PYWT_SUPPORTED_MODES</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mode &#39;</span><span class="si">{}</span><span class="s2">&#39; not understood&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mode_in</span><span class="p">))</span>
+
+    <span class="c1"># Compute single level DWT using pywt.dwtn and pick the approximation</span>
+    <span class="c1"># and detail coefficients from the dictionary</span>
+    <span class="n">coeff_dict</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">dwtn</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+    <span class="n">dict_keys</span> <span class="o">=</span> <span class="n">pywt_dict_keys</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+    <span class="n">approx</span> <span class="o">=</span> <span class="n">coeff_dict</span><span class="p">[</span><span class="n">dict_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">details</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">coeff_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">dict_keys</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">approx</span><span class="p">,</span> <span class="n">details</span></div>
+
+
+<div class="viewcode-block" id="pywt_single_level_recon"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_single_level_recon.html#odl.trafos.backends.pywt_bindings.pywt_single_level_recon">[docs]</a><span class="k">def</span> <span class="nf">pywt_single_level_recon</span><span class="p">(</span><span class="n">approx</span><span class="p">,</span> <span class="n">details</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">recon_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return single level wavelet reconstruction from given coefficients.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    approx : `array-like`</span>
+<span class="sd">        Approximation coefficients.</span>
+<span class="sd">    details : sequence of `array-like`&#39;s</span>
+<span class="sd">        Detail coefficients. The length of the sequence must be</span>
+<span class="sd">        ``2 ** ndim - 1``, where ``ndim`` is the number of dimensions</span>
+<span class="sd">        in ``approx``.</span>
+<span class="sd">    wavelet :  string or `pywt.Wavelet`</span>
+<span class="sd">        Specification of the wavelet to be used in the transform.</span>
+<span class="sd">        Use `pywt.wavelist` to get a list of available wavelets.</span>
+<span class="sd">    mode : string, optional</span>
+<span class="sd">        PyWavelets style signal extension mode. See `signal extension modes`_</span>
+<span class="sd">        for available options.</span>
+<span class="sd">    recon_shape : sequence of ints, optional</span>
+<span class="sd">        Shape of the array to be reconstructed. Without this parameter,</span>
+<span class="sd">        the reconstructed array always has even shape due to upsampling</span>
+<span class="sd">        by a factor of 2. To get reconstructions with odd shapes, this</span>
+<span class="sd">        parameter is required.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    recon : `numpy.ndarray`</span>
+<span class="sd">        The single-level wavelet reconstruction.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pywt_single_level_decomp : Single-level decomposition, i.e. the</span>
+<span class="sd">        inverse of this function.</span>
+<span class="sd">    pywt_multi_level_recon : Multi-level version of the reconstruction.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Take the coefficients from the example in `pywt_single_level_decomp`</span>
+<span class="sd">    and reconstruct the original array. Without ``recon_shape``, we get</span>
+<span class="sd">    a ``(4, 4)`` array as reconstruction:</span>
+
+<span class="sd">    &gt;&gt;&gt; approx = [[1.5, 0.5],</span>
+<span class="sd">    ...           [0.5, 0.5]]</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; details = ([[ 0.5, 0.5],</span>
+<span class="sd">    ...             [-0.5, 0.5]],</span>
+<span class="sd">    ...            [[ 0.5, 0.5],</span>
+<span class="sd">    ...             [ 0.5, 0.5]],</span>
+<span class="sd">    ...            [[-0.5, 0.5],</span>
+<span class="sd">    ...             [-0.5, 0.5]])</span>
+<span class="sd">    &gt;&gt;&gt; # Gives even shape by default</span>
+<span class="sd">    &gt;&gt;&gt; pywt_single_level_recon(approx, details, wavelet=&#39;haar&#39;, mode=&#39;zero&#39;)</span>
+<span class="sd">    array([[ 1.,  1.,  1.,  0.],</span>
+<span class="sd">           [ 1.,  0.,  0.,  0.],</span>
+<span class="sd">           [ 0.,  1.,  1.,  0.],</span>
+<span class="sd">           [ 0.,  0.,  0.,  0.]])</span>
+<span class="sd">    &gt;&gt;&gt; # Original shape can only be recovered if given explicitly</span>
+<span class="sd">    &gt;&gt;&gt; # in this case</span>
+<span class="sd">    &gt;&gt;&gt; pywt_single_level_recon(approx, details, wavelet=&#39;haar&#39;, mode=&#39;zero&#39;,</span>
+<span class="sd">    ...                         recon_shape=(3, 3))</span>
+<span class="sd">    array([[ 1.,  1.,  1.],</span>
+<span class="sd">           [ 1.,  0.,  0.],</span>
+<span class="sd">           [ 0.,  1.,  1.]])</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. _signal extension modes:</span>
+<span class="sd">       https://pywavelets.readthedocs.io/en/latest/ref/signal-extension-\</span>
+<span class="sd">modes.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Handle input</span>
+    <span class="n">approx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">approx</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">details</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">approx</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`details` must be a sequence of length </span><span class="si">{}</span><span class="s1">, got &#39;</span>
+                         <span class="s1">&#39;length </span><span class="si">{}</span><span class="s1">&#39;</span>
+                         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">approx</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">details</span><span class="p">)))</span>
+    <span class="n">details</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span> <span class="k">for</span> <span class="n">detail</span> <span class="ow">in</span> <span class="n">details</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">recon_shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">recon_shape</span><span class="p">,</span> <span class="n">recon_shape_in</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">recon_shape</span><span class="p">),</span> <span class="n">recon_shape</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">!=</span> <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">recon_shape</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`recon_shape` may only contain integers, got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recon_shape_in</span><span class="p">))</span>
+
+    <span class="n">wavelet</span> <span class="o">=</span> <span class="n">pywt_wavelet</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
+    <span class="n">mode</span><span class="p">,</span> <span class="n">mode_in</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">mode</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">PYWT_SUPPORTED_MODES</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mode &#39;</span><span class="si">{}</span><span class="s2">&#39; not understood&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mode_in</span><span class="p">))</span>
+
+    <span class="n">coeff_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">dict_keys</span> <span class="o">=</span> <span class="n">pywt_dict_keys</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="n">approx</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">details</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_keys</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;wrong number of detail coefficients: expected </span><span class="si">{}</span><span class="s1">, &#39;</span>
+                         <span class="s1">&#39;got </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dict_keys</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">details</span><span class="p">)))</span>
+    <span class="n">coeff_dict</span><span class="p">[</span><span class="n">dict_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">approx</span>
+    <span class="n">coeff_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">dict_keys</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">details</span><span class="p">))</span>
+    <span class="n">recon</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">idwtn</span><span class="p">(</span><span class="n">coeff_dict</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">recon_shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">recon_slc</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">n_recon</span><span class="p">,</span> <span class="n">n_intended</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">recon</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+                                                      <span class="n">recon_shape</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">n_recon</span> <span class="o">==</span> <span class="n">n_intended</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># Upsampling added one entry too much in this axis, drop</span>
+                <span class="c1"># last one</span>
+                <span class="n">recon_slc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">n_recon</span> <span class="o">==</span> <span class="n">n_intended</span><span class="p">:</span>
+                <span class="n">recon_slc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;in axis </span><span class="si">{}</span><span class="s1">: expected size </span><span class="si">{}</span><span class="s1"> or </span><span class="si">{}</span><span class="s1"> in &#39;</span>
+                                 <span class="s1">&#39;`recon_shape`, got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n_recon</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_recon</span><span class="p">,</span>
+                                           <span class="n">n_intended</span><span class="p">))</span>
+
+        <span class="n">recon</span> <span class="o">=</span> <span class="n">recon</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">recon_slc</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">recon</span></div>
+
+
+<div class="viewcode-block" id="pywt_multi_level_decomp"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_multi_level_decomp.html#odl.trafos.backends.pywt_bindings.pywt_multi_level_decomp">[docs]</a><span class="k">def</span> <span class="nf">pywt_multi_level_decomp</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">nlevels</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return multi-level wavelet decomposition coefficients from ``arr``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr : `array-like`</span>
+<span class="sd">        Input array to the wavelet decomposition.</span>
+<span class="sd">    wavelet :  string or `pywt.Wavelet`</span>
+<span class="sd">        Specification of the wavelet to be used in the transform.</span>
+<span class="sd">        Use `pywt.wavelist` to get a list of available wavelets.</span>
+<span class="sd">    nlevels : positive int</span>
+<span class="sd">        Number of scaling levels to be used in the decomposition. The</span>
+<span class="sd">        maximum number of levels can be calculated with</span>
+<span class="sd">        `pywt.dwt_max_level`.</span>
+<span class="sd">    mode : string, optional</span>
+<span class="sd">        PyWavelets style signal extension mode. See `signal extension modes`_</span>
+<span class="sd">        for available options.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    coeff_list : structured list</span>
+<span class="sd">        List of approximation and detail coefficients in the format</span>
+
+<span class="sd">            ``[aN, DN, ... D1]``,</span>
+
+<span class="sd">        where ``aN`` is the N-th level approximation coefficient array and</span>
+<span class="sd">        ``Di`` the tuple of i-th level detail coefficient arrays. Each of</span>
+<span class="sd">        the ``Di`` tuples has length ``2 ** ndim - 1``, where ``ndim`` is</span>
+<span class="sd">        the number of dimensions of the input array.</span>
+<span class="sd">        See the documentation for the `multilevel decomposition`_ in</span>
+<span class="sd">        PyWavelets for more information.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pywt_single_level_decomp : Single-level version of this function.</span>
+<span class="sd">    pywt_multi_level_recon : Multi-level reconstruction, i.e. the inverse</span>
+<span class="sd">        of this function.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Decomposition of a ``(4, 4)`` array using Haar wavelet, zero-padding</span>
+<span class="sd">    and 2 scaling levels:</span>
+
+<span class="sd">    &gt;&gt;&gt; arr = [[1, 1, 0, 0],</span>
+<span class="sd">    ...        [0, 0, 0, 1],</span>
+<span class="sd">    ...        [1, 1, 1, 1],</span>
+<span class="sd">    ...        [0, 1, 1, 0]]</span>
+<span class="sd">    &gt;&gt;&gt; coeffs = pywt_multi_level_decomp(arr, &#39;haar&#39;, 2, &#39;zero&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; # &quot;2&quot; -&gt; scaling level 2, &quot;1&quot; -&gt; scaling level 1</span>
+<span class="sd">    &gt;&gt;&gt; approx2, details2, details1 = coeffs</span>
+<span class="sd">    &gt;&gt;&gt; print(approx2)</span>
+<span class="sd">    [[ 2.25]]</span>
+<span class="sd">    &gt;&gt;&gt; for detail in details2:</span>
+<span class="sd">    ...     print(detail)</span>
+<span class="sd">    [[ 0.25]]</span>
+<span class="sd">    [[-0.75]]</span>
+<span class="sd">    [[ 0.25]]</span>
+<span class="sd">    &gt;&gt;&gt; for detail in details1:</span>
+<span class="sd">    ...     print(detail)</span>
+<span class="sd">    [[ 0.  -0.5]</span>
+<span class="sd">     [-0.5  0.5]]</span>
+<span class="sd">    [[ 1.  -0.5]</span>
+<span class="sd">     [ 0.5  0.5]]</span>
+<span class="sd">    [[ 0.   0.5]</span>
+<span class="sd">     [ 0.5 -0.5]]</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. _signal extension modes:</span>
+<span class="sd">       https://pywavelets.readthedocs.io/en/latest/ref/signal-extension-\</span>
+<span class="sd">modes.html</span>
+
+<span class="sd">    .. _multilevel decomposition:</span>
+<span class="sd">       https://pywavelets.readthedocs.io/en/latest/ref/dwt-discrete-\</span>
+<span class="sd">wavelet-transform.html#multilevel-decomposition-using-wavedec</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Handle input</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="n">wavelet</span> <span class="o">=</span> <span class="n">pywt_wavelet</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
+
+    <span class="n">nlevels</span><span class="p">,</span> <span class="n">nlevels_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nlevels</span><span class="p">),</span> <span class="n">nlevels</span>
+    <span class="k">if</span> <span class="n">nlevels_in</span> <span class="o">!=</span> <span class="n">nlevels</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`nlevels` must be integer, got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                         <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nlevels_in</span><span class="p">))</span>
+    <span class="n">max_nlevels</span> <span class="o">=</span> <span class="n">pywt_max_nlevels</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nlevels</span> <span class="o">&gt;</span> <span class="n">max_nlevels</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`nlevels` larger than maximum value </span><span class="si">{}</span><span class="s1">&#39;</span>
+                         <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nlevels_in</span><span class="p">,</span> <span class="n">max_nlevels</span><span class="p">))</span>
+
+    <span class="n">mode</span><span class="p">,</span> <span class="n">mode_in</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">mode</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">PYWT_SUPPORTED_MODES</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mode &#39;</span><span class="si">{}</span><span class="s2">&#39; not understood&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mode_in</span><span class="p">))</span>
+
+    <span class="c1"># Fill the list with detail coefficients from coarsest to finest level,</span>
+    <span class="c1"># by recursively applying the single-level transform to the approximation</span>
+    <span class="c1"># coefficients, starting with the input array. Append the final</span>
+    <span class="c1"># approximation coefficients.</span>
+    <span class="n">coeff_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">approx</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">pywt_single_level_decomp</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+    <span class="n">coeff_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">details</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nlevels</span><span class="p">):</span>
+        <span class="n">approx</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">pywt_single_level_decomp</span><span class="p">(</span><span class="n">approx</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+        <span class="n">coeff_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">details</span><span class="p">)</span>
+
+    <span class="n">coeff_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">approx</span><span class="p">)</span>
+    <span class="n">coeff_list</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">coeff_list</span></div>
+
+
+<div class="viewcode-block" id="pywt_multi_level_recon"><a class="viewcode-back" href="../../../../generated/odl.trafos.backends.pywt_bindings.pywt_multi_level_recon.html#odl.trafos.backends.pywt_bindings.pywt_multi_level_recon">[docs]</a><span class="k">def</span> <span class="nf">pywt_multi_level_recon</span><span class="p">(</span><span class="n">coeff_list</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">recon_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return multi-level wavelet decomposition coefficients from ``arr``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    coeff_list : structured list</span>
+<span class="sd">        List of approximation and detail coefficients in the format</span>
+
+<span class="sd">            ``[aN, DN, ... D1]``,</span>
+
+<span class="sd">        where ``aN`` is the N-th level approximation coefficient array and</span>
+<span class="sd">        ``Di`` the tuple of i-th level detail coefficient arrays. Each of</span>
+<span class="sd">        the ``Di`` tuples must have length ``2 ** ndim - 1``, where ``ndim``</span>
+<span class="sd">        is the number of dimensions of the input array.</span>
+<span class="sd">    wavelet :  string or `pywt.Wavelet`</span>
+<span class="sd">        Specification of the wavelet to be used in the transform.</span>
+<span class="sd">        Use `pywt.wavelist` to get a list of available wavelets.</span>
+<span class="sd">    mode : string, optional</span>
+<span class="sd">        PyWavelets style signal extension mode. See `signal extension modes`_</span>
+<span class="sd">        for available options.</span>
+<span class="sd">    recon_shape : sequence of ints, optional</span>
+<span class="sd">        Shape of the array to be reconstructed. Without this parameter,</span>
+<span class="sd">        the reconstructed array always has even shape due to upsampling</span>
+<span class="sd">        by a factor of 2. To get reconstructions with odd shapes, this</span>
+<span class="sd">        parameter is required.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    recon : `numpy.ndarray`</span>
+<span class="sd">        Wavelet reconstruction from the given coefficients.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    pywt_single_level_recon : Single-level version of this function.</span>
+<span class="sd">    pywt_multi_level_decomp : Multi-level decomposition, i.e. the inverse</span>
+<span class="sd">        of this function.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Reconstruct the original array from the decomposition in the example</span>
+<span class="sd">    in `pywt_multi_level_decomp`:</span>
+
+<span class="sd">    &gt;&gt;&gt; orig_arr = [[1, 1, 0, 0],</span>
+<span class="sd">    ...             [0, 0, 0, 1],</span>
+<span class="sd">    ...             [1, 1, 1, 1],</span>
+<span class="sd">    ...             [0, 1, 1, 0]]</span>
+<span class="sd">    &gt;&gt;&gt; approx2 = [[2.25]]</span>
+<span class="sd">    &gt;&gt;&gt; details2 = ([[0.25]], [[-0.75]], [[0.25]])</span>
+<span class="sd">    &gt;&gt;&gt; details1 = ([[0, -0.5],</span>
+<span class="sd">    ...              [-0.5, 0.5]],</span>
+<span class="sd">    ...             [[1, -0.5],</span>
+<span class="sd">    ...              [0.5, 0.5]],</span>
+<span class="sd">    ...             [[0, 0.5],</span>
+<span class="sd">    ...              [0.5, -0.5]])</span>
+<span class="sd">    &gt;&gt;&gt; coeffs = [approx2, details2, details1]</span>
+<span class="sd">    &gt;&gt;&gt; recon = pywt_multi_level_recon(coeffs, wavelet=&#39;haar&#39;, mode=&#39;zero&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; np.allclose(recon, orig_arr)</span>
+<span class="sd">    True</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. _signal extension modes:</span>
+<span class="sd">       https://pywavelets.readthedocs.io/en/latest/ref/signal-extension-\</span>
+<span class="sd">modes.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">recon_shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">recon_shape</span><span class="p">,</span> <span class="n">recon_shape_in</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">recon_shape</span><span class="p">),</span> <span class="n">recon_shape</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">!=</span> <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">recon_shape</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`recon_shape` may only contain integers, got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recon_shape_in</span><span class="p">))</span>
+
+    <span class="n">recon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coeff_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">cur_details</span><span class="p">,</span> <span class="n">next_details</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">coeff_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">coeff_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:]):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">next_details</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">next_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">next_details</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Single details array</span>
+            <span class="n">next_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">next_details</span><span class="p">)</span>
+
+        <span class="n">recon</span> <span class="o">=</span> <span class="n">pywt_single_level_recon</span><span class="p">(</span><span class="n">recon</span><span class="p">,</span> <span class="n">cur_details</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span>
+                                        <span class="n">recon_shape</span><span class="o">=</span><span class="n">next_shape</span><span class="p">)</span>
+
+    <span class="c1"># Last reco step uses `recon_shape` for shape correction</span>
+    <span class="k">return</span> <span class="n">pywt_single_level_recon</span><span class="p">(</span><span class="n">recon</span><span class="p">,</span> <span class="n">coeff_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span>
+                                   <span class="n">recon_shape</span><span class="o">=</span><span class="n">recon_shape</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">odl.util.testutils</span> <span class="k">import</span> <span class="n">run_doctests</span>
+    <span class="n">run_doctests</span><span class="p">(</span><span class="n">skip_if</span><span class="o">=</span><span class="ow">not</span> <span class="n">PYWT_AVAILABLE</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+:orphan:
+
+NearestInterpolation.norm
+==================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: NearestInterpolation.norm

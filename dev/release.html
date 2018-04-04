@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The ODL release process &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="Contributing to ODL" href="dev.html"/>
+        <link rel="next" title="Working with ODL source code" href="gitwash/index.html"/>
+        <link rel="prev" title="Testing in ODL" href="testing.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dev.html">Contributing to ODL</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dev.html#introduction">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="dev.html#contents">Contents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="extend.html">Extending ODL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="document.html">How to document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Testing in ODL</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">The ODL release process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agree-on-a-release-schedule">1. Agree on a release schedule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#make-sure-tests-succeed-and-docs-are-built-properly">2. Make sure tests succeed and docs are built properly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#make-a-release-branch-off-master">3. Make a release branch off <code class="docutils literal"><span class="pre">master</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bump-the-master-branch-to-the-next-development-version">4. Bump the <code class="docutils literal"><span class="pre">master</span></code> branch to the next development version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compile-and-publish-the-release">5. Compile and publish the release</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-packages-for-pypi-and-conda">6. Create packages for PyPI and Conda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-installing-the-local-packages-and-check-them">7. Test installing the local packages and check them</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#upload-the-packages-to-the-official-locations">8. Upload the packages to the official locations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#merge-the-release-branch">9. Merge the release branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#done">Done!</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gitwash/index.html">Working with ODL source code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="dev.html">Contributing to ODL</a> &raquo;</li>
+        
+      <li>The ODL release process</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/dev/release.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-odl-release-process">
+<span id="dev-release"></span><h1>The ODL release process<a class="headerlink" href="#the-odl-release-process" title="Permalink to this headline">¶</a></h1>
+<p>This document is intended to give precise instructions on the process of making a release.
+Its purpose is to avoid broken packages, broken documentation and many other things that can go wrong as a result of mistakes during the release process.
+Since this is not everyday work and may be done under the stress of a (self-imposed) deadline, it is clearly beneficial to have a checklist to hold on to.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The instructions in this document are written from the perspective of Linux and may need adaption for other platforms.</p>
+</div>
+<div class="section" id="agree-on-a-release-schedule">
+<span id="dev-rel-release-schedule"></span><h2>1. Agree on a release schedule<a class="headerlink" href="#agree-on-a-release-schedule" title="Permalink to this headline">¶</a></h2>
+<p>This involves the “what” and “when” of the release process and fixes a feature set that is supposed to be included in the new version.
+The steps are:</p>
+<ul class="simple">
+<li>Open an issue on the issue tracker using the title <strong>Release X.Y.Z</strong> (insert numbers, of course).</li>
+<li>Discuss and agree on a set of open PRs that should be merged and issues that should be resolved before making a release.</li>
+</ul>
+</div>
+<div class="section" id="make-sure-tests-succeed-and-docs-are-built-properly">
+<span id="dev-rel-master-ok"></span><h2>2. Make sure tests succeed and docs are built properly<a class="headerlink" href="#make-sure-tests-succeed-and-docs-are-built-properly" title="Permalink to this headline">¶</a></h2>
+<p>When all required PRs are merged, ensure that the latest <code class="docutils literal"><span class="pre">master</span></code> branch is sane. Travis CI checks every PR, but certain things like CUDA cannot be tested there and must therefore undergo tests on a local machine, for at least Python 2.7 and one version of Python 3.</p>
+<ul>
+<li><p class="first">Make a new test conda environment and install all dependencies:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda create -n release36 <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6 nomkl numpy scipy future matplotlib pytest
+<span class="nb">source</span> activate release36
+pip install pyfftw pywavelets
+<span class="nb">cd</span> /path/to/odl_repo
+git checkout master
+git pull
+pip install -e .
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the tests with <code class="docutils literal"><span class="pre">pytest</span></code>, including doctests, examples documentation and large-scale tests:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pytest --doctest-modules --examples --doctest-doc --largescale
+</pre></div>
+</div>
+</li>
+<li><p class="first">Do the same for Python 2.7.</p>
+</li>
+<li><p class="first">Make sure the tests also run on the platforms you’re currently <em>not</em> testing on.
+Ask a buddy maintainer if necessary.</p>
+</li>
+<li><p class="first">Build the documentation.
+This requires <code class="docutils literal"><span class="pre">sphinx</span></code> and the <code class="docutils literal"><span class="pre">sphinxext</span></code> submodule:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda install sphinx sphinx_rtd_theme
+git submodule update --init --recursive
+<span class="nb">cd</span> doc <span class="o">&amp;&amp;</span> make clean
+<span class="nb">cd</span> <span class="nb">source</span> <span class="o">&amp;&amp;</span> python generate_doc.py
+<span class="nb">cd</span> ..
+make html <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span><span class="se">\</span>
+  grep -E <span class="s2">&quot;SEVERE|ERROR|WARNING&quot;</span> <span class="p">|</span><span class="se">\</span>
+  grep -E -v <span class="s2">&quot;more than one target found for|__eq__|document isn&#39;t included in any toctree&quot;</span>
+</pre></div>
+</div>
+<p>The last command builds the documentation and filters from the output all irrelevant warnings, letting through only the “proper” warnings and errors.
+If possible, <em>fix these remaining issues</em>.</p>
+</li>
+<li><p class="first">Glance the built documentation (usually in <code class="docutils literal"><span class="pre">doc/_build</span></code>) for obvious errors.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="make-a-release-branch-off-master">
+<span id="dev-rel-release-branch"></span><h2>3. Make a release branch off <code class="docutils literal"><span class="pre">master</span></code><a class="headerlink" href="#make-a-release-branch-off-master" title="Permalink to this headline">¶</a></h2>
+<p>When all tests succeed and the docs are fine, start a release branch.
+<strong>Do not touch any actual code on this branch other than indicated below!</strong></p>
+<ul>
+<li><p class="first">Create a branch off current <code class="docutils literal"><span class="pre">master</span></code> with the name <code class="docutils literal"><span class="pre">release-X.Y.Z</span></code>, inserting the correct version number, of course.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git checkout master
+git pull
+git checkout -b release-X.Y.Z
+git push -u my_fork release-X.Y.Z
+</pre></div>
+</div>
+<p>Like any regular branch that should result in a PR, the release branch is pushed to a fork.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="bump-the-master-branch-to-the-next-development-version">
+<span id="dev-rel-bump-master"></span><h2>4. Bump the <code class="docutils literal"><span class="pre">master</span></code> branch to the next development version<a class="headerlink" href="#bump-the-master-branch-to-the-next-development-version" title="Permalink to this headline">¶</a></h2>
+<p>To ensure a higher version number for installations from the git master branch, the version number must be increased before merging the release branch.</p>
+<ul>
+<li><p class="first">On the <code class="docutils literal"><span class="pre">master</span></code> branch, change the version string in <code class="docutils literal"><span class="pre">odl/__init__.py</span></code> to the next revision larger than the upcoming release version, plus <code class="docutils literal"><span class="pre">'dev0'</span></code>.
+For example, if the release version string is <code class="docutils literal"><span class="pre">'0.5.3'</span></code>, use <code class="docutils literal"><span class="pre">'0.5.4.dev0'</span></code>.</p>
+<p>To make sure you don’t miss any other location (or the information here is outdated), perform a search:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> doc <span class="o">&amp;&amp;</span> make clean <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..  <span class="c1"># remove the local HTML doc first</span>
+grep -Ir <span class="s2">&quot;0\.5\.4&quot;</span> . <span class="p">|</span> grep -E -v <span class="s2">&quot;\.git|release_notes\.rst|odl\.egg-info&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the file <code class="docutils literal"><span class="pre">conda/meta.yaml</span></code>, change the version string after <code class="docutils literal"><span class="pre">version:</span></code> to the same as above, but without the <code class="docutils literal"><span class="pre">dev0</span></code> tag.
+In the example above, this would mean to change it from <code class="docutils literal"><span class="pre">&quot;0.5.3&quot;</span></code> to <code class="docutils literal"><span class="pre">&quot;0.5.4&quot;</span></code>.</p>
+<p>If necessary, change <code class="docutils literal"><span class="pre">git_rev</span></code> value to <code class="docutils literal"><span class="pre">master</span></code>, although that should already be the case.</p>
+</li>
+<li><p class="first">Commit the changes, using a message like <code class="docutils literal"><span class="pre">REL:</span> <span class="pre">bump</span> <span class="pre">version</span> <span class="pre">to</span> <span class="pre">X.Y.Z.dev0</span></code>.</p>
+</li>
+<li><p class="first">Make a PR with just this change and merge it after review.
+It must be merged before the release branch.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="compile-and-publish-the-release">
+<span id="dev-rel-publish"></span><h2>5. Compile and publish the release<a class="headerlink" href="#compile-and-publish-the-release" title="Permalink to this headline">¶</a></h2>
+<p>Back on the release branch with a <code class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">release-X.Y.Z</span></code>, it is now time to prepare the release documents, increment the version number and make a release on GitHub.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The release notes should actually be a running document where everybody who files a PR also makes an entry into the release notes file.
+If not, tough on you – it is your duty now to make up for all that missed work.
+Maybe you’ll remind your co-workers to do this in their next PR.</p>
+</div>
+<ul>
+<li><p class="first">Compile the release notes.
+They should contain all <em>user-visible</em> changes, including performance improvements and other niceties – internal stuff like test modifications don’t belong here.
+The changes should be summarized in one or two sentences on top, perhaps mentioning the most notable ones in this release.
+Check the <a class="reference external" href="https://github.com/odlgroup/odl/blob/master/doc/source/release_notes.rst">Release Notes</a> file for details on sections, formatting etc.</p>
+</li>
+<li><p class="first">Increment the version number in <code class="docutils literal"><span class="pre">odl/__init__.py</span></code> and <code class="docutils literal"><span class="pre">conda/meta.yaml</span></code>.
+As in <a class="reference internal" href="#dev-rel-bump-master"><span class="std std-ref">Section 4</span></a>, perform a search to make sure you didn’t miss a version info location.</p>
+</li>
+<li><p class="first">Change the <code class="docutils literal"><span class="pre">git_rev</span></code> field in <code class="docutils literal"><span class="pre">conda/meta.yaml</span></code> to <code class="docutils literal"><span class="pre">'vX.Y.Z'</span></code>, using the upcoming version number.
+This is the git tag you will create when making the release on GitHub.</p>
+</li>
+<li><p class="first">Commit the changes, using a message like <code class="docutils literal"><span class="pre">REL:</span> <span class="pre">bump</span> <span class="pre">version</span> <span class="pre">to</span> <span class="pre">X.Y.Z</span></code>.</p>
+</li>
+<li><p class="first">Make a PR and fix review comments.
+When doing so, keep the <code class="docutils literal"><span class="pre">REL:</span> <span class="pre">bump</span> <span class="pre">version</span> <span class="pre">to</span> <span class="pre">X.Y.Z</span></code> commit last, for example by using <code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></code> for fixes, or by squashing the commits on the release branch.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Getting a review is useful, but not mandatory since the only changes on the branch are the release notes and the version bump.
+It is important that the version information is correct, but errors in the release notes are less grave since they are not distributed with the package and can thus be fixed afterwards.</p>
+</div>
+</li>
+<li><p class="first">Push the release branch to the main repository so that it is possible to make a <a class="reference external" href="https://github.com/odlgroup/odl/releases">GitHub release</a> from it:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git push origin release-X.Y.Z
+</pre></div>
+</div>
+</li>
+<li><p class="first">Go to the <a class="reference external" href="https://github.com/odlgroup/odl/releases">Releases</a> page on GitHub.
+Click on <em>Draft a new release</em> and <strong>select the</strong> <code class="docutils literal"><span class="pre">release-X.Y.Z</span></code> <strong>branch from the dropdown menu, not master</strong>.
+Use <code class="docutils literal"><span class="pre">vX.Y.Z</span></code> as release tag (numbers inserted, of course).</p>
+</li>
+<li><p class="first">Paste the short summary from the release notes file (converting from RST to Markdown) but don’t insert the details.</p>
+</li>
+<li><p class="first">Add a link to the <a class="reference external" href="https://odlgroup.github.io/odl/release_notes.html">release notes documentation page</a>, as in earlier releases.
+Later on, when the documentation with the new release notes is online, you can edit this link to point to the exact section.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you encounter an issue (like a failing test) that needs immediate fix, stop at that point, fix the issue on a branch, make a PR and merge it after review.
+After that, rebase the release branch(es) on the new master and continue.</p>
+</div>
+</div>
+<div class="section" id="create-packages-for-pypi-and-conda">
+<span id="dev-rel-create-pkgs"></span><h2>6. Create packages for PyPI and Conda<a class="headerlink" href="#create-packages-for-pypi-and-conda" title="Permalink to this headline">¶</a></h2>
+<p>The packages should be built on the release branch to make sure that the version information is correct.</p>
+<ul>
+<li><p class="first">Making the packages for PyPI is straightforward.
+However, <strong>make sure you delete old</strong> <code class="docutils literal"><span class="pre">build</span></code> <strong>directories</strong> since they can pollute new builds:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rm build/ -rf
+python setup.py sdist
+python setup.py bdist_wheel
+</pre></div>
+</div>
+<p>The packages are by default stored in a <code class="docutils literal"><span class="pre">dist</span></code> folder.</p>
+</li>
+<li><p class="first">To build the conda packages, you should <em>not</em> work in a specific environment but rather exit to the root environment.
+There, install the <code class="docutils literal"><span class="pre">conda-build</span></code> tool for building packages:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> deactivate
+conda install conda-build
+</pre></div>
+</div>
+</li>
+<li><p class="first">Invoke the following command to build a package for your platform and all supported Python versions:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda build conda/ --python <span class="m">2</span>.7
+conda build conda/ --python <span class="m">3</span>.4
+conda build conda/ --python <span class="m">3</span>.5
+conda build conda/ --python <span class="m">3</span>.6
+...
+</pre></div>
+</div>
+</li>
+<li><p class="first">Assuming this succeeds, enter the directory one above where the conda package was stored (as printed in the output).
+For example, if the package was stored as <code class="docutils literal"><span class="pre">$HOME/miniconda3/conda-bld/linux-64/odl-X.Y.Z-py36_0.bz2</span></code>, issue the command</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$HOME</span>/miniconda3/conda-bld/
+</pre></div>
+</div>
+<p>In this directory, for each Python version “translate” the package to all platforms since ODL is actually platform-independent:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda convert --platform all &lt;package&gt;
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal"><span class="pre">&lt;package&gt;</span></code> by the package file as built by the previous <code class="docutils literal"><span class="pre">conda</span> <span class="pre">build</span></code> command.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="test-installing-the-local-packages-and-check-them">
+<span id="dev-rel-test-pkgs"></span><h2>7. Test installing the local packages and check them<a class="headerlink" href="#test-installing-the-local-packages-and-check-them" title="Permalink to this headline">¶</a></h2>
+<p>Before actually uploading packages to “official” servers, first install the local packages and run the unit tests.</p>
+<ul>
+<li><p class="first">Install directly from the source package (<code class="docutils literal"><span class="pre">*.tar.gz</span></code>) or the wheel (<code class="docutils literal"><span class="pre">*.whl</span></code>) into a new conda environment:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> deactivate
+conda create -n pypi_install pytest <span class="nv">python</span><span class="o">=</span>X.Y  <span class="c1"># choose Python version</span>
+<span class="nb">source</span> activate pypi_install
+<span class="nb">cd</span> /path/to/odl_repo
+<span class="nb">cd</span> dist
+pip install &lt;pkg_filename&gt;
+python -c <span class="s2">&quot;import odl; odl.test()&quot;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure that you’re not in the repository root directory while testing, since this can confuse the <code class="docutils literal"><span class="pre">import</span> <span class="pre">odl</span></code> command.
+The installed package should be tested, not the code repository.</p>
+</div>
+</li>
+<li><p class="first">Install and test the local conda packages in a new conda environment:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> deactivate
+conda create -n conda_install <span class="nv">python</span><span class="o">=</span>X.Y  <span class="c1"># choose Python version</span>
+<span class="nb">source</span> activate conda_install
+conda install --use-local nomkl odl
+python -c <span class="s2">&quot;import odl; odl.test()&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="upload-the-packages-to-the-official-locations">
+<span id="dev-rel-upload-pkgs"></span><h2>8. Upload the packages to the official locations<a class="headerlink" href="#upload-the-packages-to-the-official-locations" title="Permalink to this headline">¶</a></h2>
+<p>Installing the packages works, now it’s time to put them out into the wild.</p>
+<ul>
+<li><p class="first">Install the <code class="docutils literal"><span class="pre">twine</span></code> package for uploading packages to PyPI in your working environment:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> deactivate
+<span class="nb">source</span> activate release36
+pip install twine
+</pre></div>
+</div>
+</li>
+<li><p class="first">Upload the source package and the wheel to the PyPI server using <code class="docutils literal"><span class="pre">twine</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/odl_repo
+twine upload -u odlgorup dist/&lt;pkg_filename&gt;
+</pre></div>
+</div>
+<p>This requires the access credentials for the <code class="docutils literal"><span class="pre">odlgroup</span></code> user on PyPI – the maintainers have them.</p>
+</li>
+<li><p class="first">Upload the conda packages to the <code class="docutils literal"><span class="pre">odlgroup</span></code> channel in the Anaconda cloud.
+The upload requires the <code class="docutils literal"><span class="pre">anaconda-client</span></code> package:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda install anaconda-client
+<span class="nb">cd</span> <span class="nv">$HOME</span>/miniconda3/conda-bld
+anaconda upload -u odlgroup <span class="sb">`</span>find . -name <span class="s2">&quot;odl-X.Y.Z*&quot;</span><span class="sb">`</span>
+</pre></div>
+</div>
+<p>For this step, you need the access credentials for the <code class="docutils literal"><span class="pre">odlgroup</span></code> user on the Anaconda server.
+Talk to the maintainers to get them.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="merge-the-release-branch">
+<span id="dev-rel-merge-release-pr"></span><h2>9. Merge the release branch<a class="headerlink" href="#merge-the-release-branch" title="Permalink to this headline">¶</a></h2>
+<p>Now the release branch can finally be merged.
+The sole purpose of this step is to update the release notes on <code class="docutils literal"><span class="pre">master</span></code> and potentially get the last minute changes.</p>
+<ul class="simple">
+<li>The release branch will have conflicts with <code class="docutils literal"><span class="pre">master</span></code> since both have modified the version information.
+Resolve them in favor of the changes made on <code class="docutils literal"><span class="pre">master</span></code>.
+In particular, make sure that the changes in <a class="reference internal" href="#dev-rel-bump-master"><span class="std std-ref">Section 4</span></a> stay intact.</li>
+<li>Merge the PR for the release.</li>
+</ul>
+</div>
+<div class="section" id="done">
+<h2>Done!<a class="headerlink" href="#done" title="Permalink to this headline">¶</a></h2>
+<p>Time to clean up, i.e., remove temporary conda environments, run <code class="docutils literal"><span class="pre">conda</span> <span class="pre">build</span> <span class="pre">purge</span></code>, remove files in <code class="docutils literal"><span class="pre">dist</span></code> and <code class="docutils literal"><span class="pre">build</span></code> generated for the PyPI packages, etc.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gitwash/index.html" class="btn btn-neutral float-right" title="Working with ODL source code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="testing.html" class="btn btn-neutral" title="Testing in ODL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

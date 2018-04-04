@@ -1,0 +1,33 @@
+Parallel2dGeometry
+=============================================
+
+.. currentmodule:: odl.tomo.geometry.parallel
+
+.. autoclass:: Parallel2dGeometry
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         Parallel2dGeometry.__getitem__
+         Parallel2dGeometry.det_axis
+         Parallel2dGeometry.det_point_position
+         Parallel2dGeometry.det_refpoint
+         Parallel2dGeometry.det_to_src
+         Parallel2dGeometry.frommatrix
+         Parallel2dGeometry.rotation_matrix
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

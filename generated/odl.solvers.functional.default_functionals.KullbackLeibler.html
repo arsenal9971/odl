@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>KullbackLeibler &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="default_functionals" href="../odl.solvers.functional.default_functionals.html"/>
+        <link rel="next" title="KullbackLeibler._call" href="odl.solvers.functional.default_functionals.KullbackLeibler._call.html"/>
+        <link rel="prev" title="IndicatorZero.translated" href="odl.solvers.functional.default_functionals.IndicatorZero.translated.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.solvers.html">solvers</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.solvers.functional.html">functional</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.solvers.functional.default_functionals.html">default_functionals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.functional.derivatives.html">derivatives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.functional.example_funcs.html">example_funcs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.functional.functional.html">functional</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.iterative.html">iterative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.nonsmooth.html">nonsmooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.smooth.html">smooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.html">solvers</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.functional.html">functional</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.functional.default_functionals.html">default_functionals</a> &raquo;</li>
+        
+      <li>KullbackLeibler</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.solvers.functional.default_functionals.KullbackLeibler.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kullbackleibler">
+<h1>KullbackLeibler<a class="headerlink" href="#kullbackleibler" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.solvers.functional.default_functionals.KullbackLeibler">
+<em class="property">class </em><code class="descclassname">odl.solvers.functional.default_functionals.</code><code class="descname">KullbackLeibler</code><span class="sig-paren">(</span><em>space</em>, <em>prior=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/functional/default_functionals.html#KullbackLeibler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.functional.default_functionals.KullbackLeibler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.solvers.functional.functional.Functional.html#odl.solvers.functional.functional.Functional" title="odl.solvers.functional.functional.Functional"><code class="xref py py-class docutils literal"><span class="pre">odl.solvers.functional.functional.Functional</span></code></a></p>
+<p>The Kullback-Leibler divergence functional.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="odl.solvers.functional.default_functionals.KullbackLeiblerConvexConj.html#odl.solvers.functional.default_functionals.KullbackLeiblerConvexConj" title="odl.solvers.functional.default_functionals.KullbackLeiblerConvexConj"><code class="xref py py-obj docutils literal"><span class="pre">KullbackLeiblerConvexConj</span></code></a></dt>
+<dd>the convex conjugate functional</dd>
+<dt><a class="reference internal" href="odl.solvers.functional.default_functionals.KullbackLeiblerCrossEntropy.html#odl.solvers.functional.default_functionals.KullbackLeiblerCrossEntropy" title="odl.solvers.functional.default_functionals.KullbackLeiblerCrossEntropy"><code class="xref py py-obj docutils literal"><span class="pre">KullbackLeiblerCrossEntropy</span></code></a></dt>
+<dd>related functional</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The functional <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> with prior <img class="math" src="../_images/math/bea55fc62099848322372842b4afab1fdced8b4d.png" alt="g&gt;=0"/> is given by:</p>
+<div class="math">
+<p><img src="../_images/math/db803e9cb3c83f047c0a992234b4785105d57e96.png" alt="F(x)
+=
+\begin{cases}
+    \sum_{i} \left( x_i - g_i + g_i \log \left( \frac{g_i}{x_i}
+    \right) \right) &amp; \text{if } x_i &gt; 0 \forall i
+    \\
+    +\infty &amp; \text{else.}
+\end{cases}"/></p>
+</div><p>Note that we use the common definition 0 log(0) := 0.
+KL based objectives are common in MLEM optimization problems and are often
+used as data-matching term when data noise governed by a multivariate
+Poisson probability distribution is significant.</p>
+<p>The functional is related to the Kullback-Leibler cross entropy functional
+<a class="reference internal" href="odl.solvers.functional.default_functionals.KullbackLeiblerCrossEntropy.html#odl.solvers.functional.default_functionals.KullbackLeiblerCrossEntropy" title="odl.solvers.functional.default_functionals.KullbackLeiblerCrossEntropy"><code class="xref any py py-class docutils literal"><span class="pre">KullbackLeiblerCrossEntropy</span></code></a>. The KL cross entropy is the one
+diescribed in <a class="reference external" href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">this Wikipedia article</a>, and
+the functional <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> is obtained by switching place of the prior and
+the varialbe in the KL cross entropy functional.</p>
+<p>For a theoretical exposition, see <a class="reference external" href="http://www.jstor.org/stable/2241918">Csiszar1991</a>.</p>
+<p class="rubric">References</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">adjoint</span></code></dt>
+<dd><p class="first last">Adjoint of this operator (abstract).</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">convex_conj</span></code></dt>
+<dd><p class="first last">The convex conjugate functional of the KL-functional.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">domain</span></code></dt>
+<dd><p class="first last">Set of objects on which this operator can be evaluated.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">grad_lipschitz</span></code></dt>
+<dd><p class="first last">Lipschitz constant for the gradient of the functional</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">gradient</span></code></dt>
+<dd><p class="first last">The gradient of <a class="reference internal" href="#odl.solvers.functional.default_functionals.KullbackLeibler" title="odl.solvers.functional.default_functionals.KullbackLeibler"><code class="xref any py py-class docutils literal"><span class="pre">KullbackLeibler</span></code></a> with <code class="docutils literal"><span class="pre">prior</span></code> <img class="math" src="../_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> is given as</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">inverse</span></code></dt>
+<dd><p class="first last">Return the operator inverse.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_functional</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator’s range is a <a class="reference internal" href="odl.set.sets.Field.html#odl.set.sets.Field" title="odl.set.sets.Field"><code class="xref any py py-class docutils literal"><span class="pre">Field</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_linear</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator is linear.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">prior</span></code></dt>
+<dd><p class="first last">The prior in the Kullback-Leibler functional.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">proximal</span></code></dt>
+<dd><p class="first last">Return the <a class="reference internal" href="../guide/glossary.html#term-proximal-factory"><code class="xref any std std-term docutils literal"><span class="pre">proximal</span> <span class="pre">factory</span></code></a> of the functional.</p>
+</dd>
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">range</span></code></a></dt>
+<dd><p class="first last">Set in which the result of an evaluation of this operator lies.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.solvers.functional.default_functionals.KullbackLeibler._call.html#odl.solvers.functional.default_functionals.KullbackLeibler._call" title="odl.solvers.functional.default_functionals.KullbackLeibler._call"><code class="xref py py-obj docutils literal"><span class="pre">_call</span></code></a>(x)</td>
+<td>Return the KL-diveregnce in the point <code class="docutils literal"><span class="pre">x</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.solvers.functional.default_functionals.KullbackLeibler.bregman.html#odl.solvers.functional.default_functionals.KullbackLeibler.bregman" title="odl.solvers.functional.default_functionals.KullbackLeibler.bregman"><code class="xref py py-obj docutils literal"><span class="pre">bregman</span></code></a>(point[,&nbsp;subgrad])</td>
+<td>Return the Bregman distance functional.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.solvers.functional.default_functionals.KullbackLeibler.derivative.html#odl.solvers.functional.default_functionals.KullbackLeibler.derivative" title="odl.solvers.functional.default_functionals.KullbackLeibler.derivative"><code class="xref py py-obj docutils literal"><span class="pre">derivative</span></code></a>(point)</td>
+<td>Return the derivative operator in the given point.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.solvers.functional.default_functionals.KullbackLeibler.norm.html#odl.solvers.functional.default_functionals.KullbackLeibler.norm" title="odl.solvers.functional.default_functionals.KullbackLeibler.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>([estimate])</td>
+<td>Return the operator norm of this operator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.solvers.functional.default_functionals.KullbackLeibler.translated.html#odl.solvers.functional.default_functionals.KullbackLeibler.translated" title="odl.solvers.functional.default_functionals.KullbackLeibler.translated"><code class="xref py py-obj docutils literal"><span class="pre">translated</span></code></a>(shift)</td>
+<td>Return a translation of the functional.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.solvers.functional.default_functionals.KullbackLeibler.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>space</em>, <em>prior=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/functional/default_functionals.html#KullbackLeibler.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.functional.default_functionals.KullbackLeibler.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>space <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html#odl.discr.lp_discr.DiscreteLp" title="odl.discr.lp_discr.DiscreteLp"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLp</span></code></a> or <a class="reference internal" href="odl.space.base_tensors.TensorSpace.html#odl.space.base_tensors.TensorSpace" title="odl.space.base_tensors.TensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">TensorSpace</span></code></a></span></dt>
+<dd><p class="first last">Domain of the functional.</p>
+</dd>
+<dt>prior <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">space</span></code> <a class="reference internal" href="../guide/glossary.html#term-element-like"><code class="xref any std std-term docutils literal"><span class="pre">element-like</span></code></a>, optional</span></dt>
+<dd><p class="first last">Depending on the context, the prior, target or data
+distribution. It is assumed to be nonnegative.
+Default: if None it is take as the one-element.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Test that KullbackLeibler(x,x) = 0</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">rn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prior</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">space</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">solvers</span><span class="o">.</span><span class="n">KullbackLeibler</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">prior</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="n">prior</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<p>Test that zeros in the prior are handled correctly</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prior</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">zero</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span> <span class="o">=</span> <span class="n">odl</span><span class="o">.</span><span class="n">solvers</span><span class="o">.</span><span class="n">KullbackLeibler</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">prior</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">3.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.solvers.functional.default_functionals.KullbackLeibler._call.html" class="btn btn-neutral float-right" title="KullbackLeibler._call" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.solvers.functional.default_functionals.IndicatorZero.translated.html" class="btn btn-neutral" title="IndicatorZero.translated" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

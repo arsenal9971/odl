@@ -1,0 +1,30 @@
+conj_op
+===============================
+
+.. currentmodule:: odl.ufunc_ops.ufunc_ops
+
+.. autoclass:: conj_op
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         conj_op.__call__
+         conj_op._call
+         conj_op.derivative
+         conj_op.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

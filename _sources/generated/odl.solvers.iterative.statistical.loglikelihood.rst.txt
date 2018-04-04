@@ -1,0 +1,6 @@
+loglikelihood
+===============================================
+
+.. currentmodule:: odl.solvers.iterative.statistical
+
+.. autofunction:: loglikelihood

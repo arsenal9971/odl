@@ -1,0 +1,49 @@
+DiscreteLp
+=============================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. autoclass:: DiscreteLp
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         DiscreteLp.__contains__
+         DiscreteLp.__eq__
+         DiscreteLp._dist
+         DiscreteLp._divide
+         DiscreteLp._inner
+         DiscreteLp._lincomb
+         DiscreteLp._multiply
+         DiscreteLp._norm
+         DiscreteLp.astype
+         DiscreteLp.available_dtypes
+         DiscreteLp.contains_all
+         DiscreteLp.contains_set
+         DiscreteLp.default_dtype
+         DiscreteLp.dist
+         DiscreteLp.divide
+         DiscreteLp.element
+         DiscreteLp.inner
+         DiscreteLp.lincomb
+         DiscreteLp.multiply
+         DiscreteLp.norm
+         DiscreteLp.one
+         DiscreteLp.points
+         DiscreteLp.zero
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

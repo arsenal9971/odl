@@ -1,0 +1,6 @@
+uniform_discr_fromdiscr
+==========================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. autofunction:: uniform_discr_fromdiscr

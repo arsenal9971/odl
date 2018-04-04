@@ -1,0 +1,6 @@
+skimage_theta
+=============================================
+
+.. currentmodule:: odl.tomo.backends.skimage_radon
+
+.. autofunction:: skimage_theta

@@ -1,0 +1,6 @@
+hypot
+=============================
+
+.. currentmodule:: odl.ufunc_ops.ufunc_ops
+
+.. autofunction:: hypot

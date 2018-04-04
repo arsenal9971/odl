@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pywt_multi_level_decomp &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="pywt_bindings" href="../odl.trafos.backends.pywt_bindings.html"/>
+        <link rel="next" title="pywt_multi_level_recon" href="odl.trafos.backends.pywt_bindings.pywt_multi_level_recon.html"/>
+        <link rel="prev" title="pywt_max_nlevels" href="odl.trafos.backends.pywt_bindings.pywt_max_nlevels.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.trafos.html">trafos</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.trafos.backends.html">backends</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.trafos.backends.pyfftw_bindings.html">pyfftw_bindings</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.trafos.backends.pywt_bindings.html">pywt_bindings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.trafos.fourier.html">fourier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.trafos.util.html">util</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.trafos.wavelet.html">wavelet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.trafos.html">trafos</a> &raquo;</li>
+        
+          <li><a href="../odl.trafos.backends.html">backends</a> &raquo;</li>
+        
+          <li><a href="../odl.trafos.backends.pywt_bindings.html">pywt_bindings</a> &raquo;</li>
+        
+      <li>pywt_multi_level_decomp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.trafos.backends.pywt_bindings.pywt_multi_level_decomp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pywt-multi-level-decomp">
+<h1>pywt_multi_level_decomp<a class="headerlink" href="#pywt-multi-level-decomp" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.trafos.backends.pywt_bindings.pywt_multi_level_decomp">
+<code class="descclassname">odl.trafos.backends.pywt_bindings.</code><code class="descname">pywt_multi_level_decomp</code><span class="sig-paren">(</span><em>arr</em>, <em>wavelet</em>, <em>nlevels</em>, <em>mode</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/trafos/backends/pywt_bindings.html#pywt_multi_level_decomp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.trafos.backends.pywt_bindings.pywt_multi_level_decomp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return multi-level wavelet decomposition coefficients from <code class="docutils literal"><span class="pre">arr</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>arr <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="../guide/glossary.html#term-array-like"><code class="xref any std std-term docutils literal"><span class="pre">array-like</span></code></a></span></dt>
+<dd><p class="first last">Input array to the wavelet decomposition.</p>
+</dd>
+<dt>wavelet <span class="classifier-delimiter">:</span> <span class="classifier">string or <a class="reference external" href="http://www.pybytes.com/pywavelets/ref/wavelets.html#pywt.Wavelet" title="(in PyWavelets v0.4.0)"><code class="xref any docutils literal"><span class="pre">pywt.Wavelet</span></code></a></span></dt>
+<dd><p class="first last">Specification of the wavelet to be used in the transform.
+Use <a class="reference external" href="http://www.pybytes.com/pywavelets/ref/wavelets.html#pywt.wavelist" title="(in PyWavelets v0.4.0)"><code class="xref any docutils literal"><span class="pre">pywt.wavelist</span></code></a> to get a list of available wavelets.</p>
+</dd>
+<dt>nlevels <span class="classifier-delimiter">:</span> <span class="classifier">positive int</span></dt>
+<dd><p class="first last">Number of scaling levels to be used in the decomposition. The
+maximum number of levels can be calculated with
+<a class="reference external" href="http://www.pybytes.com/pywavelets/ref/dwt-discrete-wavelet-transform.html#pywt.dwt_max_level" title="(in PyWavelets v0.4.0)"><code class="xref any docutils literal"><span class="pre">pywt.dwt_max_level</span></code></a>.</p>
+</dd>
+<dt>mode <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd><p class="first last">PyWavelets style signal extension mode. See <a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/signal-extension-modes.html">signal extension modes</a>
+for available options.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt>coeff_list <span class="classifier-delimiter">:</span> <span class="classifier">structured list</span></dt>
+<dd><p class="first">List of approximation and detail coefficients in the format</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">[aN,</span> <span class="pre">DN,</span> <span class="pre">...</span> <span class="pre">D1]</span></code>,</p>
+</div></blockquote>
+<p class="last">where <code class="docutils literal"><span class="pre">aN</span></code> is the N-th level approximation coefficient array and
+<code class="docutils literal"><span class="pre">Di</span></code> the tuple of i-th level detail coefficient arrays. Each of
+the <code class="docutils literal"><span class="pre">Di</span></code> tuples has length <code class="docutils literal"><span class="pre">2</span> <span class="pre">**</span> <span class="pre">ndim</span> <span class="pre">-</span> <span class="pre">1</span></code>, where <code class="docutils literal"><span class="pre">ndim</span></code> is
+the number of dimensions of the input array.
+See the documentation for the <a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/dwt-discrete-wavelet-transform.html#multilevel-decomposition-using-wavedec">multilevel decomposition</a> in
+PyWavelets for more information.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="odl.trafos.backends.pywt_bindings.pywt_single_level_decomp.html#odl.trafos.backends.pywt_bindings.pywt_single_level_decomp" title="odl.trafos.backends.pywt_bindings.pywt_single_level_decomp"><code class="xref py py-obj docutils literal"><span class="pre">pywt_single_level_decomp</span></code></a></dt>
+<dd>Single-level version of this function.</dd>
+<dt><a class="reference internal" href="odl.trafos.backends.pywt_bindings.pywt_multi_level_recon.html#odl.trafos.backends.pywt_bindings.pywt_multi_level_recon" title="odl.trafos.backends.pywt_bindings.pywt_multi_level_recon"><code class="xref py py-obj docutils literal"><span class="pre">pywt_multi_level_recon</span></code></a></dt>
+<dd>Multi-level reconstruction, i.e. the inverse of this function.</dd>
+</dl>
+</div>
+<p class="rubric">References</p>
+<p class="rubric">Examples</p>
+<p>Decomposition of a <code class="docutils literal"><span class="pre">(4,</span> <span class="pre">4)</span></code> array using Haar wavelet, zero-padding
+and 2 scaling levels:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coeffs</span> <span class="o">=</span> <span class="n">pywt_multi_level_decomp</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="s1">&#39;haar&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;zero&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># &quot;2&quot; -&gt; scaling level 2, &quot;1&quot; -&gt; scaling level 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">approx2</span><span class="p">,</span> <span class="n">details2</span><span class="p">,</span> <span class="n">details1</span> <span class="o">=</span> <span class="n">coeffs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">approx2</span><span class="p">)</span>
+<span class="go">[[ 2.25]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">detail</span> <span class="ow">in</span> <span class="n">details2</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
+<span class="go">[[ 0.25]]</span>
+<span class="go">[[-0.75]]</span>
+<span class="go">[[ 0.25]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">detail</span> <span class="ow">in</span> <span class="n">details1</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">detail</span><span class="p">)</span>
+<span class="go">[[ 0.  -0.5]</span>
+<span class="go"> [-0.5  0.5]]</span>
+<span class="go">[[ 1.  -0.5]</span>
+<span class="go"> [ 0.5  0.5]]</span>
+<span class="go">[[ 0.   0.5]</span>
+<span class="go"> [ 0.5 -0.5]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.trafos.backends.pywt_bindings.pywt_multi_level_recon.html" class="btn btn-neutral float-right" title="pywt_multi_level_recon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.trafos.backends.pywt_bindings.pywt_max_nlevels.html" class="btn btn-neutral" title="pywt_max_nlevels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

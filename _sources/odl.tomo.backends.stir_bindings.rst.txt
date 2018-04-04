@@ -1,0 +1,44 @@
+stir_bindings
+=============
+
+Back-end for STIR: Software for Tomographic Reconstruction.
+
+Back and forward projectors for PET.
+
+`ForwardProjectorByBinWrapper` and `BackProjectorByBinWrapper` are general
+objects of STIR projectors and back-projectors, these can be used to wrap a
+given projector.
+
+`stir_projector_from_file` allows users a easy way to create a
+`ForwardProjectorByBinWrapper` by giving file paths to the required templates.
+
+References
+----------
+See the `STIR webpage`_ for more information and the `STIR doc`_ for info on
+the STIR classes used here.
+
+.. _STIR webpage: http://stir.sourceforge.net
+.. _STIR doc: http://stir.sourceforge.net/documentation/doxy/html/
+
+
+.. currentmodule:: odl.tomo.backends.stir_bindings
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.tomo.backends.stir_bindings.BackProjectorByBinWrapper
+   ~odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper
+   ~odl.tomo.backends.stir_bindings.StirVerbosity
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.tomo.backends.stir_bindings.stir_projector_from_file
+

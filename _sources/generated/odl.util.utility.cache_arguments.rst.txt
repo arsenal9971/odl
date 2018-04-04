@@ -1,0 +1,6 @@
+cache_arguments
+================================
+
+.. currentmodule:: odl.util.utility
+
+.. autofunction:: cache_arguments

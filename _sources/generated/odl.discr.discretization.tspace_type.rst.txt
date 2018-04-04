@@ -1,0 +1,6 @@
+tspace_type
+====================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. autofunction:: tspace_type

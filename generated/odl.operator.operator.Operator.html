@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Operator &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="operator" href="../odl.operator.operator.html"/>
+        <link rel="next" title="Operator._call" href="odl.operator.operator.Operator._call.html"/>
+        <link rel="prev" title="OpTypeError" href="odl.operator.operator.OpTypeError.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.operator.html">operator</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.operator.default_ops.html">default_ops</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.operator.operator.html">operator</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.FunctionalLeftVectorMult.html">FunctionalLeftVectorMult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OpDomainError.html">OpDomainError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OpNotImplementedError.html">OpNotImplementedError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OpRangeError.html">OpRangeError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OpTypeError.html">OpTypeError</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OperatorComp.html">OperatorComp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OperatorLeftScalarMult.html">OperatorLeftScalarMult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OperatorLeftVectorMult.html">OperatorLeftVectorMult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OperatorPointwiseProduct.html">OperatorPointwiseProduct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OperatorRightScalarMult.html">OperatorRightScalarMult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OperatorRightVectorMult.html">OperatorRightVectorMult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OperatorSum.html">OperatorSum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.operator.OperatorVectorSum.html">OperatorVectorSum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.operator.oputils.html">oputils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.operator.pspace_ops.html">pspace_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.operator.tensor_ops.html">tensor_ops</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.operator.html">operator</a> &raquo;</li>
+        
+          <li><a href="../odl.operator.operator.html">operator</a> &raquo;</li>
+        
+      <li>Operator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.operator.operator.Operator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="operator">
+<h1>Operator<a class="headerlink" href="#operator" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.operator.operator.Operator">
+<em class="property">class </em><code class="descclassname">odl.operator.operator.</code><code class="descname">Operator</code><span class="sig-paren">(</span><em>domain</em>, <em>range</em>, <em>linear=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/operator/operator.html#Operator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.operator.operator.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Abstract mathematical operator.</p>
+<p>An operator is a mapping</p>
+<div class="math">
+<p><img src="../_images/math/4c48ce3a33729e80ad82275f44bc71eaa68a68f4.png" alt="\mathcal{A}: \mathcal{X} \to \mathcal{Y}"/></p>
+</div><p>between sets <img class="math" src="../_images/math/343a944b6a22dc1a14dfecd2ef0d255012e38380.png" alt="\mathcal{X}"/> (domain) and <img class="math" src="../_images/math/a1ff04bf6ed93828c62762f9cc289fd2fa018979.png" alt="\mathcal{Y}"/>
+(range). The evaluation of <img class="math" src="../_images/math/8c84a934b357170fca81ce5a6ff58b8bea120dcc.png" alt="\mathcal{A}"/> at an element
+<img class="math" src="../_images/math/a4cbbb2e00f52f0e815fde003b1ef8adc3441d53.png" alt="x \in \mathcal{X}"/> is denoted by <img class="math" src="../_images/math/409ba5b517b7163548e0cf561286ff2db6b2a247.png" alt="\mathcal{A}(x)"/>
+and produces an element in <img class="math" src="../_images/math/a1ff04bf6ed93828c62762f9cc289fd2fa018979.png" alt="\mathcal{Y}"/>:</p>
+<div class="math">
+<p><img src="../_images/math/6251586c64ceb8070ee2528c4cd763f5075b877c.png" alt="y = \mathcal{A}(x) \in \mathcal{Y}."/></p>
+</div><p>Programmatically, these properties are reflected in the <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a>
+class described in the following.</p>
+<p><strong>Abstract attributes and methods</strong></p>
+<p><a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a> is an <strong>abstract</strong> class, i.e. it can only be
+subclassed, not used directly.</p>
+<p>Any subclass of <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a> must have the following
+attributes:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">domain</span></code> <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.set.sets.Set.html#odl.set.sets.Set" title="odl.set.sets.Set"><code class="xref any py py-class docutils literal"><span class="pre">Set</span></code></a></span></dt>
+<dd>The set of elements this operator can be applied to</dd>
+<dt><code class="docutils literal"><span class="pre">range</span></code> <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.set.sets.Set.html#odl.set.sets.Set" title="odl.set.sets.Set"><code class="xref any py py-class docutils literal"><span class="pre">Set</span></code></a></span></dt>
+<dd>The set this operator maps to</dd>
+</dl>
+<p>It is <strong>highly</strong> recommended to call
+<code class="docutils literal"><span class="pre">super(MyOp,</span> <span class="pre">self).__init__(domain,</span> <span class="pre">range)</span></code>  in the <code class="docutils literal"><span class="pre">__init__()</span></code>
+method of any subclass  <code class="docutils literal"><span class="pre">MyOp</span></code>, where <code class="docutils literal"><span class="pre">domain</span></code> and <code class="docutils literal"><span class="pre">range</span></code> are
+the arguments specifying domain and range of the new operator. In that
+case, the attributes <code class="xref any docutils literal"><span class="pre">Operator.domain</span></code> and <code class="xref any docutils literal"><span class="pre">Operator.range</span></code> are
+automatically provided by the parent class <a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a>.</p>
+<p>In addition, any subclass <strong>must</strong> implement the private method
+<a class="reference internal" href="odl.operator.operator.Operator._call.html#odl.operator.operator.Operator._call" title="odl.operator.operator.Operator._call"><code class="xref any py py-meth docutils literal"><span class="pre">Operator._call()</span></code></a>. It signature determines how it is interpreted:</p>
+<p><strong>In-place-only evaluation:</strong> <code class="docutils literal"><span class="pre">_call(self,</span> <span class="pre">x,</span> <span class="pre">out[,</span> <span class="pre">**kwargs])</span></code></p>
+<p>In-place evaluation means that the operator is applied, and the
+result is written to an existing element <code class="docutils literal"><span class="pre">out</span></code> provided,
+i.e.</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">_call(self,</span> <span class="pre">x,</span> <span class="pre">out)</span>&#160; <span class="pre">&lt;==&gt;</span>&#160; <span class="pre">out</span> <span class="pre">&lt;--</span> <span class="pre">operator(x)</span></code></div></blockquote>
+<p><strong>Parameters:</strong></p>
+<dl class="docutils">
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref any docutils literal"><span class="pre">Operator.domain</span></code> element</span></dt>
+<dd>An object in the operator domain to which the operator is
+applied</dd>
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref any docutils literal"><span class="pre">Operator.range</span></code> element</span></dt>
+<dd>An object in the operator range to which the result of the
+operator evaluation is written.</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<p>None (return value is ignored)</p>
+<p><strong>Out-of-place-only evaluation:</strong> <code class="docutils literal"><span class="pre">_call(self,</span> <span class="pre">x[,</span> <span class="pre">**kwargs])</span></code></p>
+<p>Out-of-place evaluation means that the operator is applied,
+and the result is written to a <strong>new</strong> element which is returned.
+In this case, a subclass has to implement the method</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">_call(self,</span> <span class="pre">x)</span>&#160; <span class="pre">&lt;==&gt;</span>&#160; <span class="pre">operator(x)</span></code></div></blockquote>
+<p><strong>Parameters:</strong></p>
+<dl class="docutils">
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref any docutils literal"><span class="pre">Operator.domain</span></code> element</span></dt>
+<dd>An object in the operator domain to which the operator is
+applied</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref any docutils literal"><span class="pre">Operator.range</span></code> <a class="reference internal" href="../guide/glossary.html#term-element-like"><code class="xref any std std-term docutils literal"><span class="pre">element-like</span></code></a></span></dt>
+<dd>An object in the operator range holding the result of the
+operator evaluation</dd>
+</dl>
+<p><strong>Dual-use evaluation:</strong> <code class="docutils literal"><span class="pre">_call(self,</span> <span class="pre">x,</span> <span class="pre">out=None[,</span> <span class="pre">**kwargs])</span></code></p>
+<p>Evaluate in-place if <code class="docutils literal"><span class="pre">out</span></code> is given, otherwise out-of-place.</p>
+<p><strong>Parameters:</strong></p>
+<dl class="docutils">
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref any docutils literal"><span class="pre">Operator.domain</span></code> element</span></dt>
+<dd>An object in the operator domain to which the operator is
+applied</dd>
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier"><code class="xref any docutils literal"><span class="pre">Operator.range</span></code> element, optional</span></dt>
+<dd>An object in the operator range to which the result of the
+operator evaluation is written</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<p>None (return value is ignored)</p>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li>If <a class="reference internal" href="odl.operator.operator.Operator._call.html#odl.operator.operator.Operator._call" title="odl.operator.operator.Operator._call"><code class="xref any py py-meth docutils literal"><span class="pre">Operator._call</span></code></a> is implemented in-place-only or
+out-of-place-only and the <code class="xref any docutils literal"><span class="pre">Operator.range</span></code> is a <a class="reference internal" href="odl.set.space.LinearSpace.html#odl.set.space.LinearSpace" title="odl.set.space.LinearSpace"><code class="xref any py py-class docutils literal"><span class="pre">LinearSpace</span></code></a>,
+a default implementation of the respective other is provided.</li>
+<li><a class="reference internal" href="odl.operator.operator.Operator._call.html#odl.operator.operator.Operator._call" title="odl.operator.operator.Operator._call"><code class="xref any py py-meth docutils literal"><span class="pre">Operator._call</span></code></a> is allowed to have keyword-only arguments (Python
+3 only).</li>
+<li>The term “element-like” means that an object must be convertible
+to an element by the <code class="docutils literal"><span class="pre">domain.element()</span></code> method.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">adjoint</span></code></dt>
+<dd><p class="first last">Adjoint of this operator (abstract).</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">domain</span></code></dt>
+<dd><p class="first last">Set of objects on which this operator can be evaluated.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">inverse</span></code></dt>
+<dd><p class="first last">Return the operator inverse.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_functional</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator’s range is a <a class="reference internal" href="odl.set.sets.Field.html#odl.set.sets.Field" title="odl.set.sets.Field"><code class="xref any py py-class docutils literal"><span class="pre">Field</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_linear</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator is linear.</p>
+</dd>
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">range</span></code></a></dt>
+<dd><p class="first last">Set in which the result of an evaluation of this operator lies.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.operator.operator.Operator._call.html#odl.operator.operator.Operator._call" title="odl.operator.operator.Operator._call"><code class="xref py py-obj docutils literal"><span class="pre">_call</span></code></a>(x[,&nbsp;out])</td>
+<td>Implementation of the operator evaluation.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.operator.operator.Operator.derivative.html#odl.operator.operator.Operator.derivative" title="odl.operator.operator.Operator.derivative"><code class="xref py py-obj docutils literal"><span class="pre">derivative</span></code></a>(point)</td>
+<td>Return the operator derivative at <code class="docutils literal"><span class="pre">point</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.operator.operator.Operator.norm.html#odl.operator.operator.Operator.norm" title="odl.operator.operator.Operator.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>([estimate])</td>
+<td>Return the operator norm of this operator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.operator.operator.Operator.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>domain</em>, <em>range</em>, <em>linear=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/operator/operator.html#Operator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.operator.operator.Operator.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>domain <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.set.sets.Set.html#odl.set.sets.Set" title="odl.set.sets.Set"><code class="xref any py py-class docutils literal"><span class="pre">Set</span></code></a></span></dt>
+<dd><p class="first last">The domain of this operator, i.e., the set of elements to
+which this operator can be applied</p>
+</dd>
+<dt>range <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.set.sets.Set.html#odl.set.sets.Set" title="odl.set.sets.Set"><code class="xref any py py-class docutils literal"><span class="pre">Set</span></code></a></span></dt>
+<dd><p class="first last">The range of this operator, i.e., the set this operator
+maps to</p>
+</dd>
+<dt>linear <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If <code class="docutils literal"><span class="pre">True</span></code>, the operator is considered as linear. In this
+case, <code class="docutils literal"><span class="pre">domain</span></code> and <code class="docutils literal"><span class="pre">range</span></code> have to be instances of
+<a class="reference internal" href="odl.set.space.LinearSpace.html#odl.set.space.LinearSpace" title="odl.set.space.LinearSpace"><code class="xref any py py-class docutils literal"><span class="pre">LinearSpace</span></code></a>, or <a class="reference internal" href="odl.set.sets.Field.html#odl.set.sets.Field" title="odl.set.sets.Field"><code class="xref any py py-class docutils literal"><span class="pre">Field</span></code></a>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.operator.operator.Operator._call.html" class="btn btn-neutral float-right" title="Operator._call" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.operator.operator.OpTypeError.html" class="btn btn-neutral" title="OpTypeError" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

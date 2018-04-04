@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpace.dist
+===================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpace.dist

@@ -1,0 +1,6 @@
+proximal_huber
+=======================================================
+
+.. currentmodule:: odl.solvers.nonsmooth.proximal_operators
+
+.. autofunction:: proximal_huber

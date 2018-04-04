@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSpaceElement.assign
+=======================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSpaceElement.assign

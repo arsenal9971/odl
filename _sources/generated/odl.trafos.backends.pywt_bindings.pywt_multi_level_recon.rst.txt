@@ -1,0 +1,6 @@
+pywt_multi_level_recon
+========================================================
+
+.. currentmodule:: odl.trafos.backends.pywt_bindings
+
+.. autofunction:: pywt_multi_level_recon

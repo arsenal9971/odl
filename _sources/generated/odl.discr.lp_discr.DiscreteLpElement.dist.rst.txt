@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpElement.dist
+=========================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLpElement.dist

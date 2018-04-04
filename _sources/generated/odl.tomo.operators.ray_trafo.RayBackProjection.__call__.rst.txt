@@ -1,0 +1,8 @@
+:orphan:
+
+RayBackProjection.__call__
+=======================================================
+
+.. currentmodule:: odl.tomo.operators.ray_trafo
+
+.. automethod:: RayBackProjection.__call__

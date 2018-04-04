@@ -1,0 +1,33 @@
+OperatorTest
+=====================================
+
+.. currentmodule:: odl.diagnostics.operator
+
+.. autoclass:: OperatorTest
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         OperatorTest.adjoint
+         OperatorTest.derivative
+         OperatorTest.linear
+         OperatorTest.log
+         OperatorTest.norm
+         OperatorTest.run_tests
+         OperatorTest.self_adjoint
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

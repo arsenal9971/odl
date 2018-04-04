@@ -1,0 +1,32 @@
+BregmanDistance
+=================================================
+
+.. currentmodule:: odl.solvers.functional.functional
+
+.. autoclass:: BregmanDistance
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         BregmanDistance.__call__
+         BregmanDistance._call
+         BregmanDistance.bregman
+         BregmanDistance.derivative
+         BregmanDistance.norm
+         BregmanDistance.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

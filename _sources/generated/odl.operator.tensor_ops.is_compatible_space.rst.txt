@@ -1,0 +1,6 @@
+is_compatible_space
+===========================================
+
+.. currentmodule:: odl.operator.tensor_ops
+
+.. autofunction:: is_compatible_space

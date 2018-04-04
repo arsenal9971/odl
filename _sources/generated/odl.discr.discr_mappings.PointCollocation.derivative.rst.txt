@@ -1,0 +1,8 @@
+:orphan:
+
+PointCollocation.derivative
+====================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: PointCollocation.derivative

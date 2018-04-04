@@ -1,0 +1,6 @@
+uniform_grid_fromintv
+====================================
+
+.. currentmodule:: odl.discr.grid
+
+.. autofunction:: uniform_grid_fromintv

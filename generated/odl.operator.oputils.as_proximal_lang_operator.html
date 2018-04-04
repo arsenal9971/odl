@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>as_proximal_lang_operator &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="oputils" href="../odl.operator.oputils.html"/>
+        <link rel="next" title="as_scipy_functional" href="odl.operator.oputils.as_scipy_functional.html"/>
+        <link rel="prev" title="oputils" href="../odl.operator.oputils.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.operator.html">operator</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.operator.default_ops.html">default_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.operator.operator.html">operator</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.operator.oputils.html">oputils</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">as_proximal_lang_operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.oputils.as_scipy_functional.html">as_scipy_functional</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.oputils.as_scipy_operator.html">as_scipy_operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.oputils.matrix_representation.html">matrix_representation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.operator.oputils.power_method_opnorm.html">power_method_opnorm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.operator.pspace_ops.html">pspace_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.operator.tensor_ops.html">tensor_ops</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.operator.html">operator</a> &raquo;</li>
+        
+          <li><a href="../odl.operator.oputils.html">oputils</a> &raquo;</li>
+        
+      <li>as_proximal_lang_operator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.operator.oputils.as_proximal_lang_operator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="as-proximal-lang-operator">
+<h1>as_proximal_lang_operator<a class="headerlink" href="#as-proximal-lang-operator" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.operator.oputils.as_proximal_lang_operator">
+<code class="descclassname">odl.operator.oputils.</code><code class="descname">as_proximal_lang_operator</code><span class="sig-paren">(</span><em>op</em>, <em>norm_bound=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/operator/oputils.html#as_proximal_lang_operator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.operator.oputils.as_proximal_lang_operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap <code class="docutils literal"><span class="pre">op</span></code> as a <code class="docutils literal"><span class="pre">proximal.BlackBox</span></code>.</p>
+<p>This is intended to be used with the <a class="reference external" href="https://github.com/comp-imaging/proximal">ProxImaL language solvers.</a></p>
+<p>For documentation on the proximal language (ProxImaL) see [Hei+2016].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>op <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="../guide/glossary.html#term-operator"><code class="xref any std std-term docutils literal"><span class="pre">Operator</span></code></a></span></dt>
+<dd><p class="first last">Linear operator to be wrapped. Its domain and range must implement
+<code class="docutils literal"><span class="pre">shape</span></code>, and elements in these need to implement <code class="docutils literal"><span class="pre">asarray</span></code>.</p>
+</dd>
+<dt>norm_bound <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first last">An upper bound on the spectral norm of the operator. Note that this is
+the norm as defined by ProxImaL, and hence use the unweighted spaces.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">proximal.BlackBox</span></code> <span class="classifier-delimiter">:</span> <span class="classifier">proximal_lang_operator</span></dt>
+<dd><p class="first last">The wrapped operator.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>If the data representation of <code class="docutils literal"><span class="pre">op</span></code>’s domain and range is of type
+<a class="reference internal" href="odl.space.npy_tensors.NumpyTensorSpace.html#odl.space.npy_tensors.NumpyTensorSpace" title="odl.space.npy_tensors.NumpyTensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">NumpyTensorSpace</span></code></a> this incurs no significant overhead. If the data
+space is implemented with CUDA or some other non-local representation,
+the overhead is significant.</p>
+<p class="rubric">References</p>
+<p>[Hei+2016] Heide, F et al. <em>ProxImaL: Efficient Image Optimization using
+Proximal Algorithms</em>. ACM Transactions on Graphics (TOG), 2016.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.operator.oputils.as_scipy_functional.html" class="btn btn-neutral float-right" title="as_scipy_functional" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../odl.operator.oputils.html" class="btn btn-neutral" title="oputils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+NumpyTensorSpace
+======================================
+
+.. currentmodule:: odl.space.npy_tensors
+
+.. autoclass:: NumpyTensorSpace
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NumpyTensorSpace.__contains__
+         NumpyTensorSpace.__eq__
+         NumpyTensorSpace._dist
+         NumpyTensorSpace._divide
+         NumpyTensorSpace._inner
+         NumpyTensorSpace._lincomb
+         NumpyTensorSpace._multiply
+         NumpyTensorSpace._norm
+         NumpyTensorSpace.astype
+         NumpyTensorSpace.available_dtypes
+         NumpyTensorSpace.contains_all
+         NumpyTensorSpace.contains_set
+         NumpyTensorSpace.default_dtype
+         NumpyTensorSpace.dist
+         NumpyTensorSpace.divide
+         NumpyTensorSpace.element
+         NumpyTensorSpace.inner
+         NumpyTensorSpace.lincomb
+         NumpyTensorSpace.multiply
+         NumpyTensorSpace.norm
+         NumpyTensorSpace.one
+         NumpyTensorSpace.zero
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

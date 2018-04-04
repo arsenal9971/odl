@@ -1,0 +1,30 @@
+ZeroOperator
+=====================================
+
+.. currentmodule:: odl.operator.default_ops
+
+.. autoclass:: ZeroOperator
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         ZeroOperator.__call__
+         ZeroOperator._call
+         ZeroOperator.derivative
+         ZeroOperator.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

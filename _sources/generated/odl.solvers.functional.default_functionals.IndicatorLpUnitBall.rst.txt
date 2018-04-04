@@ -1,0 +1,32 @@
+IndicatorLpUnitBall
+==============================================================
+
+.. currentmodule:: odl.solvers.functional.default_functionals
+
+.. autoclass:: IndicatorLpUnitBall
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         IndicatorLpUnitBall.__call__
+         IndicatorLpUnitBall._call
+         IndicatorLpUnitBall.bregman
+         IndicatorLpUnitBall.derivative
+         IndicatorLpUnitBall.norm
+         IndicatorLpUnitBall.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

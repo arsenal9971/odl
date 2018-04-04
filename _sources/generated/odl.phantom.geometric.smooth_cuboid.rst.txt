@@ -1,0 +1,6 @@
+smooth_cuboid
+===================================
+
+.. currentmodule:: odl.phantom.geometric
+
+.. autofunction:: smooth_cuboid

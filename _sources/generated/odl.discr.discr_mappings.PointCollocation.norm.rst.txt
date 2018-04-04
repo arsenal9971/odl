@@ -1,0 +1,8 @@
+:orphan:
+
+PointCollocation.norm
+==============================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: PointCollocation.norm

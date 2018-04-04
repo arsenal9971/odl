@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpElement.show
+=========================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLpElement.show

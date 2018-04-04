@@ -1,0 +1,561 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DiscreteLp &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="lp_discr" href="../odl.discr.lp_discr.html"/>
+        <link rel="next" title="DiscreteLp._dist" href="odl.discr.lp_discr.DiscreteLp._dist.html"/>
+        <link rel="prev" title="lp_discr" href="../odl.discr.lp_discr.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.discr.html">discr</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.diff_ops.html">diff_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.discr_mappings.html">discr_mappings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.discr_ops.html">discr_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.discretization.html">discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.grid.html">grid</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.discr.lp_discr.html">lp_discr</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">DiscreteLp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.html">DiscreteLpElement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.discr_sequence_space.html">discr_sequence_space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr.html">uniform_discr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_fromdiscr.html">uniform_discr_fromdiscr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_fromintv.html">uniform_discr_fromintv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_frompartition.html">uniform_discr_frompartition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_fromspace.html">uniform_discr_fromspace</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.partition.html">partition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.discr.html">discr</a> &raquo;</li>
+        
+          <li><a href="../odl.discr.lp_discr.html">lp_discr</a> &raquo;</li>
+        
+      <li>DiscreteLp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.discr.lp_discr.DiscreteLp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="discretelp">
+<h1>DiscreteLp<a class="headerlink" href="#discretelp" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.discr.lp_discr.DiscreteLp">
+<em class="property">class </em><code class="descclassname">odl.discr.lp_discr.</code><code class="descname">DiscreteLp</code><span class="sig-paren">(</span><em>fspace</em>, <em>partition</em>, <em>tspace</em>, <em>interp='nearest'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/discr/lp_discr.html#DiscreteLp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.discr.lp_discr.DiscreteLp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.discr.discretization.DiscretizedSpace.html#odl.discr.discretization.DiscretizedSpace" title="odl.discr.discretization.DiscretizedSpace"><code class="xref py py-class docutils literal"><span class="pre">odl.discr.discretization.DiscretizedSpace</span></code></a></p>
+<p>Discretization of a Lebesgue <img class="math" src="../_images/math/d7dda1756ba60692a6703237756c9363ebec6782.png" alt="L^p"/> space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">axis_labels</span></code></dt>
+<dd><p class="first last">Labels for axes when displaying space elements.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">byaxis_in</span></code></dt>
+<dd><p class="first last">Object to index along input (domain) dimensions.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">cell_sides</span></code></dt>
+<dd><p class="first last">Side lengths of a cell in an underlying <em>uniform</em> partition.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">cell_volume</span></code></dt>
+<dd><p class="first last">Cell volume of an underlying <em>uniform</em> partition.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">complex_dtype</span></code></dt>
+<dd><p class="first last">The complex dtype corresponding to this space’s <a class="reference internal" href="../guide/glossary.html#term-dtype"><code class="xref any std std-term docutils literal"><span class="pre">dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">complex_space</span></code></dt>
+<dd><p class="first last">The space corresponding to this space’s <a class="reference internal" href="odl.util.utility.complex_dtype.html#odl.util.utility.complex_dtype" title="odl.util.utility.complex_dtype"><code class="xref any py py-func docutils literal"><span class="pre">complex_dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">default_order</span></code></dt>
+<dd><p class="first last">Default storage order for new elements in this space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">domain</span></code></dt>
+<dd><p class="first last">Domain of the continuous space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code></dt>
+<dd><p class="first last">Scalar data type of each entry in an element of this space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">element_type</span></code></dt>
+<dd><p class="first last"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.html#odl.discr.lp_discr.DiscreteLpElement" title="odl.discr.lp_discr.DiscreteLpElement"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLpElement</span></code></a></p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">examples</span></code></dt>
+<dd><p class="first last">Return example functions in the space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">exponent</span></code></dt>
+<dd><p class="first last">Exponent of this space, the <code class="docutils literal"><span class="pre">p</span></code> in <code class="docutils literal"><span class="pre">L^p</span></code>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">field</span></code></dt>
+<dd><p class="first last">Scalar field of numbers for this vector space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">fspace</span></code></dt>
+<dd><p class="first last">Non-discretized space of this discretization.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">grid</span></code></dt>
+<dd><p class="first last">Sampling grid of the discretization mappings.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">impl</span></code></dt>
+<dd><p class="first last">Name of the implementation back-end.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">interp</span></code></dt>
+<dd><p class="first last">Interpolation type of this discretization.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">interp_byaxis</span></code></dt>
+<dd><p class="first last">Interpolation by axis type of this discretization.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">interpolation</span></code></dt>
+<dd><p class="first last">Operator mapping a <a class="reference internal" href="odl.space.base_tensors.Tensor.html#odl.space.base_tensors.Tensor" title="odl.space.base_tensors.Tensor"><code class="xref any py py-class docutils literal"><span class="pre">Tensor</span></code></a> to an <code class="xref any docutils literal"><span class="pre">fspace</span></code> element.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_complex</span></code></dt>
+<dd><p class="first last">True if this is a space of complex tensors.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_real</span></code></dt>
+<dd><p class="first last">True if this is a space of real tensors.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_uniform</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if <code class="xref any docutils literal"><span class="pre">partition</span></code> is uniform.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_uniform_byaxis</span></code></dt>
+<dd><p class="first last">Boolean tuple showing uniformity of <code class="docutils literal"><span class="pre">self.partition</span></code> per axis.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_uniformly_weighted</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if the weighting is the same for all space points.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_weighted</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if the <code class="docutils literal"><span class="pre">tspace</span></code> is weighted.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">itemsize</span></code></dt>
+<dd><p class="first last">Size in bytes of one entry in an element of this space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">max_pt</span></code></dt>
+<dd><p class="first last">Vector of maximal coordinates of the function domain.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">meshgrid</span></code></dt>
+<dd><p class="first last">All sampling points in the partition as a sparse meshgrid.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">min_pt</span></code></dt>
+<dd><p class="first last">Vector of minimal coordinates of the function domain.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">nbytes</span></code></dt>
+<dd><p class="first last">Total number of bytes used by an element of this space in memory.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">ndim</span></code></dt>
+<dd><p class="first last">Number of dimensions (= number of axes).</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">partition</span></code></dt>
+<dd><p class="first last"><a class="reference internal" href="odl.discr.partition.RectPartition.html#odl.discr.partition.RectPartition" title="odl.discr.partition.RectPartition"><code class="xref any py py-class docutils literal"><span class="pre">RectPartition</span></code></a> of the function domain.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">real_dtype</span></code></dt>
+<dd><p class="first last">The real dtype corresponding to this space’s <a class="reference internal" href="../guide/glossary.html#term-dtype"><code class="xref any std std-term docutils literal"><span class="pre">dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">real_space</span></code></dt>
+<dd><p class="first last">The space corresponding to this space’s <a class="reference internal" href="odl.util.utility.real_dtype.html#odl.util.utility.real_dtype" title="odl.util.utility.real_dtype"><code class="xref any py py-func docutils literal"><span class="pre">real_dtype</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">sampling</span></code></dt>
+<dd><p class="first last">Operator mapping an <code class="xref any docutils literal"><span class="pre">fspace</span></code> element to a <a class="reference internal" href="odl.space.base_tensors.Tensor.html#odl.space.base_tensors.Tensor" title="odl.space.base_tensors.Tensor"><code class="xref any py py-class docutils literal"><span class="pre">Tensor</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></dt>
+<dd><p class="first last">Shape of the underlying partition.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></dt>
+<dd><p class="first last">Total number of underlying partition cells.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">tangent_bundle</span></code></dt>
+<dd><p class="first last">The tangent bundle associated with <a class="reference internal" href="../guide/glossary.html#term-domain"><code class="xref any std std-term docutils literal"><span class="pre">domain</span></code></a> using <code class="xref any docutils literal"><span class="pre">partition</span></code>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">tspace</span></code></dt>
+<dd><p class="first last">Space for the coefficients of the elements of this space.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">tspace_type</span></code></dt>
+<dd><p class="first last">Tensor space type of this discretization.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">weighting</span></code></dt>
+<dd><p class="first last">This space’s weighting scheme.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp._dist.html#odl.discr.lp_discr.DiscreteLp._dist" title="odl.discr.lp_discr.DiscreteLp._dist"><code class="xref py py-obj docutils literal"><span class="pre">_dist</span></code></a>(x,&nbsp;y)</td>
+<td>Return <code class="docutils literal"><span class="pre">self.dist(x,</span> <span class="pre">y)</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp._divide.html#odl.discr.lp_discr.DiscreteLp._divide" title="odl.discr.lp_discr.DiscreteLp._divide"><code class="xref py py-obj docutils literal"><span class="pre">_divide</span></code></a>(x1,&nbsp;x2,&nbsp;out)</td>
+<td>Raw pointwise multiplication of two elements.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp._inner.html#odl.discr.lp_discr.DiscreteLp._inner" title="odl.discr.lp_discr.DiscreteLp._inner"><code class="xref py py-obj docutils literal"><span class="pre">_inner</span></code></a>(x,&nbsp;y)</td>
+<td>Return <code class="docutils literal"><span class="pre">self.inner(x,</span> <span class="pre">y)</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp._lincomb.html#odl.discr.lp_discr.DiscreteLp._lincomb" title="odl.discr.lp_discr.DiscreteLp._lincomb"><code class="xref py py-obj docutils literal"><span class="pre">_lincomb</span></code></a>(a,&nbsp;x1,&nbsp;b,&nbsp;x2,&nbsp;out)</td>
+<td>Raw linear combination.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp._multiply.html#odl.discr.lp_discr.DiscreteLp._multiply" title="odl.discr.lp_discr.DiscreteLp._multiply"><code class="xref py py-obj docutils literal"><span class="pre">_multiply</span></code></a>(x1,&nbsp;x2,&nbsp;out)</td>
+<td>Raw pointwise multiplication of two elements.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp._norm.html#odl.discr.lp_discr.DiscreteLp._norm" title="odl.discr.lp_discr.DiscreteLp._norm"><code class="xref py py-obj docutils literal"><span class="pre">_norm</span></code></a>(x)</td>
+<td>Return <code class="docutils literal"><span class="pre">self.norm(x)</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.astype.html#odl.discr.lp_discr.DiscreteLp.astype" title="odl.discr.lp_discr.DiscreteLp.astype"><code class="xref py py-obj docutils literal"><span class="pre">astype</span></code></a>(dtype)</td>
+<td>Return a copy of this space with new <code class="docutils literal"><span class="pre">dtype</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.available_dtypes.html#odl.discr.lp_discr.DiscreteLp.available_dtypes" title="odl.discr.lp_discr.DiscreteLp.available_dtypes"><code class="xref py py-obj docutils literal"><span class="pre">available_dtypes</span></code></a>()</td>
+<td>Return the set of data types available in this implementation.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.contains_all.html#odl.discr.lp_discr.DiscreteLp.contains_all" title="odl.discr.lp_discr.DiscreteLp.contains_all"><code class="xref py py-obj docutils literal"><span class="pre">contains_all</span></code></a>(other)</td>
+<td>Test if all elements in <code class="docutils literal"><span class="pre">other</span></code> are contained in this set.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.contains_set.html#odl.discr.lp_discr.DiscreteLp.contains_set" title="odl.discr.lp_discr.DiscreteLp.contains_set"><code class="xref py py-obj docutils literal"><span class="pre">contains_set</span></code></a>(other)</td>
+<td>Test if <code class="docutils literal"><span class="pre">other</span></code> is a subset of this set.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.default_dtype.html#odl.discr.lp_discr.DiscreteLp.default_dtype" title="odl.discr.lp_discr.DiscreteLp.default_dtype"><code class="xref py py-obj docutils literal"><span class="pre">default_dtype</span></code></a>([field])</td>
+<td>Return the default data type for a given field.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.dist.html#odl.discr.lp_discr.DiscreteLp.dist" title="odl.discr.lp_discr.DiscreteLp.dist"><code class="xref py py-obj docutils literal"><span class="pre">dist</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the distance between <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.divide.html#odl.discr.lp_discr.DiscreteLp.divide" title="odl.discr.lp_discr.DiscreteLp.divide"><code class="xref py py-obj docutils literal"><span class="pre">divide</span></code></a>(x1,&nbsp;x2[,&nbsp;out])</td>
+<td>Return the pointwise quotient of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.element.html#odl.discr.lp_discr.DiscreteLp.element" title="odl.discr.lp_discr.DiscreteLp.element"><code class="xref py py-obj docutils literal"><span class="pre">element</span></code></a>([inp,&nbsp;order])</td>
+<td>Create an element from <code class="docutils literal"><span class="pre">inp</span></code> or from scratch.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.inner.html#odl.discr.lp_discr.DiscreteLp.inner" title="odl.discr.lp_discr.DiscreteLp.inner"><code class="xref py py-obj docutils literal"><span class="pre">inner</span></code></a>(x1,&nbsp;x2)</td>
+<td>Return the inner product of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.lincomb.html#odl.discr.lp_discr.DiscreteLp.lincomb" title="odl.discr.lp_discr.DiscreteLp.lincomb"><code class="xref py py-obj docutils literal"><span class="pre">lincomb</span></code></a>(a,&nbsp;x1[,&nbsp;b,&nbsp;x2,&nbsp;out])</td>
+<td>Implement <code class="docutils literal"><span class="pre">out[:]</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">x1</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">*</span> <span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.multiply.html#odl.discr.lp_discr.DiscreteLp.multiply" title="odl.discr.lp_discr.DiscreteLp.multiply"><code class="xref py py-obj docutils literal"><span class="pre">multiply</span></code></a>(x1,&nbsp;x2[,&nbsp;out])</td>
+<td>Return the pointwise product of <code class="docutils literal"><span class="pre">x1</span></code> and <code class="docutils literal"><span class="pre">x2</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.norm.html#odl.discr.lp_discr.DiscreteLp.norm" title="odl.discr.lp_discr.DiscreteLp.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>(x)</td>
+<td>Return the norm of <code class="docutils literal"><span class="pre">x</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.one.html#odl.discr.lp_discr.DiscreteLp.one" title="odl.discr.lp_discr.DiscreteLp.one"><code class="xref py py-obj docutils literal"><span class="pre">one</span></code></a>()</td>
+<td>Return the element of all ones.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.points.html#odl.discr.lp_discr.DiscreteLp.points" title="odl.discr.lp_discr.DiscreteLp.points"><code class="xref py py-obj docutils literal"><span class="pre">points</span></code></a>([order])</td>
+<td>All sampling points in the partition.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.zero.html#odl.discr.lp_discr.DiscreteLp.zero" title="odl.discr.lp_discr.DiscreteLp.zero"><code class="xref py py-obj docutils literal"><span class="pre">zero</span></code></a>()</td>
+<td>Return the element of all zeros.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.discr.lp_discr.DiscreteLp.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>fspace</em>, <em>partition</em>, <em>tspace</em>, <em>interp='nearest'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/discr/lp_discr.html#DiscreteLp.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.discr.lp_discr.DiscreteLp.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>fspace <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.space.fspace.FunctionSpace.html#odl.space.fspace.FunctionSpace" title="odl.space.fspace.FunctionSpace"><code class="xref any py py-class docutils literal"><span class="pre">FunctionSpace</span></code></a></span></dt>
+<dd><p class="first last">The continuous space to be discretized.</p>
+</dd>
+<dt>partition <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.discr.partition.RectPartition.html#odl.discr.partition.RectPartition" title="odl.discr.partition.RectPartition"><code class="xref any py py-class docutils literal"><span class="pre">RectPartition</span></code></a></span></dt>
+<dd><p class="first last">Partition of (a subset of) <code class="docutils literal"><span class="pre">fspace.domain</span></code>.</p>
+</dd>
+<dt>tspace <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.space.base_tensors.TensorSpace.html#odl.space.base_tensors.TensorSpace" title="odl.space.base_tensors.TensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">TensorSpace</span></code></a></span></dt>
+<dd><p class="first last">Space of elements used for data storage. It must have the
+same <code class="xref any docutils literal"><span class="pre">TensorSpace.field</span></code> as <code class="docutils literal"><span class="pre">fspace</span></code> and the same
+<code class="xref any docutils literal"><span class="pre">TensorSpace.shape</span></code> as <code class="docutils literal"><span class="pre">partition</span></code>.</p>
+</dd>
+<dt>interp <span class="classifier-delimiter">:</span> <span class="classifier">string or sequence of strings, optional</span></dt>
+<dd><p class="first">Interpolation type to be used for discretization.
+A sequence is interpreted as interpolation scheme per axis.
+Possible values:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">'nearest'</span></code> : use nearest-neighbor interpolation.</li>
+<li><code class="docutils literal"><span class="pre">'linear'</span></code> : use linear interpolation.</li>
+</ul>
+</div></blockquote>
+</dd>
+<dt>axis_labels <span class="classifier-delimiter">:</span> <span class="classifier">sequence of str, optional</span></dt>
+<dd><p class="first">Names of the axes to use for plotting etc.
+Default:</p>
+<blockquote>
+<div><ul class="simple">
+<li>1D: <code class="docutils literal"><span class="pre">['$x$']</span></code></li>
+<li>2D: <code class="docutils literal"><span class="pre">['$x$',</span> <span class="pre">'$y$']</span></code></li>
+<li>3D: <code class="docutils literal"><span class="pre">['$x$',</span> <span class="pre">'$y$',</span> <span class="pre">'$z$']</span></code></li>
+<li>nD: <code class="docutils literal"><span class="pre">['$x_1$',</span> <span class="pre">'$x_2$',</span> <span class="pre">...,</span> <span class="pre">'$x_n$']</span></code></li>
+</ul>
+</div></blockquote>
+<p class="last">Note: The <code class="docutils literal"><span class="pre">$</span></code> signs ensure rendering as LaTeX.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.discr.lp_discr.DiscreteLp._dist.html" class="btn btn-neutral float-right" title="DiscreteLp._dist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../odl.discr.lp_discr.html" class="btn btn-neutral" title="lp_discr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

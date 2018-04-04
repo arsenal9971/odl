@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>npy_tensors &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="index.html"/>
+        <link rel="up" title="space" href="odl.space.html"/>
+        <link rel="next" title="NumpyTensor" href="generated/odl.space.npy_tensors.NumpyTensor.html"/>
+        <link rel="prev" title="FunctionSpaceElement.set_zero" href="generated/odl.space.fspace.FunctionSpaceElement.set_zero.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.solvers.html">solvers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="odl.space.html">space</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="odl.space.base_tensors.html">base_tensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.entry_points.html">entry_points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.fspace.html">fspace</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">npy_tensors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensor.html">NumpyTensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpace.html">NumpyTensorSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceArrayWeighting.html">NumpyTensorSpaceArrayWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceConstWeighting.html">NumpyTensorSpaceConstWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceCustomDist.html">NumpyTensorSpaceCustomDist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceCustomInner.html">NumpyTensorSpaceCustomInner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceCustomNorm.html">NumpyTensorSpaceCustomNorm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.npy_weighted_dist.html">npy_weighted_dist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.npy_weighted_inner.html">npy_weighted_inner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_tensors.npy_weighted_norm.html">npy_weighted_norm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.pspace.html">pspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.space_utils.html">space_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.weighting.html">weighting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="odl.space.html">space</a> &raquo;</li>
+        
+      <li>npy_tensors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/odl.space.npy_tensors.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="npy-tensors">
+<h1>npy_tensors<a class="headerlink" href="#npy-tensors" title="Permalink to this headline">¶</a></h1>
+<p>NumPy implementation of tensor spaces.</p>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensor.html#odl.space.npy_tensors.NumpyTensor" title="odl.space.npy_tensors.NumpyTensor"><code class="xref py py-obj docutils literal"><span class="pre">NumpyTensor</span></code></a>(space,&nbsp;data)</td>
+<td>Representation of a <a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpace.html#odl.space.npy_tensors.NumpyTensorSpace" title="odl.space.npy_tensors.NumpyTensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">NumpyTensorSpace</span></code></a> element.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpace.html#odl.space.npy_tensors.NumpyTensorSpace" title="odl.space.npy_tensors.NumpyTensorSpace"><code class="xref py py-obj docutils literal"><span class="pre">NumpyTensorSpace</span></code></a>(shape[,&nbsp;dtype])</td>
+<td>Set of tensors of arbitrary data type, implemented with NumPy.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceArrayWeighting.html#odl.space.npy_tensors.NumpyTensorSpaceArrayWeighting" title="odl.space.npy_tensors.NumpyTensorSpaceArrayWeighting"><code class="xref py py-obj docutils literal"><span class="pre">NumpyTensorSpaceArrayWeighting</span></code></a>(array[,&nbsp;exponent])</td>
+<td>Weighting of a <a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpace.html#odl.space.npy_tensors.NumpyTensorSpace" title="odl.space.npy_tensors.NumpyTensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">NumpyTensorSpace</span></code></a> by an array.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceConstWeighting.html#odl.space.npy_tensors.NumpyTensorSpaceConstWeighting" title="odl.space.npy_tensors.NumpyTensorSpaceConstWeighting"><code class="xref py py-obj docutils literal"><span class="pre">NumpyTensorSpaceConstWeighting</span></code></a>(const[,&nbsp;exponent])</td>
+<td>Weighting of a <a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpace.html#odl.space.npy_tensors.NumpyTensorSpace" title="odl.space.npy_tensors.NumpyTensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">NumpyTensorSpace</span></code></a> by a constant.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceCustomDist.html#odl.space.npy_tensors.NumpyTensorSpaceCustomDist" title="odl.space.npy_tensors.NumpyTensorSpaceCustomDist"><code class="xref py py-obj docutils literal"><span class="pre">NumpyTensorSpaceCustomDist</span></code></a>(dist)</td>
+<td>Class for handling a user-specified distance in <a class="reference internal" href="generated/odl.space.base_tensors.TensorSpace.html#odl.space.base_tensors.TensorSpace" title="odl.space.base_tensors.TensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">TensorSpace</span></code></a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceCustomInner.html#odl.space.npy_tensors.NumpyTensorSpaceCustomInner" title="odl.space.npy_tensors.NumpyTensorSpaceCustomInner"><code class="xref py py-obj docutils literal"><span class="pre">NumpyTensorSpaceCustomInner</span></code></a>(inner)</td>
+<td>Class for handling a user-specified inner product.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_tensors.NumpyTensorSpaceCustomNorm.html#odl.space.npy_tensors.NumpyTensorSpaceCustomNorm" title="odl.space.npy_tensors.NumpyTensorSpaceCustomNorm"><code class="xref py py-obj docutils literal"><span class="pre">NumpyTensorSpaceCustomNorm</span></code></a>(norm)</td>
+<td>Class for handling a user-specified norm.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_tensors.npy_weighted_dist.html#odl.space.npy_tensors.npy_weighted_dist" title="odl.space.npy_tensors.npy_weighted_dist"><code class="xref py py-obj docutils literal"><span class="pre">npy_weighted_dist</span></code></a>(weights[,&nbsp;exponent])</td>
+<td>Weighted distance on <a class="reference internal" href="generated/odl.space.base_tensors.TensorSpace.html#odl.space.base_tensors.TensorSpace" title="odl.space.base_tensors.TensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">TensorSpace</span></code></a>’s as free function.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_tensors.npy_weighted_inner.html#odl.space.npy_tensors.npy_weighted_inner" title="odl.space.npy_tensors.npy_weighted_inner"><code class="xref py py-obj docutils literal"><span class="pre">npy_weighted_inner</span></code></a>(weights)</td>
+<td>Weighted inner product on <a class="reference internal" href="generated/odl.space.base_tensors.TensorSpace.html#odl.space.base_tensors.TensorSpace" title="odl.space.base_tensors.TensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">TensorSpace</span></code></a>’s as free function.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_tensors.npy_weighted_norm.html#odl.space.npy_tensors.npy_weighted_norm" title="odl.space.npy_tensors.npy_weighted_norm"><code class="xref py py-obj docutils literal"><span class="pre">npy_weighted_norm</span></code></a>(weights[,&nbsp;exponent])</td>
+<td>Weighted norm on <a class="reference internal" href="generated/odl.space.base_tensors.TensorSpace.html#odl.space.base_tensors.TensorSpace" title="odl.space.base_tensors.TensorSpace"><code class="xref any py py-class docutils literal"><span class="pre">TensorSpace</span></code></a>’s as free function.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/odl.space.npy_tensors.NumpyTensor.html" class="btn btn-neutral float-right" title="NumpyTensor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/odl.space.fspace.FunctionSpaceElement.set_zero.html" class="btn btn-neutral" title="FunctionSpaceElement.set_zero" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

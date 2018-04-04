@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>proximal_convex_conj_l2 &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="proximal_operators" href="../odl.solvers.nonsmooth.proximal_operators.html"/>
+        <link rel="next" title="proximal_convex_conj_l2_squared" href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2_squared.html"/>
+        <link rel="prev" title="proximal_convex_conj_l1_l2" href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l1_l2.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.solvers.html">solvers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.functional.html">functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.iterative.html">iterative</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.solvers.nonsmooth.html">nonsmooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.admm.html">admm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.alternating_dual_updates.html">alternating_dual_updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.douglas_rachford.html">douglas_rachford</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.forward_backward.html">forward_backward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.primal_dual_hybrid_gradient.html">primal_dual_hybrid_gradient</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_gradient_solvers.html">proximal_gradient_solvers</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.solvers.nonsmooth.proximal_operators.html">proximal_operators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.smooth.html">smooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.solvers.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.html">solvers</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.html">nonsmooth</a> &raquo;</li>
+        
+          <li><a href="../odl.solvers.nonsmooth.proximal_operators.html">proximal_operators</a> &raquo;</li>
+        
+      <li>proximal_convex_conj_l2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="proximal-convex-conj-l2">
+<h1>proximal_convex_conj_l2<a class="headerlink" href="#proximal-convex-conj-l2" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2">
+<code class="descclassname">odl.solvers.nonsmooth.proximal_operators.</code><code class="descname">proximal_convex_conj_l2</code><span class="sig-paren">(</span><em>space</em>, <em>lam=1</em>, <em>g=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/solvers/nonsmooth/proximal_operators.html#proximal_convex_conj_l2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proximal operator factory of the convex conj of the l2-norm/distance.</p>
+<p>Function for the proximal operator of the convex conjugate of the
+functional F where F is the l2-norm (or distance to g, if given):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span>  <span class="n">lam</span> <span class="o">||</span><span class="n">x</span> <span class="o">-</span> <span class="n">g</span><span class="o">||</span><span class="n">_2</span>
+</pre></div>
+</div>
+<p>with x and g elements in <code class="docutils literal"><span class="pre">space</span></code>, scaling factor lam, and given data g.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>space <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.set.space.LinearSpace.html#odl.set.space.LinearSpace" title="odl.set.space.LinearSpace"><code class="xref any py py-class docutils literal"><span class="pre">LinearSpace</span></code></a></span></dt>
+<dd><p class="first last">Domain of F(x). Needs to be a Hilbert space.
+That is, have an inner product (<a class="reference internal" href="odl.set.space.LinearSpace.inner.html#odl.set.space.LinearSpace.inner" title="odl.set.space.LinearSpace.inner"><code class="xref any py py-meth docutils literal"><span class="pre">LinearSpace.inner</span></code></a>).</p>
+</dd>
+<dt>lam <span class="classifier-delimiter">:</span> <span class="classifier">positive float, optional</span></dt>
+<dd><p class="first last">Scaling factor or regularization parameter.</p>
+</dd>
+<dt>g <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">space</span></code> element, optional</span></dt>
+<dd><p class="first last">An element in <code class="docutils literal"><span class="pre">space</span></code>. Default: <code class="docutils literal"><span class="pre">space.zero</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt>prox_factory <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd><p class="first last">Factory for the proximal operator to be initialized</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="odl.solvers.nonsmooth.proximal_operators.proximal_l2.html#odl.solvers.nonsmooth.proximal_operators.proximal_l2" title="odl.solvers.nonsmooth.proximal_operators.proximal_l2"><code class="xref py py-obj docutils literal"><span class="pre">proximal_l2</span></code></a></dt>
+<dd>proximal without convex conjugate</dd>
+<dt><a class="reference internal" href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2_squared.html#odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2_squared" title="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2_squared"><code class="xref py py-obj docutils literal"><span class="pre">proximal_convex_conj_l2_squared</span></code></a></dt>
+<dd>proximal for squared norm/distance</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Most problems are forumlated for the squared norm/distance, in that case
+use the <a class="reference internal" href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2_squared.html#odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2_squared" title="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2_squared"><code class="xref any py py-func docutils literal"><span class="pre">proximal_convex_conj_l2_squared</span></code></a> instead.</p>
+<p>The <img class="math" src="../_images/math/cce73c20b14f5d57454e0ad66f02dd004d949e0c.png" alt="L_2"/>-norm/distance <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> is given by is given by</p>
+<div class="math">
+<p><img src="../_images/math/c0b1111a7b25ebd6c9c56a0b3ad788e29402d3d7.png" alt="F(x) = \lambda \|x - g\|_2"/></p>
+</div><p>The convex conjugate <img class="math" src="../_images/math/1c1d54d3f16ae001608fc9b14f9aadf0e00101a1.png" alt="F^*"/> of <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> is given by</p>
+<div class="math">
+<p><img src="../_images/math/dd0400fbb9e295ca6a83a39165d42e887f8cc339.png" alt="F^*(y) = \begin{cases}
+0 &amp; \text{if } \|y-g\|_2 \leq \lambda, \\
+\infty &amp; \text{else.}
+\end{cases}"/></p>
+</div><p>For a step size <img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/>, the proximal operator of
+<img class="math" src="../_images/math/7cd765714bfeb1721ddf836b2db402ed8d4e4fe0.png" alt="\sigma F^*"/> is given by the projection onto the set of <img class="math" src="../_images/math/276f7e256cbddeb81eee42e1efc348f3cb4ab5f8.png" alt="y"/>
+satisfying <img class="math" src="../_images/math/8e44e494594f52f5d533c7cad9faf0cb39ef3cc3.png" alt="\|y-g\|_2 \leq \lambda"/>, i.e., by</p>
+<div class="math">
+<p><img src="../_images/math/0d16e7652b574aef052f65e91df7e0808f408729.png" alt="\mathrm{prox}_{\sigma F^*}(y) = \begin{cases}
+\lambda \frac{y - g}{\|y - g\|}
+&amp; \text{if } \|y-g\|_2 &gt; \lambda, \\
+y &amp; \text{if } \|y-g\|_2 \leq \lambda
+\end{cases}"/></p>
+</div><p>Note that the expression is independent of <img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/>.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l2_squared.html" class="btn btn-neutral float-right" title="proximal_convex_conj_l2_squared" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.solvers.nonsmooth.proximal_operators.proximal_convex_conj_l1_l2.html" class="btn btn-neutral" title="proximal_convex_conj_l1_l2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

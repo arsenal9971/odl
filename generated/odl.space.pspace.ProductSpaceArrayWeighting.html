@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ProductSpaceArrayWeighting &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="pspace" href="../odl.space.pspace.html"/>
+        <link rel="next" title="ProductSpaceArrayWeighting.dist" href="odl.space.pspace.ProductSpaceArrayWeighting.dist.html"/>
+        <link rel="prev" title="ProductSpace.zero" href="odl.space.pspace.ProductSpace.zero.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.space.html">space</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.base_tensors.html">base_tensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.entry_points.html">entry_points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.fspace.html">fspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.npy_tensors.html">npy_tensors</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.space.pspace.html">pspace</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="odl.space.pspace.ProductSpace.html">ProductSpace</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ProductSpaceArrayWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.pspace.ProductSpaceConstWeighting.html">ProductSpaceConstWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.pspace.ProductSpaceCustomDist.html">ProductSpaceCustomDist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.pspace.ProductSpaceCustomInner.html">ProductSpaceCustomInner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.pspace.ProductSpaceCustomNorm.html">ProductSpaceCustomNorm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.space.pspace.ProductSpaceElement.html">ProductSpaceElement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.space_utils.html">space_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.space.weighting.html">weighting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.space.html">space</a> &raquo;</li>
+        
+          <li><a href="../odl.space.pspace.html">pspace</a> &raquo;</li>
+        
+      <li>ProductSpaceArrayWeighting</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.space.pspace.ProductSpaceArrayWeighting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="productspacearrayweighting">
+<h1>ProductSpaceArrayWeighting<a class="headerlink" href="#productspacearrayweighting" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.space.pspace.ProductSpaceArrayWeighting">
+<em class="property">class </em><code class="descclassname">odl.space.pspace.</code><code class="descname">ProductSpaceArrayWeighting</code><span class="sig-paren">(</span><em>array</em>, <em>exponent=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/space/pspace.html#ProductSpaceArrayWeighting"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.space.pspace.ProductSpaceArrayWeighting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.space.weighting.ArrayWeighting.html#odl.space.weighting.ArrayWeighting" title="odl.space.weighting.ArrayWeighting"><code class="xref py py-class docutils literal"><span class="pre">odl.space.weighting.ArrayWeighting</span></code></a></p>
+<p>Array weighting for <a class="reference internal" href="odl.space.pspace.ProductSpace.html#odl.space.pspace.ProductSpace" title="odl.space.pspace.ProductSpace"><code class="xref any py py-class docutils literal"><span class="pre">ProductSpace</span></code></a>.</p>
+<p>This class defines a weighting that has a different value for
+each index defined in a given space.
+See <code class="docutils literal"><span class="pre">Notes</span></code> for mathematical details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><a class="reference external" href="https://docs.python.org/3/library/array.html#module-array" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">array</span></code></a></dt>
+<dd><p class="first last">Weighting array of this instance.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">exponent</span></code></dt>
+<dd><p class="first last">Exponent of this weighting.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">impl</span></code></dt>
+<dd><p class="first last">Implementation backend of this weighting.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">repr_part</span></code></dt>
+<dd><p class="first last">String usable in a space’s <code class="docutils literal"><span class="pre">__repr__</span></code> method.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.pspace.ProductSpaceArrayWeighting.dist.html#odl.space.pspace.ProductSpaceArrayWeighting.dist" title="odl.space.pspace.ProductSpaceArrayWeighting.dist"><code class="xref py py-obj docutils literal"><span class="pre">dist</span></code></a>(x1,&nbsp;x2)</td>
+<td>Calculate the distance between two elements.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.pspace.ProductSpaceArrayWeighting.equiv.html#odl.space.pspace.ProductSpaceArrayWeighting.equiv" title="odl.space.pspace.ProductSpaceArrayWeighting.equiv"><code class="xref py py-obj docutils literal"><span class="pre">equiv</span></code></a>(other)</td>
+<td>Return True if other is an equivalent weighting.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.pspace.ProductSpaceArrayWeighting.inner.html#odl.space.pspace.ProductSpaceArrayWeighting.inner" title="odl.space.pspace.ProductSpaceArrayWeighting.inner"><code class="xref py py-obj docutils literal"><span class="pre">inner</span></code></a>(x1,&nbsp;x2)</td>
+<td>Calculate the array-weighted inner product of two elements.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.space.pspace.ProductSpaceArrayWeighting.is_valid.html#odl.space.pspace.ProductSpaceArrayWeighting.is_valid" title="odl.space.pspace.ProductSpaceArrayWeighting.is_valid"><code class="xref py py-obj docutils literal"><span class="pre">is_valid</span></code></a>()</td>
+<td>Return True if the array is a valid weight, i.e.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.space.pspace.ProductSpaceArrayWeighting.norm.html#odl.space.pspace.ProductSpaceArrayWeighting.norm" title="odl.space.pspace.ProductSpaceArrayWeighting.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>(x)</td>
+<td>Calculate the array-weighted norm of an element.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.space.pspace.ProductSpaceArrayWeighting.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>array</em>, <em>exponent=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/space/pspace.html#ProductSpaceArrayWeighting.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.space.pspace.ProductSpaceArrayWeighting.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>array <span class="classifier-delimiter">:</span> <span class="classifier">1-dim. <a class="reference internal" href="../guide/glossary.html#term-array-like"><code class="xref any std std-term docutils literal"><span class="pre">array-like</span></code></a></span></dt>
+<dd><p class="first last">Weighting array of the inner product.</p>
+</dd>
+<dt>exponent <span class="classifier-delimiter">:</span> <span class="classifier">positive float, optional</span></dt>
+<dd><p class="first last">Exponent of the norm. For values other than 2.0, no inner
+product is defined.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<ul>
+<li><p class="first">For exponent 2.0, a new weighted inner product with array
+<img class="math" src="../_images/math/ecd1ee2a1cd226b40c37e079aca62398d4b774f5.png" alt="w"/> is defined as</p>
+<div class="math">
+<p><img src="../_images/math/7e9974abc339877cbbd020a6d63515af4ed8626b.png" alt="\langle x, y \rangle_w = \langle w \odot x, y \rangle"/></p>
+</div><p>with component-wise multiplication <img class="math" src="../_images/math/2de0523e3abb9947e1755469e5626db0a7a09cb8.png" alt="w \odot x"/>. For other
+exponents, only <code class="docutils literal"><span class="pre">norm</span></code> and <code class="docutils literal"><span class="pre">dist</span></code> are defined. In the case
+of exponent <code class="docutils literal"><span class="pre">inf</span></code>, the weighted norm is</p>
+<div class="math">
+<p><img src="../_images/math/e15630ca77f371f09985ffd29edf738bef3cbadb.png" alt="\|x\|_{w,\infty} = \|w \odot x\|_\infty,"/></p>
+</div><p>otherwise it is</p>
+<div class="math">
+<p><img src="../_images/math/1f344b690e997b08a5bcb5dd766d1b50b8b0ab4b.png" alt="\|x\|_{w,p} = \|w^{1/p} \odot x\|_p."/></p>
+</div></li>
+<li><p class="first">Note that this definition does <strong>not</strong> fulfill the limit property
+in <img class="math" src="../_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/>, i.e.,</p>
+<div class="math">
+<p><img src="../_images/math/c27316eaaba06c4675d794c88eb584a8dd7d6091.png" alt="\|x\|_{w,p} \not\to \|x\|_{w,\infty}
+\quad\text{for } p \to \infty"/></p>
+</div><p>unless <img class="math" src="../_images/math/f57dfdb20482c6c2029a917f101ccb5b14f74fd0.png" alt="w = (1,...,1)"/>. The reason for this choice
+is that the alternative with the limit property consists in
+ignoring the weights altogether.</p>
+</li>
+<li><p class="first">The array may only have positive entries, otherwise it does not
+define an inner product or norm, respectively. This is not checked
+during initialization.</p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.space.pspace.ProductSpaceArrayWeighting.dist.html" class="btn btn-neutral float-right" title="ProductSpaceArrayWeighting.dist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.space.pspace.ProductSpace.zero.html" class="btn btn-neutral" title="ProductSpace.zero" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

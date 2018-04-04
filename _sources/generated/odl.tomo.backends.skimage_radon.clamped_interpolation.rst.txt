@@ -1,0 +1,6 @@
+clamped_interpolation
+=====================================================
+
+.. currentmodule:: odl.tomo.backends.skimage_radon
+
+.. autofunction:: clamped_interpolation

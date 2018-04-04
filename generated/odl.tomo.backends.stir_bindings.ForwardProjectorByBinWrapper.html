@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ForwardProjectorByBinWrapper &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="stir_bindings" href="../odl.tomo.backends.stir_bindings.html"/>
+        <link rel="next" title="ForwardProjectorByBinWrapper._call" href="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper._call.html"/>
+        <link rel="prev" title="BackProjectorByBinWrapper.norm" href="odl.tomo.backends.stir_bindings.BackProjectorByBinWrapper.norm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.tomo.html">tomo</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.analytic.html">analytic</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.tomo.backends.html">backends</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../odl.tomo.backends.astra_cpu.html">astra_cpu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.tomo.backends.astra_cuda.html">astra_cuda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.tomo.backends.astra_setup.html">astra_setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../odl.tomo.backends.skimage_radon.html">skimage_radon</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../odl.tomo.backends.stir_bindings.html">stir_bindings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.geometry.html">geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.operators.html">operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.tomo.util.html">util</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.tomo.html">tomo</a> &raquo;</li>
+        
+          <li><a href="../odl.tomo.backends.html">backends</a> &raquo;</li>
+        
+          <li><a href="../odl.tomo.backends.stir_bindings.html">stir_bindings</a> &raquo;</li>
+        
+      <li>ForwardProjectorByBinWrapper</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="forwardprojectorbybinwrapper">
+<h1>ForwardProjectorByBinWrapper<a class="headerlink" href="#forwardprojectorbybinwrapper" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper">
+<em class="property">class </em><code class="descclassname">odl.tomo.backends.stir_bindings.</code><code class="descname">ForwardProjectorByBinWrapper</code><span class="sig-paren">(</span><em>domain</em>, <em>range</em>, <em>volume</em>, <em>proj_data</em>, <em>projector=None</em>, <em>adjoint=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/tomo/backends/stir_bindings.html#ForwardProjectorByBinWrapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="odl.operator.operator.Operator.html#odl.operator.operator.Operator" title="odl.operator.operator.Operator"><code class="xref py py-class docutils literal"><span class="pre">odl.operator.operator.Operator</span></code></a></p>
+<p>A forward projector using STIR.</p>
+<p>Uses “ForwardProjectorByBinUsingProjMatrixByBin” as a projector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><code class="xref py py-obj docutils literal"><span class="pre">adjoint</span></code></dt>
+<dd><p class="first last">Back-projector associated with this operator.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">domain</span></code></dt>
+<dd><p class="first last">Set of objects on which this operator can be evaluated.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">inverse</span></code></dt>
+<dd><p class="first last">Return the operator inverse.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_functional</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator’s range is a <a class="reference internal" href="odl.set.sets.Field.html#odl.set.sets.Field" title="odl.set.sets.Field"><code class="xref any py py-class docutils literal"><span class="pre">Field</span></code></a>.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal"><span class="pre">is_linear</span></code></dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">True</span></code> if this operator is linear.</p>
+</dd>
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">range</span></code></a></dt>
+<dd><p class="first last">Set in which the result of an evaluation of this operator lies.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper._call.html#odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper._call" title="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper._call"><code class="xref py py-obj docutils literal"><span class="pre">_call</span></code></a>(volume,&nbsp;out)</td>
+<td>Forward project a volume.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper.derivative.html#odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper.derivative" title="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper.derivative"><code class="xref py py-obj docutils literal"><span class="pre">derivative</span></code></a>(point)</td>
+<td>Return the operator derivative at <code class="docutils literal"><span class="pre">point</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper.norm.html#odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper.norm" title="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a>([estimate])</td>
+<td>Return the operator norm of this operator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>domain</em>, <em>range</em>, <em>volume</em>, <em>proj_data</em>, <em>projector=None</em>, <em>adjoint=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/tomo/backends/stir_bindings.html#ForwardProjectorByBinWrapper.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>domain <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html#odl.discr.lp_discr.DiscreteLp" title="odl.discr.lp_discr.DiscreteLp"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLp</span></code></a></span></dt>
+<dd><p class="first last">Volume of the projection. Needs to have the same shape as
+<code class="docutils literal"><span class="pre">volume.shape()</span></code>.</p>
+</dd>
+<dt>range <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html#odl.discr.lp_discr.DiscreteLp" title="odl.discr.lp_discr.DiscreteLp"><code class="xref any py py-class docutils literal"><span class="pre">DiscreteLp</span></code></a></span></dt>
+<dd><p class="first last">Projection space. Needs to have the same shape as
+<code class="docutils literal"><span class="pre">proj_data.to_array().shape()</span></code>.</p>
+</dd>
+<dt>volume <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">stir.FloatVoxelsOnCartesianGrid</span></code></span></dt>
+<dd><p class="first last">Stir volume to use in the forward projection</p>
+</dd>
+<dt>proj_data <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">stir.ProjData</span></code></span></dt>
+<dd><p class="first last">Stir description of the projection.</p>
+</dd>
+<dt>projector <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">stir.ForwardProjectorByBin</span></code>, optional</span></dt>
+<dd><p class="first last">A pre-initialized projector.</p>
+</dd>
+<dt>adjoint <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="odl.tomo.backends.stir_bindings.BackProjectorByBinWrapper.html#odl.tomo.backends.stir_bindings.BackProjectorByBinWrapper" title="odl.tomo.backends.stir_bindings.BackProjectorByBinWrapper"><code class="xref any py py-class docutils literal"><span class="pre">BackProjectorByBinWrapper</span></code></a>, optional</span></dt>
+<dd><p class="first last">A pre-initialized adjoint.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.tomo.backends.stir_bindings.ForwardProjectorByBinWrapper._call.html" class="btn btn-neutral float-right" title="ForwardProjectorByBinWrapper._call" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.tomo.backends.stir_bindings.BackProjectorByBinWrapper.norm.html" class="btn btn-neutral" title="BackProjectorByBinWrapper.norm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

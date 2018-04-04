@@ -1,0 +1,6 @@
+pywt_flat_coeff_size
+======================================================
+
+.. currentmodule:: odl.trafos.backends.pywt_bindings
+
+.. autofunction:: pywt_flat_coeff_size

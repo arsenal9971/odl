@@ -1,0 +1,8 @@
+:orphan:
+
+LinearInterpolation.__eq__
+===================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: LinearInterpolation.__eq__

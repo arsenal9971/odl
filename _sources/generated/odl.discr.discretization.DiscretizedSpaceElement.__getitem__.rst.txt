@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSpaceElement.__getitem__
+============================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSpaceElement.__getitem__

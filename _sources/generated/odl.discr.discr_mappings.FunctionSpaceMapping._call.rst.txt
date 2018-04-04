@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpaceMapping._call
+===================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: FunctionSpaceMapping._call

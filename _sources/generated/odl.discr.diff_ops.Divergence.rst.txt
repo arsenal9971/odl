@@ -1,0 +1,30 @@
+Divergence
+=============================
+
+.. currentmodule:: odl.discr.diff_ops
+
+.. autoclass:: Divergence
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         Divergence.__call__
+         Divergence._call
+         Divergence.derivative
+         Divergence.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

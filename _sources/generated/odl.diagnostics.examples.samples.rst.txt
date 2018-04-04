@@ -1,0 +1,6 @@
+samples
+================================
+
+.. currentmodule:: odl.diagnostics.examples
+
+.. autofunction:: samples

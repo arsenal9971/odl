@@ -1,0 +1,6 @@
+rn
+========================
+
+.. currentmodule:: odl.space.space_utils
+
+.. autofunction:: rn

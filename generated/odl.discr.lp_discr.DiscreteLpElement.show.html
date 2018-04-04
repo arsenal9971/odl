@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DiscreteLpElement.show &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="DiscreteLpElement" href="odl.discr.lp_discr.DiscreteLpElement.html"/>
+        <link rel="next" title="discr_sequence_space" href="odl.discr.lp_discr.discr_sequence_space.html"/>
+        <link rel="prev" title="DiscreteLpElement.set_zero" href="odl.discr.lp_discr.DiscreteLpElement.set_zero.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../odl.discr.html">discr</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.diff_ops.html">diff_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.discr_mappings.html">discr_mappings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.discr_ops.html">discr_ops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.discretization.html">discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.grid.html">grid</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../odl.discr.lp_discr.html">lp_discr</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLp.html">DiscreteLp</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="odl.discr.lp_discr.DiscreteLpElement.html">DiscreteLpElement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.discr_sequence_space.html">discr_sequence_space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr.html">uniform_discr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_fromdiscr.html">uniform_discr_fromdiscr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_fromintv.html">uniform_discr_fromintv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_frompartition.html">uniform_discr_frompartition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="odl.discr.lp_discr.uniform_discr_fromspace.html">uniform_discr_fromspace</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../odl.discr.partition.html">partition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.solvers.html">solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.space.html">space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="../odl.discr.html">discr</a> &raquo;</li>
+        
+          <li><a href="../odl.discr.lp_discr.html">lp_discr</a> &raquo;</li>
+        
+          <li><a href="odl.discr.lp_discr.DiscreteLpElement.html">DiscreteLpElement</a> &raquo;</li>
+        
+      <li>DiscreteLpElement.show</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/odl.discr.lp_discr.DiscreteLpElement.show.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="discretelpelement-show">
+<h1>DiscreteLpElement.show<a class="headerlink" href="#discretelpelement-show" title="Permalink to this headline">¶</a></h1>
+<dl class="method">
+<dt id="odl.discr.lp_discr.DiscreteLpElement.show">
+<code class="descclassname">DiscreteLpElement.</code><code class="descname">show</code><span class="sig-paren">(</span><em>title=None</em>, <em>method=''</em>, <em>coords=None</em>, <em>indices=None</em>, <em>force_show=False</em>, <em>fig=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/odl/discr/lp_discr.html#DiscreteLpElement.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#odl.discr.lp_discr.DiscreteLpElement.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the function graphically.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>title <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd><p class="first last">Set the title of the figure</p>
+</dd>
+<dt>method <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd><p class="first">1d methods:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">'plot'</span></code> : graph plot (default for 1d data)</li>
+<li><code class="docutils literal"><span class="pre">'scatter'</span></code> : scattered 2d points (2nd axis &lt;-&gt; value)</li>
+</ul>
+<p>2d methods:</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">'imshow'</span></code> : image plot with coloring according to value,
+including a colorbar (default for 2d data).</li>
+<li><code class="docutils literal"><span class="pre">'scatter'</span></code> : cloud of scattered 3d points
+(3rd axis &lt;-&gt; value)</li>
+</ul>
+</dd>
+<dt>coords <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="../guide/glossary.html#term-array-like"><code class="xref any std std-term docutils literal"><span class="pre">array-like</span></code></a>, optional</span></dt>
+<dd><p class="first last">Display a slice of the array instead of the full array.
+The values are shown accordinging to the given values,
+where <code class="docutils literal"><span class="pre">None</span></code> means all values along that dimension. For
+example, <code class="docutils literal"><span class="pre">[None,</span> <span class="pre">None,</span> <span class="pre">0.5]</span></code> shows all values in the first
+two dimensions, with the third coordinate equal to 0.5.
+If a sequence is provided, it specifies the minimum and maximum
+point to be shown, i.e. <code class="docutils literal"><span class="pre">[None,</span> <span class="pre">[0,</span> <span class="pre">1]]</span></code> shows all of the
+first axis and values between 0 and 1 in the second.
+This option is mutually exclusive with <code class="docutils literal"><span class="pre">indices</span></code>.</p>
+</dd>
+<dt>indices <span class="classifier-delimiter">:</span> <span class="classifier">int, slice, Ellipsis or sequence, optional</span></dt>
+<dd><p class="first">Display a slice of the array instead of the full array.
+If a sequence is given, the i-th entry indexes the i-th axis,
+with the following behavior for the different types of entries:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">int</span></code>: take entries with this index along axis <code class="docutils literal"><span class="pre">i</span></code>,
+removing this axis from the result</li>
+<li><code class="docutils literal"><span class="pre">slice</span></code>: take a subset along axis <code class="docutils literal"><span class="pre">i</span></code>, keeping it
+intact</li>
+<li><code class="docutils literal"><span class="pre">None</span></code>: equivalent to <code class="docutils literal"><span class="pre">slice(None)</span></code></li>
+<li><code class="docutils literal"><span class="pre">Ellipsis</span></code> (<code class="docutils literal"><span class="pre">...</span></code>): equivalent to the number of
+<code class="docutils literal"><span class="pre">None</span></code> entries required to fill up the sequence to
+correct length.</li>
+</ul>
+</div></blockquote>
+<p>The typical use case is to show a slice for a fixed index in
+a specific axis, which can be done most easily by setting, e.g.,
+<code class="docutils literal"><span class="pre">indices=[None,</span> <span class="pre">50,</span> <span class="pre">None]</span></code> to take the 2d slice parallel to
+the x-z coordinate plane at index <code class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">50</span></code>.</p>
+<p class="last">A single <code class="docutils literal"><span class="pre">int</span></code> or <code class="docutils literal"><span class="pre">slice</span></code> object indexes the first
+axis, i.e., is treated as <code class="docutils literal"><span class="pre">(int_or_slice,</span> <span class="pre">Ellipsis)</span></code>.
+For the default <code class="docutils literal"><span class="pre">None</span></code>, the array is kepty as-is for data
+that has at most 2 dimensions. For higher-dimensional
+data, the 2d slice in the first two axes at the middle
+position along the remaining axes is shown
+(semantically <code class="docutils literal"><span class="pre">[:,</span> <span class="pre">:,</span> <span class="pre">shape[2:]</span> <span class="pre">//</span> <span class="pre">2]</span></code>).
+This option is mutually exclusive with <code class="docutils literal"><span class="pre">coords</span></code>.</p>
+</dd>
+<dt>force_show <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">Whether the plot should be forced to be shown now or deferred until
+later. Note that some backends always displays the plot, regardless
+of this value.</p>
+</dd>
+<dt>fig <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v2.2.2)"><code class="xref any docutils literal"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt>
+<dd><p class="first last">The figure to show in. Expected to be of same “style”, as
+the figure given by this function. The most common use case
+is that <code class="docutils literal"><span class="pre">fig</span></code> is the return value of an earlier call to
+this function.</p>
+</dd>
+<dt>kwargs <span class="classifier-delimiter">:</span> <span class="classifier">{‘figsize’, ‘saveto’, ‘clim’, …}, optional</span></dt>
+<dd><p class="first last">Extra keyword arguments passed on to the display method.
+See the Matplotlib functions for documentation of extra
+options.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt>fig <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v2.2.2)"><code class="xref any docutils literal"><span class="pre">matplotlib.figure.Figure</span></code></a></span></dt>
+<dd><p class="first last">The resulting figure. It is also shown to the user.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="odl.util.graphics.show_discrete_data.html#odl.util.graphics.show_discrete_data" title="odl.util.graphics.show_discrete_data"><code class="xref py py-obj docutils literal"><span class="pre">odl.util.graphics.show_discrete_data</span></code></a></dt>
+<dd>Underlying implementation</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="odl.discr.lp_discr.discr_sequence_space.html" class="btn btn-neutral float-right" title="discr_sequence_space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="odl.discr.lp_discr.DiscreteLpElement.set_zero.html" class="btn btn-neutral" title="DiscreteLpElement.set_zero" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+:orphan:
+
+LinearInterpolation.__call__
+=====================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: LinearInterpolation.__call__

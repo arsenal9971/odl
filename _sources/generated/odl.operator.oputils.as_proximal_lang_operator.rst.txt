@@ -1,0 +1,6 @@
+as_proximal_lang_operator
+==============================================
+
+.. currentmodule:: odl.operator.oputils
+
+.. autofunction:: as_proximal_lang_operator

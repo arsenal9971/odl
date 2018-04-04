@@ -1,0 +1,25 @@
+discr_mappings
+==============
+
+Mappings between abstract (continuous) and discrete sets.
+
+Includes grid evaluation (collocation) and various interpolation
+operators.
+
+
+.. currentmodule:: odl.discr.discr_mappings
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.discr.discr_mappings.FunctionSpaceMapping
+   ~odl.discr.discr_mappings.LinearInterpolation
+   ~odl.discr.discr_mappings.NearestInterpolation
+   ~odl.discr.discr_mappings.PerAxisInterpolation
+   ~odl.discr.discr_mappings.PointCollocation
+
+

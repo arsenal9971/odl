@@ -1,0 +1,8 @@
+:orphan:
+
+AstraCudaBackProjectorImpl.call_backward
+=====================================================================
+
+.. currentmodule:: odl.tomo.backends.astra_cuda
+
+.. automethod:: AstraCudaBackProjectorImpl.call_backward

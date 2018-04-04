@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpaceMapping.norm
+==================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: FunctionSpaceMapping.norm

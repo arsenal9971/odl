@@ -1,0 +1,23 @@
+discr
+=====
+
+Discretizations in ODL.
+
+.. currentmodule:: odl.discr
+
+
+.. rubric:: Modules
+
+.. toctree::
+   :maxdepth: 2
+
+   odl.discr.diff_ops
+   odl.discr.discr_mappings
+   odl.discr.discr_ops
+   odl.discr.discretization
+   odl.discr.grid
+   odl.discr.lp_discr
+   odl.discr.partition
+
+
+

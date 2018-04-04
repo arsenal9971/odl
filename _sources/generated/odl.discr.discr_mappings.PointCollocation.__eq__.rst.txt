@@ -1,0 +1,8 @@
+:orphan:
+
+PointCollocation.__eq__
+================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: PointCollocation.__eq__

@@ -1,0 +1,6 @@
+conj_exponent
+==============================
+
+.. currentmodule:: odl.util.utility
+
+.. autofunction:: conj_exponent

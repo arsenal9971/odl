@@ -1,0 +1,18 @@
+astra_cpu
+=========
+
+Backend for ASTRA using CPU.
+
+.. currentmodule:: odl.tomo.backends.astra_cpu
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.tomo.backends.astra_cpu.astra_cpu_back_projector
+   ~odl.tomo.backends.astra_cpu.astra_cpu_forward_projector
+

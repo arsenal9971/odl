@@ -1,0 +1,6 @@
+simple_fixture
+=================================
+
+.. currentmodule:: odl.util.testutils
+
+.. autofunction:: simple_fixture

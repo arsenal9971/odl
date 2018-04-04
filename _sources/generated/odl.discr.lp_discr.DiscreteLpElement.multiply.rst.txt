@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpElement.multiply
+=============================================
+
+.. currentmodule:: odl.discr.lp_discr
+
+.. automethod:: DiscreteLpElement.multiply

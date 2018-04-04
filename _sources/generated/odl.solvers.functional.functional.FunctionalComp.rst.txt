@@ -1,0 +1,32 @@
+FunctionalComp
+================================================
+
+.. currentmodule:: odl.solvers.functional.functional
+
+.. autoclass:: FunctionalComp
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         FunctionalComp.__call__
+         FunctionalComp._call
+         FunctionalComp.bregman
+         FunctionalComp.derivative
+         FunctionalComp.norm
+         FunctionalComp.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

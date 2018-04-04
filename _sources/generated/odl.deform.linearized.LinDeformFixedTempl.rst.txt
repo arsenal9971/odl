@@ -1,0 +1,30 @@
+LinDeformFixedTempl
+=========================================
+
+.. currentmodule:: odl.deform.linearized
+
+.. autoclass:: LinDeformFixedTempl
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         LinDeformFixedTempl.__call__
+         LinDeformFixedTempl._call
+         LinDeformFixedTempl.derivative
+         LinDeformFixedTempl.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

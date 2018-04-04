@@ -1,0 +1,6 @@
+defrise
+=============================
+
+.. currentmodule:: odl.phantom.geometric
+
+.. autofunction:: defrise

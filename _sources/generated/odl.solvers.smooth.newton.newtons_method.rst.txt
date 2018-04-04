@@ -1,0 +1,6 @@
+newtons_method
+========================================
+
+.. currentmodule:: odl.solvers.smooth.newton
+
+.. autofunction:: newtons_method

@@ -1,0 +1,6 @@
+is_inside_bounds
+======================================
+
+.. currentmodule:: odl.tomo.util.utility
+
+.. autofunction:: is_inside_bounds

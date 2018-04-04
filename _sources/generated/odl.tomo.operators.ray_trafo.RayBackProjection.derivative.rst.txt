@@ -1,0 +1,8 @@
+:orphan:
+
+RayBackProjection.derivative
+=========================================================
+
+.. currentmodule:: odl.tomo.operators.ray_trafo
+
+.. automethod:: RayBackProjection.derivative

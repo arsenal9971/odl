@@ -1,0 +1,6 @@
+proximal_box_constraint
+================================================================
+
+.. currentmodule:: odl.solvers.nonsmooth.proximal_operators
+
+.. autofunction:: proximal_box_constraint

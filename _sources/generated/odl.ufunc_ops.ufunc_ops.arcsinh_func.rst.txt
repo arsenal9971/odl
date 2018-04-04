@@ -1,0 +1,32 @@
+arcsinh_func
+====================================
+
+.. currentmodule:: odl.ufunc_ops.ufunc_ops
+
+.. autoclass:: arcsinh_func
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         arcsinh_func.__call__
+         arcsinh_func._call
+         arcsinh_func.bregman
+         arcsinh_func.derivative
+         arcsinh_func.norm
+         arcsinh_func.translated
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   
